@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kimenos', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('sablon_id')->references('sablon_id')->on('sablons');
+            $table->foreignId('jelentkezo_id')->references('jelentkezo_id')->on('jelentkezos');
             $table->timestamps();
         });
     }

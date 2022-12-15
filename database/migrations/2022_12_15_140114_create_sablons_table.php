@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sablons', function (Blueprint $table) {
-            $table->id();
+            $table->id('sablon_id');
+            $table->string('sablon_szoveg');
+            $table->string('státusz');
             $table->timestamps();
         });
     }

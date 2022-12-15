@@ -14,7 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('szaks', function (Blueprint $table) {
-            $table->id();
+            $table->id('szak_id');
+            $table->string('megnevezés');
+            $table->foreignId('iskola_id')->references('iskola_id')->on('iskolas');
+            $table->string('előfeltétel');
+            $table->Integer('hany_felév');
             $table->timestamps();
         });
     }

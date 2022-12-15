@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('jelentkezes', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('jelentkezo_id')->references('jelentkezo_id')->on('jelentkezos');
+            $table->foreignId('inditott_azon')->references('inditott_azon')->on('inditott_szaks');
             $table->timestamps();
         });
     }
