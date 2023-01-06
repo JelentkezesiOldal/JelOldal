@@ -45,7 +45,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Jelentkezo::create(['tanulo neve'=>'','születéskori neve'=>'','anyja neve'=>'','születési dátum'=>'','születési hely'=>'','email'=>'','telefonszám'=>'','állandó lakcím'=>'','gondviselő lakása'=>'','értesítési cím'=>'','neme'=>'','OM azonosító'=>'',/*'diákigazolvány'=>'',*/'személyi igazolvány szám'=>'',/*'személyi igazolvány'=>'',*/'taj szám'=>'',/*'taj kártya'=>'',*/'adószám'=>'',/*'adóigazolvány'=>'',*/'érettségi bizonyítvány száma'=>'',/*'érettségi bizonyítvány'=>'',*/'szakmai bizonyítvány száma'=>'',/*'szakmai bizonyítvány'=>'','orvosi alkalmassági'=>'',*/'bankszámlaszám'=>'','státusz'=>'',''=>'']);
+        Jelentkezo::create(['tanulo_neve'=>'','szuleteskori_neve'=>'','anyja_neve'=>'','szuletesi_datum'=>'','szuletesi_hely'=>'','email'=>'','telefonszam'=>'','allando_lakcim'=>'','gondviselo_lakasa'=>'','ertesitesi_cim'=>'','neme'=>'','OM_azonosito'=>'',/*'diákigazolvány'=>'',*/'szemelyi_igazolvany_szam'=>'',/*'személyi igazolvány'=>'',*/'taj_szam'=>'',/*'taj kártya'=>'',*/'adoszam'=>'',/*'adóigazolvány'=>'',*/'erettsegi_bizonyitvany_szama'=>'',/*'érettségi bizonyítvány'=>'',*/'szakmai_bizonyitvany_szama'=>'',/*'szakmai bizonyítvány'=>'','orvosi alkalmassági'=>'',*/'bankszamlaszam'=>'','statusz'=>'']);
 
     }
 
