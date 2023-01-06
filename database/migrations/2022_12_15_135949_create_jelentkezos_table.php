@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Jelentkezo;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,32 +16,32 @@ return new class extends Migration
     {
         Schema::create('jelentkezos', function (Blueprint $table) {
             $table->id('jelentkezo_id');
-            $table->string('tanuló neve');
-            $table->string('születéskori neve');
-            $table->string('anyja neve');
-            $table->date('születési dátum');
-            $table->string('születési hely');
+            $table->string('tanulo_neve');
+            $table->string('szuleteskori_neve');
+            $table->string('anyja_neve');
+            $table->date('szuletesi_datum');
+            $table->string('szuletesi_hely');
             $table->string('email')->unique();
-            $table->int('telefonszám');
-            $table->string('állandó lakcím');
-            $table->string('gondviselő lakása');
-            $table->string('értesítési cím');
+            $table->int('telefonszam');
+            $table->string('allando_lakcim');
+            $table->string('gondviselo_lakasa');
+            $table->string('ertesitesi_cim');
             $table->string('neme');
-            $table->int('OM azonosító');
+            $table->int('OM_azonosito');
             //$table->kep('diákigazolvány');
-            $table->string('személyi igazolvány szám');
+            $table->string('szemelyi_igazolvany_szam');
             //$table->kep('személyi igazolvány');
-            $table->string('taj szám');
+            $table->string('taj_szam');
             //$table->kep('taj kártya');
-            $table->string('adószám');
+            $table->string('adoszam');
             //$table->kep('adóigazolvány');
-            $table->string('érettségi bizonyítvány száma');
+            $table->string('erettsegi_bizonyitvany_szama');
             //$table->kep('érettségi bizonyítvány');
-            $table->string('szakmai bizonyítvány száma');
+            $table->string('szakmai_bizonyitvany_szama');
             //$table->kep('szakmai bizonyítvány');
             //$table->kep('orvosi alkalmassági');
-            $table->string('bankszámlaszám');
-            $table->string('státusz');
+            $table->string('bankszamlaszam');
+            $table->string('statusz');
             $table->timestamps();
         });
 
