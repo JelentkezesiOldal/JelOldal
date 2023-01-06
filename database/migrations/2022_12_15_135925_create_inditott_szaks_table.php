@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('inditott_szaks', function (Blueprint $table) {
-            $table->id('inditott_azon');
+            $table->id('inditott_id');
             $table->foreignId('szak_id')->references('szak_id')->on(szaks);
-            $table->int('államihely');
-            $table->int('Önkölt_hely');
+            $table->int('allamihely');
+            $table->int('onkolthely');
             $table->timestamps();
         });
     }

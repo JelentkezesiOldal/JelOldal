@@ -14,11 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ugyintezos', function (Blueprint $table) {
-            $table->id('ugyintezo_id');
-            $table->string('felhasznalonev');
-            $table->string('jelszo');
-            $table->boolean('Master')->default(0);
-            $table->foreignId('szak')->referneces('szak_id')->on('szaks');
+            
             $table->timestamps();
         });
     }
