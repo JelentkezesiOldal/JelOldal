@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('felhasznalonev');
             $table->string('jelszo');
             $table->boolean('jogosultsag');
-            $table->string('Szak');
+            $table->string('szak');
             $table->timestamps();
         });
     }

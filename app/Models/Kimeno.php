@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Kimeno extends Model
 {
     use HasFactory;
+    protected $fillable =[
+        'sablon_id',
+        'jelentkezo_id',
+    ];
 }

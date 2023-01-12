@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Szak extends Model
 {
     use HasFactory;
+    protected $primaryKey = ['szak_id'];
+    protected $fillable = [
+        'megnevezes',
+        'iskola_id',
+        'elofeltetel',
+        'hany_felev'
+    ];
 }

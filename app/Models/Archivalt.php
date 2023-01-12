@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Archivalt extends Model
 {
+    
     use HasFactory;
+    protected $fillable = [
+        'jelentkezo_id', 
+        'inditott_id'
+    ];
+    
 }
