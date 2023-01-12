@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('szaks', function (Blueprint $table) {
             $table->id('szak_id');
-            $table->string('megnevezés');
+            $table->string('megnevezes');
             $table->foreignId('iskola_id')->references('iskola_id')->on('iskolas');
-            $table->string('előfeltétel');
+            $table->string('elofeltetel');
             $table->Integer('hany_felév');
             $table->timestamps();
         });

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('sablons', function (Blueprint $table) {
             $table->id('sablon_id');
             $table->string('sablon_szoveg');
-            $table->string('státusz');
+            $table->string('status');
             $table->timestamps();
         });
     }
