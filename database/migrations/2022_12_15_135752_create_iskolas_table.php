@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('iskolas', function (Blueprint $table) {
             $table->id('iskola_id');
-            $table->string('megnevezés');
+            $table->string('megnevezes');
             $table->timestamps();
         });
     }

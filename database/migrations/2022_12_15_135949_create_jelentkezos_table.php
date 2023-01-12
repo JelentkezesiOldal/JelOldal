@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->int('telefonszam');
             $table->string('allando_lakcim');
-            $table->string('gondviselo_lakasa');
+            //$table->kep(lakcimkartya);
             $table->string('ertesitesi_cim');
             $table->string('neme');
             $table->int('OM_azonosito');
