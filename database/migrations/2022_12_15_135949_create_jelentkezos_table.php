@@ -22,12 +22,12 @@ return new class extends Migration
             $table->date('szuletesi_datum');
             $table->string('szuletesi_hely');
             $table->string('email')->unique();
-            $table->int('telefonszam');
+            $table->integer('telefonszam');
             $table->string('allando_lakcim');
             //$table->kep(lakcimkartya);
             $table->string('ertesitesi_cim');
             $table->string('neme');
-            $table->int('OM_azonosito');
+            $table->integer('OM_azonosito');
             //$table->kep('diákigazolvány');
             $table->string('szemelyi_igazolvany_szam');
             //$table->kep('személyi igazolvány');
@@ -45,7 +45,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Jelentkezo::create(['tanulo_neve'=>'','szuleteskori_neve'=>'','anyja_neve'=>'','szuletesi_datum'=>'','szuletesi_hely'=>'','email'=>'','telefonszam'=>'','allando_lakcim'=>'','gondviselo_lakasa'=>'','ertesitesi_cim'=>'','neme'=>'','OM_azonosito'=>'',/*'diákigazolvány'=>'',*/'szemelyi_igazolvany_szam'=>'',/*'személyi igazolvány'=>'',*/'taj_szam'=>'',/*'taj kártya'=>'',*/'adoszam'=>'',/*'adóigazolvány'=>'',*/'erettsegi_bizonyitvany_szama'=>'',/*'érettségi bizonyítvány'=>'',*/'szakmai_bizonyitvany_szama'=>'',/*'szakmai bizonyítvány'=>'','orvosi alkalmassági'=>'',*/'bankszamlaszam'=>'','statusz'=>'']);
+        //Jelentkezo::create(['tanulo_neve'=>'','szuleteskori_neve'=>'','anyja_neve'=>'','szuletesi_datum'=>'','szuletesi_hely'=>'','email'=>'','telefonszam'=>'','allando_lakcim'=>'','gondviselo_lakasa'=>'','ertesitesi_cim'=>'','neme'=>'','OM_azonosito'=>'',/*'diákigazolvány'=>'',*/'szemelyi_igazolvany_szam'=>'',/*'személyi igazolvány'=>'',*/'taj_szam'=>'',/*'taj kártya'=>'',*/'adoszam'=>'',/*'adóigazolvány'=>'',*/'erettsegi_bizonyitvany_szama'=>'',/*'érettségi bizonyítvány'=>'',*/'szakmai_bizonyitvany_szama'=>'',/*'szakmai bizonyítvány'=>'','orvosi alkalmassági'=>'',*/'bankszamlaszam'=>'','statusz'=>'']);
 
     }
 
