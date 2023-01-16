@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('jelszo');
             $table->boolean('master')->default(0);
-            $table->foreignId('szak')->referneces('szak_id')->on('szaks');
+            $table->foreignId('szak_id')->references('szak_id')->on('szaks');
             $table->rememberToken();
             $table->timestamps();
         });

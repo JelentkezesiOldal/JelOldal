@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('inditott_szaks', function (Blueprint $table) {
             $table->id('inditott_id');
-            $table->foreignId('szak_id')->references('szak_id')->on(szaks);
-            $table->int('allamihely');
-            $table->int('onkolthely');
+            $table->foreignId('szak_id')->references('szak_id')->on('szaks');
+            $table->integer('allamihely');
+            $table->integer('onkolthely');
             $table->timestamps();
         });
     }

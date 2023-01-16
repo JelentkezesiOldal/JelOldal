@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('archivalts', function (Blueprint $table) {
-            $table->foreginId('jelentkezo_id')->references('jelentkezo_id')->on('jelentkezos');
-            $table->foreginId('inditott_id')->references('inditott_id')->on('inditott_szaks');
+            $table->foreignId('jelentkezo_id')->references('jelentkezo_id')->on('jelentkezos');
+            $table->foreignId('inditott_id')->references('inditott_id')->on('inditott_szaks');
             $table->timestamps();
         });
     }
