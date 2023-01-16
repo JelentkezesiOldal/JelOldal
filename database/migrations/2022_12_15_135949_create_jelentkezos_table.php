@@ -23,10 +23,12 @@ return new class extends Migration
             $table->string('szuletesi_hely');
             $table->string('email')->unique();
             $table->string('telefonszam');
+            $table->string('telefonszam');
             $table->string('allando_lakcim');
             //$table->kep(lakcimkartya);
             $table->string('ertesitesi_cim');
             $table->string('neme');
+            $table->string('OM_azonosito');
             $table->string('OM_azonosito');
             //$table->kep('diákigazolvány');
             $table->string('szemelyi_igazolvany_szam');

@@ -13,6 +13,7 @@
         <h1 class="cim">Jelentkezési oldal</h1>
         <div class="tarolo">
             <div class="bevitel">Ide kerül a szöveg és a beivteli mező</div>
+            <button>Admin_felhasználó oldal</button>
         </div>
     </body>
 </html>

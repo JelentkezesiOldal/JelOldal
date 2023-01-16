@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('archivalts', function (Blueprint $table) {
             $table->foreignId('jelentkezo_id')->references('jelentkezo_id')->on('jelentkezos');
             $table->foreignId('inditott_id')->references('inditott_id')->on('inditott_szaks');
-            $table->timestamps();
+             $table->timestamps();
         });
     }
 
