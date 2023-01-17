@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ class JelentkezoController extends Controller
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->allando_lakcim = $request->allando_lakcim;
-        $jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
+        //$jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
         $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
         $jelentkezo->neme = $request->neme;
         $jelentkezo->OM_azonosito = $request->OM_azonosito;
@@ -57,7 +58,7 @@ class JelentkezoController extends Controller
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->allando_lakcim = $request->allando_lakcim;
-        $jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
+        //$jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
         $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
         $jelentkezo->neme = $request->neme;
         $jelentkezo->OM_azonosito = $request->OM_azonosito;
@@ -69,5 +70,17 @@ class JelentkezoController extends Controller
         $jelentkezo->bankszamlaszam = $request->bankszamlaszam;
         $jelentkezo->statusz = $request->statusz;
         $jelentkezo->save();
+    }
+
+    public function jelentkezoHaromAdat(Request $request){
+        $jelentkezo = new Jelentkezo();
+        $jelentkezo->tanulo_neve = $request->tanulo_neve;
+        $jelentkezo->email = $request->email;
+        $jelentkezo->telefonszam = $request->telefonszam;
+    }
+
+    public function jelentkezesSzak(Request $request){
+        $szakIndit = new InditottSzak();
+        $szakIndit->inditott_id = $request->inditott_id;
     }
 }
