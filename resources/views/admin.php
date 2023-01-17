@@ -7,16 +7,21 @@
         <title>Jelentkezési oldal</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="./js/adminMain.js" type="module"></script>
-        <!-- Fonts -->
-        
     </head>
-    <body class="">
-        <h1 class="cim">Jelentkezési oldal</h1>
-        <div class="tarolo">
-            <div class="bevitel">Ide kerül a szöveg és a beivteli mező</div>
-            <ul>
-                <li>Admin_felhasználó oldal</li>
-            </ul>
-        </div>
+    <body>
+        <main>
+            <nav>
+                <ul>
+                    <li id="stat">Statisztika</li>
+                    <li id="felh">Felhasználó</li>
+                    <li id="jele">Jelentkezők</li>
+                    <li id="szak">Szakok</li>
+                    <li id="arch">Archívum</li>
+                </ul>
+            </nav>  
+            <article>
+                
+            </article>
+        </main>
     </body>
 </html>

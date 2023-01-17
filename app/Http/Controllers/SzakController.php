@@ -29,7 +29,7 @@ class SzakController extends Controller
         $szak->megnevezes = $request->megnevezes;
         $szak->iskola_id = $request->iskola_id;
         $szak->elofeltetel = $request->elofeltetel;
-        $szak->hany_felév = $request->hany_felév;
+        $szak->hany_felev = $request->hany_felev;
         $szak->save();
     }
 
@@ -40,7 +40,7 @@ class SzakController extends Controller
         $szak->megnevezes = $request->megnevezes;
         $szak->iskola_id = $request->iskola_id;
         $szak->elofeltetel = $request->elofeltetel;
-        $szak->hany_felév = $request->hany_felév;
+        $szak->hany_felev = $request->hany_felev;
         $szak->save();
     }
 }
