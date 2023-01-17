@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('onkolthely');
             $table->timestamps();
         });
+        
     }
 
     /**

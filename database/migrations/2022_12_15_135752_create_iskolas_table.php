@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Iskola;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,8 @@ return new class extends Migration
             $table->string('megnevezes');
             $table->timestamps();
         });
+        Iskola::create(['megnevezes'=>'Számalk-Szalézi']);
+        Iskola::create(['megnevezes'=>'Számalk-Akk']);
     }
 
     /**

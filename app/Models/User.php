@@ -17,9 +17,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $primaryKey = ['ugyintezo_id'];
+    protected $primaryKey = 'ugyintezo_id';
     protected $fillable = [
-        'felhasznalonev',
+        // 'felhasznalonev',
+        'name',
         'email',
         'jelszo',
         'master',
@@ -35,6 +36,11 @@ class User extends Authenticatable
         'jelszo',
         'remember_token',
     ];
+    
+    public function getAuthPassword()
+    {
+        return $this->jelszo;
+    }
 
     /**
      * The attributes that should be cast.

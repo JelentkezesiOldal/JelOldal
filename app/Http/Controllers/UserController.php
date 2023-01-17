@@ -2,32 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function index(){
-        $users =  user::all();
+        $users =  User::all();
         return $users;
     }
 
     public function show ($id)
     {
-        $user = user::all($id);
+        $user = User::all($id);
         return $user;
     }
     public function destroy($id)
     {
-        user::find($id)->delete();
+        User::find($id)->delete();
     }
 
     public function store(Request $request)
     {
-        $user = new user();
+        $user = new User();
         $user->ugyintezo_id = $request->ugyintezo_id;
         $user->felhasznalonev = $request->felhasznalonev;
         $user->email = $request->email;
-        $user->jelszo = $request->jelszo;
+        $user->jelszo = Hash::make($request->jelszo);
         $user->master = $request->master;  
         $user->szak = $request->szak;   
         $user->save();
@@ -35,11 +37,11 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $user = user::find($id);
+        $user = User::find($id);
         $user->ugyintezo_id = $request->ugyintezo_id;
         $user->felhasznalonev = $request->felhasznalonev;
         $user->email = $request->email;
-        $user->jelszo = $request->jelszo;
+        $user->jelszo = Hash::make($request->jelszo);
         $user->master = $request->master;  
         $user->szak = $request->szak; 
         $user->save();
