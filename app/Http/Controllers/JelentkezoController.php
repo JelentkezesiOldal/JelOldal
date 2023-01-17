@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
 use Illuminate\Http\Request;
 
@@ -69,5 +70,17 @@ class JelentkezoController extends Controller
         $jelentkezo->bankszamlaszam = $request->bankszamlaszam;
         $jelentkezo->statusz = $request->statusz;
         $jelentkezo->save();
+    }
+
+    public function jelentkezoHaromAdat(Request $request){
+        $jelentkezo = new Jelentkezo();
+        $jelentkezo->tanulo_neve = $request->tanulo_neve;
+        $jelentkezo->email = $request->email;
+        $jelentkezo->telefonszam = $request->telefonszam;
+    }
+
+    public function jelentkezesSzak(Request $request){
+        $szakIndit = new InditottSzak();
+        $szakIndit->inditott_id = $request->inditott_id;
     }
 }
