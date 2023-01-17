@@ -22,12 +22,14 @@ return new class extends Migration
             $table->date('szuletesi_datum');
             $table->string('szuletesi_hely');
             $table->string('email')->unique();
-            $table->integer('telefonszam');
+            $table->string('telefonszam');
+            $table->string('telefonszam');
             $table->string('allando_lakcim');
             //$table->kep(lakcimkartya);
             $table->string('ertesitesi_cim');
             $table->string('neme');
-            $table->integer('OM_azonosito');
+            $table->string('OM_azonosito');
+            $table->string('OM_azonosito');
             //$table->kep('diákigazolvány');
             $table->string('szemelyi_igazolvany_szam');
             //$table->kep('személyi igazolvány');
