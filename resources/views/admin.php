@@ -13,6 +13,9 @@
         <h1 class="cim">Jelentkezési oldal</h1>
         <div class="tarolo">
             <div class="bevitel">Ide kerül a szöveg és a beivteli mező</div>
+            <ul>
+                <li>Admin_felhasználó oldal</li>
+            </ul>
         </div>
     </body>
 </html>
