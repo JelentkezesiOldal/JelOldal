@@ -33,7 +33,7 @@ class JelentkezoController extends Controller
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->allando_lakcim = $request->allando_lakcim;
-        $jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
+        //$jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
         $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
         $jelentkezo->neme = $request->neme;
         $jelentkezo->OM_azonosito = $request->OM_azonosito;
@@ -58,7 +58,7 @@ class JelentkezoController extends Controller
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->allando_lakcim = $request->allando_lakcim;
-        $jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
+        //$jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
         $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
         $jelentkezo->neme = $request->neme;
         $jelentkezo->OM_azonosito = $request->OM_azonosito;

@@ -32,8 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/admin/jelentkezok', [JelentkezoController::class, 'index']);
 
-Route::post('/jelentkezoHaromAdat', [JelentkezoController::class, 'jelentkezoHaromAdat']);
-Route::post('/jelentkezesSzak', [JelentkezoController::class, 'jelentkezesSzak']);
 
 require __DIR__.'/auth.php';
