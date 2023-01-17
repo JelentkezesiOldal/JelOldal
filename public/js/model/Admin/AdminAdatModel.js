@@ -1,6 +1,6 @@
 class AdminAdatModel{
     constructor(){
-        
+        console.log("AdminAdatModel")
     }
 }
 
