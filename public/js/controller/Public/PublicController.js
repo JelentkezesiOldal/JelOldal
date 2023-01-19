@@ -1,17 +1,25 @@
 import PublicAdatModel from "../../model/Public/PublicAdatModel.js"
-import JelentkezesView from "../../view/Public/Jelentkezes/JelentkezesView.js"
+import JelentkezesekView from "../../view/Public/Jelentkezes/JelentkezesekView.js"
 
 class PublicController{
-    constructor(tomb){
+    #tomb = [];
+    constructor(){
         console.log("PublicController")
         const token = $('meta[name="csrf-token"]').attr("content");
         const adatmodel = new PublicAdatModel(token);
-        this.vegpont = "/jelentkezoHaromAdat"
-        //adatmodel.adatUj(this.vegpont, this.adatok);
+        this.vegpont = "/ujJelentkezo"
+        //adatmodel.adatBe(this.vegpont, this.adatok);
+        this.adatok(this.#tomb);
         
         $(window).on("elkuld", (event)=>{
+            console.log("elküld a controllerben")
             adatmodel.adatUj(this.vegpont, event.detail);
         });
+    }
+
+    adatok(tomb){
+        const szuloElem =$('main');
+        new JelentkezesekView(tomb, szuloElem)
     }
 }
 

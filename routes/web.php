@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {
@@ -27,8 +27,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::apiResource('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
 });
 Route::get('/admin/jelentkezok', [JelentkezoController::class, 'index']);
+
+//patch kéne mert egy rekord bizonyos adatának/adatainak a módosítása az adott táblában(paraméteres)
+Route::get('/jelentkezok', [JelentkezoController::class, 'index'] );
+
+//Route::post('jelentkezoHaromAdat','JelentkezoController@jelentkezoHaromAdat');
 
 
 require __DIR__.'/auth.php';

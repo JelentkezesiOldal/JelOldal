@@ -26,6 +26,7 @@ class PublicAdatModel{
         }
 
 
+        
     adatUj(vegpont, adat) {
         fetch(vegpont, {
             method: 'POST',
