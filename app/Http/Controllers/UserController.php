@@ -29,7 +29,7 @@ class UserController extends Controller
         $user->ugyintezo_id = $request->ugyintezo_id;
         $user->felhasznalonev = $request->felhasznalonev;
         $user->email = $request->email;
-        $user->jelszo = Hash::make($request->jelszo);
+        $user->password = Hash::make($request->password);
         $user->master = $request->master;  
         $user->szak = $request->szak;   
         $user->save();
@@ -41,7 +41,7 @@ class UserController extends Controller
         $user->ugyintezo_id = $request->ugyintezo_id;
         $user->felhasznalonev = $request->felhasznalonev;
         $user->email = $request->email;
-        $user->jelszo = Hash::make($request->jelszo);
+        $user->password = Hash::make($request->password);
         $user->master = $request->master;  
         $user->szak = $request->szak; 
         $user->save();

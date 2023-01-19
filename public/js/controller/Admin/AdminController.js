@@ -6,13 +6,14 @@ class AdminController{
         console.log("AdminController")
         const token = $(`meta[name="csrf-token"]`).attr("content");
         const adminadatmodel = new AdminAdatModel(token);
-        this.vegpont = "/admin/jelentkezok"
+        this.vegpont = ""
         $("#stat").on("click", () => {
-            console.log("stat katt")
-            adminadatmodel.adatBe(this.vegpont, this.statisztikaMutat);
+            
+            adminadatmodel.adatBe();
         })
         $("#felh").on("click", () => {
-            adminadatmodel.adatBe();
+            this.vegpont = "/admin/felhasznalok"
+            adminadatmodel.adatBe(this.vegpont, this.statisztikaMutat);
         })
         $("#jele").on("click", () => {
             adminadatmodel.adatBe();
@@ -26,7 +27,8 @@ class AdminController{
 
 
     }
-
+    loginMeth(){
+    }
 
     statisztikaMutat(tomb){
         const szuloElem = $("article")

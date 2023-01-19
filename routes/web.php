@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
+|--------------------------------------------------01------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -19,9 +20,13 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/admin', function () {
+    return view('admin');
+});
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::apiResource('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
 });
 Route::get('/admin/jelentkezok', [JelentkezoController::class, 'index']);
+Route::get('/admin/felhasznalok', [UserController::class, 'index']);
 
 //patch kéne mert egy rekord bizonyos adatának/adatainak a módosítása az adott táblában(paraméteres)
 Route::get('/jelentkezok', [JelentkezoController::class, 'index'] );
