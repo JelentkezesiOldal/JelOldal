@@ -42,8 +42,8 @@ return [
         ],
         'api' => [
             'driver' => 'token',
-            'provider' => 'felhasznalo',
-            'password' => 'jelszó',
+            'provider' => 'name',
+            'password' => 'password',
             'hash' => false
         ]
     ],

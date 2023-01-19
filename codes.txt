@@ -1,0 +1,151 @@
+PublicController
+
+import PublicAdatModel from "./model/PublicAdatModel.js"
+
+
+
+class PublicController{
+    constructor(){
+        const token = $('meta[name="csrf-token"]').attr("content");
+        this.vegpont = "api/beiratkozas";
+
+        const publicmodel=  PublicAdatModel(token);
+
+        publicmodel.adatBe(this.vegpont, this.BeiratkozasAdatok);
+        
+        $(window).on("uj", (event)=>{
+            publicmodel.adatModosit(this.vegpont, event.detail)
+        })
+
+    }
+    BeiratkozasAdatok(tomb){
+        const szuloElem = $("main");
+        new BeiratkozasokView(tomb, szuloElem);
+    }
+
+
+
+}
+export default PublicController;
+
+
+
+AdminAdatModel
+
+class AdminAdatModel {
+
+    #tomb = [];
+    #token;
+    constructor(token) {
+        this.#token = token;
+
+        console.log("Adat beolvasás");
+    }
+
+    adatBe(vegpont, myCallBack) {
+        fetch(vegpont, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+                this.#tomb = data;
+                console.log(this.#tomb);
+                myCallBack(this.#tomb);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    adatUj(vegpont, adat) {
+        fetch(vegpont, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': this.token
+            },
+            body: JSON.stringify(adat),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Újadat: ', data);
+
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    adatModosit(vegpont, adat) {
+        console.log(adat);
+        console.log("Módosít: " + adat);
+        vegpont += "/" + adat.id
+        fetch(vegpont, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': this.token
+            },
+            body: JSON.stringify(adat),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Módosítottam:  " + adat.updateAt);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    adatTorol(vegpont, adat) {
+        console.log(adat);
+        console.log("Töröl: " + adat);
+        vegpont += "/" + adat.id
+        fetch(vegpont, {
+            method: 'DELETE',
+            headers: {
+
+                'X-CSRF-TOKEN': this.token
+            },
+            body: JSON.stringify(adat),
+        })
+            .then()
+            .then(() => {
+                console.log("sikeres Törlés");
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+}
+
+export default AdminAdatModel
+
+///////////////////////////////////////////////////////////////
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../app.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="/../js/main.js" type="module"></script>
+    <title>Jelentkezési oldal</title>
+</head>
+
+<body class="">
+    <h1 class="cim">Jelentkezési oldal</h1>
+    <div class="tarolo">
+        <div class="bevitel">Ide kerül a szöveg és a beivteli mező</div>
+        <button>Admin_felhasználó oldal</button>
+
+
+    </div>
+</body>
+
+</html>
