@@ -33,14 +33,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::apiResource('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
+    
 });
 Route::get('/admin/jelentkezok', [JelentkezoController::class, 'index']);
 Route::get('/admin/felhasznalok', [UserController::class, 'index']);
 
 //patch kéne mert egy rekord bizonyos adatának/adatainak a módosítása az adott táblában(paraméteres)
 Route::get('/jelentkezok', [JelentkezoController::class, 'index'] );
-
+Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
 //Route::post('jelentkezoHaromAdat','JelentkezoController@jelentkezoHaromAdat');
 
 

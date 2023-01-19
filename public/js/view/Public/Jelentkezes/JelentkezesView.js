@@ -22,6 +22,8 @@ class JelentkezesView{
         
     }
     
+
+    //ide milyen detail kell
     kattintastrigger(esemenyNeve){
         const esemeny = new CustomEvent(esemenyNeve)
         window.dispatchEvent(esemeny);

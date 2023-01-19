@@ -94,9 +94,9 @@ class JelentkezoController extends Controller
 
     public function ujJelentkezo(Request $request){
         $jelentkezo = new Jelentkezo();
-        $jelentkezo->tanulo_neve =  $request->tanulo_neve;
-        $jelentkezo->email = $request->email;
-        $jelentkezo->telefonszam = $request->telefonszam;
+        $jelentkezo->tanulo_neve = json_encode($request->tanulo_neve) ;
+        $jelentkezo->email = json_encode($request->email);
+        $jelentkezo->telefonszam = json_encode($request->telefonszam);
         //$jelentkezo->statusz = "beiratkozás alatt";
         $jelentkezo->save();
     }
