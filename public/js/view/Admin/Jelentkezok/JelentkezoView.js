@@ -10,10 +10,13 @@ class JelentkezoView{
             <td>${elem.telefonszam}</td>
         </tr>`)
     
-    $("#J"+elem.jelentkezo_id).on("click", () => {
-        console.log("J"+ elem.jelentkezo_id + " katt")
-
-    })
+        $("#J"+elem.jelentkezo_id).on("click", () => {
+            console.log("J"+ elem.jelentkezo_id + " katt")
+            $(".modal").show()
+        })
+        $(".close").on("click", () => {
+            $(".modal").hide()
+        })
     }
 }
 export default JelentkezoView

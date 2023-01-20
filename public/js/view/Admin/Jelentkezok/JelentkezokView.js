@@ -3,6 +3,14 @@ import JelentkezoView from "./JelentkezoView.js";
 class JelentkezokView{
     constructor(tomb, szuloElem){
         szuloElem.html(`
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <spam class="close">&times;</spam>
+                <p>Remélem kipróbáljátok ezt majd :D ez egy kis üzenet nektek :P</p>
+            </div>
+        </div>
+        `)
+        szuloElem.append(`
         <div class="row float-end">
             <div class="col dropdown">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dm1" data-bs-toggle="dropdown" aria-expanded="false">
