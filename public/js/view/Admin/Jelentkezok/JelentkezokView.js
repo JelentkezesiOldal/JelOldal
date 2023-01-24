@@ -6,10 +6,11 @@ class JelentkezokView{
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <spam class="close">&times;</spam>
-                <p>Remélem kipróbáljátok ezt majd :D ez egy kis üzenet nektek :P</p>
             </div>
         </div>
         `)
+        this.modalElem = szuloElem.children("div:last-child")
+        this.tenylegmodalElem = this.modalElem.children("div:last-child")
         szuloElem.append(`
         <div class="row float-end">
             <div class="col dropdown">
@@ -46,10 +47,8 @@ class JelentkezokView{
         </table>`)
         this.tableElem = szuloElem.children('table:last-child');
         this.tbodyElem = this.tableElem.children('tbody');
-
-
         tomb.forEach(adat => {
-            const adatom = new JelentkezoView(adat, this.tbodyElem)
+            const adatom = new JelentkezoView(adat, this.tbodyElem, this.tenylegmodalElem)
         });
     }
 }
