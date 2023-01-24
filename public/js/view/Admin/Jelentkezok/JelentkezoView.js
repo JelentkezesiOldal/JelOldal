@@ -19,6 +19,7 @@ class JelentkezoView{
         })
         $(".close").on("click", () => {
             $(".modal").hide()
+            $(".modal-content p").remove()
         })
     }
 }
