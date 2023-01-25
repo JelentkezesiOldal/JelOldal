@@ -40,6 +40,9 @@
             <x-input-label for="master">Master jogosultság</label>
             <x-input type="checkbox" id="master" name="master" unchecked>
         </div>
+
+
+        
         <!--Szak_id-->
         <div class="mt-4">
             <label for="szak_id">Milyen szak?</label>
