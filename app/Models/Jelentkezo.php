@@ -20,7 +20,7 @@ class Jelentkezo extends Model
         'allando_lakcim',
         'ertesitesi_cim',
         'neme',
-        'OM_azonosito',
+        'diak_azonosito',
         'szemelyi_igazolvany_szam',
         'taj_szam',
         'adoszam',

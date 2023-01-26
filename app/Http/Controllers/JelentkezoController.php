@@ -51,7 +51,6 @@ class JelentkezoController extends Controller
 
     public function update(Request $request, $id){
         $jelentkezo = Jelentkezo::find($id);
-        $jelentkezo->jelentkezo_id = $request->jelentkezo_id;
         $jelentkezo->tanulo_neve = $request->tanulo_neve;
         $jelentkezo->szuleteskori_neve = $request->szuleteskori_neve;
         $jelentkezo->anyja_neve = $request->anyja_neve;
@@ -105,4 +104,30 @@ class JelentkezoController extends Controller
         $szakIndit = new InditottSzak();
         $szakIndit->inditott_id = $request->inditott_id;
     }
+    
+    
+    public function beiratkozo(Request $request, $id){
+        $jelentkezo = Jelentkezo::find($id);
+        //$jelentkezo->tanulo_neve = $request->tanulo_neve;
+        $jelentkezo->szuleteskori_neve = $request->szuleteskori_neve;
+        $jelentkezo->anyja_neve = $request->anyja_neve;
+        $jelentkezo->szuletesi_datum = $request->szuletesi_datum;
+        $jelentkezo->szuletesi_hely = $request->szuletesi_hely;
+        //$jelentkezo->email = $request->email;
+        //$jelentkezo->telefonszam = $request->telefonszam;
+        $jelentkezo->allando_lakcim = $request->allando_lakcim;
+        $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
+        $jelentkezo->neme = $request->neme;
+        $jelentkezo->OM_azonosito = $request->OM_azonosito;
+        $jelentkezo->szemelyi_igazolvany_szam = $request->szemelyi_igazolvany_szam;
+        $jelentkezo->taj_szam = $request->taj_szam;
+        $jelentkezo->adoszam = $request->adoszam;
+        $jelentkezo->erettsegi_bizonyitvany_szama = $request->erettsegi_bizonyitvany_szama;
+        $jelentkezo->szakmai_bizonyitvany_szama = $request->szakmai_bizonyitvany_szama;
+        $jelentkezo->bankszamlaszam = $request->bankszamlaszam;
+        $jelentkezo->statusz = $request->statusz;
+        $jelentkezo->save();
+    }
+ 
+
 }

@@ -24,6 +24,11 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+Route::get('/beiratkozas', function () {
+    return view('beiratkozas');
+    Route::put('/beiratkozo', [JelentkezoController::class, 'beiratkozo']);
+});
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

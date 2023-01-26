@@ -24,6 +24,7 @@ class AdminAdatModel{
             console.error("Error: ", error);
         })
     }
+    
 }
 
 export default AdminAdatModel

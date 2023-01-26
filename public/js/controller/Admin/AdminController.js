@@ -1,5 +1,7 @@
 import AdminAdatModel from "../../model/Admin/AdminAdatModel.js";
 import FelhasznalokView from "../../view/Admin/Felhasznalok/FelhasznalokView.js";
+import JelentkezokView from "../../view/Admin/Jelentkezok/JelentkezokView.js";
+
 
 class AdminController{
     constructor(){
@@ -16,7 +18,8 @@ class AdminController{
             adminadatmodel.adatBe(this.vegpont, this.statisztikaMutat);
         })
         $("#jele").on("click", () => {
-            adminadatmodel.adatBe();
+            this.vegpont = "/admin/jelentkezok"
+            adminadatmodel.adatBe(this.vegpont, this.jelentkezokMutat);
         })
         $("#szak").on("click", () => {
             adminadatmodel.adatBe();
@@ -33,6 +36,10 @@ class AdminController{
     statisztikaMutat(tomb){
         const szuloElem = $("article")
         new FelhasznalokView(tomb, szuloElem)
+    }
+    jelentkezokMutat(tomb){
+        const szuloElem = $("article")
+        new JelentkezokView(tomb, szuloElem)
     }
 }
 
