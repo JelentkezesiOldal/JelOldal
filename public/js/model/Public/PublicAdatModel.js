@@ -32,17 +32,17 @@ class PublicAdatModel{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN':this.token
+                // 'X-CSRF-TOKEN':this.token
             },
             body: JSON.stringify(adat),
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log('Újadat: ', data);
+                console.log('Újadat: ' + data);
                 
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.error('Error: nem jóó', error);
             });
     }
 }
