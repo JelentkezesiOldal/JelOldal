@@ -32,15 +32,29 @@ class JelentkezoView{
                 <p>Szakmai bizonyítvány száma: ${elem.szakmai_bizonyitvany_szama}</p>
                 <p>Bankszámlaszám: ${elem.bankszamlaszam}</p>
                 <p>Státusz: ${elem.statusz}</p>
-                <p id="torol${elem.jelentkezo_id}">Törlés</p>
+                <spam id="torol${elem.jelentkezo_id}">Törlés</spam>
             </div>
             `)
+            this.torolElem = $(`#torol${elem.jelentkezo_id}`)
+        
+            this.torolElem.on("click", ()=>{
+                console.log("megnyomtad buzi")
+                this.kattintastrigger("torol");
+                $(".modal").hide()
+                $(".modal-content div").remove()
+            });
+
         })
+
         $(".close").on("click", () => {
             $(".modal").hide()
             $(".modal-content div").remove()
         })
-        this.torol = $(`#torol${elem.jelentkezo_id}`)
+    }
+
+    kattintastrigger(esemenyNeve){
+        const esemeny = new CustomEvent(esemenyNeve,{detail:this.#elem})
+        window.dispatchEvent(esemeny);
     }
 }
 export default JelentkezoView

@@ -27,7 +27,12 @@ class AdminController{
         $("#arch").on("click", () => {
             adminadatmodel.adatBe();
         })
-
+        $(window).on("torol", (event) => {
+            console.log(event.detail)
+            this.vegpont = "/admin/jelentkezok/torol"
+            adminadatmodel.adatTorol(this.vegpont, event.detail);
+            //location.reload();
+        })
 
     }
     loginMeth(){
