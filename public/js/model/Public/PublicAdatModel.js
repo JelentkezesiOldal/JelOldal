@@ -26,11 +26,12 @@ class PublicAdatModel {
     }
 
     adatUj(vegpont, adat) {
+        console.log("elküld a modelben")
         fetch(vegpont, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                // 'X-CSRF-TOKEN':this.token
+                'X-CSRF-TOKEN':this.token
             },
             body: JSON.stringify(adat),
         })
@@ -40,11 +41,12 @@ class PublicAdatModel {
                 
             })
             .catch((error) => {
-                console.error('Error: nem jóó', error);
+                console.error('Error: nem jóó nem jóóó!!!!!!!!!', error);
             });
     }
 
     adatModosit(vegpont, adat) {
+        
         console.log(adat);
         console.log("Módosít: " + adat);
         vegpont += "/" + adat.id

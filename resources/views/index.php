@@ -13,19 +13,8 @@
     <body>
     <main>
     <h1 class="cim">Jelentkezési oldal</h1>
-    <!-- <form action="insert.php" method="post"> -->
-    
-        
-        <!-- <label for="tanulo_neve">Név:</label><br> -->
-        <!-- <input type="text" id="tanulo_neve" name="tanulo_neve" requried><br> -->
-        <!-- <label for="email">Email cím:</label><br> -->
-        <!-- <input type="email" id="email" name="email" requried><br> -->
-        <!-- <label for="telefonszam">Telefonszám:</label><br> -->
-        <!-- <input type="tel" id="telefonszam" name="telefonszam" requried><br> -->
-        <!-- <button id="elkuld">Elküld</button>  -->
-    <!-- </form> -->
     </main>
     </body>
 </html>
-
+<!-- pattern="[^\d]" -->
 <!-- pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" -->

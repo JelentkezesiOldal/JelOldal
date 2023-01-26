@@ -8,12 +8,13 @@ class PublicController{
         const token = $('meta[name="csrf-token"]').attr("content");
         const adatmodel = new PublicAdatModel(token);
         this.vegpont = "/ujJelentkezo"
-        //adatmodel.adatBe("/ujJelentkezo", this.adatok);
         this.adatok(this.#tomb);
         
         $(window).on("elkuld", (event)=>{
             console.log("elküld a controllerben")
+            
             adatmodel.adatUj(this.vegpont, event.detail);
+            console.log(event.detail)
         });
     }
 

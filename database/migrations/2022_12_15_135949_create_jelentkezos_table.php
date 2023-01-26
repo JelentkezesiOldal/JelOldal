@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('jelentkezos', function (Blueprint $table) {
             $table->id('jelentkezo_id');
-            $table->string('tanulo_neve')->nullable();
+            $table->string('tanulo_neve');
             $table->string('szuleteskori_neve')->nullable();
             $table->string('anyja_neve')->nullable();
             $table->date('szuletesi_datum')->nullable();

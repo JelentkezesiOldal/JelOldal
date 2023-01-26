@@ -73,29 +73,12 @@ class JelentkezoController extends Controller
         $jelentkezo->save();
     }
 
-    // public function jelentkezoHaromAdat(){
-    //     $jelentkezo = new Jelentkezo();
-    //     $jelentkezo->tanulo_neve = Input::get('neve');
-    //     $jelentkezo->email = Input::get('email');
-    //     $jelentkezo->telefonszam = Input::get('telefonszam');
-    //     $jelentkezo->save();
-    // }
-
-    // public function jelentkezoHaromAdat(Request $request){
-    //     $tanulo_neve = $request->input('neve');
-    //     $telefonszam = $request->input('telefonszam');
-    //     $email = $request->input('email');
-
-    // $data=array('neve'=>$tanulo_neve, 'telefonszam'=>$telefonszam, 'email'=>$email);
-    // DB::table('jelentkezos')->insert($data);
-    // echo "A rekord sikeresen felment";
-    // }
 
     public function ujJelentkezo(Request $request){
         $jelentkezo = new Jelentkezo();
-        $jelentkezo->tanulo_neve = json_encode($request->tanulo_neve) ;
-        $jelentkezo->email = json_encode($request->email);
-        $jelentkezo->telefonszam = json_encode($request->telefonszam);
+        $jelentkezo->tanulo_neve =$request->tanulo_neve;
+        $jelentkezo->email = $request->email;
+        $jelentkezo->telefonszam = $request->telefonszam;
         //$jelentkezo->statusz = "beiratkozás alatt";
         $jelentkezo->save();
     }

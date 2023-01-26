@@ -1,13 +1,12 @@
 class JelentkezesView{
-    #nev;
-    #email;
-    #telszam;
-    constructor( szuloElem){
+    #elem
+    constructor(elem, szuloElem){
+        this.#elem=elem;
         console.log("view")
         szuloElem.append(`
         <form method="post" action="/ujJelentkezo">
         <label for="tanulo_neve">Név:</label>
-        <input type="text" id="tanulo_neve" name="tanulo_neve" requried>
+        <input type="text" id="tanulo_neve" name="tanulo_neve"  requried>
         <label for="email">Email cím:</label>
         <input type="email" id="email" name="email" requried>
         <label for="telefonszam">Telefonszám:</label>
@@ -30,7 +29,7 @@ class JelentkezesView{
 
     //ide milyen detail kell
     kattintastrigger(esemenyNeve){
-        const esemeny = new CustomEvent(esemenyNeve)
+        const esemeny = new CustomEvent(esemenyNeve, {detail:this.#elem})
         window.dispatchEvent(esemeny);
     }
 }

@@ -43,10 +43,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/admin/jelentkezok', [JelentkezoController::class, 'index']);
 Route::get('/admin/felhasznalok', [UserController::class, 'index']);
 
-//patch kéne mert egy tábla bizonyos adatának/adatainak a módosítása az adott táblában(paraméteres)
+
 Route::get('/jelentkezok', [JelentkezoController::class, 'index'] );
 Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
-//Route::post('jelentkezoHaromAdat','JelentkezoController@jelentkezoHaromAdat');
 
 
 require __DIR__.'/auth.php';

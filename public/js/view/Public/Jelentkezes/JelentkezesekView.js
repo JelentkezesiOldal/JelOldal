@@ -7,7 +7,7 @@ class JelentkezesekView{
         `)
 
         this.articleElem = szuloElem.children("article:last-child");
-        new JelentkezesView(this.articleElem)
+        new JelentkezesView(tomb, this.articleElem)
         
     }
 }
