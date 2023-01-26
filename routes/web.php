@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     
 });
 Route::get('/admin/jelentkezok', [JelentkezoController::class, 'index']);
+Route::delete('/admin/jelentkezok/torol/{id}', [JelentkezoController::class, 'destroy']);
 Route::get('/admin/felhasznalok', [UserController::class, 'index']);
 
 
