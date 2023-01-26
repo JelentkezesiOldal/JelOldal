@@ -32,6 +32,7 @@ class JelentkezoView{
                 <p>Szakmai bizonyítvány száma: ${elem.szakmai_bizonyitvany_szama}</p>
                 <p>Bankszámlaszám: ${elem.bankszamlaszam}</p>
                 <p>Státusz: ${elem.statusz}</p>
+                <p id="torol${elem.jelentkezo_id}">Törlés</p>
             </div>
             `)
         })
@@ -39,6 +40,7 @@ class JelentkezoView{
             $(".modal").hide()
             $(".modal-content div").remove()
         })
+        this.torol = $(`#torol${elem.jelentkezo_id}`)
     }
 }
 export default JelentkezoView

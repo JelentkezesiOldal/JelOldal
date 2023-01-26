@@ -18,7 +18,7 @@
                     <li id="jele">Jelentkezők</li>
                     <li id="szak">Szakok</li>
                     <li id="arch">Archívum</li>
-                    <li id="login"><a href="/login">Bejelntkezés</a></li>
+                    <!-- <li id="login"><a href="/login">Bejelntkezés</a></li> -->
                 </ul>
             </nav>  
             <article>

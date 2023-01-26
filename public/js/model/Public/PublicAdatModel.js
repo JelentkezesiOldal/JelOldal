@@ -3,7 +3,6 @@ class PublicAdatModel {
     #token;
     constructor(token) {
         this.#token = token;
-
     }
 
     adatBe(vegpont, myCallBack) {
