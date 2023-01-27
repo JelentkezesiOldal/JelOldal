@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('anyja_neve')->nullable();
             $table->date('szuletesi_datum')->nullable();
             $table->string('szuletesi_hely')->nullable();
-            $table->string('email')->unique()->nullable();
-            $table->string('telefonszam')->nullable();
+            $table->string('email')->unique();
+            $table->string('telefonszam');
             $table->string('allando_lakcim')->nullable();
             //$table->kep(lakcimkartya);
             $table->string('ertesitesi_cim')->nullable();
