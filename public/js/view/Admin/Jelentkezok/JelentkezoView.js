@@ -1,3 +1,5 @@
+
+
 class JelentkezoView{
     #elem
     constructor(elem, szuloElem, modal){
@@ -38,7 +40,7 @@ class JelentkezoView{
             this.torolElem = $(`#torol${elem.jelentkezo_id}`)
         
             this.torolElem.on("click", ()=>{
-                console.log("megnyomtad buzi")
+                console.log("Töröl gomb")
                 this.kattintastrigger("torol");
                 $(".modal").hide()
                 $(".modal-content div").remove()

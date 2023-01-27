@@ -1,6 +1,7 @@
 import AdminAdatModel from "../../model/Admin/AdminAdatModel.js";
 import FelhasznalokView from "../../view/Admin/Felhasznalok/FelhasznalokView.js";
 import JelentkezokView from "../../view/Admin/Jelentkezok/JelentkezokView.js";
+import SzakokView from "../../view/Admin/Szakok/SzakokView.js";
 
 
 class AdminController{
@@ -22,7 +23,8 @@ class AdminController{
             adminadatmodel.adatBe(this.vegpont, this.jelentkezokMutat);
         })
         $("#szak").on("click", () => {
-            adminadatmodel.adatBe();
+            this.vegpont = "/admin/szakokEgybe"
+            adminadatmodel.adatBe(this.vegpont, this.szakokMutat);
         })
         $("#arch").on("click", () => {
             adminadatmodel.adatBe();
@@ -31,13 +33,14 @@ class AdminController{
             console.log(event.detail)
             this.vegpont = "/admin/jelentkezok/torol"
             adminadatmodel.adatTorol(this.vegpont, event.detail);
-            //location.reload();
+            location.reload()
+        })
+        $(window).on("indit", (event) => {
+            console.log(event.detail)
+            
         })
 
     }
-    loginMeth(){
-    }
-
     statisztikaMutat(tomb){
         const szuloElem = $("article")
         new FelhasznalokView(tomb, szuloElem)
@@ -45,6 +48,10 @@ class AdminController{
     jelentkezokMutat(tomb){
         const szuloElem = $("article")
         new JelentkezokView(tomb, szuloElem)
+    }
+    szakokMutat(tomb){
+        const szuloElem = $("article")
+        new SzakokView(tomb, szuloElem)
     }
 }
 
