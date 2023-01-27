@@ -43,4 +43,12 @@ class SzakController extends Controller
         $szak->hany_felev = $request->hany_felev;
         $szak->save();
     }
+
+    public function egybeSzak(){
+        $szak = DB::table('szaks')
+            ->join('inditott_szaks', 'szaks.szak_id', '=', 'inditott_szaks.inditott_id')
+            ->select('szaks.*', 'inditott_szaks.*')
+            ->get();
+        return $szak;
+    }
 }
