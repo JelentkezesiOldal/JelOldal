@@ -28,6 +28,12 @@ return new class extends Migration
         Szak::create(['megnevezes'=>'Nyelvész','iskola_id'=> 2 ,'elofeltetel'=>'Érettségi','hany_felev'=>'4']);
         Szak::create(['megnevezes'=>'Grafikus','iskola_id'=> 2 ,'elofeltetel'=>'Érettségi','hany_felev'=>'5']);
         
+
+        
+        Szak::create(['megnevezes'=>'Szoftverfejlesztő','iskola_id'=> 1 ,'elofeltetel'=>'Érettségi','hany_felev'=>'2']);
+        Szak::create(['megnevezes'=>'Nyelvész','iskola_id'=> 1 ,'elofeltetel'=>'Érettségi','hany_felev'=>'2']);
+        Szak::create(['megnevezes'=>'Grafikus','iskola_id'=> 1 ,'elofeltetel'=>'Érettségi','hany_felev'=>'5']);
+        Szak::create(['megnevezes'=>'Jazz balett','iskola_id'=> 2 ,'elofeltetel'=>'Érettségi','hany_felev'=>'3']);
     }
 
     /**
