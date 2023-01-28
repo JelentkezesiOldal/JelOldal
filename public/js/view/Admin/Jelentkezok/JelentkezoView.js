@@ -6,7 +6,7 @@ class JelentkezoView{
         console.log("jelentkezoView")
         this.#elem = elem
         szuloElem.append(`<tr id="J${elem.jelentkezo_id}">
-            <td>${elem.OM_azonosito}</td>
+            <td>${elem.diak_azonosito}</td>
             <td>${elem.tanulo_neve}</td>
             <td>${elem.email}</td>
             <td>${elem.telefonszam}</td>
@@ -26,7 +26,7 @@ class JelentkezoView{
                 <p>Telefonszáma: ${elem.telefonszam}</p>
                 <p>Értesítési cím: ${elem.ertesitesi_cim}</p>
                 <p>Neme: ${elem.neme}</p>
-                <p>OM azonosító: ${elem.OM_azonosito}</p>
+                <p>OM azonosító: ${elem.diak_azonosito}</p>
                 <p>Személyi igazolvány száma: ${elem.szemelyi_igazolvany_szam}</p>
                 <p>Taj szám: ${elem.taj_szam}</p>
                 <p>Adószám: ${elem.adoszam}</p>
