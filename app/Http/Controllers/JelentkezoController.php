@@ -16,7 +16,8 @@ class JelentkezoController extends Controller
     }
 
     public function show($id){
-        $jelentkezo = Jelentkezo::all($id);
+        //$jelentkezo = Jelentkezo::all($id);
+        $jelentkezo = response()->json(Jelentkezo::all()->find($id));
         return $jelentkezo;
     }
 
@@ -38,7 +39,7 @@ class JelentkezoController extends Controller
         //$jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
         $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
         $jelentkezo->neme = $request->neme;
-        $jelentkezo->OM_azonosito = $request->OM_azonosito;
+        $jelentkezo->diak_azonosito = $request->diak_azonosito;
         $jelentkezo->szemelyi_igazolvany_szam = $request->szemelyi_igazolvany_szam;
         $jelentkezo->taj_szam = $request->taj_szam;
         $jelentkezo->adoszam = $request->adoszam;
@@ -62,7 +63,7 @@ class JelentkezoController extends Controller
         //$jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
         $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
         $jelentkezo->neme = $request->neme;
-        $jelentkezo->OM_azonosito = $request->OM_azonosito;
+        $jelentkezo->diak_azonosito = $request->diak_azonosito;
         $jelentkezo->szemelyi_igazolvany_szam = $request->szemelyi_igazolvany_szam;
         $jelentkezo->taj_szam = $request->taj_szam;
         $jelentkezo->adoszam = $request->adoszam;
@@ -106,7 +107,14 @@ class JelentkezoController extends Controller
     }
     
     
-    public function beiratkozo(Request $request, $id){
+    public function beiratkozo(Request $request,Request $image, $id){
+
+
+        $this->validate($image, [
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+
         $jelentkezo = Jelentkezo::find($id);
         //$jelentkezo->tanulo_neve = $request->tanulo_neve;
         $jelentkezo->szuleteskori_neve = $request->szuleteskori_neve;
@@ -118,7 +126,7 @@ class JelentkezoController extends Controller
         $jelentkezo->allando_lakcim = $request->allando_lakcim;
         $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
         $jelentkezo->neme = $request->neme;
-        $jelentkezo->OM_azonosito = $request->OM_azonosito;
+        $jelentkezo->diak_azonosito = $request->diak_azonosito;
         $jelentkezo->szemelyi_igazolvany_szam = $request->szemelyi_igazolvany_szam;
         $jelentkezo->taj_szam = $request->taj_szam;
         $jelentkezo->adoszam = $request->adoszam;
@@ -126,6 +134,16 @@ class JelentkezoController extends Controller
         $jelentkezo->szakmai_bizonyitvany_szama = $request->szakmai_bizonyitvany_szama;
         $jelentkezo->bankszamlaszam = $request->bankszamlaszam;
         $jelentkezo->statusz = $request->statusz;
+
+        $jelentkezo->lakcimkartya = $request->file('lakcimkartya');
+        $jelentkezo->diakigazolvany = $request->file('diakigazolvany');
+        $jelentkezo->szemelyi_igazolvany = $request->file('szemelyi_igazolvany');
+        $jelentkezo->taj_kartya = $request->file('taj_kartya');
+        $jelentkezo->adoigazolvany = $request->file('adoigazolvany');
+        $jelentkezo->erettsegi_bizonyitvany = $request->file('erettsegi_bizonyitvany');
+        $jelentkezo->szakmai_bizonyitvany = $request->file('szakmai_bizonyitvany');
+        $jelentkezo->orvosi_alkalmassági = $request->file('orvosi_alkalmassági');
+        
         $jelentkezo->save();
     }
  

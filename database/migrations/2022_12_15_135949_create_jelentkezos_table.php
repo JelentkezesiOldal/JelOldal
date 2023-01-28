@@ -24,29 +24,29 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('telefonszam')->nullable();
             $table->string('allando_lakcim')->nullable();
-            //$table->kep(lakcimkartya);
+            $table->string('lakcimkartya')->nullable();
             $table->string('ertesitesi_cim')->nullable();
             $table->string('neme')->nullable();
             $table->string('diak_azonosito')->nullable();
-            //$table->kep('diakigazolvany');
+            $table->string('diakigazolvany')->nullable();
             $table->string('szemelyi_igazolvany_szam')->nullable();
-            //$table->kep('szemelyi_igazolvany');
+            $table->string('szemelyi_igazolvany')->nullable();
             $table->string('taj_szam')->nullable();
-            //$table->kep('taj_kartya');
+            $table->string('taj_kartya')->nullable();
             $table->string('adoszam')->nullable();
-            //$table->kep('adoigazolvany');
+            $table->string('adoigazolvany')->nullable();
             $table->string('erettsegi_bizonyitvany_szama')->nullable();
-            //$table->kep('erettsegi_bizonyitvany');
+            $table->string('erettsegi_bizonyitvany')->nullable();
             $table->string('szakmai_bizonyitvany_szama')->nullable();
-            //$table->kep('szakmai bizonyítvány');
-            //$table->kep('orvosi alkalmassági');
+            $table->string('szakmai_bizonyitvany')->nullable();
+            $table->string('orvosi_alkalmassági')->nullable();
             $table->string('bankszamlaszam')->nullable();
             $table->string('statusz')->nullable();
             $table->timestamps();
         });
 
-        Jelentkezo::create(['tanulo_neve'=>'Varga Peter','szuleteskori_neve'=>'Varga Peter','anyja_neve'=>'Bogar Maria','szuletesi_datum'=>'1999-02-11','szuletesi_hely'=>'Budapest','email'=>'varga22@gmail.com','telefonszam'=>'06201258974','allando_lakcim'=>'Bp. Janos utca 8','ertesitesi_cim'=>'Bp. Janos utca 8','neme'=>'f','OM_azonosito'=>'04445895148',/*'diákigazolvány'=>'',*/'szemelyi_igazolvany_szam'=>'55216',/*'személyi igazolvány'=>'',*/'taj_szam'=>'558468952',/*'taj kártya'=>'',*/'adoszam'=>'85645518',/*'adóigazolvány'=>'',*/'erettsegi_bizonyitvany_szama'=>'',/*'érettségi bizonyítvány'=>'',*/'szakmai_bizonyitvany_szama'=>'',/*'szakmai bizonyítvány'=>'','orvosi alkalmassági'=>'',*/'bankszamlaszam'=>'','statusz'=>'']);
-        Jelentkezo::create(['tanulo_neve'=>'Pocsai Maria','szuleteskori_neve'=>'Pocsai Maria','anyja_neve'=>'Bunkos Geza','szuletesi_datum'=>'1997-10-23','szuletesi_hely'=>'Szekesfehervar','email'=>'pocsai88@freemail.hu','telefonszam'=>'063025489547','allando_lakcim'=>'Veszprem Bolay utca 23/b','ertesitesi_cim'=>'Veszprem Bolay utca 23/b','neme'=>'n','OM_azonosito'=>'',/*'diákigazolvány'=>'',*/'szemelyi_igazolvany_szam'=>'6485222',/*'személyi igazolvány'=>'',*/'taj_szam'=>'5418766',/*'taj kártya'=>'',*/'adoszam'=>'9786562',/*'adóigazolvány'=>'',*/'erettsegi_bizonyitvany_szama'=>'',/*'érettségi bizonyítvány'=>'',*/'szakmai_bizonyitvany_szama'=>'',/*'szakmai bizonyítvány'=>'','orvosi alkalmassági'=>'',*/'bankszamlaszam'=>'','statusz'=>'']);
+        Jelentkezo::create(['tanulo_neve'=>'Varga Peter','szuleteskori_neve'=>'Varga Peter','anyja_neve'=>'Bogar Maria','szuletesi_datum'=>'1999-02-11','szuletesi_hely'=>'Budapest','email'=>'varga22@gmail.com','telefonszam'=>'06201258974','allando_lakcim'=>'Bp. Janos utca 8','ertesitesi_cim'=>'Bp. Janos utca 8','neme'=>'f','diak_azonosito'=>'04445895148',/*'diákigazolvány'=>'',*/'szemelyi_igazolvany_szam'=>'55216',/*'személyi igazolvány'=>'',*/'taj_szam'=>'558468952',/*'taj kártya'=>'',*/'adoszam'=>'85645518',/*'adóigazolvány'=>'',*/'erettsegi_bizonyitvany_szama'=>'',/*'érettségi bizonyítvány'=>'',*/'szakmai_bizonyitvany_szama'=>'',/*'szakmai bizonyítvány'=>'','orvosi alkalmassági'=>'',*/'bankszamlaszam'=>'','statusz'=>'']);
+        Jelentkezo::create(['tanulo_neve'=>'Pocsai Maria','szuleteskori_neve'=>'Pocsai Maria','anyja_neve'=>'Bunkos Geza','szuletesi_datum'=>'1997-10-23','szuletesi_hely'=>'Szekesfehervar','email'=>'pocsai88@freemail.hu','telefonszam'=>'063025489547','allando_lakcim'=>'Veszprem Bolay utca 23/b','ertesitesi_cim'=>'Veszprem Bolay utca 23/b','neme'=>'n','diak_azonosito'=>'',/*'diákigazolvány'=>'',*/'szemelyi_igazolvany_szam'=>'6485222',/*'személyi igazolvány'=>'',*/'taj_szam'=>'5418766',/*'taj kártya'=>'',*/'adoszam'=>'9786562',/*'adóigazolvány'=>'',*/'erettsegi_bizonyitvany_szama'=>'',/*'érettségi bizonyítvány'=>'',*/'szakmai_bizonyitvany_szama'=>'',/*'szakmai bizonyítvány'=>'','orvosi alkalmassági'=>'',*/'bankszamlaszam'=>'','statusz'=>'']);
         // Jelentkezo::create(['tanulo_neve'=>'','szuleteskori_neve'=>'','anyja_neve'=>'','szuletesi_datum'=>'','szuletesi_hely'=>'','email'=>'','telefonszam'=>'','allando_lakcim'=>'','ertesitesi_cim'=>'','neme'=>'','OM_azonosito'=>'',/*'diákigazolvány'=>'',*/'szemelyi_igazolvany_szam'=>'',/*'személyi igazolvány'=>'',*/'taj_szam'=>'',/*'taj kártya'=>'',*/'adoszam'=>'',/*'adóigazolvány'=>'',*/'erettsegi_bizonyitvany_szama'=>'',/*'érettségi bizonyítvány'=>'',*/'szakmai_bizonyitvany_szama'=>'',/*'szakmai bizonyítvány'=>'','orvosi alkalmassági'=>'',*/'bankszamlaszam'=>'','statusz'=>'']);
         
 

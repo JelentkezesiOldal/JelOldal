@@ -17,16 +17,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('welcome');
 });
 
 Route::get('/admin', function () {
     return view('admin');
 });
 
+Route::get('/show/{id}', [JelentkezoController::class, 'show']);
+Route::put('/beiratkozo/{id}', [JelentkezoController::class, 'beiratkozo']);
+
 Route::get('/beiratkozas', function () {
     return view('beiratkozas');
-    Route::put('/beiratkozo', [JelentkezoController::class, 'beiratkozo']);
 });
 
 // Route::get('/dashboard', function () {
