@@ -3,7 +3,6 @@ class PublicAdatModel {
     #token;
     constructor(token) {
         this.#token = token;
-
     }
 
     adatBe(vegpont, myCallBack) {
@@ -26,21 +25,22 @@ class PublicAdatModel {
     }
 
     adatUj(vegpont, adat) {
+        console.log("elküld a modelben")
         fetch(vegpont, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': this.#token
+                'X-CSRF-TOKEN':this.token
             },
             body: JSON.stringify(adat),
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log('Újadat: ', data);
-
+                console.log('Újadat: ' + data);
+                
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.error('Error: nem jóó nem jóóó!!!!!!!!!', error);
             });
     }
 
@@ -52,7 +52,7 @@ class PublicAdatModel {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': this.#token
+                'X-CSRF-TOKEN': this.token
             },
             body: JSON.stringify(adat),
         })
@@ -73,7 +73,7 @@ class PublicAdatModel {
             method: 'DELETE',
             headers: {
 
-                'X-CSRF-TOKEN': this.#token
+                'X-CSRF-TOKEN': this.token
             },
             body: JSON.stringify(adat),
         })

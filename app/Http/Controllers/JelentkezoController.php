@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Symfony\Component\Console\Input\Input;
 
 class JelentkezoController extends Controller
 {
@@ -74,32 +73,25 @@ class JelentkezoController extends Controller
         $jelentkezo->save();
     }
 
-    // public function jelentkezoHaromAdat(){
-    //     $jelentkezo = new Jelentkezo();
-    //     $jelentkezo->tanulo_neve = Input::get('neve');
-    //     $jelentkezo->email = Input::get('email');
-    //     $jelentkezo->telefonszam = Input::get('telefonszam');
-    //     $jelentkezo->save();
-    // }
-
-    // public function jelentkezoHaromAdat(Request $request){
-    //     $tanulo_neve = $request->input('neve');
-    //     $telefonszam = $request->input('telefonszam');
-    //     $email = $request->input('email');
-
-    // $data=array('neve'=>$tanulo_neve, 'telefonszam'=>$telefonszam, 'email'=>$email);
-    // DB::table('jelentkezos')->insert($data);
-    // echo "A rekord sikeresen felment";
-    // }
 
     public function ujJelentkezo(Request $request){
+        $validator = Validator::make($request->all(),[
+            'tanulo_neve' => array('required', 'string', 'min:5', 'max:50'),
+            'email' => array('required', 'string', 'email', 'min:8', 'max:50', 'unique:jelentkezos'),
+            'telefonszam' =>array('required', 'string', 'min:7','max:20')
+        ]);
+        if ($validator->fails()){
+            return response()->json(["message" =>$validator->errors()->all()], 400);
+        }
         $jelentkezo = new Jelentkezo();
-        $jelentkezo->tanulo_neve = json_encode($request->tanulo_neve) ;
-        $jelentkezo->email = json_encode($request->email);
-        $jelentkezo->telefonszam = json_encode($request->telefonszam);
+        $jelentkezo->tanulo_neve =$request->tanulo_neve;
+        $jelentkezo->email = $request->email;
+        $jelentkezo->telefonszam = $request->telefonszam;
         //$jelentkezo->statusz = "beiratkozás alatt";
         $jelentkezo->save();
     }
+    //, 'regex:[^\d%*&@<>;?!]'
+    //, 'regex:[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
 
     public function jelentkezesSzak(Request $request){
         $szakIndit = new InditottSzak();

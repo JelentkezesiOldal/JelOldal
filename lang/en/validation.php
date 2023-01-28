@@ -154,9 +154,23 @@ return [
     |
     */
 
+    //saját error messsage
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'tanulo_neve' => [
+            'required' => 'Kotelezo nevet adni.',
+            'min' => 'Minimum 5 karakteresnek kell lennie.',
+            'max' => 'Maximum 50 karakteres lehet.'
+        ],
+        'email' => [
+            'required' => 'Kotelezo emailt adni.',
+            'min' => 'Minimum 5 karakteresnek kell lennie.',
+            'max' => 'Maximum 50 karakteres lehet.',
+            'unique' => 'Ilyen email cim mar letezik.'
+        ],
+        'telefonszam' => [
+            'required' => 'Kotelezo nevet adni.',
+            'min' => 'Minimum 7 karakteresnek kell lennie.',
+            'max' => 'Maximum 20 karakteres lehet.'
         ],
     ],
 

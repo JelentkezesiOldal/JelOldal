@@ -50,7 +50,7 @@ class FelhasznalokView{
                     <th>Név</th>
                     <th>E-mail</th>
                     <th>Szak</th>
-                    <th>Master<th>
+                    <th>Master</th>
                 </tr>    
             </thead>
             <tbody>

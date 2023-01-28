@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JelentkezoController;
+use App\Http\Controllers\SzakController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,12 +44,14 @@ Route::middleware('auth')->group(function () {
     
 });
 Route::get('/admin/jelentkezok', [JelentkezoController::class, 'index']);
+Route::delete('/admin/jelentkezok/torol/{id}', [JelentkezoController::class, 'destroy']);
 Route::get('/admin/felhasznalok', [UserController::class, 'index']);
+Route::get('/admin/szakok', [SzakController::class, 'index']);
+Route::get('/admin/szakokEgybe', [SzakController::class, 'egybeSzak']);
 
-//patch kéne mert egy rekord bizonyos adatának/adatainak a módosítása az adott táblában(paraméteres)
+
 Route::get('/jelentkezok', [JelentkezoController::class, 'index'] );
 Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
-//Route::post('jelentkezoHaromAdat','JelentkezoController@jelentkezoHaromAdat');
 
 
 require __DIR__.'/auth.php';
