@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content=<?php $token = csrf_token(); echo $token; ?>>
     <link rel="stylesheet" href="./css/publicCSS.css">
     <title>Jelentkezési oldal</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
