@@ -17,15 +17,6 @@
         <nav>
             <h1 class="cim">Beiratkozás</h1>
         </nav>
-        <article>
-
-
-        </article>
-
-        <footer>
-
-
-        </footer>
 
     </main>
 </body>

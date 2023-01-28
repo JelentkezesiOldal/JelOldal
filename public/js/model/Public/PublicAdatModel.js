@@ -45,10 +45,9 @@ class PublicAdatModel {
     }
 
     adatModosit(vegpont, adat) {
-        
-        console.log(adat);
-        console.log("Módosít: " + adat);
-        vegpont += "/" + adat.id
+        console.log("ADATModosit ::",adat);
+        vegpont += "/" + adat.jelentkezo_id;
+        console.log("Modosit + id ::",vegpont);
         fetch(vegpont, {
             method: 'PUT',
             headers: {
@@ -58,7 +57,7 @@ class PublicAdatModel {
             body: JSON.stringify(adat),
         })
             .then((response) => response.json())
-            .then((data) => {
+            .then((adat) => {
                 console.log("Módosítottam:  " + adat.updateAt);
             })
             .catch((error) => {
@@ -69,7 +68,7 @@ class PublicAdatModel {
     adatTorol(vegpont, adat) {
         console.log(adat);
         console.log("Töröl: " + adat);
-        vegpont += "/" + adat.id
+        vegpont += "/" + adat.jelentkezo_id;
         fetch(vegpont, {
             method: 'DELETE',
             headers: {

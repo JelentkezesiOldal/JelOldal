@@ -1,16 +1,16 @@
-import JelentkezesView from "../Jelentkezes/JelentkezesView";
+import BeiratkozasView from "./BeiratkozasView.js";
 
 class BeiratkozasokView{
     constructor(tomb, szuloElem){
         szuloElem.append(`<article></article>`)
         this.articleElem = szuloElem.children("article:last-child");
-        this.formElem = this.articleElem.children("form");
 
 
 
-        tomb.forEach(elem => {                  
-            new JelentkezesView(elem, this.formElem);
-        });
+        new BeiratkozasView(tomb, this.articleElem);
+
+        /* Object.keys(tomb).forEach(elem => {                  
+        });   */
     }
 
     
