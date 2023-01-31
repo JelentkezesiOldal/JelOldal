@@ -13,7 +13,7 @@ class BeiratkozasController{
             console.log("Elküld a controllerben");
             this.vegpont = "/beiratkozo"
             beiratkozasmodel.adatModosit(this.vegpont, event.detail);
-            console.log("Mi az id? ::",JSON.stringify(event.detail.id));
+            console.log(event.detail);
         });
     } 
     BeiratkozasAdatok(tomb){

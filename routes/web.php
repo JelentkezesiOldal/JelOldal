@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\InditottSzakController;
-use App\Http\Controllers\JelentkezesController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\SzakController;
@@ -28,12 +27,13 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-Route::get('/show/{id}', [JelentkezoController::class, 'show']);
-Route::put('/beiratkozo/{id}', [JelentkezoController::class, 'beiratkozo']);
-
 Route::get('/beiratkozas', function () {
     return view('beiratkozas');
 });
+Route::get('/show/{id}', [JelentkezoController::class, 'show']);
+Route::patch('/beiratkozo/{id}', [JelentkezoController::class, 'beiratkozo']);
+Route::patch('/file_upload',[FileController::class, 'store'])->name('beiratkozas');
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
