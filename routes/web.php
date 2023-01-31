@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\InditottSzakController;
+use App\Http\Controllers\JelentkezesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\SzakController;
 use App\Http\Controllers\ProfileController;
+use App\Models\InditottSzak;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/admin', function () {
@@ -50,8 +53,9 @@ Route::get('/admin/szakok', [SzakController::class, 'index']);
 Route::get('/admin/szakokEgybe', [SzakController::class, 'egybeSzak']);
 
 
-Route::get('/jelentkezok', [JelentkezoController::class, 'index'] );
 Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
+Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
+Route::post('/ujJelentkezes/{id}',[JelentkezesController::class, 'ujJelentkezes']);
 
 
 require __DIR__.'/auth.php';

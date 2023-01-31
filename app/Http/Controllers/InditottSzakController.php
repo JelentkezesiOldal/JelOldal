@@ -2,29 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InditottSzak;
 use Illuminate\Http\Request;
-use App\Model\InditottSzak;
 
 class InditottSzakController extends Controller
 {
     public function index(){
-        $inditottszaks =  Inditottszak::all();
+        $inditottszaks =  InditottSzak::all();
         return $inditottszaks;
     }
 
     public function show ($id)
     {
-        $inditottszak = Inditottszak::all($id);
+        $inditottszak = InditottSzak::all($id);
         return $inditottszak;
     }
     public function destroy($id)
     {
-        Inditottszak::find($id)->delete();
+        InditottSzak::find($id)->delete();
     }
 
     public function store(Request $request)
     {
-        $inditottszak = new Inditottszak();
+        $inditottszak = new InditottSzak();
         $inditottszak->inditott_id = $request->inditott_id;
         $inditottszak->szak_id = $request->szak_id;
         $inditottszak->allamihely = $request->allamihely;
@@ -34,7 +34,7 @@ class InditottSzakController extends Controller
 
     public function update(Request $request, $id)
     {
-        $inditottszak = Inditottszak::find($id);
+        $inditottszak = InditottSzak::find($id);
         $inditottszak->inditott_id = $request->inditott_id;
         $inditottszak->szak_id = $request->szak_id;
         $inditottszak->allamihely = $request->allamihely;

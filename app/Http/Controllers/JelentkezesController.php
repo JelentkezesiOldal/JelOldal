@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Jelentkezes;
+use App\Models\Jelentkezes;
+use App\Models\Jelentkezo;
 use Illuminate\Http\Request;
 
 class JelentkezesController extends Controller

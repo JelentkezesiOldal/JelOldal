@@ -89,6 +89,7 @@ class JelentkezoController extends Controller
         $jelentkezo->telefonszam = $request->telefonszam;
         //$jelentkezo->statusz = "beiratkozás alatt";
         $jelentkezo->save();
+        return $jelentkezo;
     }
     //, 'regex:[^\d%*&@<>;?!]'
     //, 'regex:[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'

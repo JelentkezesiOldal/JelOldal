@@ -4,18 +4,16 @@ import JelentkezesekView from "../../view/Public/Jelentkezes/JelentkezesekView.j
 class PublicController{
     #tomb = [];
     constructor(){
-        console.log("PublicController")
         const token = $('meta[name="csrf-token"]').attr("content");
         const adatmodel = new PublicAdatModel(token);
-        this.vegpont = "/ujJelentkezo"
-        this.adatok(this.#tomb);
+        adatmodel.adatBe("/inditott_szakok", this.adatok);
         
         $(window).on("elkuld", (event)=>{
-            console.log("elküld a controllerben")
-            
-            adatmodel.adatUj(this.vegpont, event.detail);
+            adatmodel.adatUj("/ujJelentkezo", event.detail);
             console.log(event.detail)
+            adatmodel.adatUj("/ujJelentkezes", event.detail);
         });
+        
     }
 
     adatok(tomb){

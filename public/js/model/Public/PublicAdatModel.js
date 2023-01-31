@@ -16,7 +16,6 @@ class PublicAdatModel {
             .then((data) => {
                 console.log('Siker:', data);
                 this.#tomb = data;
-                console.log(this.#tomb);
                 myCallBack(this.#tomb);
             })
             .catch((error) => {
@@ -35,8 +34,8 @@ class PublicAdatModel {
             body: JSON.stringify(adat),
         })
             .then((response) => response.json())
-            .then((data) => {
-                console.log('Újadat: ' + data);
+            .then(() => {
+                console.log(data);
                 
             })
             .catch((error) => {
