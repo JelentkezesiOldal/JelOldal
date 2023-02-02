@@ -13,14 +13,16 @@ class JelentkezesController extends Controller
         return $jelentkezes;
     }
 
-    public function show ($id)
+    public function show($jelentkezo_id, $inditott_id)
     {
-        $jelentkez = Jelentkezes::all($id);
-        return $jelentkez;
+        $jelentkez = Jelentkezes::where('jelentkezo_id', $jelentkezo_id)
+                                ->where('inditott_id', $inditott_id)
+                                ->get();
+        return $jelentkez[0];   
     }
-    public function destroy($id)
+    public function destroy($jelentkezo_id, $inditott_id)
     {
-        Jelentkezes::find($id)->delete();
+        JelentkezesController::show($jelentkezo_id, $inditott_id)->delete();
     }
 
     public function store(Request $request)
