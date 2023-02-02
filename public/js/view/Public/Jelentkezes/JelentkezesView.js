@@ -3,7 +3,7 @@ class JelentkezesView{
     #elem
     constructor(elem, szuloElem){
         this.#elem=elem;
-        //console.log("elem",elem)
+        console.log("elem",elem)
         szuloElem.append(`
         <form method="post" name="jelentkezes" action="/ujJelentkezo">
         <label for="tanulo_neve">Név:</label>

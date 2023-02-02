@@ -6,12 +6,12 @@ class PublicController{
     constructor(){
         const token = $('meta[name="csrf-token"]').attr("content");
         const adatmodel = new PublicAdatModel(token);
-        adatmodel.adatBe("/inditott_szakok", this.adatok);
-        
+       // this.adatok("/inditott_szakok")
+        console.log(this.#tomb)
+        //adatmodel.adatBe("/inditott_szakok", this.adatok);
         $(window).on("elkuld", (event)=>{
             adatmodel.adatUj("/ujJelentkezo", event.detail);
             console.log(event.detail)
-            adatmodel.adatUj("/ujJelentkezes", event.detail);
         });
         
     }
