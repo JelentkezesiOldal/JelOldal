@@ -15,13 +15,13 @@ return new class extends Migration
     public function up()
     {
         // DB::unprepared('CREATE TRIGGER ujJelentkezes_trigger 
-        // AFTER INSERT ON jelentkezos FOR EACH ROW
+        // AFTER INSERT 
+        // ON jelentkezos FOR EACH ROW
         // BEGIN
-        //     INSERT INTO jelentkezes (jelentkezo_id, inditott_id)
-        //     WHERE jelentkezo_id = NEW.jelentkezo_id
+        //     INSERT INTO jelentkezes (jelentkezo_id,inditott_id)
+        //     SET jelentkezo_id = NEW.jelentkezo_id
         //     AND inditott_id = NEW.inditott_id
-        // END
-        // ');
+        // END');
     }
 
     /**
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        DB::unprepared('DROP TRIGGER IF EXISTS ujJelentkezes_trigger');
     }
 };

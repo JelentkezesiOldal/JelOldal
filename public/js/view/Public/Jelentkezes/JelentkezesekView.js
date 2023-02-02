@@ -3,6 +3,7 @@ import OpcioView from "./OpcioView.js";
 
 class JelentkezesekView{
     constructor(tomb, szuloElem){
+        //console.log("tömb", tomb)
         szuloElem.append(`
         <article>
         </article>
@@ -13,7 +14,6 @@ class JelentkezesekView{
         tomb.forEach(opcio => {
             const opciom = new OpcioView(opcio, this.selectElem);
         });
-        //console.log("tömb",tomb)
         new JelentkezesView(tomb, this.sorElem);
         
     }
