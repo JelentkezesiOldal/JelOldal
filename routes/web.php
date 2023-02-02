@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\InditottSzakController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\SzakController;
