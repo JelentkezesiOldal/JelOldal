@@ -84,8 +84,8 @@ class JelentkezoController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'tanulo_neve' => array('required', 'string', 'min:5', 'max:50'),
-            'email' => array('required', 'string', 'email', 'min:8', 'max:50', 'unique:jelentkezos'),
-            'telefonszam' => array('required', 'string', 'min:7', 'max:20')
+            'email' => array('required', 'email', 'min:8', 'max:50', 'unique:jelentkezos'),
+            'telefonszam' => array('required', 'digits_between:7,20', 'numeric')
         ]);
         if ($validator->fails()) {
             return response()->json(["message" => $validator->errors()->all()], 400);
@@ -98,8 +98,6 @@ class JelentkezoController extends Controller
         $jelentkezo->save();
         return $jelentkezo;
     }
-    //, 'regex:[^\d%*&@<>;?!]'
-    //, 'regex:[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
 
     public function jelentkezesSzak(Request $request)
     {
