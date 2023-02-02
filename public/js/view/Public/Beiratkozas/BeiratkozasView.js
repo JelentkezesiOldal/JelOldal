@@ -122,19 +122,19 @@ class BeiratkozasView {
 
     }
     UralapAdatok(){
-        this.#elem.tanulo_neve = this.tanuloElem;
-        this.#elem.szuleteskori_neve = this.szuleteskorineveElem;
-        this.#elem.anyja_neve = this.anyjaElem;
-        this.#elem.szuletesi_datum = this.szuletesidatumElem;
-        this.#elem.szuletesi_hely = this.szuletesihelyElem;
+        this.#elem.tanulo_neve = this.tanuloElem.val();
+        this.#elem.szuleteskori_neve = this.szuleteskorineveElem.val();
+        this.#elem.anyja_neve = this.anyjaElem.val();
+        this.#elem.szuletesi_datum = this.szuletesidatumElem.val();
+        this.#elem.szuletesi_hely = this.szuletesihelyElem.val();
         this.#elem.email=this.emailElem.val();
-        this.#elem.telefonszam = this.telefonElem;
-        this.#elem.allando_lakcim = this.allandolakcimElem;
-        this.#elem.lakcimkartya = this.lakcimkartyaElem;
+        this.#elem.telefonszam = this.telefonElem.val();
+        this.#elem.allando_lakcim = this.allandolakcimElem.val();
+        this.#elem.lakcimkartya = this.lakcimkartyaElem.val();
         if (ertesitescheckbox.checked) {
-            this.#elem.ertesitesi_cim = this.allandolakcimElem;
+            this.#elem.ertesitesi_cim = this.allandolakcimElem.val();
         } else {
-            this.#elem.ertesitesi_cim = this.ertesitesicimElem;
+            this.#elem.ertesitesi_cim = this.ertesitesicimElem.val();
         };
         this.#elem.neme = this.selectElem.val();
         this.#elem.diak_azonosito = this.diakazonElem.val();
