@@ -6,9 +6,9 @@ class JelentkezesView{
         szuloElem.append(`
         <form method="post" name="jelentkezes" action="/ujJelentkezo">
         <label for="tanulo_neve">Név:</label>
-        <input type="text" id="tanulo_neve" name="tanulo_neve"  requried>
+        <input type="text" id="tanulo_neve" name="tanulo_neve" pattern="[^\d+%*&@<>;?!]" requried>
         <label for="email">Email cím:</label>
-        <input type="email" id="email" name="email"  requried>
+        <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" requried>
         <label for="telefonszam">Telefonszám:</label>
         <input type="tel" id="telefonszam" name="telefonszam" requried>
         <label for="szak">Szak kiválasztása:</label>

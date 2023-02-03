@@ -35,7 +35,7 @@ class PublicAdatModel {
         })
             .then((response) => response.json())
             .then(() => {
-                console.log(data);
+                console.log(adat);
                 
             })
             .catch((error) => {
