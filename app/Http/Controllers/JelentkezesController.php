@@ -51,7 +51,11 @@ class JelentkezesController extends Controller
     }
 
     public function ujJelentkezes(Request $request){
-        $jelentkezo = JelentkezoController::ujJelentkezo($request);
-        $jelentkezes = DB::select(DB::raw("select * from $jelentkezo "));
+        $jelentkezes = new Jelentkezes();
+        $jelentkezes -> jelentkezo_id = $request->jelentkezo_id;
+        $jelentkezes -> inditott_id = $request->inditott_id;
+        $jelentkezes->save();
+        
+        return $jelentkezes;
     }
 }

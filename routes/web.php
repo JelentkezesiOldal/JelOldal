@@ -63,6 +63,8 @@ Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
 //Route::post('/ujJelentkezes/{id}',[JelentkezesController::class, 'ujJelentkezes']);
 Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
 
+Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
+
 
 
 require __DIR__.'/auth.php';
