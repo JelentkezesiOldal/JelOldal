@@ -43,9 +43,10 @@ class JelentkezesController extends Controller
     }
 
     public function osszes(){
-        $jelent = DB::select(DB::raw("select * from jelentkezos jos, jelentkezes jes, inditott_szaks insz
+        $jelent = DB::select(DB::raw("select * from jelentkezos jos, jelentkezes jes, inditott_szaks insz, szaks sz
         where jos.jelentkezo_id = jes.jelentkezo_id 
-        and jes.inditott_id = insz.inditott_id"));
+        and jes.inditott_id = insz.inditott_id
+        and sz.szak_id = insz.szak_id"));
         return $jelent;
     }
 }
