@@ -51,12 +51,13 @@ Route::middleware('auth')->group(function () {
 //Route::get('/admin/jelentkezok', [JelentkezoController::class, 'index']);
 Route::get('/admin/osszes', [JelentkezesController::class, 'osszes']);
 Route::delete('/admin/jelentkezok/torol/{id}', [JelentkezoController::class, 'destroy']);
-Route::get('/admin/felhasznalok', [UserController::class, 'index']);
 Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
-Route::get('/admin/szakok', [SzakController::class, 'index']);
 Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
-Route::get('/admin/mutat/{jel_id}/{ind_id}', [JelentkezesController::class, 'show']);
 Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
+//Route::get('/admin/felhasznalok', [UserController::class, 'index']);
+//Route::get('/admin/szakok', [SzakController::class, 'index']);
+//Route::get('/admin/mutat/{jel_id}/{ind_id}', [JelentkezesController::class, 'show']);
+Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
 
 
 Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);

@@ -1,10 +1,10 @@
 class SzakView{
     #elem
-    constructor(elem, szuloElem, szuloElem2){
+    constructor(elem, szuloElem){
         this.#elem = elem
         szuloElem.append(`
             <tr>
-                <td>${elem.szak_id}</td>
+                <td name="szak_id">${elem.szak_id}</td>
                 <td>${elem.megnevezes}</td>
                 <td>${elem.iskola_id}</td>
                 <td>${elem.elofeltetel}</td>

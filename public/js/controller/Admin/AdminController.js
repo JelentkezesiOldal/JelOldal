@@ -37,7 +37,9 @@ class AdminController{
         })
         $(window).on("indit", (event) => {
             console.log(event.detail)
-            
+            console.log("/admin/ujInditottSzak")
+            adminadatmodel.adatUj("/admin/ujInditottSzak", event.detail)
+        
         })
 
     }

@@ -1,5 +1,6 @@
 class AdminAdatModel{
     #adatok
+    #ideig = []
     constructor(token){
         console.log("AdminAdatModel")
         this.token = token
@@ -30,14 +31,13 @@ class AdminAdatModel{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': this.token
+                'X-CSRF-TOKEN': this.token,
             },
             body: JSON.stringify(adat),
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log('Újadat: ', data);
-
+                console.log('Újadat: ', this.#ideig = data);
             })
             .catch((error) => {
                 console.error('Error:', error);
