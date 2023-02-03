@@ -1,8 +1,9 @@
 import OpcioView from "./OpcioView.js";
 class JelentkezesView{
-    #elem
+    #elem=[];
     constructor(elem, szuloElem){
         this.#elem=elem;
+        //console.log("elem", elem)
         szuloElem.append(`
         <form method="post" name="jelentkezes" action="/ujJelentkezo">
         <label for="tanulo_neve">Név:</label>
@@ -19,17 +20,26 @@ class JelentkezesView{
         `)
         this.formElem = szuloElem.children("form:last-child");
         this.selectElem = this.formElem.children("select")
-        elem.forEach(opcio => {
-            const opciom = new OpcioView(opcio, this.selectElem);
+         elem.forEach(opcio => {
+            const opciom = new OpcioView(opcio, this.selectElem); 
+            //this.#elem = opciom;
             //console.log("elemek", opcio)
         });
-        
+         
 
         this.elkuldElem= $(`#elkuld`);
-
+       
+        
+        
         this.elkuldElem.on("click", ()=>{
-            console.log("Elküld a View-ban")
+            //console.log("Elküld a View-ban")
+            
             this.kattintastrigger("elkuld");
+            this.opcioElem = $('#szak').find(':selected').val()
+            //this.#elem.
+            //this.#elem += this.opcioElem;
+            console.log("opcioelem",elem)
+            
         });
         
     }

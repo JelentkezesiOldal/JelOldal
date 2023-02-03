@@ -1,6 +1,6 @@
 import PublicController from "./controller/Public/PublicController.js";
 
 $(function(){
-    console.log("publicMain")
+    //console.log("publicMain")
     new PublicController();
 })

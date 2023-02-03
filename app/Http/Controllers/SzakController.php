@@ -50,4 +50,9 @@ class SzakController extends Controller
         where szak_id not in (select szak_id from inditott_szaks)"));
         return $indithatoSzak;
     }
+
+    public function szak_indittotSzak(){
+        $szakok = DB::select(DB::raw("select * from szaks sz, inditott_szaks isz where sz.szak_id = isz.szak_id "));
+        return $szakok;
+    }
 }
