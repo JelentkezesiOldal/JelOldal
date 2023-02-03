@@ -1,12 +1,16 @@
 class OpcioView{
     #elem;
-    constructor(elem,szuloElem){
+    constructor(elem, szuloElem){
         this.#elem = elem;
+        //console.log("opcio", elem)
+        var szak_ertek = elem.inditott_id
+        var megnevezes = elem.szak_id
         szuloElem.append(`
-        <option value="${elem.inditott_id}">${elem.szak_id}</option>
+        <option id="opcio" value="${szak_ertek}">${megnevezes}</option>
         
         `)
         this.opcioElem = szuloElem.children("option");
+        
     }
 }
 

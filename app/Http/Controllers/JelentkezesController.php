@@ -48,4 +48,9 @@ class JelentkezesController extends Controller
         and jes.inditott_id = insz.inditott_id"));
         return $jelent;
     }
+
+    public function ujJelentkezes(Request $request){
+        $jelentkezo = JelentkezoController::ujJelentkezo($request);
+        $jelentkezes = DB::select(DB::raw("select * from $jelentkezo "));
+    }
 }

@@ -99,6 +99,8 @@ class JelentkezoController extends Controller
         return $jelentkezo;
     }
 
+    
+
     public function jelentkezesSzak(Request $request)
     {
         $szakIndit = new InditottSzak();
