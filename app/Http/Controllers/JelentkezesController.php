@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jelentkezes;
 use App\Models\Jelentkezo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JelentkezesController extends Controller
 {
@@ -39,5 +40,12 @@ class JelentkezesController extends Controller
         $jelentkez->jelentkezo_id = $request->jelentkezo_id;
         $jelentkez->inditott_id = $request->inditott_id;
         $jelentkez->save();
+    }
+
+    public function osszes(){
+        $jelent = DB::select(DB::raw("select * from jelentkezos jos, jelentkezes jes, inditott_szaks insz
+        where jos.jelentkezo_id = jes.jelentkezo_id 
+        and jes.inditott_id = insz.inditott_id"));
+        return $jelent;
     }
 }
