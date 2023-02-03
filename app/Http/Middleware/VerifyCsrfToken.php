@@ -18,6 +18,8 @@ class VerifyCsrfToken extends Middleware
         "/file_upload",
         "/admin/jelentkezok/torol/*",
         "/admin/mutat/*/*",
-        "/admin/torol/*/*"
+        "/admin/torol/*/*",
+        "/admin/felPlusSzak",
+        "/admin/inditSzak"
     ];
 }

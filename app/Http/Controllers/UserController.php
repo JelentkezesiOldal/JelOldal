@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -45,5 +46,11 @@ class UserController extends Controller
         $user->master = $request->master;  
         $user->szak = $request->szak; 
         $user->save();
+    }
+
+    public function userAndSzak(){
+        $userszak = DB::select(DB::raw("select * from users u, szaks sz
+        where u.szak_id = sz.szak_id"));
+        return $userszak;
     }
 }
