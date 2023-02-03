@@ -54,7 +54,7 @@ Route::delete('/admin/jelentkezok/torol/{id}', [JelentkezoController::class, 'de
 Route::get('/admin/felhasznalok', [UserController::class, 'index']);
 Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
 Route::get('/admin/szakok', [SzakController::class, 'index']);
-Route::get('/admin/szakokEgybe', [SzakController::class, 'egybeSzak']);
+Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
 Route::get('/admin/mutat/{jel_id}/{ind_id}', [JelentkezesController::class, 'show']);
 Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
 

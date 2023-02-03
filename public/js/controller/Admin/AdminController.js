@@ -23,7 +23,7 @@ class AdminController{
             adminadatmodel.adatBe(this.vegpont, this.jelentkezokMutat);
         })
         $("#szak").on("click", () => {
-            this.vegpont = "/admin/szakok"
+            this.vegpont = "/admin/inditSzak"
             adminadatmodel.adatBe(this.vegpont, this.szakokMutat);
         })
         $("#arch").on("click", () => {
