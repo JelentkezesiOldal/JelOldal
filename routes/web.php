@@ -49,20 +49,20 @@ Route::middleware(['auth'])->group(function () {
 
     
 });
-//Route::get('/admin/jelentkezok', [JelentkezoController::class, 'index']);
+
+//admin lekérések
 Route::get('/admin/osszes', [JelentkezesController::class, 'osszes']);
-Route::delete('/admin/jelentkezok/torol/{id}', [JelentkezoController::class, 'destroy']);
 Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
 Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
+Route::get('/admin/kereses/{ertek}', [UserController::class, 'kereses']);
+//admin törlések
 Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
-//Route::get('/admin/felhasznalok', [UserController::class, 'index']);
-//Route::get('/admin/szakok', [SzakController::class, 'index']);
-//Route::get('/admin/mutat/{jel_id}/{ind_id}', [JelentkezesController::class, 'show']);
+//admin újadatok
 Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
 
 
-Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
-//Route::post('/ujJelentkezes/{id}',[JelentkezesController::class, 'ujJelentkezes']);
+Route::post('/ujJelentkezo/{id}', [JelentkezoController::class, 'ujJelentkezo']);
+//Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
 Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
 
 Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);

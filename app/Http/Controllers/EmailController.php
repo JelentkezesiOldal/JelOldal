@@ -10,14 +10,13 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
-    public function index(){
+    public function index($email){
         $emailAdat = [
-            'cim' => 'Belehalok',
-            'torzs' => '-Majka,tudsz négyzetet rajzolni?
-            -Persze...még Curtis.'
+            'cim' => 'Ez egy cim',
+            'torzs' => 'Ez egy torzs'
         ];
 
-        
+    
         // foreach(['vetka.adi@gmail.com', 'vitayz60@gmail.com']as $fogadok){
         //     Mail::to($fogadok)->send(new Email($emailAdat));
         // }

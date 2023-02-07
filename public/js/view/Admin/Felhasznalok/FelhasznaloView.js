@@ -9,7 +9,10 @@ class FelhasznaloView{
             <td>${elem.megnevezes}</td>
             <td>${elem.master}</td>
         </tr>`)
+
+        
     }
+    
 }
 
 export default FelhasznaloView

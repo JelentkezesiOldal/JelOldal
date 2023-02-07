@@ -27,6 +27,7 @@ class AdminAdatModel{
     }
 
     adatUj(vegpont, adat) {
+        console.log(vegpont)
         fetch(vegpont, {
             method: 'POST',
             headers: {
@@ -37,7 +38,9 @@ class AdminAdatModel{
         })
             .then((response) => response.json())
             .then((data) => {
+                console.log(vegpont)
                 console.log('Újadat: ', this.#ideig = data);
+                console.log(vegpont)
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -68,7 +71,8 @@ class AdminAdatModel{
     adatTorol(vegpont, adat) {
         console.log(adat);
         console.log("Töröl: " + adat);
-        vegpont += "/" + adat.jelentkezo_id
+        vegpont += adat.jelentkezo_id + "/" + adat.inditott_id
+        console.log(vegpont)
         fetch(vegpont, {
             method: 'DELETE',
             headers: {
