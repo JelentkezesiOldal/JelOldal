@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\InditottSzakController;
 use App\Http\Controllers\UserController;
@@ -66,6 +67,8 @@ Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
 
 Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
 
+
+Route::get('/email_kuldes', [EmailController::class, 'index']);
 
 
 require __DIR__.'/auth.php';
