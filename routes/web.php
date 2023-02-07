@@ -61,8 +61,8 @@ Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, '
 Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
 
 
-Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
-//Route::post('/ujJelentkezes/{id}',[JelentkezesController::class, 'ujJelentkezes']);
+Route::post('/ujJelentkezo/{id}', [JelentkezoController::class, 'ujJelentkezo']);
+//Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
 Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
 
 Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);

@@ -24,7 +24,7 @@ class PublicAdatModel {
     }
 
     adatUj(vegpont, adat) {
-        console.log("elküld a modelben")
+        //console.log("elküld a modelben")
         fetch(vegpont, {
             method: 'POST',
             headers: {
@@ -39,7 +39,7 @@ class PublicAdatModel {
                 
             })
             .catch((error) => {
-                console.error('Error: nem jóó nem jóóó!!!!!!!!!', error);
+                console.error('Error: nem jo', error);
             });
     }
 

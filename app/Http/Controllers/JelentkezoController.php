@@ -6,6 +6,7 @@ use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JelentkezoController extends Controller
 {
@@ -94,8 +95,12 @@ class JelentkezoController extends Controller
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         //$jelentkezo->statusz = "beiratkozás alatt";
+        // $jelentkezo->inditott_id = $request->inditott_id;
         $jelentkezo->save();
-        return $jelentkezo;
+        // DB::select(DB::raw("insert into jelentkezes ('jelentkezo_id', 'inditott_id') values($jelentkezo->jelentkezo_id, $jelentkezo->inditott_id)"));
+        // return $jelentkezo;
+
+        //EmailController::index($request->email);
     }
 
     

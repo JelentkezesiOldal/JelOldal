@@ -56,6 +56,6 @@ class JelentkezesController extends Controller
         $jelentkezes -> inditott_id = $request->inditott_id;
         $jelentkezes->save();
         
-        return $jelentkezes;
+       
     }
 }
