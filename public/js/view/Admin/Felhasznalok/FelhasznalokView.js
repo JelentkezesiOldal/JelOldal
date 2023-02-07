@@ -49,13 +49,13 @@ constructor(tomb, szuloElem){
     this.tableElem = szuloElem.children('table:last-child');
     this.tbodyElem = this.tableElem.children('tbody');
 
-    // this.kurvaanyad = $('#keres1').val()  
-    // console.log(this.kurvaanyad + " lécci")
+    // this.input = $('#keres1').val()  
+    // console.log(this.input + " lécci")
     this.keresGomb = $('#kereses')
     
         this.keresGomb.on('click', ()=>{
-            this.kurvaanyad = $('#keres1').val()
-            console.log(this.kurvaanyad + " lécci")
+            this.input = $('#keres1').val()
+            console.log(this.input + " lécci")
             this.kattintasTrigger("keres")
         })
 
@@ -64,7 +64,7 @@ constructor(tomb, szuloElem){
     });
 }
 kattintasTrigger(esemenyNeve){
-    const esemeny = new CustomEvent(esemenyNeve, {detail:this.kurvaanyad})
+    const esemeny = new CustomEvent(esemenyNeve, {detail:this.input})
     window.dispatchEvent(esemeny);
 }
 }
