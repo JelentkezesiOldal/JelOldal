@@ -39,7 +39,7 @@ class User extends Authenticatable
     
     public function getAuthPassword()
     {
-        return $this->jelszo;
+        return $this->password;
     }
 
     /**

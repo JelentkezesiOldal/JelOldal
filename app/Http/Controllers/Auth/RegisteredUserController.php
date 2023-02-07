@@ -34,22 +34,22 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'master' => ['required','integer',],
-            'szak_id' => ['required','integer'],
+            'master' => ['integer'],
+            /*'szak_id' => ['required','integer'], */
         ]);
 
-        $user = User::create([
+        /* $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'master' => 0,
-            'szak_id' => 2,
-        ]);
+            'szak_id' => 2, 
+        ]);*/
 
-        event(new Registered($user));
+      /*   event(new Registered($user));
 
         Auth::login($user);
-
+ */
         return redirect(RouteServiceProvider::HOME);
     }
 }

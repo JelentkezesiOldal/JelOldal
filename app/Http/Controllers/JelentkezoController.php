@@ -166,7 +166,7 @@ class JelentkezoController extends Controller
         }
     
         $jelentkezo->save();
-        return $jelentkezo;
+        return view('beiratkozasSiker');
         //return view('/BeiratkozasSikerult');
     }
 
