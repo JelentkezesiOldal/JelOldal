@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Sablon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,8 +20,11 @@ return new class extends Migration
             $table->string('status');
             $table->timestamps();
         });
-    }
 
+        Sablon::create(['sablon_szoveg'=> 'Ez egy sablon szöveg','status'=>'2']);
+        Sablon::create(['sablon_szoveg'=> 'Ez még egy sablon szöveg','status'=>'1']);
+        Sablon::create(['sablon_szoveg'=> 'Ez egy harmadik sablon szöveg','status'=>'1']);
+    }
     /**
      * Reverse the migrations.
      *
