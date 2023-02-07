@@ -30,6 +30,7 @@ class InditottSzakController extends Controller
         $inditottszak->allamihely = $request->allamihely;
         $inditottszak->onkolthely = $request->onkolthely;
         $inditottszak->save();
+        return $inditottszak;
     }
 
     public function update(Request $request, $id)

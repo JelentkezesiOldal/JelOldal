@@ -53,4 +53,15 @@ class UserController extends Controller
         where u.szak_id = sz.szak_id"));
         return $userszak;
     }
+
+    public function kereses($ertek){ 
+        $keres = DB::table('users')
+            ->where('ugyintezo_id', 'like', '%'.$ertek.'%')
+            ->orwhere('name', 'like', '%'.$ertek.'%')
+            ->orwhere('email', 'like', '%'.$ertek.'%')
+            ->orwhere('master', 'like', '%'.$ertek.'%')
+            ->orwhere('szak_id', 'like', '%'.$ertek.'%')
+            ->get();
+        return $keres;
+    }
 }
