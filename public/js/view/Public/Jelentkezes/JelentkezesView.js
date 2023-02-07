@@ -3,7 +3,7 @@ class JelentkezesView{
     #elem=[];
     constructor(elem, szuloElem){
         this.#elem=elem;
-        //console.log("elem", elem)
+        console.log("elem", elem)
         szuloElem.append(`
         <form method="post" name="jelentkezes" action="/ujJelentkezo">
         <label for="tanulo_neve">Név:</label>
@@ -23,10 +23,10 @@ class JelentkezesView{
          elem.forEach(opcio => {
             const opciom = new OpcioView(opcio, this.selectElem); 
             //this.#elem = opciom;
+            console.log("opciom", opcio)
             //console.log("elemek", opcio)
         });
          
-
         this.elkuldElem= $(`#elkuld`);
        
         
@@ -36,9 +36,10 @@ class JelentkezesView{
             
             this.kattintastrigger("elkuld");
             this.opcioElem = $('#szak').find(':selected').val()
-            //this.#elem.
-            //this.#elem += this.opcioElem;
-            console.log("opcioelem",elem)
+            // this.#elem.
+            // this.#elem += this.opcioElem;
+            // console.log("opcioelem",elem)
+            console.log("opcioelem",this.opcioElem)
             
         });
         

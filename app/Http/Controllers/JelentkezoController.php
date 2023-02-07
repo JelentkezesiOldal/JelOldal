@@ -6,7 +6,6 @@ use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Foreach_;
 
 class JelentkezoController extends Controller
 {
