@@ -6,7 +6,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\SzakController;
 use App\Http\Controllers\ProfileController;
-use App\Models\InditottSzak;
 use Illuminate\Support\Facades\Route;
 
 /*
