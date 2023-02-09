@@ -2,16 +2,17 @@ import PublicAdatModel from "../../model/Public/PublicAdatModel.js"
 import JelentkezesekView from "../../view/Public/Jelentkezes/JelentkezesekView.js"
 
 class PublicController{
-    #tomb = [];
     constructor(){
         const token = $('meta[name="csrf-token"]').attr("content");
         const adatmodel = new PublicAdatModel(token);
-        adatmodel.adatBe("/inditott_szakok", this.adatok);
-        
+        adatmodel.adatBe("/szak_indittotSzak", this.adatok);
+
         $(window).on("elkuld", (event)=>{
             adatmodel.adatUj("/ujJelentkezo", event.detail);
-            console.log(event.detail)
+            
             adatmodel.adatUj("/ujJelentkezes", event.detail);
+            console.log("he",event.detail)
+            //adatmodel.adatBe("/email_kuldes",  event.detail);
         });
         
     }
@@ -19,6 +20,8 @@ class PublicController{
     adatok(tomb){
         const szuloElem =$('main');
         new JelentkezesekView(tomb, szuloElem)
+        //console.log("töömb", tomb)
+       
     }
 }
 

@@ -131,7 +131,7 @@ class BeiratkozasView {
         this.#elem.email=this.emailElem.val();
         this.#elem.telefonszam = this.telefonElem.val();
         this.#elem.allando_lakcim = this.allandolakcimElem.val();
-        this.#elem.lakcimkartya = this.lakcimkartyaElem.val();
+        //this.#elem.lakcimkartya = this.lakcimkartyaElem.val();
         if (ertesitescheckbox.checked) {
             this.#elem.ertesitesi_cim = this.allandolakcimElem.val();
         } else {
@@ -139,15 +139,15 @@ class BeiratkozasView {
         };
         this.#elem.neme = this.selectElem.val();
         this.#elem.diak_azonosito = this.diakazonElem.val();
-        this.#elem.diakigazolvany = this.diakigazolvanyElem.val();
-        this.#elem.szemelyi_igazolvany_szam = this.személyiszamElem.val();
-        this.#elem.szemelyi_igazolvany = this.szemelyiszamElem.val();
+        //this.#elem.diakigazolvany = this.diakigazolvanyElem.val();
+        this.#elem.szemelyi_igazolvany_szam = this.szemelyiszamElem.val();
+        //this.#elem.szemelyi_igazolvany = this.szemelyiszamElem.val();
         this.#elem.taj_szam = this.tajszamElem.val();
-        this.#elem.taj_kartya = this.tajkartyaElem.val();
+        //this.#elem.taj_kartya = this.tajkartyaElem.val();
         this.#elem.adoszam =this.adoszamElem.val();
-        this.#elem.adoigazolvany = this.adoigazolvanyElem.val();
+        //this.#elem.adoigazolvany = this.adoigazolvanyElem.val();
         this.#elem.erettsegi_bizonyitvany_szama = this.erettsegiszamElem.val();
-        this.#elem.erettsegi_bizonyitvany = this.erettsegibiziElem.val();
+       // this.#elem.erettsegi_bizonyitvany = this.erettsegibiziElem.val();
        // this.#elem.szakmai_bizonyitvany_szama
         //this.#elem.szakmai_bizonyitvany
         //this.#elem.orvosi_alkalmassági

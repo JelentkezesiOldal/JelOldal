@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Szak;
+use Illuminate\Support\Facades\DB;
 
 class SzakController extends Controller
 {
@@ -44,11 +45,14 @@ class SzakController extends Controller
         $szak->save();
     }
 
-    public function egybeSzak(){
-        $szak = DB::table('szaks')
-            ->join('inditott_szaks', 'szaks.szak_id', '=', 'inditott_szaks.inditott_id')
-            ->select('szaks.*', 'inditott_szaks.*')
-            ->get();
-        return $szak;
+    public function inditSzak(){
+        $indithatoSzak = DB::select(DB::raw("select * from szaks sz
+        where szak_id not in (select szak_id from inditott_szaks)"));
+        return $indithatoSzak;
+    }
+
+    public function szak_indittotSzak(){
+        $szakok = DB::select(DB::raw("select * from szaks sz, inditott_szaks isz where sz.szak_id = isz.szak_id "));
+        return $szakok;
     }
 }

@@ -15,16 +15,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('jelentkezes', function (Blueprint $table) {
+            $table->primary(['jelentkezo_id', 'inditott_id']);
             $table->foreignId('jelentkezo_id')->references('jelentkezo_id')->on('jelentkezos');
             $table->foreignId('inditott_id')->references('inditott_id')->on('inditott_szaks');
             $table->timestamps();
         });
 
-        Jelentkezes::create(['jelentkezo_id'=> 1,'inditott_id'=>3]);
-        Jelentkezes::create(['jelentkezo_id'=> 2,'inditott_id'=>1]);
-        Jelentkezes::create(['jelentkezo_id'=> 3,'inditott_id'=>4]);
-        Jelentkezes::create(['jelentkezo_id'=> 4,'inditott_id'=>5]);
-        Jelentkezes::create(['jelentkezo_id'=> 5,'inditott_id'=>5]);
+        // Jelentkezes::create(['jelentkezo_id'=> 1,'inditott_id'=>3]);
+        // Jelentkezes::create(['jelentkezo_id'=> 2,'inditott_id'=>1]);
+        // Jelentkezes::create(['jelentkezo_id'=> 3,'inditott_id'=>4]);
+        // Jelentkezes::create(['jelentkezo_id'=> 4,'inditott_id'=>5]);
+        // Jelentkezes::create(['jelentkezo_id'=> 5,'inditott_id'=>5]);
     }
 
     /**

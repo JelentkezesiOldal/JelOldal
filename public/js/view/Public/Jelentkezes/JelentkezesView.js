@@ -1,9 +1,9 @@
 import OpcioView from "./OpcioView.js";
 class JelentkezesView{
-    #elem
+    #elem=[];
     constructor(elem, szuloElem){
         this.#elem=elem;
-        //console.log("elem",elem)
+        //console.log("elem", elem)
         szuloElem.append(`
         <form method="post" name="jelentkezes" action="/ujJelentkezo">
         <label for="tanulo_neve">Név:</label>
@@ -19,17 +19,22 @@ class JelentkezesView{
         </form>
         `)
         this.formElem = szuloElem.children("form:last-child");
-        this.selectElem = this.formElem.children("select")
-        elem.forEach(opcio => {
-            const opciom = new OpcioView(opcio, this.selectElem);
+        this.selectElem = this.formElem.children("select");
+         elem.forEach(opcio => {
+            const opciom = new OpcioView(opcio, this.selectElem); 
+            //console.log("opciom", opcio)
         });
-        
-
+         
         this.elkuldElem= $(`#elkuld`);
-
+       
+        
+        
         this.elkuldElem.on("click", ()=>{
-            console.log("Elküld a View-ban")
+            //console.log("Elküld a View-ban")
             this.kattintastrigger("elkuld");
+            this.opcioElem = $('#szak').find(':selected').val();
+            //console.log("opcioelem",this.opcioElem)
+            
         });
         
     }
@@ -37,7 +42,7 @@ class JelentkezesView{
     //pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
 
     kattintastrigger(esemenyNeve){
-        const esemeny = new CustomEvent(esemenyNeve, {detail:this.#elem})
+        const esemeny = new CustomEvent(esemenyNeve, {detail:this.#elem});
         window.dispatchEvent(esemeny);
     }
 }

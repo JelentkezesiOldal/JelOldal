@@ -39,13 +39,13 @@ return [
     'declined' => 'The :attribute must be declined.',
     'declined_if' => 'The :attribute must be declined when :other is :value.',
     'different' => 'The :attribute and :other must be different.',
-    'digits' => 'The :attribute must be :digits digits.',
+    'digits' => 'Csak szamokbol allhat.',
     'digits_between' => 'The :attribute must be between :min and :max digits.',
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
     'doesnt_end_with' => 'The :attribute may not end with one of the following: :values.',
     'doesnt_start_with' => 'The :attribute may not start with one of the following: :values.',
-    'email' => 'The :attribute must be a valid email address.',
+    'email' => 'Ervenyes emailt kell megadni.',
     'ends_with' => 'The :attribute must end with one of the following: :values.',
     'enum' => 'The selected :attribute is invalid.',
     'exists' => 'The selected :attribute is invalid.',
@@ -158,19 +158,20 @@ return [
     'custom' => [
         'tanulo_neve' => [
             'required' => 'Kotelezo nevet adni.',
-            'min' => 'Minimum 5 karakteresnek kell lennie.',
-            'max' => 'Maximum 50 karakteres lehet.'
+            'min' => 'Minimum 5 karakteresnek kell lennie a nevnek.',
+            'max' => 'Maximum 50 karakteres lehet a nev.'
         ],
         'email' => [
             'required' => 'Kotelezo emailt adni.',
-            'min' => 'Minimum 5 karakteresnek kell lennie.',
-            'max' => 'Maximum 50 karakteres lehet.',
-            'unique' => 'Ilyen email cim mar letezik.'
+            'min' => 'Minimum 5 karakteresnek kell lennie az emailnek.',
+            'max' => 'Maximum 50 karakteres lehet az email.',
+            'unique' => 'Ilyen email cim mar letezik.',
+            'email' => 'Ervenye email cimnek kell lennie.'
         ],
         'telefonszam' => [
-            'required' => 'Kotelezo nevet adni.',
-            'min' => 'Minimum 7 karakteresnek kell lennie.',
-            'max' => 'Maximum 20 karakteres lehet.'
+            'required' => 'Kotelezo telefonszamot adni.',
+            'digits_between' => 'Minimum 7 maximum 20 karakteres lehet a telefonszam.',
+            'numeric' => 'Csak szamokbol allhat.'
         ],
     ],
 

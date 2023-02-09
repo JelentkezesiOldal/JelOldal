@@ -15,15 +15,15 @@ class AdminController{
             adminadatmodel.adatBe();
         })
         $("#felh").on("click", () => {
-            this.vegpont = "/admin/felhasznalok"
-            adminadatmodel.adatBe(this.vegpont, this.statisztikaMutat);
+            this.vegpont = "/admin/felPlusSzak"
+            adminadatmodel.adatBe(this.vegpont, this.felhasznalokMutat);
         })
         $("#jele").on("click", () => {
-            this.vegpont = "/admin/jelentkezok"
+            this.vegpont = "/admin/osszes"
             adminadatmodel.adatBe(this.vegpont, this.jelentkezokMutat);
         })
         $("#szak").on("click", () => {
-            this.vegpont = "/admin/szakok"
+            this.vegpont = "/admin/inditSzak"
             adminadatmodel.adatBe(this.vegpont, this.szakokMutat);
         })
         $("#arch").on("click", () => {
@@ -31,17 +31,25 @@ class AdminController{
         })
         $(window).on("torol", (event) => {
             console.log(event.detail)
-            this.vegpont = "/admin/jelentkezok/torol"
+            this.vegpont = "/admin/torol/"
             adminadatmodel.adatTorol(this.vegpont, event.detail);
             location.reload()
         })
         $(window).on("indit", (event) => {
             console.log(event.detail)
-            
+            adminadatmodel.adatUj("/admin/ujInditottSzak", event.detail)
+        
         })
-
+        $(window).on("keres", (event) => {
+            this.vegpont = "/admin/keres"
+            //console.log(this.vegpont)
+            this.vegpont += "/" + event.detail
+            //console.log(this.vegpont)
+            adminadatmodel.adatBe(this.vegpont, this.felhasznalokMutat)
+        
+        })
     }
-    statisztikaMutat(tomb){
+    felhasznalokMutat(tomb){
         const szuloElem = $("article")
         new FelhasznalokView(tomb, szuloElem)
     }

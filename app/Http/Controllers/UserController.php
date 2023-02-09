@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -45,5 +46,22 @@ class UserController extends Controller
         $user->master = $request->master;  
         $user->szak = $request->szak; 
         $user->save();
+    }
+
+    public function userAndSzak(){
+        $userszak = DB::select(DB::raw("select * from users u, szaks sz
+        where u.szak_id = sz.szak_id"));
+        return $userszak;
+    }
+
+    public function kereses($ertek){ 
+        $keres = DB::table('users')
+            ->where('ugyintezo_id', 'like', '%'.$ertek.'%')
+            ->orwhere('name', 'like', '%'.$ertek.'%')
+            ->orwhere('email', 'like', '%'.$ertek.'%')
+            ->orwhere('master', 'like', '%'.$ertek.'%')
+            ->orwhere('szak_id', 'like', '%'.$ertek.'%')
+            ->get();
+        return $keres;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jelentkezes;
 use App\Models\Jelentkezo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JelentkezesController extends Controller
 {
@@ -13,14 +14,16 @@ class JelentkezesController extends Controller
         return $jelentkezes;
     }
 
-    public function show ($id)
+    public function show($jelentkezo_id, $inditott_id)
     {
-        $jelentkez = Jelentkezes::all($id);
-        return $jelentkez;
+        $jelentkez = Jelentkezes::where('jelentkezo_id', $jelentkezo_id)
+                                ->where('inditott_id', $inditott_id)
+                                ->get();
+        return $jelentkez[0];   
     }
-    public function destroy($id)
+    public function destroy($jelentkezo_id, $inditott_id)
     {
-        Jelentkezes::find($id)->delete();
+        JelentkezesController::show($jelentkezo_id, $inditott_id)->delete();
     }
 
     public function store(Request $request)
@@ -37,5 +40,22 @@ class JelentkezesController extends Controller
         $jelentkez->jelentkezo_id = $request->jelentkezo_id;
         $jelentkez->inditott_id = $request->inditott_id;
         $jelentkez->save();
+    }
+
+    public function osszes(){
+        $jelent = DB::select(DB::raw("select * from jelentkezos jos, jelentkezes jes, inditott_szaks insz, szaks sz
+        where jos.jelentkezo_id = jes.jelentkezo_id 
+        and jes.inditott_id = insz.inditott_id
+        and sz.szak_id = insz.szak_id"));
+        return $jelent;
+    }
+
+    public function ujJelentkezes(Request $request){
+        $jelentkezes = new Jelentkezes();
+        $jelentkezes -> jelentkezo_id = $request->jelentkezo_id;
+        $jelentkezes -> inditott_id = $request->inditott_id;
+        $jelentkezes->save();
+        
+       
     }
 }

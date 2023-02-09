@@ -6,7 +6,7 @@ use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Foreach_;
+use Illuminate\Support\Facades\DB;
 
 class JelentkezoController extends Controller
 {
@@ -82,8 +82,8 @@ class JelentkezoController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'tanulo_neve' => array('required', 'string', 'min:5', 'max:50'),
-            'email' => array('required', 'string', 'email', 'min:8', 'max:50', 'unique:jelentkezos'),
-            'telefonszam' => array('required', 'string', 'min:7', 'max:20')
+            'email' => array('required', 'email', 'min:8', 'max:50', 'unique:jelentkezos'),
+            'telefonszam' => array('required', 'digits_between:7,20', 'numeric')
         ]);
         if ($validator->fails()) {
             return response()->json(["message" => $validator->errors()->all()], 400);
@@ -92,12 +92,16 @@ class JelentkezoController extends Controller
         $jelentkezo->tanulo_neve = $request->tanulo_neve;
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
-        $jelentkezo->statusz = $request->statusz;
+        $jelentkezo->statusz = "beiratkozás alatt";
+        // $jelentkezo->inditott_id = $request->inditott_id;
         $jelentkezo->save();
-        return $jelentkezo;
+        // DB::select(DB::raw("insert into jelentkezes ('jelentkezo_id', 'inditott_id') values($jelentkezo->jelentkezo_id, $jelentkezo->inditott_id)"));
+        // return $jelentkezo;
+
+        //EmailController::index($request->email);
     }
-    //, 'regex:[^\d%*&@<>;?!]'
-    //, 'regex:[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
+
+    
 
     public function jelentkezesSzak(Request $request)
     {
@@ -137,7 +141,7 @@ class JelentkezoController extends Controller
         }
     
         $jelentkezo->save();
-        return $jelentkezo;
+        return view('beiratkozasSiker');
         //return view('/BeiratkozasSikerult');
     }
 

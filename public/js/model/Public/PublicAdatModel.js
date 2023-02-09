@@ -24,7 +24,7 @@ class PublicAdatModel {
     }
 
     adatUj(vegpont, adat) {
-        console.log("elküld a modelben")
+        //console.log("elküld a modelben")
         fetch(vegpont, {
             method: 'POST',
             headers: {
@@ -35,11 +35,11 @@ class PublicAdatModel {
         })
             .then((response) => response.json())
             .then(() => {
-                console.log(data);
+                console.log(adat);
                 
             })
             .catch((error) => {
-                console.error('Error: nem jóó nem jóóó!!!!!!!!!', error);
+                console.error('Error: nem jo', error);
             });
     }
 
@@ -48,14 +48,14 @@ class PublicAdatModel {
         vegpont += "/" + adat.jelentkezo_id;
         console.log("Modosit + id ::",vegpont);
         fetch(vegpont, {
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': this.token
             },
             body: JSON.stringify(adat),
         })
-            .then((response) => response.json())
+            .then((response) => response.text)
             .then((adat) => {
                 console.log("Modositas:  ",adat);
             })
