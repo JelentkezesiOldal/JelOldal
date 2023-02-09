@@ -41,7 +41,6 @@ class JelentkezoController extends Controller
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->allando_lakcim = $request->allando_lakcim;
-        //$jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
         $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
         $jelentkezo->neme = $request->neme;
         $jelentkezo->diak_azonosito = $request->diak_azonosito;
@@ -66,7 +65,6 @@ class JelentkezoController extends Controller
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->allando_lakcim = $request->allando_lakcim;
-        //$jelentkezo->gondviselo_lakasa = $request->gondviselo_lakasa;
         $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
         $jelentkezo->neme = $request->neme;
         $jelentkezo->diak_azonosito = $request->diak_azonosito;
@@ -97,6 +95,8 @@ class JelentkezoController extends Controller
         $jelentkezo->tanulo_neve = $request->tanulo_neve;
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
+        $jelentkezo->statusz = "beiratkozás alatt";
+        // $jelentkezo->inditott_id = $request->inditott_id;
         $jelentkezo->save();
         /*echo*/ $utolsoId = $jelentkezo->jelentkezo_id;
         $data=array('jelentkezo_id'=>$utolsoId, 'inditott_id'=>$request->inditott_id);
@@ -118,34 +118,6 @@ class JelentkezoController extends Controller
         $szakIndit->inditott_id = $request->inditott_id;
     }
 
-
-/*     public function beiratkozo(Request $request, $id)
-    {        
-        $jelentkezo = Jelentkezo::find($id);
-        
-
-
-        $jelentkezo->tanulo_neve = $request->tanulo_neve;
-        $jelentkezo->szuleteskori_neve = $request->szuleteskori_neve;
-        $jelentkezo->anyja_neve = $request->anyja_neve;
-        $jelentkezo->szuletesi_datum = $request->szuletesi_datum;
-        $jelentkezo->szuletesi_hely = $request->szuletesi_hely;
-        $jelentkezo->email = $request->email;
-        $jelentkezo->telefonszam = $request->telefonszam;
-        $jelentkezo->allando_lakcim = $request->allando_lakcim;
-        $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
-        $jelentkezo->neme = $request->neme;
-        $jelentkezo->diak_azonosito = $request->diak_azonosito;
-        $jelentkezo->szemelyi_igazolvany_szam = $request->szemelyi_igazolvany_szam;
-        $jelentkezo->taj_szam = $request->taj_szam;
-        $jelentkezo->adoszam = $request->adoszam;
-        $jelentkezo->erettsegi_bizonyitvany_szama = $request->erettsegi_bizonyitvany_szama;
-        $jelentkezo->szakmai_bizonyitvany_szama = $request->szakmai_bizonyitvany_szama;
-        $jelentkezo->bankszamlaszam = $request->bankszamlaszam;
-        $jelentkezo->statusz = $request->statusz;
-        $jelentkezo->save();
-        return $jelentkezo;
-    } */
 
     public function beiratkozo(Request $request, $id)
     {

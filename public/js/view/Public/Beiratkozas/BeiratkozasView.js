@@ -3,6 +3,7 @@ class BeiratkozasView {
     constructor(elem, szuloElem) {
         this.#elem = elem;
         console.log("beiratkozásView");
+        console.log("elem", elem)
         szuloElem.append(`
         <form method="PATCH" action="/beiratkozo">
         
