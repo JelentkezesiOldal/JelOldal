@@ -9,8 +9,6 @@ class PublicController{
 
         $(window).on("elkuld", (event)=>{
             adatmodel.adatUj("/ujJelentkezo", event.detail);
-            
-            adatmodel.adatUj("/ujJelentkezes", event.detail);
             console.log("he",event.detail)
             //adatmodel.adatBe("/email_kuldes",  event.detail);
         });

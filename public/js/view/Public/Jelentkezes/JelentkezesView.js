@@ -3,7 +3,7 @@ class JelentkezesView{
     #elem=[];
     constructor(elem, szuloElem){
         this.#elem=elem;
-        //console.log("elem", elem)
+        console.log("elem", elem)
         szuloElem.append(`
         <form method="post" name="jelentkezes" action="/ujJelentkezo">
         <label for="tanulo_neve">Név:</label>
@@ -13,7 +13,7 @@ class JelentkezesView{
         <label for="telefonszam">Telefonszám:</label>
         <input type="tel" id="telefonszam" name="telefonszam" requried>
         <label for="szak">Szak kiválasztása:</label>
-        <select name="szak" id="szak">
+        <select name="inditott_id" id="szak">
         </select>
         <button id="elkuld">Elküld</button>
         </form>

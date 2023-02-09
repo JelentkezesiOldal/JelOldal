@@ -10,17 +10,17 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
-    public function index($email){
+    public static function index($email){
         $emailAdat = [
             'cim' => 'Ez egy cim',
             'torzs' => 'Ez egy torzs'
         ];
 
-    
+        echo("emailcontroller");
         // foreach(['vetka.adi@gmail.com', 'vitayz60@gmail.com']as $fogadok){
         //     Mail::to($fogadok)->send(new Email($emailAdat));
         // }
-        Mail::to('kataszundi@gmail.com')
+        Mail::to($email)
         ->send(new Email($emailAdat));
 
         dd("Email sikeresen elküldve.");

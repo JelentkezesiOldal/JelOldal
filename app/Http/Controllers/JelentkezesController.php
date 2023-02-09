@@ -49,13 +49,4 @@ class JelentkezesController extends Controller
         and sz.szak_id = insz.szak_id"));
         return $jelent;
     }
-
-    public function ujJelentkezes(Request $request){
-        $jelentkezes = new Jelentkezes();
-        $jelentkezes -> jelentkezo_id = $request->jelentkezo_id;
-        $jelentkezes -> inditott_id = $request->inditott_id;
-        $jelentkezes->save();
-        
-       
-    }
 }
