@@ -83,11 +83,11 @@ class JelentkezoController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'tanulo_neve' => array('required', 'string', 'min:5', 'max:50'),
-            'email' => array('required', 'email', 'min:8', 'max:50', 'unique:jelentkezos'),
-            'telefonszam' => array('required', 'digits_between:7,20', 'numeric')
+            'email' => array('required', 'email', 'max:50', 'unique:jelentkezos'),
+            'telefonszam' => array('required', 'digits_between:7,15', 'numeric')
         ]);
         if ($validator->fails()) {
-            return response()->json(["message" => $validator->errors()->all()], 400);
+            return response()->json(["message" => $validator->errors()->all()]);
         }
 
 
@@ -104,8 +104,8 @@ class JelentkezoController extends Controller
         //DB::select(DB::raw("insert into jelentkezes ('jelentkezo_id', 'inditott_id') values(11,2)"));
         // return $jelentkezo;
         //$utolsoId, $request->inditott_id
-        $valami=new EmailController();
-        $valami::index($request->email);
+        // $valami=new EmailController();
+        // $valami::index($request->email);
     }
 
 

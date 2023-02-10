@@ -3,9 +3,9 @@ class JelentkezesView{
     #elem=[];
     constructor(elem, szuloElem){
         this.#elem=elem;
-        console.log("elem", elem)
+        console.log("elem", elem);
         szuloElem.append(`
-        <form method="post" name="jelentkezes" action="/ujJelentkezo">
+        <form id="jelentkezes" name="jelentkezes" >
         <label for="tanulo_neve">Név:</label>
         <input type="text" id="tanulo_neve" name="tanulo_neve"  requried>
         <label for="email">Email cím:</label>
@@ -17,7 +17,7 @@ class JelentkezesView{
         </select>
         <button id="elkuld">Elküld</button>
         </form>
-        `)
+        `);
         this.formElem = szuloElem.children("form:last-child");
         this.selectElem = this.formElem.children("select");
          elem.forEach(opcio => {
@@ -26,9 +26,6 @@ class JelentkezesView{
         });
          
         this.elkuldElem= $(`#elkuld`);
-       
-        
-        
         this.elkuldElem.on("click", ()=>{
             //console.log("Elküld a View-ban")
             this.kattintastrigger("elkuld");
@@ -36,6 +33,43 @@ class JelentkezesView{
             //console.log("opcioelem",this.opcioElem)
             
         });
+
+        $(document).ready(function() {
+            $("#jelentkezes").validate({
+              rules: {
+                tanulo_neve : {
+                  required: true,
+                  minlength: 5
+                },
+                telefonszam: {
+                  required: true,
+                  number: true,
+                  minlength: 7
+                },
+                email: {
+                  required: true,
+                  email: true
+                }
+              },
+              messages : {
+                tanulo_neve: {
+                    required: "Kötelező kitölteni",
+                    minlength: "A név minimum 5 karekteresnek kell lennie"
+                },
+                telefonszam: {
+                    required: "Kötelező kitölteni",
+                    number: "Csak szám lehet",
+                    minlength: "A telefonszámnak minimum 7 karekteresnek kell lennie",
+                    maxlength: "A telefonszámnak maximum 15 karekteresnek kell lennie"
+                },
+                email: {
+                    required: "Kötelező kitölteni",
+                    email: "Az emailnek ilyen formátumnak kell lennie: abc@domain.tld"
+                }
+              }
+            });
+          });
+
         
     }
     //pattern="[^\d+%*&@<>;?!]"
