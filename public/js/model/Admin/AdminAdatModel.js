@@ -70,7 +70,7 @@ class AdminAdatModel{
 
     adatTorol(vegpont, adat) {
         console.log(adat);
-        console.log("Töröl: " + adat);
+        //console.log("Töröl: " + adat.inditott_id);
         vegpont += adat.jelentkezo_id + "/" + adat.inditott_id
         console.log(vegpont)
         fetch(vegpont, {

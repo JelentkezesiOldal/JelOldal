@@ -4,7 +4,7 @@ class SzakokView{
     constructor(tomb, szuloElem){
         szuloElem.html(`
         <h2>Elindítható szakok</h2>
-        <form method="post">
+        <form>
             <table class="table table-dark table-striped">
                 <thead>
                     <tr>
