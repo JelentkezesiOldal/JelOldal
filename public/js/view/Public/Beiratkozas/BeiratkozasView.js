@@ -5,10 +5,10 @@ class BeiratkozasView {
         console.log("beiratkozásView");
         console.log("elem", elem)
         szuloElem.append(`
-        <form method="PATCH" action="/beiratkozo">
+        <form>
         
         <label for="tanulo_neve">Tanuló Neve</label>
-        <input type="text" id="tanulo_neve" name="tanulo_neve" value="${elem.tanulo_neve}" ></input><br><br>
+        <input type="text" id="tanulo_neve" name="tanulo_neve" value="${elem.tanulo_neve}"  required></input><br><br>
         
         <label for="email">Email</label>
         <input type="text" id="email" name="email" value="${elem.email}"  ></input><br><br>
@@ -34,13 +34,15 @@ class BeiratkozasView {
         <label for="lakcimkartya">Lakcímkártya képe</label>
         <input type="file" id="lakcimkartya" name="lakcimkartya" ></input><br><br>
         
-        
+ 
         <label for="ertesitescheckbox">Az értesítési cím megegyezik az állandó lakcímmel</label>
         <input type="checkbox" id="ertesitescheckbox" name="ertesitescheckbox" ></input><br><br>
         
         <label for="ertesitesi_cim">Értesítési cím</label>
         <input type="ertesitesi_cim" id="ertesitesi_cim" name="ertesitesi_cim" ></input><br><br>
         
+
+
         <label for="neme">Neme:</label>
         <select id="neme" name="neme">
         <option value="no">Nő</option>
@@ -85,12 +87,12 @@ class BeiratkozasView {
 
         </form>
         `)
-        this.tanuloElem = szuloElem.children("tanulo_neve");
-        this.szuleteskorineveElem = szuloElem.children("szuleteskori_neve");
-        this.anyjaElem = szuloElem.children("anyja_neve");
-        this.szuletesidatumElem = szuloElem.children("szuletesi_datum");
-        this.szuletesihelyElem = szuloElem.children("szuletesi_hely");
-        this.emailElem = szuloElem.children("email");
+        /* this.tanuloElem = szuloElem.children("tanulo_neve");
+        this.szuleteskorineveElem = szuloElem.children("#szuleteskori_neve");
+        this.anyjaElem = szuloElem.children("#anyja_neve");
+        this.szuletesidatumElem = szuloElem.children("#szuletesi_datum");
+        this.szuletesihelyElem = szuloElem.children("#szuletesi_hely");
+        this.emailElem = szuloElem.children("#email");
         this.telefonElem = szuloElem.children("telefonszam");
         this.allandolakcimElem = szuloElem.children("allando_lakcim");
         this.lakcimkartyaElem = szuloElem.children("lakcimkartya");
@@ -109,58 +111,72 @@ class BeiratkozasView {
         //this.szakamibiziszamElem = szuloElem.children("");
         //this.szakmaibiziElem = szuloElem.children("");
         //this.orvosialkalmasElem = szuloElem.children("");
-        this.bankszamlaszamElem = szuloElem.children("bankszamlaszam");
+        this.bankszamlaszamElem = szuloElem.children("bankszamlaszam"); */
 
-
+        this.SetDisabled()
 
         this.formElem = szuloElem.children("form:last-child")
         this.gombElem = this.formElem.children("button")
-            this.gombElem.on("click", ()=>{
-                console.log("Kittintottal");
-                this.UralapAdatok();
-                this.KattintasTrigger("kuldes")
-            });
+        this.gombElem.on("click", () => {
+            console.log("Kittintottal");
+            this.UralapAdatok();
+            this.KattintasTrigger("kuldes")
+        });
 
     }
-    UralapAdatok(){
-        this.#elem.tanulo_neve = this.tanuloElem.val();
-        this.#elem.szuleteskori_neve = this.szuleteskorineveElem.val();
-        this.#elem.anyja_neve = this.anyjaElem.val();
-        this.#elem.szuletesi_datum = this.szuletesidatumElem.val();
-        this.#elem.szuletesi_hely = this.szuletesihelyElem.val();
-        this.#elem.email=this.emailElem.val();
-        this.#elem.telefonszam = this.telefonElem.val();
-        this.#elem.allando_lakcim = this.allandolakcimElem.val();
-        //this.#elem.lakcimkartya = this.lakcimkartyaElem.val();
-        if (ertesitescheckbox.checked) {
-            this.#elem.ertesitesi_cim = this.allandolakcimElem.val();
-        } else {
-            this.#elem.ertesitesi_cim = this.ertesitesicimElem.val();
-        };
-        this.#elem.neme = this.selectElem.val();
-        this.#elem.diak_azonosito = this.diakazonElem.val();
-        //this.#elem.diakigazolvany = this.diakigazolvanyElem.val();
-        this.#elem.szemelyi_igazolvany_szam = this.szemelyiszamElem.val();
-        //this.#elem.szemelyi_igazolvany = this.szemelyiszamElem.val();
-        this.#elem.taj_szam = this.tajszamElem.val();
-        //this.#elem.taj_kartya = this.tajkartyaElem.val();
-        this.#elem.adoszam =this.adoszamElem.val();
-        //this.#elem.adoigazolvany = this.adoigazolvanyElem.val();
-        this.#elem.erettsegi_bizonyitvany_szama = this.erettsegiszamElem.val();
-       // this.#elem.erettsegi_bizonyitvany = this.erettsegibiziElem.val();
-       // this.#elem.szakmai_bizonyitvany_szama
-        //this.#elem.szakmai_bizonyitvany
-        //this.#elem.orvosi_alkalmassági
-        this.#elem.bankszamlaszam = this.bankszamlaszamElem.val();
-
+    SetDisabled() {
+        $(document).ready(function() {
+            $("#ertesitescheckbox").click(function() {
+              if ($(this).is(":checked")) {
+                $("#ertesitesi_cim").attr("disabled", true);
+              } else {
+                $("#ertesitesi_cim").attr("disabled", false);
+              }
+            });
+          });
         
-}
 
-    KattintasTrigger(esemenyhivo){
-        const esemeny = new CustomEvent(esemenyhivo,{detail:this.#elem});
+    }
+
+    UralapAdatok() {
+        this.#elem.tanulo_neve = $('#tanulo_neve').val();
+        this.#elem.szuleteskori_neve = $('#szuleteskori_neve').val();
+        this.#elem.anyja_neve = $('#anyja_neve').val();
+        this.#elem.szuletesi_datum = $('#szuletesi_datum').val();
+        this.#elem.szuletesi_hely = $('#szuletesi_hely').val();
+        this.#elem.email = $('#email').val();
+        this.#elem.telefonszam = $('#telefonszam').val();
+        this.#elem.allando_lakcim = $('#allando_lakcim').val();
+        this.#elem.lakcimkartya =$('#lakcimkartya').val();
+        if (ertesitescheckbox.checked) {
+            this.#elem.ertesitesi_cim = $('#allando_lakcim').val();
+        } else {
+            this.#elem.ertesitesi_cim = $('#ertesitesi_cim').val();
+        };
+        this.#elem.neme = $('#neme').val();
+        this.#elem.diak_azonosito = $('#diak_azonosito').val();
+        this.#elem.diakigazolvany = $('#diakigazolvany').val();
+        this.#elem.szemelyi_igazolvany_szam = $('#szemelyi_igazolvany_szam').val();
+        this.#elem.szemelyi_igazolvany = $('#szemelyi_igazolvany').val();
+        this.#elem.taj_szam = $('#taj_szam').val();
+        this.#elem.taj_kartya = $('#taj_kartya').val();
+        this.#elem.adoszam = $('#adoszam').val();
+        this.#elem.adoigazolvany = $('#adoigazolvany').val();
+        this.#elem.erettsegi_bizonyitvany_szama = $('#erettsegi_bizonyitvany_szama').val();
+        this.#elem.erettsegi_bizonyitvany = $('#erettsegi_bizonyitvany').val();
+        this.#elem.szakmai_bizonyitvany_szama =$('#szakmai_bizonyitvany_szama').val() ;
+        this.#elem.szakmai_bizonyitvany = $('#szakmai_bizonyitvany').val();
+        this.#elem.orvosi_alkalmassági = $('#orvosi_alkalmassági').val();
+        this.#elem.bankszamlaszam = $('#bankszamlaszam').val();
+
+
+    }
+
+    KattintasTrigger(esemenyhivo) {
+        const esemeny = new CustomEvent(esemenyhivo, { detail: this.#elem });
         console.log("KattintasTrigger");
         window.dispatchEvent(esemeny);
-        }
+    }
 
 
 }

@@ -12,6 +12,7 @@ class BeiratkozasController{
         $(window).on("kuldes", (event)=>{
             console.log("Elküld a controllerben");
             this.vegpont = "/beiratkozo"
+            console.log("adatmod elott",event.detail)
             beiratkozasmodel.adatModosit(this.vegpont, event.detail);
             console.log(event.detail);
         });
