@@ -20,13 +20,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
-
-
-
-
 /*******************************Admin***************************************/
 Route::get('/dashboard', function () {
    return view('dashboard');
@@ -53,13 +46,13 @@ Route::middleware(['auth'])->group(function () {
 /*******************************Public**************************************/
 Route::middleware(['PublicPages'])->group(function (){
 
-    
-    Route::post('/ujJelentkezo/{id}', [JelentkezoController::class, 'ujJelentkezo']);
-    //Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
-    Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
-    Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
-    Route::get('/email_kuldes', [EmailController::class, 'index']);
 });
+
+Route::post('/ujJelentkezo/{id}', [JelentkezoController::class, 'ujJelentkezo']);
+//Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
+Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
+Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
+Route::get('/email_kuldes', [EmailController::class, 'index']);
 
 Route::get('/show/{id}', [JelentkezoController::class, 'show']);
 Route::patch('/beiratkozo/{id}', [JelentkezoController::class, 'beiratkozo']);
@@ -79,8 +72,5 @@ Route::get('/admin', function () {
 Route::get('/beiratkozas', function () {
     return view('beiratkozas');
 });
-
-
-
 
 require __DIR__.'/auth.php';

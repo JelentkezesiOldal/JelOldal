@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -82,12 +83,14 @@ class JelentkezoController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'tanulo_neve' => array('required', 'string', 'min:5', 'max:50'),
-            'email' => array('required', 'email', 'min:8', 'max:50', 'unique:jelentkezos'),
-            'telefonszam' => array('required', 'digits_between:7,20', 'numeric')
+            'email' => array('required', 'email', 'max:50', 'unique:jelentkezos'),
+            'telefonszam' => array('required', 'digits_between:7,15', 'numeric')
         ]);
         if ($validator->fails()) {
-            return response()->json(["message" => $validator->errors()->all()], 400);
+            return response()->json(["message" => $validator->errors()->all()]);
         }
+
+
         $jelentkezo = new Jelentkezo();
         $jelentkezo->tanulo_neve = $request->tanulo_neve;
         $jelentkezo->email = $request->email;
@@ -95,12 +98,18 @@ class JelentkezoController extends Controller
         $jelentkezo->statusz = "beiratkozás alatt";
         // $jelentkezo->inditott_id = $request->inditott_id;
         $jelentkezo->save();
-        // DB::select(DB::raw("insert into jelentkezes ('jelentkezo_id', 'inditott_id') values($jelentkezo->jelentkezo_id, $jelentkezo->inditott_id)"));
+        /*echo*/ $utolsoId = $jelentkezo->jelentkezo_id;
+        $data=array('jelentkezo_id'=>$utolsoId, 'inditott_id'=>$request->inditott_id);
+        DB::table('jelentkezes')->insert($data);
+        //DB::select(DB::raw("insert into jelentkezes ('jelentkezo_id', 'inditott_id') values(11,2)"));
         // return $jelentkezo;
-
-        //EmailController::index($request->email);
+        //$utolsoId, $request->inditott_id
+        // $valami=new EmailController();
+        // $valami::index($request->email);
     }
 
+
+   
     
 
     public function jelentkezesSzak(Request $request)
