@@ -8,10 +8,6 @@ use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\JelentkezesController;
 use App\Http\Controllers\SzakController;
 use App\Http\Controllers\ProfileController;
-<<<<<<< HEAD
-=======
-
->>>>>>> 33e337d55726c2ceca584af0ed680fc7773e149d
 use Illuminate\Support\Facades\Route;
 
 /*
