@@ -48,16 +48,16 @@ class PublicAdatModel {
         vegpont += "/" + adat.jelentkezo_id;
         console.log("Modosit + id ::",vegpont);
         fetch(vegpont, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': this.token
+                'X-CSRF-TOKEN': this.#token
             },
             body: JSON.stringify(adat),
         })
-            .then((response) => response.text)
-            .then((adat) => {
-                console.log("Modositas:  ",adat);
+            .then((response) => response.json())
+            .then(() => {
+                console.log("sikeres mod");
             })
             .catch((error) => {
                 console.error('Error:', error);

@@ -121,6 +121,7 @@ class JelentkezoController extends Controller
 
     public function beiratkozo(Request $request, $id)
     {
+
         $jelentkezo = Jelentkezo::find($id);
         $data = [
             'tanulo_neve' => $request->tanulo_neve,
@@ -142,16 +143,16 @@ class JelentkezoController extends Controller
             'bankszamlaszam' => $request->bankszamlaszam,
             'statusz' => $request->statusz,
         ];
-    
+        
         foreach ($data as $key => $value) {
             if (!empty($value)) {
                 $jelentkezo->$key = $value;
             }
         }
-    
+        
         $jelentkezo->save();
-        return view('beiratkozasSiker');
+        //return view('beiratkozasSiker');
         //return view('/BeiratkozasSikerult');
     }
-
+    
 }

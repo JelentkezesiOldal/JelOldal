@@ -20,8 +20,48 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*******************************Admin***************************************/
+Route::get('/dashboard', function () {
+   return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/', function () {
+Route::middleware(['auth'])->group(function () {
+   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+   //admin lekérések
+   Route::get('/admin/osszes', [JelentkezesController::class, 'osszes']);
+   Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
+   Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
+   Route::get('/admin/kereses/{ertek}', [UserController::class, 'kereses']);
+   //admin törlések
+   Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
+   //admin újadatok
+   Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
+
+   
+});
+
+
+/*******************************Public**************************************/
+Route::middleware(['PublicPages'])->group(function (){
+
+});
+
+Route::post('/ujJelentkezo/{id}', [JelentkezoController::class, 'ujJelentkezo']);
+//Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
+Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
+Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
+Route::get('/email_kuldes', [EmailController::class, 'index']);
+
+Route::get('/show/{id}', [JelentkezoController::class, 'show']);
+Route::patch('/beiratkozo/{id}', [JelentkezoController::class, 'beiratkozo']);
+Route::patch('/file_upload',[FileController::class, 'store'])->name('beiratkozas');
+
+/******************************Oldalak**************************************/
+
+
+Route::get('/', function () {   
     return view('index');
 });
 
@@ -32,41 +72,5 @@ Route::get('/admin', function () {
 Route::get('/beiratkozas', function () {
     return view('beiratkozas');
 });
-Route::get('/show/{id}', [JelentkezoController::class, 'show']);
-Route::patch('/beiratkozo/{id}', [JelentkezoController::class, 'beiratkozo']);
-Route::patch('/file_upload',[FileController::class, 'store'])->name('beiratkozas');
-
-
- Route::get('/dashboard', function () {
-    return view('dashboard');
- })->middleware(['auth'])->name('dashboard');
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    
-});
-
-//admin lekérések
-Route::get('/admin/osszes', [JelentkezesController::class, 'osszes']);
-Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
-Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
-Route::get('/admin/kereses/{ertek}', [UserController::class, 'kereses']);
-//admin törlések
-Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
-//admin újadatok
-Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
-
-
-Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
-Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
-
-Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
-
-
-Route::get('/email_kuldes', [EmailController::class, 'index']);
-
 
 require __DIR__.'/auth.php';
