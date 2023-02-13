@@ -15,7 +15,7 @@ class JelentkezesView{
         <label for="szak">Szak kiválasztása:</label>
         <select name="inditott_id" id="szak">
         </select>
-        <button id="elkuld">Elküld</button>
+        <input type="button" id="elkuld" value="Elküld">
         </form>
         `);
         this.formElem = szuloElem.children("form:last-child");
@@ -28,11 +28,13 @@ class JelentkezesView{
         this.elkuldElem= $(`#elkuld`);
         this.elkuldElem.on("click", ()=>{
             //console.log("Elküld a View-ban")
+            this.adatGyujtes();
             this.kattintastrigger("elkuld");
-            this.opcioElem = $('#szak').find(':selected').val();
+
             //console.log("opcioelem",this.opcioElem)
             
         });
+
 
         $(document).ready(function() {
             $("#jelentkezes").validate({
@@ -69,11 +71,17 @@ class JelentkezesView{
               }
             });
           });
-
-        
+          
     }
-    //pattern="[^\d+%*&@<>;?!]"
-    //pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+    
+    adatGyujtes(){
+      this.jelentkezoAdat = {};
+      this.opcioElem = $('#szak').find(':selected').val();
+      this.jelentkezoAdat.szak = $('#szak').val();
+      this.jelentkezoAdat.tanulo_neve = $('#tanulo_neve').val();
+      this.jelentkezoAdat.email = $('#email').val();
+      this.jelentkezoAdat.telELem = $('#telefonszam').val();
+    }
 
     kattintastrigger(esemenyNeve){
         const esemeny = new CustomEvent(esemenyNeve, {detail:this.#elem});
