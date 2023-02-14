@@ -95,7 +95,7 @@ class JelentkezoController extends Controller
         $jelentkezo->tanulo_neve = $request->tanulo_neve;
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
-        $jelentkezo->statusz = "beiratkozás alatt";
+        $jelentkezo->statusz = "Jelentkezve";
         // $jelentkezo->inditott_id = $request->inditott_id;
         $jelentkezo->save();
         /*echo*/ $utolsoId = $jelentkezo->jelentkezo_id;
@@ -141,7 +141,7 @@ class JelentkezoController extends Controller
             'erettsegi_bizonyitvany_szama' => $request->erettsegi_bizonyitvany_szama,
             'szakmai_bizonyitvany_szama' => $request->szakmai_bizonyitvany_szama,
             'bankszamlaszam' => $request->bankszamlaszam,
-            'statusz' => $request->statusz,
+            'statusz' => "Beiratkozasa alatt",
         ];
         
         foreach ($data as $key => $value) {
