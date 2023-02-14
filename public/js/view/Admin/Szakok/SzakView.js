@@ -4,7 +4,7 @@ class SzakView{
         this.#elem = elem
         szuloElem.append(`
             <tr>
-                <td name="szak_id">${elem.szak_id}</td>
+                <td>${elem.szak_id}</td>
                 <td>${elem.megnevezes}</td>
                 <td>${elem.iskola_id}</td>
                 <td>${elem.elofeltetel}</td>
@@ -25,3 +25,5 @@ class SzakView{
 }
 
 export default SzakView
+
+// ${elem.szak_id}

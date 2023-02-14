@@ -28,23 +28,24 @@ class UserController extends Controller
     {
         $user = new User();
         $user->ugyintezo_id = $request->ugyintezo_id;
-        $user->felhasznalonev = $request->felhasznalonev;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->master = $request->master;  
-        $user->szak = $request->szak;   
+        $user->szak_id = $request->szak_id;   
         $user->save();
+
     }
 
     public function update(Request $request, $id)
     {
         $user = User::find($id);
         $user->ugyintezo_id = $request->ugyintezo_id;
-        $user->felhasznalonev = $request->felhasznalonev;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->master = $request->master;  
-        $user->szak = $request->szak; 
+        $user->szak_id = $request->szak_id; 
         $user->save();
     }
 
@@ -54,13 +55,15 @@ class UserController extends Controller
         return $userszak;
     }
 
-    public function kereses($ertek){ 
+    public function kereses($ertek){
         $keres = DB::table('users')
+            ->join('szaks', 'szaks.szak_id', '=', 'users.szak_id')
+            ->select('users.*', 'szaks.megnevezes')
             ->where('ugyintezo_id', 'like', '%'.$ertek.'%')
             ->orwhere('name', 'like', '%'.$ertek.'%')
             ->orwhere('email', 'like', '%'.$ertek.'%')
             ->orwhere('master', 'like', '%'.$ertek.'%')
-            ->orwhere('szak_id', 'like', '%'.$ertek.'%')
+            ->orwhere('megnevezes', 'like', '%'.$ertek.'%')
             ->get();
         return $keres;
     }

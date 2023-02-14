@@ -25,18 +25,18 @@ class PublicAdatModel {
 
     adatUj(vegpont, adat) {
         //console.log("elküld a modelben")
+        console.log("ezt kéne megkapnia", adat)
         fetch(vegpont, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN':this.token
+                'X-CSRF-TOKEN':this.#token
             },
             body: JSON.stringify(adat),
         })
             .then((response) => response.json())
             .then(() => {
-                console.log(adat);
-                
+                console.log(vegpont);
             })
             .catch((error) => {
                 console.error('Error: nem jo', error);

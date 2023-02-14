@@ -50,7 +50,6 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['PublicPages'])->group(function (){
 
 });
-
 Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
 //Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
 Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
@@ -76,8 +75,18 @@ Route::get('/beiratkozas', function () {
     return view('beiratkozas');
 });
 
-Route::get('/ujJelentkezo', function(){
-    return view('/ujJelentkezo');
-});
+//ADMIN DOLGOK KIVÜL HOGY MENJEN
+//admin lekérések
+Route::get('/admin/osszes', [JelentkezesController::class, 'osszes']);
+Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
+Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
+Route::get('/admin/kereses/{ertek}', [UserController::class, 'kereses']);
+//admin törlések
+Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
+//admin újadatok
+Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
+Route::post('/admin/ujFelhasznalo', [UserController::class, 'store']);
+
+
 
 require __DIR__.'/auth.php';
