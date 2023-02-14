@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchivaltController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\InditottSzakController;
@@ -38,7 +39,9 @@ Route::middleware(['auth'])->group(function () {
    Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
    //admin újadatok
    Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
-
+   //archívum
+   Route::post('/admin/ujArchivum', [JelentkezesController::class, 'ujArchivalt']);
+   Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
    
 });
 
@@ -47,7 +50,6 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['PublicPages'])->group(function (){
 
 });
-//Route::post('/ujJelentkezo', [JelentkezoController::class, 'store']);
 Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
 //Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
 Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
