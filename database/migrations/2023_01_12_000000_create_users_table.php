@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('password');
             //ugyintezo: 0             master: 1
             $table->boolean('master')->default(false);
-            $table->foreignId('szak_id')->references('szak_id')->on('szaks')->default(2);
+            $table->foreignId('szak_id')->references('szak_id')->on('szaks');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -28,7 +28,7 @@ class SzakController extends Controller
         $szak = new Szak();
         $szak->szak_id = $request->szak_id;
         $szak->megnevezes = $request->megnevezes;
-        $szak->iskola_id = $request->iskola_id;
+        //$szak->iskola_id = $request->iskola_id;
         $szak->elofeltetel = $request->elofeltetel;
         $szak->hany_felev = $request->hany_felev;
         $szak->save();
@@ -39,7 +39,7 @@ class SzakController extends Controller
         $szak = Szak::find($id);
         $szak->szak_id = $request->szak_id;
         $szak->megnevezes = $request->megnevezes;
-        $szak->iskola_id = $request->iskola_id;
+        //$szak->iskola_id = $request->iskola_id;
         $szak->elofeltetel = $request->elofeltetel;
         $szak->hany_felev = $request->hany_felev;
         $szak->save();
