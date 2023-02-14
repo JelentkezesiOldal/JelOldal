@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archivalt;
 use Illuminate\Http\Request;
-use App\Model\Archivalt;
+use Illuminate\Support\Facades\DB;
 
 class ArchivaltController extends Controller
 {
@@ -36,5 +37,15 @@ class ArchivaltController extends Controller
         $archive->jelentkezo_id = $request->jelentkezo_id;
         $archive->inditott_id = $request->inditott_id;
         $archive->save();
+    }
+
+    public function osszesArchivalt(){
+        $archiv = DB::select(
+            DB::raw(
+                "select * from archivalts ar, jelentkezos jos, inditott_szaks insz, szaks sz
+        where ar.jelentkezo_id = jos.jelentkezo_id 
+        and ar.inditott_id = insz.inditott_id
+        and sz.szak_id = insz.szak_id"));
+        return $archiv;
     }
 }
