@@ -1,11 +1,10 @@
-
-
 body {
-    margin: 20px 0 0 10px;
-    font-family: 'Lato';
+    margin: auto;
+    font-family: "Lato";
     font-size: 20px;
-    width: 300px;
-  }
+    display: flex;
+    justify-content: center;
+}
 label.error {
     color: red;
     font-size: 1rem;
@@ -13,7 +12,8 @@ label.error {
     margin-top: 5px;
 }
 
-input.error, textarea.error {
+input.error,
+textarea.error {
     border: 1px solid red;
     font-weight: 300;
     color: red;
@@ -23,8 +23,16 @@ label {
     width: 300px;
     display: inline-block;
     margin-top: 20px;
-  }
+}
 
-  label span {
-  font-size: 1rem;
+label span {
+    font-size: 1rem;
+}
+
+main {
+    flex-direction: column;
+}
+
+#elkuld {
+  margin-top: 10px;
 }

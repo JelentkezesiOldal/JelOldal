@@ -76,4 +76,8 @@ Route::get('/beiratkozas', function () {
     return view('beiratkozas');
 });
 
+Route::get('/ujJelentkezo', function(){
+    return view('/ujJelentkezo');
+});
+
 require __DIR__.'/auth.php';

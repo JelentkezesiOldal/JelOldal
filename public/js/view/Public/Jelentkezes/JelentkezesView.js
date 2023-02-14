@@ -7,16 +7,16 @@ class JelentkezesView{
         console.log("elem", elem);
         szuloElem.append(`
         <form id="jelentkezes" name="jelentkezes" >
-        <label for="tanulo_neve">Név:</label>
-        <input type="text" id="tanulo_neve" name="tanulo_neve"  requried>
-        <label for="email">Email cím:</label>
-        <input type="email" id="email" name="email"  requried>
-        <label for="telefonszam">Telefonszám:</label>
-        <input type="tel" id="telefonszam" name="telefonszam" requried>
-        <label for="szak">Szak kiválasztása:</label>
-        <select name="inditott_id" id="szak">
+        <label for="tanulo_neve" class="form-label">Név:</label>
+        <input type="text" id="tanulo_neve" name="tanulo_neve" class="form-control" placeholder="Minta Pista" requried>
+        <label for="email" class="form-label">Email cím:</label>
+        <input type="email" id="email" name="email"  class="form-control" placeholder="minta@gmail.com" requried>
+        <label for="telefonszam" class="form-label">Telefonszám:</label>
+        <input type="tel" id="telefonszam" name="telefonszam" class="form-control" placeholder="06012345678" requried>
+        <label for="szak" class="form-label">Szak kiválasztása:</label>
+        <select name="inditott_id" id="szak" class="form-select" >
         </select>
-        <input type="button" id="elkuld" value="Elküld">
+        <input type="button" id="elkuld" value="Elküld" class="btn btn-outline-secondary" >
         </form>
         `);
         this.formElem = szuloElem.children("form:last-child");
@@ -37,41 +37,41 @@ class JelentkezesView{
         });
 
 
-        // $(document).ready(function() {
-        //     $("#jelentkezes").validate({
-        //       rules: {
-        //         tanulo_neve : {
-        //           required: true,
-        //           minlength: 5
-        //         },
-        //         telefonszam: {
-        //           required: true,
-        //           number: true,
-        //           minlength: 7
-        //         },
-        //         email: {
-        //           required: true,
-        //           email: true
-        //         }
-        //       },
-        //       messages : {
-        //         tanulo_neve: {
-        //             required: "Kötelező kitölteni",
-        //             minlength: "A név minimum 5 karekteresnek kell lennie"
-        //         },
-        //         telefonszam: {
-        //             required: "Kötelező kitölteni",
-        //             number: "Csak szám lehet",
-        //             minlength: "A telefonszámnak minimum 7 karekteresnek kell lennie",
-        //             maxlength: "A telefonszámnak maximum 15 karekteresnek kell lennie"
-        //         },
-        //         email: {
-        //             required: "Kötelező kitölteni",
-        //             email: "Az emailnek ilyen formátumnak kell lennie: abc@domain.tld"
-        //         }
-        //       }
-        //     });
-        //   });
+        $(document).ready(function() {
+            $("#jelentkezes").validate({
+              rules: {
+                tanulo_neve : {
+                  required: true,
+                  minlength: 5
+                },
+                telefonszam: {
+                  required: true,
+                  number: true,
+                  minlength: 7
+                },
+                email: {
+                  required: true,
+                  email: true
+                }
+              },
+              messages : {
+                tanulo_neve: {
+                    required: "Kötelező kitölteni",
+                    minlength: "A névnek minimum 5 karekteresnek kell lennie"
+                },
+                telefonszam: {
+                    required: "Kötelező kitölteni",
+                    number: "Csak szám lehet",
+                    minlength: "A telefonszámnak minimum 7 karekteresnek kell lennie",
+                    maxlength: "A telefonszámnak maximum 15 karekteresnek kell lennie"
+                },
+                email: {
+                    required: "Kötelező kitölteni",
+                    email: "Az emailnek ilyen formátumnak kell lennie: abc@domain.tld"
+                }
+              }
+            });
+          });
           
     }
     
