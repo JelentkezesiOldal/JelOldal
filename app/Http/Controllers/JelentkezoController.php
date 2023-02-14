@@ -138,7 +138,7 @@ class JelentkezoController extends Controller
             'erettsegi_bizonyitvany_szama' => $request->erettsegi_bizonyitvany_szama,
             'szakmai_bizonyitvany_szama' => $request->szakmai_bizonyitvany_szama,
             'bankszamlaszam' => $request->bankszamlaszam,
-            'statusz' => $request->statusz,
+            'statusz' => "Beiratkozasa alatt",
         ];
         
         foreach ($data as $key => $value) {
