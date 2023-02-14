@@ -29,30 +29,30 @@ class JelentkezoController extends Controller
         Jelentkezo::find($id)->delete();
     }
 
-    public function store(Request $request)
-    {
-        $jelentkezo = new Jelentkezo();
-        $jelentkezo->jelentkezo_id = $request->jelentkezo_id;
-        $jelentkezo->tanulo_neve = $request->tanulo_neve;
-        $jelentkezo->szuleteskori_neve = $request->szuleteskori_neve;
-        $jelentkezo->anyja_neve = $request->anyja_neve;
-        $jelentkezo->szuletesi_datum = $request->szuletesi_datum;
-        $jelentkezo->szuletesi_hely = $request->szuletesi_hely;
-        $jelentkezo->email = $request->email;
-        $jelentkezo->telefonszam = $request->telefonszam;
-        $jelentkezo->allando_lakcim = $request->allando_lakcim;
-        $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
-        $jelentkezo->neme = $request->neme;
-        $jelentkezo->diak_azonosito = $request->diak_azonosito;
-        $jelentkezo->szemelyi_igazolvany_szam = $request->szemelyi_igazolvany_szam;
-        $jelentkezo->taj_szam = $request->taj_szam;
-        $jelentkezo->adoszam = $request->adoszam;
-        $jelentkezo->erettsegi_bizonyitvany_szama = $request->erettsegi_bizonyitvany_szama;
-        $jelentkezo->szakmai_bizonyitvany_szama = $request->szakmai_bizonyitvany_szama;
-        $jelentkezo->bankszamlaszam = $request->bankszamlaszam;
-        $jelentkezo->statusz = $request->statusz;
-        $jelentkezo->save();
-    }
+    // public function store(Request $request)
+    // {
+    //     $jelentkezo = new Jelentkezo();
+    //     $jelentkezo->jelentkezo_id = $request->jelentkezo_id;
+    //     $jelentkezo->tanulo_neve = $request->tanulo_neve;
+    //     $jelentkezo->szuleteskori_neve = $request->szuleteskori_neve;
+    //     $jelentkezo->anyja_neve = $request->anyja_neve;
+    //     $jelentkezo->szuletesi_datum = $request->szuletesi_datum;
+    //     $jelentkezo->szuletesi_hely = $request->szuletesi_hely;
+    //     $jelentkezo->email = $request->email;
+    //     $jelentkezo->telefonszam = $request->telefonszam;
+    //     $jelentkezo->allando_lakcim = $request->allando_lakcim;
+    //     $jelentkezo->ertesitesi_cim = $request->ertesitesi_cim;
+    //     $jelentkezo->neme = $request->neme;
+    //     $jelentkezo->diak_azonosito = $request->diak_azonosito;
+    //     $jelentkezo->szemelyi_igazolvany_szam = $request->szemelyi_igazolvany_szam;
+    //     $jelentkezo->taj_szam = $request->taj_szam;
+    //     $jelentkezo->adoszam = $request->adoszam;
+    //     $jelentkezo->erettsegi_bizonyitvany_szama = $request->erettsegi_bizonyitvany_szama;
+    //     $jelentkezo->szakmai_bizonyitvany_szama = $request->szakmai_bizonyitvany_szama;
+    //     $jelentkezo->bankszamlaszam = $request->bankszamlaszam;
+    //     $jelentkezo->statusz = $request->statusz;
+    //     $jelentkezo->save();
+    // }
 
     public function update(Request $request, $id)
     {
@@ -104,6 +104,7 @@ class JelentkezoController extends Controller
         //DB::select(DB::raw("insert into jelentkezes ('jelentkezo_id', 'inditott_id') values(11,2)"));
         // return $jelentkezo;
         //$utolsoId, $request->inditott_id
+
         // $valami=new EmailController();
         // $valami::index($request->email);
     }

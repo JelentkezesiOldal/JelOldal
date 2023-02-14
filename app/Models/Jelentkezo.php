@@ -27,6 +27,6 @@ class Jelentkezo extends Model
         'erettsegi_bizonyitvany_szama',
         'szakmai_bizonyitvany_szama',
         'bankszamlaszam',
-        'statusz',
+        'statusz'
     ];
 }

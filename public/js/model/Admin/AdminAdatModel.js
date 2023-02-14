@@ -1,9 +1,9 @@
 class AdminAdatModel{
     #adatok
-    #ideig = []
+    #token
     constructor(token){
         console.log("AdminAdatModel")
-        this.token = token
+        this.#token = token
     }
 
     adatBe(vegpont, myCallback){
@@ -12,7 +12,7 @@ class AdminAdatModel{
             method:"GET",
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': this.token,
+                'X-CSRF-TOKEN': this.#token,
             }
         })
         .then((response) => response.json())
@@ -32,14 +32,12 @@ class AdminAdatModel{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': this.token,
+                'X-CSRF-TOKEN': this.#token,
             },
             body: JSON.stringify(adat),
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(vegpont)
-                console.log('Újadat: ', this.#ideig = data);
                 console.log(vegpont)
             })
             .catch((error) => {
@@ -77,7 +75,7 @@ class AdminAdatModel{
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
-                'X-CSRF-TOKEN': this.token
+                'X-CSRF-TOKEN': this.#token
             },
             body: JSON.stringify(adat),
         })

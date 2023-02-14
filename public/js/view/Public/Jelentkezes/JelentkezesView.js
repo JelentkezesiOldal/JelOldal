@@ -1,6 +1,7 @@
 import OpcioView from "./OpcioView.js";
 class JelentkezesView{
     #elem=[];
+    #jelentkezoAdat = [];
     constructor(elem, szuloElem){
         this.#elem=elem;
         console.log("elem", elem);
@@ -36,55 +37,54 @@ class JelentkezesView{
         });
 
 
-        $(document).ready(function() {
-            $("#jelentkezes").validate({
-              rules: {
-                tanulo_neve : {
-                  required: true,
-                  minlength: 5
-                },
-                telefonszam: {
-                  required: true,
-                  number: true,
-                  minlength: 7
-                },
-                email: {
-                  required: true,
-                  email: true
-                }
-              },
-              messages : {
-                tanulo_neve: {
-                    required: "Kötelező kitölteni",
-                    minlength: "A név minimum 5 karekteresnek kell lennie"
-                },
-                telefonszam: {
-                    required: "Kötelező kitölteni",
-                    number: "Csak szám lehet",
-                    minlength: "A telefonszámnak minimum 7 karekteresnek kell lennie",
-                    maxlength: "A telefonszámnak maximum 15 karekteresnek kell lennie"
-                },
-                email: {
-                    required: "Kötelező kitölteni",
-                    email: "Az emailnek ilyen formátumnak kell lennie: abc@domain.tld"
-                }
-              }
-            });
-          });
+        // $(document).ready(function() {
+        //     $("#jelentkezes").validate({
+        //       rules: {
+        //         tanulo_neve : {
+        //           required: true,
+        //           minlength: 5
+        //         },
+        //         telefonszam: {
+        //           required: true,
+        //           number: true,
+        //           minlength: 7
+        //         },
+        //         email: {
+        //           required: true,
+        //           email: true
+        //         }
+        //       },
+        //       messages : {
+        //         tanulo_neve: {
+        //             required: "Kötelező kitölteni",
+        //             minlength: "A név minimum 5 karekteresnek kell lennie"
+        //         },
+        //         telefonszam: {
+        //             required: "Kötelező kitölteni",
+        //             number: "Csak szám lehet",
+        //             minlength: "A telefonszámnak minimum 7 karekteresnek kell lennie",
+        //             maxlength: "A telefonszámnak maximum 15 karekteresnek kell lennie"
+        //         },
+        //         email: {
+        //             required: "Kötelező kitölteni",
+        //             email: "Az emailnek ilyen formátumnak kell lennie: abc@domain.tld"
+        //         }
+        //       }
+        //     });
+        //   });
           
     }
     
     adatGyujtes(){
-      this.jelentkezoAdat = {};
       this.opcioElem = $('#szak').find(':selected').val();
-      this.jelentkezoAdat.szak = $('#szak').val();
-      this.jelentkezoAdat.tanulo_neve = $('#tanulo_neve').val();
-      this.jelentkezoAdat.email = $('#email').val();
-      this.jelentkezoAdat.telELem = $('#telefonszam').val();
+      this.#jelentkezoAdat.szak = $('#szak').val();
+      this.#jelentkezoAdat.tanulo_neve = $('#tanulo_neve').val();
+      this.#jelentkezoAdat.email = $('#email').val();
+      this.#jelentkezoAdat.telefonszam = $('#telefonszam').val();
     }
 
     kattintastrigger(esemenyNeve){
-        const esemeny = new CustomEvent(esemenyNeve, {detail:this.#elem});
+        const esemeny = new CustomEvent(esemenyNeve, {detail:this.#jelentkezoAdat});
         window.dispatchEvent(esemeny);
     }
 }

@@ -11,7 +11,7 @@ class Szak extends Model
     protected $primaryKey = 'szak_id';
     protected $fillable = [
         'megnevezes',
-        'iskola_id',
+        //'iskola_id',
         'elofeltetel',
         'hany_felev'
     ];
