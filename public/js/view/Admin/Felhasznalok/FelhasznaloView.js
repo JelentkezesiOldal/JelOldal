@@ -7,12 +7,16 @@ class FelhasznaloView{
             <td>${elem.name}</td>
             <td>${elem.email}</td>
             <td>${elem.megnevezes}</td>
-            <td>${elem.master}</td>
+            <td>${this.getMaster(elem.master)}</td>
         </tr>`)
 
         
     }
-    
+    getMaster(adat){
+        if(adat == 1){
+            return "Master"
+        }
+        return "Ügyintéző"
+    }
 }
-
 export default FelhasznaloView

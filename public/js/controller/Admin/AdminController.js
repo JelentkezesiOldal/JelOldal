@@ -51,6 +51,14 @@ class AdminController{
             adminadatmodel.adatBe(this.vegpont, this.felhasznalokMutat)
         })
 
+        $(window).on("keresJ", (event) => {
+            this.vegpont = "/admin/keresesj"
+            //console.log(this.vegpont)
+            this.vegpont += "/" + event.detail
+            console.log(event.detail)
+            adminadatmodel.adatBe(this.vegpont, this.jelentkezokMutat)
+        })
+
         $(window).on("felvesz", (event) => {
             console.log(event.detail)
             adminadatmodel.adatUj("/admin/ujFelhasznalo", event.detail)

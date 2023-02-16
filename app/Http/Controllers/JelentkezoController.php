@@ -151,5 +151,29 @@ class JelentkezoController extends Controller
         //return view('beiratkozasSiker');
         //return view('/BeiratkozasSikerult');
     }
-    
+    public function keresesj($ertek){
+        $keres = DB::table('jelentkezos')
+            ->select('jelentkezos.*')
+            ->where('tanulo_neve', 'like', '%'.$ertek.'%')
+            ->orwhere('szuleteskori_neve', 'like', '%'.$ertek.'%')
+            ->orwhere('anyja_neve', 'like', '%'.$ertek.'%')
+            ->orwhere('szuletesi_datum', 'like', '%'.$ertek.'%')
+            ->orwhere('szuletesi_hely', 'like', '%'.$ertek.'%')
+            ->orwhere('email', 'like', '%'.$ertek.'%')
+            ->orwhere('telefonszam', 'like', '%'.$ertek.'%')
+            ->orwhere('allando_lakcim', 'like', '%'.$ertek.'%')
+            ->orwhere('lakcimkartya', 'like', '%'.$ertek.'%')
+            ->orwhere('ertesitesi_cim', 'like', '%'.$ertek.'%')
+            ->orwhere('neme', 'like', '%'.$ertek.'%')
+            ->orwhere('diak_azonosito', 'like', '%'.$ertek.'%')
+            ->orwhere('szemelyi_igazolvany_szam', 'like', '%'.$ertek.'%')
+            ->orwhere('taj_szam', 'like', '%'.$ertek.'%')
+            ->orwhere('adoszam', 'like', '%'.$ertek.'%')
+            ->orwhere('erettsegi_bizonyitvany_szama', 'like', '%'.$ertek.'%')
+            ->orwhere('szakmai_bizonyitvany_szama', 'like', '%'.$ertek.'%')
+            ->orwhere('bankszamlaszam', 'like', '%'.$ertek.'%')
+            ->orwhere('statusz', 'like', '%'.$ertek.'%')
+            ->get();
+        return $keres;
+    }
 }

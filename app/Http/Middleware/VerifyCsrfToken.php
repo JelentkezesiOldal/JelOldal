@@ -24,6 +24,7 @@ class VerifyCsrfToken extends Middleware
         "/admin/ujInditottSzak",
         "/szak_indittotSzak",
         "/admin/kereses/*",
+        "/admin/keresesj/*",
         "/admin/ujFelhasznalo",
         "/admin/ujArchivum"
     ];
