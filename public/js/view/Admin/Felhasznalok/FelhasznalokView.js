@@ -7,34 +7,39 @@ class FelhasznalokView{
         szuloElem.html(`
         <div class="row float-end">
             <div class="col input-group">
-                <input type="text" id="keres1" placeholder="Search">
+                <input type="text" class="form-control" id="keres1" placeholder="Search">
             </div>
             <div class="col">
                 <button id="kereses">Keres</button>
             </div>
         </div>
         `)
-        szuloElem.append(`<table>
-        <tr>
-            <th>Felhasználónév</th>
-            <th>E-mail</th>
-            <th>Ideiglenes jelszó</th>
-            <th>Jogosultság</th>
-            <th>Szak</th>
-            <th></th>
-        </tr>
-        <tr>
-            <td><input type="text" id="name" name="name"></td>
-            <td><input type="text" id="email"></td>
-            <td><input type="text" id="password"></td>
-            <td><input type="number" id="master"></td>
-            <td><input type="number" id="szak_id"></td>
-            <td><input type="button" value="Felvesz" id="felvesz"></td>
-        </tr>
+        szuloElem.append(`
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Felhasználónév</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Ideiglenes jelszó</th>
+                    <th scope="col">Jogosultság</th>
+                    <th scope="col">Szak</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Felhasználónév"><input type="text" id="name" name="name"></td>
+                    <td data-label="E-mail"><input type="text" id="email"></td>
+                    <td data-label="Ideiglenes jelszó"><input type="text" id="password"></td>
+                    <td data-label="Jogosultság"><input type="number" id="master"></td>
+                    <td data-label="Szak"><input type="number" id="szak_id"></td>
+                    <td data-label=""><input type="button" value="Felvesz" id="felvesz"></td>
+                </tr>
+            </tbody>
         </table>
         `)
 
-        szuloElem.append(`<table class="table table-dark table-striped">
+        szuloElem.append(`<table class="table table-striped">
             <thead>
                 <tr>
                     <th>Név</th>

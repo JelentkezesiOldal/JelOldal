@@ -4,12 +4,11 @@ class SzakView{
         this.#elem = elem
         szuloElem.append(`
             <tr>
-                <td>${elem.szak_id}</td>
-                <td>${elem.megnevezes}</td>
-                <td>${elem.iskola_id}</td>
-                <td>${elem.elofeltetel}</td>
-                <td>${elem.hany_felev}</td>
-                <td><button id="indit${elem.szak_id}">Indítás</button></td>
+                <td data-label="#">${elem.szak_id}</td>
+                <td data-label="Megnevezés">${elem.megnevezes}</td>
+                <td data-label="Előfeltétel">${elem.elofeltetel}</td>
+                <td data-label="Félévek száma">${elem.hany_felev}</td>
+                <td data-label=""><button id="indit${elem.szak_id}">Indítás</button></td>
             </tr>
         `)
         this.inditElem = $(`#indit${elem.szak_id}`)

@@ -4,17 +4,18 @@ class ArchivaltView{
         this.#elem = elem;
         szuloElem.append(
         `<tr id="J${elem.jelentkezo_id}">
-            <td>${elem.diak_azonosito}</td>
-            <td>${elem.tanulo_neve}</td>
-            <td>${elem.megnevezes}</td>
+            <td data-label="#">${elem.jelentkezo_id}</td>
+            <td data-label="OM azonosító">${elem.diak_azonosito}</td>
+            <td data-label="Tanuló neve">${elem.tanulo_neve}</td>
+            <td data-label="Megnevezés">${elem.megnevezes}</td>
         </tr>`
         )
-
         $("#J"+elem.jelentkezo_id).on("click", () => {
-            console.log("J"+ elem.jelentkezo_id + " katt")
+            console.log("J"+ elem.jelentkezo_id + elem.inditott_id + " katt")
             $(".modal").show()
             modal.append(`
             <div>
+                <p>Szak: ${elem.megnevezes}</p>
                 <p>Tanuló neve: ${elem.tanulo_neve}</p>
                 <p>Születéskori neve: ${elem.szuleteskori_neve}</p>
                 <p>Anyja neve: ${elem.anyja_neve}</p>

@@ -12,9 +12,11 @@ class ArchivaltakView {
         this.modalElem = szuloElem.children("div:last-child");
         this.tenylegmodalElem = this.modalElem.children("div:last-child")
         szuloElem.append(`
-        <table id="jelTab" class="table table-dark table-striped">
-            <thead>
+        <h2 class="cim">Archivált jelentkezések</h2>
+        <table class="table table-hover">
+            <thead class="thead-light">
                 <tr>
+                    <th>#</th>
                     <th>OM azonosító</th>
                     <th>Név</th>
                     <th>Szak</th>
@@ -23,7 +25,6 @@ class ArchivaltakView {
             <tbody>
             </tbody>
         </table>`);
-
         this.tableElem = szuloElem.children("table:last-child");
         this.tbodyElem = this.tableElem.children("tbody");
 

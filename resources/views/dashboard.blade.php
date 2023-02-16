@@ -12,7 +12,7 @@
         <script src="./js/adminMain.js" type="module"></script>
     </head>
 
-    <body>
+    <body id="bootstrap-overrides">
         <main>
             <header>
                 <nav>
