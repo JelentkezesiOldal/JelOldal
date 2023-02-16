@@ -10,7 +10,7 @@ class ArchivaltakView {
         </div>`);
 
         this.modalElem = szuloElem.children("div:last-child");
-        this.tenylegmodalElem = this.modalElem.children("div:last-child")
+        this.tenylegmodalElem = this.modalElem.children("div:last-child");
         szuloElem.append(`
         <h2 class="cim">Archivált jelentkezések</h2>
         <table class="table table-hover">
@@ -28,8 +28,12 @@ class ArchivaltakView {
         this.tableElem = szuloElem.children("table:last-child");
         this.tbodyElem = this.tableElem.children("tbody");
 
-        tomb.forEach(adat => {
-            const adatom = new ArchivaltView(adat, this.tbodyElem, this.tenylegmodalElem);
+        tomb.forEach((adat) => {
+            const adatom = new ArchivaltView(
+                adat,
+                this.tbodyElem,
+                this.tenylegmodalElem
+            );
         });
     }
 }
