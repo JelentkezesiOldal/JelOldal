@@ -41,6 +41,7 @@ return new class extends Migration
             $table->string('szakmai_bizonyitvany')->nullable();
             $table->string('orvosi_alkalmassági')->nullable();
             $table->string('bankszamlaszam')->nullable();
+            $table->string('token')->nullable();
             $table->string('statusz')->nullable();
             $table->timestamps();
         });
