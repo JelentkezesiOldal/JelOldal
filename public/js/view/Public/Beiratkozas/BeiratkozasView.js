@@ -52,7 +52,7 @@ class BeiratkozasView {
 </div>
 
 <div class="second">
-        <div class="mb-3">
+        <div id="secondmb3" class="mb-3">
           
           <label for="diak_azonosito" class="form-label">Diákigazolvány szám</label>
           <input class="form-control" type="text" id="diak_azonosito" name="diak_azonosito" ></input><br><br>
@@ -86,14 +86,12 @@ class BeiratkozasView {
           
           <label for="bankszamlaszam" class="form-label">Bankszámlaszám</label>
           <input class="form-control" type="text" id="bankszamlaszam" name="bankszamlaszam" ></input><br><br>
+          <input id="button" type="submit" value="Elküld" >
         </div>
 </div> 
 
 
-      <div class="button">
-      <input type="submit" value="Elküld" >
-      </div>
-        </form>
+</form>
         `);
         /* this.tanuloElem = szuloElem.children("tanulo_neve");
         this.szuleteskorineveElem = szuloElem.children("#szuleteskori_neve");

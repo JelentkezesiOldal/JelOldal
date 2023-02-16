@@ -8,6 +8,7 @@ use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class JelentkezoController extends Controller
 {
@@ -96,18 +97,23 @@ class JelentkezoController extends Controller
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->statusz = "beiratkozás alatt";
+       /*  $token =Str::random();
+        $jelentkezo->token= $token;
+        $url = url('beiratkozas/'. $token); */
         $jelentkezo->save();
-        /*echo*/ $utolsoId = $jelentkezo->jelentkezo_id;
-        $data=array('jelentkezo_id'=>$utolsoId, 'inditott_id'=>$request->inditott_id);
+
+        /*echo*/
+        $utolsoId = $jelentkezo->jelentkezo_id;
+        $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id);
         DB::table('jelentkezes')->insert($data);
-        $valami=new EmailController();
-        $valami::index($request->email);
+        $valami = new EmailController();
+        $valami::index($request->email /*, $url */);
         // return redirect('BeiratkozasSikerult.php');
     }
 
 
-   
-    
+
+
 
     public function jelentkezesSzak(Request $request)
     {
@@ -140,16 +146,20 @@ class JelentkezoController extends Controller
             'bankszamlaszam' => $request->bankszamlaszam,
             'statusz' => "Beiratkozasa alatt",
         ];
-        
+
         foreach ($data as $key => $value) {
             if (!empty($value)) {
                 $jelentkezo->$key = $value;
             }
         }
-        
+
         $jelentkezo->save();
         //return view('beiratkozasSiker');
         //return view('/BeiratkozasSikerult');
     }
-    
+    public function beiratkozasemail($token){
+        $jelentkezo = Jelentkezo::where('token', $token)->firstOrFail();
+
+        return view('jelentkezes', ['jelentkezo'=>$jelentkezo]);
+    }
 }

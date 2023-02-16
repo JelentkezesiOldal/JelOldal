@@ -9,7 +9,7 @@
     <!-- <link rel="stylesheet" href="../app.css"> -->
     <title>Beiratkozás oldal</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/beiratkozas.css">
+    <link rel="stylesheet" href="../css/beiratkozasCSS.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="./js/beiratkozasMain.js" type="module"></script>
 
