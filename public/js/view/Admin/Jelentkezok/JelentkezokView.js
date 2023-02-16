@@ -21,7 +21,8 @@ class JelentkezokView{
             </div>
         </div>
         `)
-        szuloElem.append(`<table id="jelTab" class="table table-dark table-striped">
+        szuloElem.append(`
+        <table id="jelTab" class="table table-hover">
             <thead>
                 <tr>
                     <th>OM azonosító</th>

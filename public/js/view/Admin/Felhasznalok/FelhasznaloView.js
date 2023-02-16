@@ -4,10 +4,10 @@ class FelhasznaloView{
         console.log("felhasznaloView")
         this.#elem = elem
         szuloElem.append(`<tr>
-            <td>${elem.name}</td>
-            <td>${elem.email}</td>
-            <td>${elem.megnevezes}</td>
-            <td>${this.getMaster(elem.master)}</td>
+            <td data-label="Név">${elem.name}</td>
+            <td data-label="E-mail">${elem.email}</td>
+            <td data-label="Szak">${elem.megnevezes}</td>
+            <td data-label="Jogosultság">${this.getMaster(elem.master)}</td>
         </tr>`)
 
         

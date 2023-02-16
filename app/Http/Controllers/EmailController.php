@@ -10,10 +10,11 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
-    public static function index(){
+    public static function index($email/* , $url */){
+        
         $emailAdat = [
-            'cim' => 'Ez egy cim',
-            'torzs' => 'Ez egy torzs'
+            'cim' => 'Beirakozas',
+            'torzs' =>/*  $url */'Torzs',
         ];
 
         //echo("emailcontroller");
@@ -21,7 +22,7 @@ class EmailController extends Controller
         //     Mail::to($fogadok)->send(new Email($emailAdat));
         // }
         
-        Mail::to('kataszundi@gmail.com')
+        Mail::to($email)
         ->send(new Email($emailAdat));
 
         // dd("BeiratkozasSikerult.php");

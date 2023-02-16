@@ -6,10 +6,10 @@ class JelentkezoView{
         console.log("jelentkezoView")
         this.#elem = elem
         szuloElem.append(`<tr id="J${elem.jelentkezo_id}">
-            <td>${elem.diak_azonosito}</td>
-            <td>${elem.tanulo_neve}</td>
-            <td>${elem.email}</td>
-            <td>${elem.telefonszam}</td>
+            <td data-label="OM azonosító">${elem.diak_azonosito}</td>
+            <td data-label="Név">${elem.tanulo_neve}</td>
+            <td data-label="E-mail">${elem.email}</td>
+            <td data-label="Telefonszám">${elem.telefonszam}</td>
         </tr>`)
     
         $("#J"+elem.jelentkezo_id).on("click", () => {

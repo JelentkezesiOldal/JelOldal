@@ -1,20 +1,21 @@
-class ArchivaltView{
+class ArchivaltView {
     #elem;
-    constructor(elem ,szuloElem, modal){
+    constructor(elem, szuloElem, modal) {
         this.#elem = elem;
         szuloElem.append(
-        `<tr id="J${elem.jelentkezo_id}">
-            <td>${elem.diak_azonosito}</td>
-            <td>${elem.tanulo_neve}</td>
-            <td>${elem.megnevezes}</td>
+            `<tr id="J${elem.jelentkezo_id}">
+            <td data-label="#">${elem.jelentkezo_id}</td>
+            <td data-label="OM azonosító">${elem.diak_azonosito}</td>
+            <td data-label="Tanuló neve">${elem.tanulo_neve}</td>
+            <td data-label="Megnevezés">${elem.megnevezes}</td>
         </tr>`
-        )
-
-        $("#J"+elem.jelentkezo_id).on("click", () => {
-            console.log("J"+ elem.jelentkezo_id + " katt")
-            $(".modal").show()
+        );
+        $("#J" + elem.jelentkezo_id).on("click", () => {
+            console.log("J" + elem.jelentkezo_id + elem.inditott_id + " katt");
+            $(".modal").show();
             modal.append(`
             <div>
+                <p>Szak: ${elem.megnevezes}</p>
                 <p>Tanuló neve: ${elem.tanulo_neve}</p>
                 <p>Születéskori neve: ${elem.szuleteskori_neve}</p>
                 <p>Anyja neve: ${elem.anyja_neve}</p>
@@ -33,13 +34,13 @@ class ArchivaltView{
                 <p>Bankszámlaszám: ${elem.bankszamlaszam}</p>
                 <p>Státusz: ${elem.statusz}</p>
             </div>
-            `)
-    })
-    $(".close").on("click", () => {
-        $(".modal").hide()
-        $(".modal-content div").remove()
-    })
-}
+            `);
+        });
+        $(".close").on("click", () => {
+            $(".modal").hide();
+            $(".modal-content div").remove();
+        });
+    }
 }
 
 export default ArchivaltView;
