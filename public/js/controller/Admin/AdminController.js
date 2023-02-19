@@ -34,7 +34,7 @@ class AdminController{
 
         $(window).on("torol", (event) => {
             this.vegpont = "/admin/torol/"
-            adminadatmodel.adatUj("/admin/ujArchivum", this.archivaltMutat)
+            adminadatmodel.adatUj("/admin/ujArchivum", event.detail)
             adminadatmodel.adatTorol(this.vegpont, event.detail);
             location.reload()
         })
