@@ -35,6 +35,8 @@ class JelentkezoView{
                 <p>Bankszámlaszám: ${elem.bankszamlaszam}</p>
                 <p>Státusz: ${elem.statusz}</p>
                 <spam id="torol${elem.jelentkezo_id}">Törlés</spam>
+                <spam id="mod${elem.jelentkezo_id}">Törlés</spam>
+                <spam id="archiv${elem.jelentkezo_id}">Törlés</spam>
             </div>
             `)
             this.torolElem = $(`#torol${elem.jelentkezo_id}`)

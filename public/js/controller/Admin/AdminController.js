@@ -15,17 +15,14 @@ class AdminController{
             
             adminadatmodel.adatBe();
         })
-        $("#felh").on("click", () => {
-            this.vegpont = "/admin/felPlusSzak"
-            adminadatmodel.adatBe(this.vegpont, this.felhasznalokMutat);
+        $("#felh").on("click", () => { 
+            adminadatmodel.adatBe("/admin/felPlusSzak", this.felhasznalokMutat);
         })
         $("#jele").on("click", () => {
-            this.vegpont = "/admin/osszes"
-            adminadatmodel.adatBe(this.vegpont, this.jelentkezokMutat);
+            adminadatmodel.adatBe("/admin/osszes", this.jelentkezokMutat);
         })
         $("#szak").on("click", () => {
-            this.vegpont = "/admin/inditSzak"
-            adminadatmodel.adatBe(this.vegpont, this.szakokMutat);
+            adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
         })
 
         $("#arch").on("click", () => {
@@ -35,7 +32,7 @@ class AdminController{
         $(window).on("torol", (event) => {
             this.vegpont = "/admin/torol/"
             adminadatmodel.adatUj("/admin/ujArchivum", event.detail)
-            adminadatmodel.adatTorol(this.vegpont, event.detail);
+            adminadatmodel.adatTorol("/admin/torol/", event.detail);
             location.reload()
         })
         $(window).on("indit", (event) => {
@@ -45,17 +42,13 @@ class AdminController{
         })
         $(window).on("keres", (event) => {
             this.vegpont = "/admin/kereses"
-            //console.log(this.vegpont)
             this.vegpont += "/" + event.detail
-            console.log(event.detail)
             adminadatmodel.adatBe(this.vegpont, this.felhasznalokMutat)
         })
 
         $(window).on("keresJ", (event) => {
             this.vegpont = "/admin/keresesj"
-            //console.log(this.vegpont)
             this.vegpont += "/" + event.detail
-            console.log(event.detail)
             adminadatmodel.adatBe(this.vegpont, this.jelentkezokMutat)
         })
 

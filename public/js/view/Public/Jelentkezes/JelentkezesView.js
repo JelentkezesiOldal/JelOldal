@@ -40,7 +40,7 @@ class JelentkezesView {
 
     adatGyujtes() {
         this.opcioElem = $("#szak").find(":selected").val();
-        this.#jelentkezoAdat.szak = $("#szak").val();
+        this.#jelentkezoAdat.inditott_id = $("#szak").val();
         this.#jelentkezoAdat.tanulo_neve = $("#tanulo_neve").val();
         this.#jelentkezoAdat.email = $("#email").val();
         this.#jelentkezoAdat.telefonszam = $("#telefonszam").val();
