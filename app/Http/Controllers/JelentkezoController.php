@@ -88,8 +88,11 @@ class JelentkezoController extends Controller
             'telefonszam' => array('required', 'digits_between:7,15', 'numeric')
         ]);
         if ($validator->fails()) {
-            return response()->json(["message" => $validator->errors()->all()]);
+            return response()->json(["message" => $validator->errors()]);
+            
         }
+
+    //'regex:[^*;?!°(){}%#@$+,[=]'
 
 
         $jelentkezo = new Jelentkezo();
@@ -100,11 +103,11 @@ class JelentkezoController extends Controller
         $token =Str::random();
         $jelentkezo->token= $token;
         $url = url('localhost:8000/beiratkozas/'. $token); 
+
         $jelentkezo->save();
         
         /*echo*/
         $utolsoId = $jelentkezo->jelentkezo_id;
-        
         $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id);
         DB::table('jelentkezes')->insert($data);
         $valami = new EmailController();
