@@ -1,8 +1,9 @@
 import OpcioView from "./OpcioView.js";
 class JelentkezesView {
     #elem = [];
-    #jelentkezoAdat = [];
+    #jelentkezoAdat = {};
     constructor(elem, szuloElem) {
+        
         this.validalas();
         this.#elem = elem;
         console.log("elem", elem);
@@ -43,6 +44,7 @@ class JelentkezesView {
         this.#jelentkezoAdat.tanulo_neve = $("#tanulo_neve").val();
         this.#jelentkezoAdat.email = $("#email").val();
         this.#jelentkezoAdat.telefonszam = $("#telefonszam").val();
+        console.log(this.#jelentkezoAdat);
     }
 
     kattintastrigger(esemenyNeve) {
