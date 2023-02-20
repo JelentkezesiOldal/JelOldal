@@ -39,7 +39,7 @@ class Email extends Mailable
         return new Envelope(
             //tárgy
             from: new Address('monika@proba.com', 'Multkor Monika'),
-            subject: 'Ez a tárgy',
+            subject: 'Szalézi Ágazati Képzőközpot Beiratkozás',
         );
     }
 
