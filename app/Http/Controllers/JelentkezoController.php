@@ -97,18 +97,18 @@ class JelentkezoController extends Controller
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->statusz = "beiratkozás alatt";
-       /*  $token =Str::random();
+        $token =Str::random();
         $jelentkezo->token= $token;
-        $url = url('beiratkozas/'. $token); */
-        $utolsoId = $jelentkezo->jelentkezo_id;
+        $url = url('localhost:8000/beiratkozas/'. $token); 
         $jelentkezo->save();
-
+        
         /*echo*/
+        $utolsoId = $jelentkezo->jelentkezo_id;
         
         $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id);
         DB::table('jelentkezes')->insert($data);
         $valami = new EmailController();
-        $valami::index($request->email /*, $url */);
+        $valami::index($request->email, $request->tanulo_neve, $url);
         // return redirect('BeiratkozasSikerult.php');
     }
 
