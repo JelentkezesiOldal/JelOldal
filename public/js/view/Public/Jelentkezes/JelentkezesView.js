@@ -40,7 +40,7 @@ class JelentkezesView {
 
     adatGyujtes() {
         this.opcioElem = $("#szak").find(":selected").val();
-        this.#jelentkezoAdat.szak = $("#szak").val();
+        this.#jelentkezoAdat.inditott_id = $("#szak").val();
         this.#jelentkezoAdat.tanulo_neve = $("#tanulo_neve").val();
         this.#jelentkezoAdat.email = $("#email").val();
         this.#jelentkezoAdat.telefonszam = $("#telefonszam").val();
@@ -61,6 +61,7 @@ class JelentkezesView {
                     tanulo_neve: {
                         required: true,
                         minlength: 5,
+                        //pattern: `/^*;?!°(){}%#@$+,[=/`,
                     },
                     telefonszam: {
                         required: true,
@@ -77,6 +78,7 @@ class JelentkezesView {
                         required: "Kötelező kitölteni",
                         minlength:
                             "A névnek minimum 5 karekteresnek kell lennie",
+                        //pattern: "haha",
                     },
                     telefonszam: {
                         required: "Kötelező kitölteni",
