@@ -1,7 +1,7 @@
 import FelhasznaloView from "./FelhasznaloView.js";
 
 class FelhasznalokView{
-    #adatok = []
+    #adatok = {}
     constructor(tomb, szuloElem){
         console.log("FelhasznalokView")
         szuloElem.html(`

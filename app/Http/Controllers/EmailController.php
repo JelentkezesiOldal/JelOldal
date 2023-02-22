@@ -10,11 +10,16 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
-    public static function index($email/* , $url */){
+    public static function index($email,$nev,$url){
         
         $emailAdat = [
-            'cim' => 'Beirakozas',
-            'torzs' =>/*  $url */'Torzs',
+            'cim' => 'Beiratkozás',
+             'torzs' => view('emails-beiratkozas')->with([
+                'neve'=> $nev,
+                'urlje'=> $url
+             ])
+            
+
         ];
 
         //echo("emailcontroller");

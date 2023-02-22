@@ -3,7 +3,6 @@ class AdminAdatModel{
     #token
     constructor(token){
         console.log("AdminAdatModel")
-        this.#token = token
     }
 
     adatBe(vegpont, myCallback){
