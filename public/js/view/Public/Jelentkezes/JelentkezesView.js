@@ -61,7 +61,6 @@ class JelentkezesView {
                     tanulo_neve: {
                         required: true,
                         minlength: 5,
-                        //pattern: `/^*;?!°(){}%#@$+,[=/`,
                     },
                     telefonszam: {
                         required: true,
@@ -78,7 +77,6 @@ class JelentkezesView {
                         required: "Kötelező kitölteni",
                         minlength:
                             "A névnek minimum 5 karekteresnek kell lennie",
-                        //pattern: "haha",
                     },
                     telefonszam: {
                         required: "Kötelező kitölteni",
