@@ -112,7 +112,7 @@ class JelentkezoController extends Controller
         DB::table('jelentkezes')->insert($data);
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
-        // return redirect('BeiratkozasSikerult.php');
+        //return view('JelentkezesSikerult.php');
     }
 
 
