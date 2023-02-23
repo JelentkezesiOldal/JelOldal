@@ -14,7 +14,7 @@ class EmailController extends Controller
         
         $emailAdat = [
             'cim' => 'Beiratkozás',
-             'torzs' => view('emails-beiratkozas')->with([
+             'torzs' => view('emails/beiratkozas')->with([
                 'neve'=> $nev,
                 'urlje'=> $url
              ])
@@ -31,6 +31,6 @@ class EmailController extends Controller
         ->send(new Email($emailAdat));
 
         // dd("BeiratkozasSikerult.php");
-        return redirect('/ujJelentkezo');
+        //return view('JelentkezesSikerult');
     }
 }
