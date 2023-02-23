@@ -8,6 +8,7 @@ class JelentkezesView {
         this.#elem = elem;
         console.log("elem", elem);
         szuloElem.append(`
+        <h1 class="cim">Jelentkezési oldal</h1>
         <form id="jelentkezes" name="jelentkezes" >
         <label for="tanulo_neve" class="form-label">Név:</label>
         <input type="text" id="tanulo_neve" name="tanulo_neve" class="form-control" placeholder="Minta Pista" requried>
