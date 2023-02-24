@@ -28,18 +28,27 @@ class AdminController{
         $("#arch").on("click", () => {
             adminadatmodel.adatBe("/admin/archivOsszes", this.archivaltMutat);
         })
+        $(window).on("mod", (event) => {
+            location.reload()
+        })
 
-        $(window).on("torol", (event) => {
-            this.vegpont = "/admin/torol/"
+        $(window).on("archiv", (event) => {
             adminadatmodel.adatUj("/admin/ujArchivum", event.detail)
             adminadatmodel.adatTorol("/admin/torol/", event.detail);
             location.reload()
         })
+
+        $(window).on("torol", (event) => {
+            adminadatmodel.adatTorol("/admin/torol/", event.detail);
+            location.reload()
+        })
+
         $(window).on("indit", (event) => {
             console.log(event.detail)
             adminadatmodel.adatUj("/admin/ujInditottSzak", event.detail)
         
         })
+
         $(window).on("keres", (event) => {
             this.vegpont = "/admin/kereses"
             this.vegpont += "/" + event.detail
@@ -55,6 +64,7 @@ class AdminController{
         $(window).on("felvesz", (event) => {
             console.log(event.detail)
             adminadatmodel.adatUj("/admin/ujFelhasznalo", event.detail)
+            adminadatmodel.adatBe("/admin/felPlusSzak", this.felhasznalokMutat)
         })
     }
     felhasznalokMutat(tomb){

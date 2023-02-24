@@ -34,19 +34,36 @@ class JelentkezoView{
                 <p>Szakmai bizonyítvány száma: ${elem.szakmai_bizonyitvany_szama}</p>
                 <p>Bankszámlaszám: ${elem.bankszamlaszam}</p>
                 <p>Státusz: ${elem.statusz}</p>
+                <spam id="mod${elem.jelentkezo_id}">Módosítás</spam>
+                <spam id="archiv${elem.jelentkezo_id}">Archíválás</spam>
                 <spam id="torol${elem.jelentkezo_id}">Törlés</spam>
-                <spam id="mod${elem.jelentkezo_id}">Törlés</spam>
-                <spam id="archiv${elem.jelentkezo_id}">Törlés</spam>
             </div>
             `)
+            this.modElem = $(`#mod${elem.jelentkezo_id}`)
+            this.archivElem = $(`#archiv${elem.jelentkezo_id}`)
             this.torolElem = $(`#torol${elem.jelentkezo_id}`)
-        
+            
+            this.modElem.on("click", ()=>{
+                console.log("Módosít Gomb")
+                this.kattintastrigger("mod");
+                $(".modal").hide()
+                $(".modal-content div").remove()
+            })
+
+            this.archivElem.on("click", ()=>{
+                console.log("Archív Gomb")
+                this.kattintastrigger("archiv");
+                $(".modal").hide()
+                $(".modal-content div").remove()
+            })
+
             this.torolElem.on("click", ()=>{
                 console.log("Töröl gomb")
                 this.kattintastrigger("torol");
                 $(".modal").hide()
                 $(".modal-content div").remove()
             });
+            
 
         })
 
