@@ -15,16 +15,17 @@ class JelentkezesController extends Controller
         return $jelentkezes;
     }
 
-    public function show($jelentkezo_id, $inditott_id)
+    public function show($jelentkezo_id, $inditott_id, $datum)
     {
         $jelentkez = Jelentkezes::where('jelentkezo_id', $jelentkezo_id)
                                 ->where('inditott_id', $inditott_id)
+                                ->where('datum', $datum)
                                 ->get();
         return $jelentkez[0];   
     }
-    public function destroy($jelentkezo_id, $inditott_id)
+    public function destroy($jelentkezo_id, $inditott_id, $datum)
     {
-        JelentkezesController::show($jelentkezo_id, $inditott_id)->delete();
+        JelentkezesController::show($jelentkezo_id, $inditott_id, $datum)->delete();
     }
 
     public function store(Request $request)
@@ -32,6 +33,7 @@ class JelentkezesController extends Controller
         $jelentkez = new Jelentkezes();
         $jelentkez->jelentkezo_id = $request->jelentkezo_id;
         $jelentkez->inditott_id = $request->inditott_id;
+        $jelentkez->datum = $request->datum;
         $jelentkez->save();
     }
 
@@ -40,6 +42,7 @@ class JelentkezesController extends Controller
         $jelentkez = Jelentkezes::find($id);
         $jelentkez->jelentkezo_id = $request->jelentkezo_id;
         $jelentkez->inditott_id = $request->inditott_id;
+        $jelentkez->datum = $request->datum;
         $jelentkez->save();
     }
 
@@ -50,7 +53,7 @@ class JelentkezesController extends Controller
         and sz.szak_id = insz.szak_id"));
         return $jelent;
     }
-     
+
     //muszáj
 
     // public function ujArchivalt(Request $request){
