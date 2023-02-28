@@ -75,7 +75,7 @@ class JelentkezoController extends Controller
         $jelentkezo->erettsegi_bizonyitvany_szama = $request->erettsegi_bizonyitvany_szama;
         $jelentkezo->szakmai_bizonyitvany_szama = $request->szakmai_bizonyitvany_szama;
         $jelentkezo->bankszamlaszam = $request->bankszamlaszam;
-        $jelentkezo->statusz = $request->statusz;
+        //$jelentkezo->statusz = $request->statusz;
         $jelentkezo->save();
     }
 
@@ -92,7 +92,7 @@ class JelentkezoController extends Controller
             
         }
 
-    //'regex:[^*;?!°(){}%#@$+,[=]'
+        //'regex:[^*;?!°(){}%#@$+,[=]'
 
 
         $jelentkezo = new Jelentkezo();

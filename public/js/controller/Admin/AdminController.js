@@ -29,6 +29,7 @@ class AdminController{
             adminadatmodel.adatBe("/admin/archivOsszes", this.archivaltMutat);
         })
         $(window).on("mod", (event) => {
+            adminadatmodel.adatModosit("/admin/modosit", event.detail)
             location.reload()
         })
 
@@ -67,6 +68,7 @@ class AdminController{
             adminadatmodel.adatBe("/admin/felPlusSzak", this.felhasznalokMutat)
         })
     }
+
     felhasznalokMutat(tomb){
         const szuloElem = $("article")
         new FelhasznalokView(tomb, szuloElem)

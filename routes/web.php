@@ -23,29 +23,32 @@ use Illuminate\Support\Facades\Route;
 */
 /*******************************Admin***************************************/
 Route::get('/dashboard', function () {
-   return view('dashboard');
+    return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
-   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-   //admin lekérések
-   Route::get('/admin/osszes', [JelentkezesController::class, 'osszes']);
-   Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
-   Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
-   Route::get('/admin/kereses/{ertek}', [UserController::class, 'kereses']);
-   //admin törlések
-   Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
-   //admin újadatok
-   Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
-   //archívum
-   Route::post('/admin/ujArchivum', [JelentkezesController::class, 'ujArchivalt']);
-   Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //admin lekérések
+    Route::get('/admin/osszes', [JelentkezesController::class, 'osszes']);
+    Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
+    Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
+    Route::get('/admin/kereses/{ertek}', [UserController::class, 'kereses']);
+    //admin törlések
+    Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
+    //admin újadatok
+    Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
+    //admin modosít
+    
+
+    //archívum
+    Route::post('/admin/ujArchivum', [JelentkezesController::class, 'ujArchivalt']);
+    Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
    
 });
 
-
+Route::put('/admin/modosit/{id}', [JelentkezoController::class, 'update']);
 /*******************************Public**************************************/
 Route::middleware(['PublicPages'])->group(function (){
 

@@ -50,7 +50,7 @@ class JelentkezesController extends Controller
         and sz.szak_id = insz.szak_id"));
         return $jelent;
     }
-     
+
     //muszáj
 
     // public function ujArchivalt(Request $request){
