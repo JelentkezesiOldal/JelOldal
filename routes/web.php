@@ -59,8 +59,8 @@ Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
 Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
 Route::get('/email_kuldes', [EmailController::class, 'index']);
 
-Route::get('/show/{id}', [JelentkezoController::class, 'show']);
-Route::patch('/beiratkozo/{id}', [JelentkezoController::class, 'beiratkozo']);
+Route::get('/show/{token}', [JelentkezoController::class, 'show']);
+Route::patch('/beiratkozo/{token}', [JelentkezoController::class, 'beiratkozo']);
 Route::patch('/file_upload',[FileController::class, 'store'])->name('beiratkozas');
 
 /******************************Oldalak**************************************/
@@ -74,9 +74,10 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-Route::get('/beiratkozas', function () {
-    return view('beiratkozas');
-});
+
+
+
+Route::get('/beiratkozas/{token}',[JelentkezoController::class, 'Beiratkozashivas']);
 
 //ADMIN DOLGOK KIVÜL HOGY MENJEN
 //admin lekérések
