@@ -3,14 +3,13 @@ import SzakView from "./SzakView.js";
 class SzakokView{
     constructor(tomb, szuloElem){
         szuloElem.html(`
-        <h2>Elindítható szakok</h2>
+        <h2 class="cim">Elindítható szakok</h2>
         <form>
-            <table class="table table-dark table-striped">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Megnevezés</th>
-                        <th>Iskola</th>
                         <th>Előfeltétel</th>
                         <th>Félévek száma</th>
                         <th></th>

@@ -35,7 +35,7 @@ class PublicAdatModel {
             body: JSON.stringify(adat),
         })
             .then((response) => response.json())
-            .then(() => {
+            .then((data) => {
                 console.log(vegpont);
             })
             .catch((error) => {

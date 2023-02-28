@@ -8,6 +8,7 @@ use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class JelentkezoController extends Controller
 {
@@ -87,8 +88,11 @@ class JelentkezoController extends Controller
             'telefonszam' => array('required', 'digits_between:7,15', 'numeric')
         ]);
         if ($validator->fails()) {
-            return response()->json(["message" => $validator->errors()->all()]);
+            return response()->json(["message" => $validator->errors()]);
+            
         }
+
+    //'regex:[^*;?!°(){}%#@$+,[=]'
 
 
         $jelentkezo = new Jelentkezo();
@@ -96,22 +100,24 @@ class JelentkezoController extends Controller
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->statusz = "beiratkozás alatt";
-        // $jelentkezo->inditott_id = $request->inditott_id;
-        $jelentkezo->save();
-        /*echo*/ $utolsoId = $jelentkezo->jelentkezo_id;
-        $data=array('jelentkezo_id'=>$utolsoId, 'inditott_id'=>$request->inditott_id);
-        DB::table('jelentkezes')->insert($data);
-        //DB::select(DB::raw("insert into jelentkezes ('jelentkezo_id', 'inditott_id') values(11,2)"));
-        // return $jelentkezo;
-        //$utolsoId, $request->inditott_id
+        $token =Str::random();
+        $jelentkezo->token= $token;
+        $url = url('localhost:8000/beiratkozas/'. $token); 
 
-        // $valami=new EmailController();
-        // $valami::index($request->email);
+        $jelentkezo->save();
+        
+        /*echo*/
+        $utolsoId = $jelentkezo->jelentkezo_id;
+        $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id);
+        DB::table('jelentkezes')->insert($data);
+        $valami = new EmailController();
+        $valami::index($request->email, $request->tanulo_neve, $url);
+        //return view('JelentkezesSikerult.php');
     }
 
 
-   
-    
+
+
 
     public function jelentkezesSzak(Request $request)
     {
@@ -142,18 +148,47 @@ class JelentkezoController extends Controller
             'erettsegi_bizonyitvany_szama' => $request->erettsegi_bizonyitvany_szama,
             'szakmai_bizonyitvany_szama' => $request->szakmai_bizonyitvany_szama,
             'bankszamlaszam' => $request->bankszamlaszam,
-            'statusz' => $request->statusz,
+            'statusz' => "Beiratkozasa alatt",
         ];
-        
+
         foreach ($data as $key => $value) {
             if (!empty($value)) {
                 $jelentkezo->$key = $value;
             }
         }
-        
+
         $jelentkezo->save();
         //return view('beiratkozasSiker');
         //return view('/BeiratkozasSikerult');
     }
-    
+    public function keresesj($ertek){
+        $keres = DB::table('jelentkezos')
+            ->select('jelentkezos.*')
+            ->where('tanulo_neve', 'like', '%'.$ertek.'%')
+            ->orwhere('szuleteskori_neve', 'like', '%'.$ertek.'%')
+            ->orwhere('anyja_neve', 'like', '%'.$ertek.'%')
+            ->orwhere('szuletesi_datum', 'like', '%'.$ertek.'%')
+            ->orwhere('szuletesi_hely', 'like', '%'.$ertek.'%')
+            ->orwhere('email', 'like', '%'.$ertek.'%')
+            ->orwhere('telefonszam', 'like', '%'.$ertek.'%')
+            ->orwhere('allando_lakcim', 'like', '%'.$ertek.'%')
+            ->orwhere('lakcimkartya', 'like', '%'.$ertek.'%')
+            ->orwhere('ertesitesi_cim', 'like', '%'.$ertek.'%')
+            ->orwhere('neme', 'like', '%'.$ertek.'%')
+            ->orwhere('diak_azonosito', 'like', '%'.$ertek.'%')
+            ->orwhere('szemelyi_igazolvany_szam', 'like', '%'.$ertek.'%')
+            ->orwhere('taj_szam', 'like', '%'.$ertek.'%')
+            ->orwhere('adoszam', 'like', '%'.$ertek.'%')
+            ->orwhere('erettsegi_bizonyitvany_szama', 'like', '%'.$ertek.'%')
+            ->orwhere('szakmai_bizonyitvany_szama', 'like', '%'.$ertek.'%')
+            ->orwhere('bankszamlaszam', 'like', '%'.$ertek.'%')
+            ->orwhere('statusz', 'like', '%'.$ertek.'%')
+            ->get();
+        return $keres;
+    }
+    public function beiratkozasemail($token){
+        $jelentkezo = Jelentkezo::where('token', $token)->firstOrFail();
+
+        return view('jelentkezes', ['jelentkezo'=>$jelentkezo]);
+    }
 }

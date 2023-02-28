@@ -14,14 +14,15 @@ class JelentkezokView{
         szuloElem.append(`
         <div class="row float-end">
             <div class="col input-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" id="keres1" placeholder="Search">
             </div>
             <div class="col">
-                <button>Keres</button>
+                <button id="kereses">Keres</button>
             </div>
         </div>
         `)
-        szuloElem.append(`<table id="jelTab" class="table table-dark table-striped">
+        szuloElem.append(`
+        <table id="jelTab" class="table table-hover">
             <thead>
                 <tr>
                     <th>OM azonosító</th>
@@ -34,11 +35,21 @@ class JelentkezokView{
             
             </tbody>
         </table>`)
+        this.keresGomb = $('#kereses')
+        this.keresGomb.on('click', ()=>{
+            this.input = $('#keres1').val()
+            console.log(this.input + " lécci új")
+            this.kattintasTrigger("keresJ")
+        })
         this.tableElem = szuloElem.children('table:last-child');
         this.tbodyElem = this.tableElem.children('tbody');
         tomb.forEach(adat => {
             const adatom = new JelentkezoView(adat, this.tbodyElem, this.tenylegmodalElem)
         });
+    }
+    kattintasTrigger(esemenyNeve){
+        const esemeny = new CustomEvent(esemenyNeve, {detail:this.input})
+        window.dispatchEvent(esemeny);
     }
 }
 

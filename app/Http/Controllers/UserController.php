@@ -34,7 +34,7 @@ class UserController extends Controller
         $user->master = $request->master;  
         $user->szak_id = $request->szak_id;   
         $user->save();
-
+        return $user;
     }
 
     public function update(Request $request, $id)

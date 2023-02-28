@@ -4,15 +4,19 @@ class FelhasznaloView{
         console.log("felhasznaloView")
         this.#elem = elem
         szuloElem.append(`<tr>
-            <td>${elem.name}</td>
-            <td>${elem.email}</td>
-            <td>${elem.megnevezes}</td>
-            <td>${elem.master}</td>
+            <td data-label="Név">${elem.name}</td>
+            <td data-label="E-mail">${elem.email}</td>
+            <td data-label="Szak">${elem.megnevezes}</td>
+            <td data-label="Jogosultság">${this.getMaster(elem.master)}</td>
         </tr>`)
 
         
     }
-    
+    getMaster(adat){
+        if(adat == 1){
+            return "Master"
+        }
+        return "Ügyintéző"
+    }
 }
-
 export default FelhasznaloView

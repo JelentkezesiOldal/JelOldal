@@ -50,12 +50,14 @@ class JelentkezesController extends Controller
         and sz.szak_id = insz.szak_id"));
         return $jelent;
     }
+     
+    //muszáj
 
-    public function ujArchivalt(Request $request){
-        $archival = new Archivalt();
-        echo $utolsoId = $archival->jelentkezo_id;
-        $data=array('jelentkezo_id'=>$utolsoId, 'inditott_id'=>$request->inditott_id);
-        DB::table('archivalts')->insert($data);
-    }
+    // public function ujArchivalt(Request $request){
+    //     $archival = new Archivalt();
+    //     echo $utolsoId = $archival->jelentkezo_id;
+    //     $data=array('jelentkezo_id'=>$utolsoId, 'inditott_id'=>$request->inditott_id);
+    //     DB::table('archivalts')->insert($data);
+    // }
 
 }

@@ -7,7 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Jelentkezés sikeresen elküldve!</h1>
-    <p>Köszönjük a jelentkezést, a megadott email címen értesítjük.</p>
+<h1 class="text-center">Jelentkezés sikeresen elküldve!</h1>
+    <p class="text-center">Köszönjük a jelentkezést, a megadott email címen értesítjük.</p>
+
 </body>
 </html>

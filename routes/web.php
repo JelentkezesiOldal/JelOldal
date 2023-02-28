@@ -81,11 +81,15 @@ Route::get('/admin/osszes', [JelentkezesController::class, 'osszes']);
 Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
 Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
 Route::get('/admin/kereses/{ertek}', [UserController::class, 'kereses']);
+Route::get('/admin/keresesj/{ertek}', [JelentkezoController::class, 'keresesj']);
 //admin törlések
 Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
 //admin újadatok
 Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
 Route::post('/admin/ujFelhasznalo', [UserController::class, 'store']);
+//archívum
+Route::post('/admin/ujArchivum', [ArchivaltController::class, 'store']);
+Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
 
 
 

@@ -12,12 +12,12 @@
         <script src="./js/adminMain.js" type="module"></script>
     </head>
 
-    <body>
+    <body id="bootstrap-overrides">
         <main>
             <header>
                 <nav>
-                    <ul class="nav nav-tabs gap-3">
-                        <li id="stat" class="gap-3">Statisztika</li>
+                    <ul class="menu">
+                        <li id="stat">Statisztika</li>
                         <li id="felh">Felhasználó</li>
                         <li id="jele">Jelentkezők</li>
                         <li id="szak">Szakok</li>
