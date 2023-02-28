@@ -16,10 +16,13 @@ class FileController extends Controller
         $request->validate([
             'file' => 'required|mimes:jpg,png,jpeg,pdf|max:2048',
         ]);
-        $fileName = $request->file->getClientOriginalName();
+       
+        $image = $request->file('image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('uploads'), $filename);
 
         return back()
             ->with('success', 'You have successfully upload file.')
-            ->with('file', $fileName);
+            ->with('file', $filename);
     }
 }

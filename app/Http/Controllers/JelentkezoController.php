@@ -18,10 +18,11 @@ class JelentkezoController extends Controller
         return $jelentkezos;
     }
 
-    public function show($id)
+    public function show($token)
     {
         //$jelentkezo = Jelentkezo::all($id);
-        $jelentkezo = response()->json(Jelentkezo::all()->find($id));
+       //$jelentkezo = response()->json(Jelentkezo::all()->find($token));
+        $jelentkezo = response()->json(Jelentkezo::where('token', $token)->first());
         return $jelentkezo;
     }
 
@@ -101,8 +102,8 @@ class JelentkezoController extends Controller
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->statusz = "beiratkozás alatt";
         $token =Str::random();
-        $jelentkezo->token= $token;
-        $url = url('localhost:8000/beiratkozas/'. $token); 
+        $jelentkezo->token = $token;
+        $url = url(`/beiratkozas/`. $token); 
 
         $jelentkezo->save();
         
@@ -110,6 +111,7 @@ class JelentkezoController extends Controller
         $utolsoId = $jelentkezo->jelentkezo_id;
         $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id);
         DB::table('jelentkezes')->insert($data);
+        $this->Beiratkozashivas($token);
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
         //return view('JelentkezesSikerult.php');
@@ -186,9 +188,13 @@ class JelentkezoController extends Controller
             ->get();
         return $keres;
     }
-    public function beiratkozasemail($token){
-        $jelentkezo = Jelentkezo::where('token', $token)->firstOrFail();
 
-        return view('jelentkezes', ['jelentkezo'=>$jelentkezo]);
+    public function Beiratkozashivas($tokenke){
+        return view('beiratkozas',['tokenke' => $tokenke]);
+
+    }
+    public function beiratkozasemail($token){
+        
+        return $token;
     }
 }
