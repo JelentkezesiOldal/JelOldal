@@ -3,9 +3,9 @@ import ArchivaltView from "./ArchivaltView.js";
 class ArchivaltakView {
     constructor(tomb, szuloElem) {
         szuloElem.html(`
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <spam class="close">&times;</spam>
+        <div id="myModal" class="modalSajat">
+            <div class="modal-contentSajat">
+                <spam class="closeSajat">&times;</spam>
             </div>
         </div>`);
 
