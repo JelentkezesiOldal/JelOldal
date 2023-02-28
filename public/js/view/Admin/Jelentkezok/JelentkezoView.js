@@ -1,20 +1,27 @@
-class JelentkezoView{
-    #elem
-    constructor(elem, szuloElem, modal){
-        console.log("jelentkezoView")
-        this.#elem = elem
+// import jsPDF from '/jspdf';
+
+class JelentkezoView {
+    #elem;
+    
+    constructor(elem, szuloElem, modal) {
+        
+        
+        console.log("jelentkezoView");
+        this.#elem = elem;
         szuloElem.append(`<tr id="J${elem.jelentkezo_id}">
+            <td data-label="datum">${elem.datum}</td>
             <td data-label="OM azonosító">${elem.diak_azonosito}</td>
             <td data-label="Név">${elem.tanulo_neve}</td>
             <td data-label="E-mail">${elem.email}</td>
             <td data-label="Telefonszám">${elem.telefonszam}</td>
-        </tr>`)
-    
-        $("#J"+elem.jelentkezo_id).on("click", () => {
-            console.log("J"+ elem.jelentkezo_id + " katt")
-            $(".modal").show()
+        </tr>`);
+
+        $("#J" + elem.jelentkezo_id).on("click", () => {
+            console.log("J" + elem.jelentkezo_id + " katt");
+            $(".modal").show();
             modal.append(`
             <div>
+                <p>Jelentkezés dátuma: <input id="datum" value="${elem.datum}" disabled></input></p>
                 <p>Tanuló neve: <input id="tanulo_neve" value="${elem.tanulo_neve}" disabled></input></p>
                 <p>Születéskori neve: <input id="szuleteskori_neve" value="${elem.szuleteskori_neve}" disabled></input></p>
                 <p>Anyja neve: <input id="anyja_neve" value="${elem.anyja_neve}" disabled></input></p>
@@ -35,68 +42,86 @@ class JelentkezoView{
                 <spam id="mod${elem.jelentkezo_id}">Módosítás</spam>
                 <spam id="archiv${elem.jelentkezo_id}">Archíválás</spam>
                 <spam id="torol${elem.jelentkezo_id}">Törlés</spam>
+                <spam id="ment${elem.jelentkezo_id}">Mentés PDF-be</spam>
             </div>
-            `)
-            this.modElem = $(`#mod${elem.jelentkezo_id}`)
-            this.archivElem = $(`#archiv${elem.jelentkezo_id}`)
-            this.torolElem = $(`#torol${elem.jelentkezo_id}`)
-            
-            this.modElem.on("click", ()=>{
-                console.log("Módosít Gomb")
-                $("div input").prop('disabled', false)
-                this.adatokBe()
-                console.log(elem.tanulo_neve)
+            `);
+            this.modElem = $(`#mod${elem.jelentkezo_id}`);
+            this.archivElem = $(`#archiv${elem.jelentkezo_id}`);
+            this.torolElem = $(`#torol${elem.jelentkezo_id}`);
+            this.mentElem = $(`#ment${elem.jelentkezo_id}`);
+
+            this.modElem.on("click", () => {
+                console.log("Módosít Gomb");
+                $("div input").prop("disabled", false);
+                this.adatokBe();
+                console.log(elem.tanulo_neve);
                 //this.kattintastrigger("mod");
                 // $(".modal").hide()
                 // $(".modal-content div").remove()
-            })
-
-            this.archivElem.on("click", ()=>{
-                console.log("Archív Gomb")
-                this.kattintastrigger("archiv");
-                $(".modal").hide()
-                $(".modal-content div").remove()
-            })
-
-            this.torolElem.on("click", ()=>{
-                console.log("Töröl gomb")
-                this.kattintastrigger("torol");
-                $(".modal").hide()
-                $(".modal-content div").remove()
             });
-            
 
-        })
+            this.archivElem.on("click", () => {
+                console.log("Archív Gomb");
+                this.kattintastrigger("archiv");
+                $(".modal").hide();
+                $(".modal-content div").remove();
+            });
+
+            this.torolElem.on("click", () => {
+                console.log("Töröl gomb");
+                this.kattintastrigger("torol");
+                $(".modal").hide();
+                $(".modal-content div").remove();
+            });
+
+            this.mentElem.on("click", () => {
+                generatePDF();
+            });
+        });
 
         $(".close").on("click", () => {
-            $(".modal").hide()
-            $(".modal-content div").remove()
-        })
+            $(".modal").hide();
+            $(".modal-content div").remove();
+        });
     }
 
-    adatokBe(){
-        this.#elem.tanulo_neve = $("#tanulo_neve").val()
-        this.#elem.szuleteskori_neve = $("#szuleteskori_neve").val()
-        this.#elem.anyja_neve = $("#anyja_neve").val()
-        this.#elem.szuletesi_datum = $("#szuletesi_datum").val()
-        this.#elem.szuletesi_hely = $("#szuletesi_hely").val()
-        this.#elem.email = $("#email").val()
-        this.#elem.telefonszam = $("#telefonszam").val()
-        this.#elem.ertesitesi_cim = $("#ertesitesi_cim").val()
-        this.#elem.neme = $("#neme").val()
-        this.#elem.diak_azonosito = $("#diak_azonosito").val()
-        this.#elem.szemelyi_igazolvany_szam = $("#szemelyi_igazolvany_szam").val()
-        this.#elem.taj_szam = $("#taj_szam").val()
-        this.#elem.adoszam = $("#adoszam").val()
-        this.#elem.erettsegi_bizonyitvany_szama = $("#erettsegi_bizonyitvany_szama").val()
-        this.#elem.szakmai_bizonyitvany_szama = $("#szakmai_bizonyitvany_szama").val()
-        this.#elem.bankszamlaszam = $("#bankszamlaszam").val()
-        this.#elem.statusz = $("#statusz").val()
+    adatokBe() {
+        this.#elem.datum = $("#datum").val();
+        this.#elem.tanulo_neve = $("#tanulo_neve").val();
+        this.#elem.szuleteskori_neve = $("#szuleteskori_neve").val();
+        this.#elem.anyja_neve = $("#anyja_neve").val();
+        this.#elem.szuletesi_datum = $("#szuletesi_datum").val();
+        this.#elem.szuletesi_hely = $("#szuletesi_hely").val();
+        this.#elem.email = $("#email").val();
+        this.#elem.telefonszam = $("#telefonszam").val();
+        this.#elem.ertesitesi_cim = $("#ertesitesi_cim").val();
+        this.#elem.neme = $("#neme").val();
+        this.#elem.diak_azonosito = $("#diak_azonosito").val();
+        this.#elem.szemelyi_igazolvany_szam = $(
+            "#szemelyi_igazolvany_szam"
+        ).val();
+        this.#elem.taj_szam = $("#taj_szam").val();
+        this.#elem.adoszam = $("#adoszam").val();
+        this.#elem.erettsegi_bizonyitvany_szama = $(
+            "#erettsegi_bizonyitvany_szama"
+        ).val();
+        this.#elem.szakmai_bizonyitvany_szama = $(
+            "#szakmai_bizonyitvany_szama"
+        ).val();
+        this.#elem.bankszamlaszam = $("#bankszamlaszam").val();
+        this.#elem.statusz = $("#statusz").val();
     }
 
-    kattintastrigger(esemenyNeve){
-        const esemeny = new CustomEvent(esemenyNeve,{detail:this.#elem})
+    kattintastrigger(esemenyNeve) {
+        const esemeny = new CustomEvent(esemenyNeve, { detail: this.#elem });
         window.dispatchEvent(esemeny);
     }
 }
-export default JelentkezoView
+
+function generatePDF() {
+    var doc = new jsPDF();
+    const adat = $('.modal-content div ');
+    doc.text(JSON.stringify(adat), 10, 10);
+    doc = new jsPDF()
+}
+export default JelentkezoView;

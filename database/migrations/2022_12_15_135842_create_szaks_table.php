@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id('szak_id');
             $table->string('megnevezes');
             //$table->foreignId('iskola_id')->references('iskola_id')->on('iskolas');
-            $table->string('elofeltetel');
+            $table->string('elofeltetel')->nullable();
             $table->string('hany_felev');
             $table->timestamps();
         });

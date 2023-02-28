@@ -25,6 +25,7 @@ class JelentkezokView{
         <table id="jelTab" class="table table-hover">
             <thead>
                 <tr>
+                    <th>Dátum</th>
                     <th>OM azonosító</th>
                     <th>Név</th>
                     <th>E-mail</th>

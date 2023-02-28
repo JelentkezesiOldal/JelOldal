@@ -18,6 +18,7 @@ return new class extends Migration
             $table->primary(['jelentkezo_id', 'inditott_id']);
             $table->foreignId('jelentkezo_id')->references('jelentkezo_id')->on('jelentkezos');
             $table->foreignId('inditott_id')->references('inditott_id')->on('inditott_szaks');
+            $table->date('datum');
             $table->timestamps();
         });
 
