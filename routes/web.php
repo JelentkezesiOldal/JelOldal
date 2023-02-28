@@ -90,6 +90,7 @@ Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, '
 //admin újadatok
 Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
 Route::post('/admin/ujFelhasznalo', [UserController::class, 'store']);
+Route::post('/admin/ujSzak', [SzakController::class, 'store']);
 //archívum
 Route::post('/admin/ujArchivum', [ArchivaltController::class, 'store']);
 Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
