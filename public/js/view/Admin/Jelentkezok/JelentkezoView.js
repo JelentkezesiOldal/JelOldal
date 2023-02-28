@@ -62,20 +62,13 @@ class JelentkezoView {
             this.archivElem.on("click", () => {
                 console.log("Archív Gomb");
                 this.kattintastrigger("archiv");
-<<<<<<< HEAD
                 $(".modalSajat").hide()
                 $(".modal-contentSajat div").remove()
             })
-=======
-                $(".modal").hide();
-                $(".modal-content div").remove();
-            });
->>>>>>> 800dd1b3493326ab5444eb10bc7a22e9dac51d25
 
             this.torolElem.on("click", () => {
                 console.log("Töröl gomb");
                 this.kattintastrigger("torol");
-<<<<<<< HEAD
                 $(".modalSajat").hide()
                 $(".modal-contentSajat div").remove()
             });
@@ -86,28 +79,16 @@ class JelentkezoView {
                 var input = $(".modalSajat div p:nth-child(" + adat + ") input")
                 input.prop('disabled', false)
             })
-=======
-                $(".modal").hide();
-                $(".modal-content div").remove();
-            });
->>>>>>> 800dd1b3493326ab5444eb10bc7a22e9dac51d25
 
             this.mentElem.on("click", () => {
                 generatePDF();
             });
         });
 
-<<<<<<< HEAD
         $(".closeSajat").on("click", () => {
             $(".modalSajat").hide()
             $(".modal-contentSajat div").remove()
         })
-=======
-        $(".close").on("click", () => {
-            $(".modal").hide();
-            $(".modal-content div").remove();
-        });
->>>>>>> 800dd1b3493326ab5444eb10bc7a22e9dac51d25
     }
 
     adatokBe() {

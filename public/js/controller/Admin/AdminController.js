@@ -75,16 +75,10 @@ class AdminController {
         //     generatePDF();
         // });
     }
-<<<<<<< HEAD
 
     felhasznalokMutat(tomb){
         const szuloElem = $("article")
         new FelhasznalokView(tomb, szuloElem)
-=======
-    felhasznalokMutat(tomb) {
-        const szuloElem = $("article");
-        new FelhasznalokView(tomb, szuloElem);
->>>>>>> 800dd1b3493326ab5444eb10bc7a22e9dac51d25
     }
     jelentkezokMutat(tomb) {
         const szuloElem = $("article");
