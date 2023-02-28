@@ -52,7 +52,7 @@ class AdminController{
         })
 
         $(window).on("felvesz", (event) => {
-            console.log(event.detail)
+            console.log("window felvesz", event.detail)
             adminadatmodel.adatUj("/admin/ujFelhasznalo", event.detail)
         })
     }
