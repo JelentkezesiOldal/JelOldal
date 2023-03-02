@@ -201,10 +201,6 @@ class JelentkezoController extends Controller
         return $keres;
     }
 
-    public function Beiratkozashivas($tokenke){
-        return view('beiratkozas',['tokenke' => $tokenke]);
-
-    }
     public function beiratkozasemail($token){
         
         return $token;
