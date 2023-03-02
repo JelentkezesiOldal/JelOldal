@@ -74,7 +74,7 @@ class PublicAdatModel {
             },
             body: JSON.stringify(adat),
         })
-            .then((response) => response.json())
+            /* .then((response) => response.json()) */
             .then(() => {
                 console.log("sikeres mod");
             })

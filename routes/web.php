@@ -9,6 +9,7 @@ use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\JelentkezesController;
 use App\Http\Controllers\SzakController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Jelentkezo;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -1,3 +1,4 @@
+import BeiratkozasFileUploadView from "./BeiratkozasFileUploadView.js";
 import BeiratkozasView from "./BeiratkozasView.js";
 
 class BeiratkozasokView{
@@ -8,6 +9,7 @@ class BeiratkozasokView{
 
 
         new BeiratkozasView(tomb, this.articleElem);
+        new BeiratkozasFileUploadView(tomb, this.articleElem);
 
         /* Object.keys(tomb).forEach(elem => {                  
         });   */
