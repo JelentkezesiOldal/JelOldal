@@ -71,6 +71,12 @@ class AdminController {
             //location.reload();
         });
 
+        $(window).on("mod", (event) => {
+            console.log(event.detail);
+            adminadatmodel.adatModosit("/admin/modosit", event.detail);
+            //location.reload();
+        });
+
         // $(window).on("ment", () => {
         //     generatePDF();
         // });
