@@ -19,6 +19,7 @@ class Jelentkezes extends Model
 
     protected $fillable = [
         'jelentkezo_id',
-        'inditott_id'
+        'inditott_id',
+        'datum'
     ];
 }

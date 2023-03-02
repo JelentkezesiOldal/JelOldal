@@ -2,6 +2,7 @@ class AdminAdatModel{
     #adatok
     #token
     constructor(token){
+        this.#token = token;
         console.log("AdminAdatModel")
     }
 
@@ -47,17 +48,17 @@ class AdminAdatModel{
     adatModosit(vegpont, adat) {
         console.log(adat);
         console.log("Módosít: " + adat);
-        vegpont += "/" + adat.id
+        vegpont += "/" + adat.jelentkezo_id
         fetch(vegpont, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': this.token
+                'X-CSRF-TOKEN': this.#token
             },
             body: JSON.stringify(adat),
         })
             .then((response) => response.json())
-            .then((data) => {
+            .then(() => {
                 console.log("Módosítottam:  " + adat.updateAt);
             })
             .catch((error) => {

@@ -12,7 +12,7 @@ class ArchivaltView {
         );
         $("#J" + elem.jelentkezo_id).on("click", () => {
             console.log("J" + elem.jelentkezo_id + elem.inditott_id + " katt");
-            $(".modal").show();
+            $(".modalSajat").show();
             modal.append(`
             <div>
                 <p>Szak: ${elem.megnevezes}</p>
@@ -36,9 +36,9 @@ class ArchivaltView {
             </div>
             `);
         });
-        $(".close").on("click", () => {
-            $(".modal").hide();
-            $(".modal-content div").remove();
+        $(".closeSajat").on("click", () => {
+            $(".modalSajat").hide();
+            $(".modal-contentSajat div").remove();
         });
     }
 }
