@@ -15,7 +15,8 @@
 </head>
 
 <body>
-    <input type="hidden" id="tokenke" value="{{ $tokenke }}">
+    <input type="hidden" id="token" value="{{ $tokenke }}">
+    
     <main>
         <nav>
             <h1><a href="#">Szalézi Ágazati Képzőközpont</a></h1>

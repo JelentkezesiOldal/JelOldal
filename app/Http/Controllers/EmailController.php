@@ -31,6 +31,6 @@ class EmailController extends Controller
         ->send(new Email($emailAdat));
 
         // dd("BeiratkozasSikerult.php");
-        //return view('JelentkezesSikerult');
+        return redirect('/ujJelentkezo');
     }
 }

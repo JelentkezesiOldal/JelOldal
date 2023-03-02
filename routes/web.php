@@ -9,6 +9,7 @@ use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\JelentkezesController;
 use App\Http\Controllers\SzakController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Jelentkezo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -74,10 +75,9 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-
-
-
-Route::get('/beiratkozas/{token}',[JelentkezoController::class, 'Beiratkozashivas']);
+Route::get('/beiratkozas/{token}',function($token){
+    return view('beiratkozas', ['tokenke'=>$token]);
+});
 
 //ADMIN DOLGOK KIVÜL HOGY MENJEN
 //admin lekérések

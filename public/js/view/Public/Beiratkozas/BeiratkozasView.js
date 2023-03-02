@@ -5,6 +5,7 @@ class BeiratkozasView {
         console.log("beiratkozásView");
         console.log("elem", elem);
         szuloElem.append(`
+        <h1>Beiratkozáshoz szükséges adatok</h1>
         <form id="beiratkozas">
 <div class="first">
         <div class="mb-3">
@@ -32,10 +33,6 @@ class BeiratkozasView {
         <label for="allando_lakcim" class="form-label">Állandó lakcím</label>
         <input class="form-control" type="text" id="allando_lakcim" name="allando_lakcim" ></input><br><br>
         
-        <label for="lakcimkartya" class="form-label">Lakcímkártya képe</label>
-        <input class="form-control" type="file" id="lakcimkartya" name="lakcimkartya" ></input><br><br>
-        
- 
         <label for="ertesitescheckbox"  class="form-label">Az értesítési cím megegyezik az állandó lakcímmel</label>
         <input class="form-check-input mt-0" type="checkbox" id="ertesitescheckbox" name="ertesitescheckbox" ></input><br><br>
         
@@ -57,36 +54,34 @@ class BeiratkozasView {
           <label for="diak_azonosito" class="form-label">Diákigazolvány szám</label>
           <input class="form-control" type="text" id="diak_azonosito" name="diak_azonosito" ></input><br><br>
           
-          <label for="diakigazolvany" class="form-label">Diákigazolvény képe</label>
-          <input class="form-control" type="file" id="diakigazolvany" name="diakigazolvany" ></input><br><br>
-          
           <label for="szemelyi_igazolvany_szam" class="form-label">Személyi igazolvány szám</label>
           <input class="form-control" type="text" id="szemelyi_igazolvany_szam" name="szemelyi_igazolvany_szam" ></input><br><br>
-          
-          <label for="szemelyi_igazolvany" class="form-label">Személyi igazolvány képe</label>
-          <input class="form-control" type="file" id="szemelyi_igazolvany" name="szemelyi_igazolvany" ></input><br><br>
           
           <label for="taj_szam" class="form-label">Taj szám</label>
           <input class="form-control" type="text" id="taj_szam" name="taj_szam" ></input><br><br>
           
-          <label for="taj_kartya" class="form-label">Taj kártya képe</label>
-          <input class="form-control" type="file" id="taj_kartya" name="taj_kartya" ></input><br><br>
-          
+         
           <label for="adoszam" class="form-label">Adószám</label>
           <input class="form-control" type="text" id="adoszam" name="adoszam" ></input><br><br>
           
-          <label for="adoigazolvany" class="form-label">Adóigazolvány képe</label>
-          <input class="form-control" type="file" id="adoigazolvany" name="adoigazolvany" ></input><br><br>
           
           <label for="erettsegi_bizonyitvany_szama" class="form-label">Érettségi bizonyítvány száma</label>
           <input class="form-control" type="text" id="erettsegi_bizonyitvany_szama" name="erettsegi_bizonyitvany_szama" ></input><br><br>
           
-          <label for="erettsegi_bizonyitvany" class="form-label">Érettségi Bizonyítvány képe</label>
-          <input class="form-control" type="file" id="erettsegi_bizonyitvany" name="erettsegi_bizonyitvany" ></input><br><br>
+          <p>Figyelem! A szakmia bizonyítvány nem előfeltétel, ha nincs még szakmai bizonyítványa akkor a következő mezőt nem kötelező kitölteni</p><br><br>
+          <label for="szakmai_bizonyitvany" class="form-label">Szakmai bizonyítvány száma: </label>
+          <input class="form-control" type="text" id="szakmai_bizonyitvany" name="szakmai_bizonyitvany" ></input><br><br>
+                      
+          <p>Figyelem! Ha nincsen még orvosi alkalmassági papírja akkor azt később is leadhatja az iskola titkárságán ha a szak amelyre jelentkezett ezt igényli</p><br><br>
+          <label for="orvosi_alkalmassági" class="form-label">Orvosi Alkalmassági száma: </label>
+          <input class="form-control" type="text" id="orvosi_alkalmassági" name="orvosi_alkalmassági" ></input><br><br>
+          
           
           <label for="bankszamlaszam" class="form-label">Bankszámlaszám</label>
           <input class="form-control" type="text" id="bankszamlaszam" name="bankszamlaszam" ></input><br><br>
-          <input id="button" type="submit" value="Elküld" >
+         
+         
+          <input id="button" type="button" value="Tovább" >
         </div>
 </div> 
 
@@ -126,10 +121,17 @@ class BeiratkozasView {
         this.gombElem.on("click", () => {
         });
          */
-        $("#beiratkozas").submit(() => {
+        /* $("#beiratkozas").(() => {
             console.log("Kittintottal");
             this.UralapAdatok();
             this.KattintasTrigger("kuldes");
+        }); */
+
+        this.elkuldElem = $(`#button`);
+        this.elkuldElem.on("click", () => {
+            //console.log("Elküld a View-ban")
+            this.adatGyujtes();
+            this.KattintasTrigger("mentes")
         });
     }
     SetDisabled() {
@@ -153,7 +155,6 @@ class BeiratkozasView {
         this.#elem.email = $("#email").val();
         this.#elem.telefonszam = $("#telefonszam").val();
         this.#elem.allando_lakcim = $("#allando_lakcim").val();
-        this.#elem.lakcimkartya = $("#lakcimkartya").val();
         if (ertesitescheckbox.checked) {
             this.#elem.ertesitesi_cim = $("#allando_lakcim").val();
         } else {
@@ -161,24 +162,19 @@ class BeiratkozasView {
         }
         this.#elem.neme = $("#neme").val();
         this.#elem.diak_azonosito = $("#diak_azonosito").val();
-        this.#elem.diakigazolvany = $("#diakigazolvany").val();
         this.#elem.szemelyi_igazolvany_szam = $(
             "#szemelyi_igazolvany_szam"
         ).val();
         this.#elem.szemelyi_igazolvany = $("#szemelyi_igazolvany").val();
         this.#elem.taj_szam = $("#taj_szam").val();
-        this.#elem.taj_kartya = $("#taj_kartya").val();
         this.#elem.adoszam = $("#adoszam").val();
         this.#elem.adoigazolvany = $("#adoigazolvany").val();
         this.#elem.erettsegi_bizonyitvany_szama = $(
             "#erettsegi_bizonyitvany_szama"
         ).val();
-        this.#elem.erettsegi_bizonyitvany = $("#erettsegi_bizonyitvany").val();
         this.#elem.szakmai_bizonyitvany_szama = $(
             "#szakmai_bizonyitvany_szama"
         ).val();
-        this.#elem.szakmai_bizonyitvany = $("#szakmai_bizonyitvany").val();
-        this.#elem.orvosi_alkalmassági = $("#orvosi_alkalmassági").val();
         this.#elem.bankszamlaszam = $("#bankszamlaszam").val();
     }
     InputValidate() {
@@ -198,6 +194,88 @@ class BeiratkozasView {
                         required: true,
                         email: true,
                     },
+                    szuleteskori_neve: {
+                        required: false,
+                        
+                    },
+                    anyja_neve: {
+                        required: true,
+
+                    },
+                    szuletesi_datum: {
+                        required: true,
+                        date: true,
+                    
+                    },
+                    szuletesi_hely: {
+                        required: true,
+                        
+                    },
+                    allando_lakcim: {
+                        required: true,
+                        
+                    },
+                    lakcimkartya: {
+                        required: true,
+                        
+                    },
+                    ertesitesi_cim: {
+                        required: true,
+                        
+                    },
+                    diak_azonosito: {
+                        required: true,
+                        
+                    },
+                    diakigazolvany: {
+                        required: true,
+                        
+                    },
+                    szemelyi_igazolvany_szam: {
+                        required: true,
+                        
+                    },
+                    szemelyi_igazolvany: {
+                        required: true,
+                        
+                    },
+                    taj_szam: {
+                        required: true,
+                        
+                    },
+                    taj_kartya: {
+                        required: true,
+                        
+                    },
+                    adoszam: {
+                        required: true,
+                        
+                    },
+                    adoigazolvany: {
+                        required: true,
+                        
+                    },
+                    erettsegi_bizonyitvany_szama: {
+                        required: true,
+                        
+                    },
+                    erettsegi_bizonyitvany: {
+                        required: true,
+                        
+                    },
+                    szakmai_bizonyitvany_szama: {
+                        required: true,
+                        
+                    },
+                    szakmai_bizonyitvany: {
+                        required: true,
+                        
+                    },
+                    orvosi_alkalmassági: {
+                        required: true,
+        
+                    },
+
                 },
                 messages: {
                     tanulo_neve: {
