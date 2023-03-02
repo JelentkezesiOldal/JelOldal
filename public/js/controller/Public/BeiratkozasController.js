@@ -20,6 +20,7 @@ class BeiratkozasController{
             beiratkozasmodel.adatModosit(this.vegpont, event.detail);
             console.log(event.detail);
         });
+        
         $(window).on("kuldes", (event)=>{
             console.log("Elküld a controllerben");
             this.vegpont = "/file_upload"
