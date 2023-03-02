@@ -1,7 +1,4 @@
 
-
-
-
 class JelentkezoView {
     #elem;
     constructor(elem, szuloElem, modal) {   
@@ -107,9 +104,9 @@ class JelentkezoView {
             })
 
 
-
+           
             this.mentElem.on("click", () => {
-                generatePDF();
+                generatePDF(this.#elem);
             });
         });
 
@@ -152,11 +149,8 @@ class JelentkezoView {
     }
 }
 
-function generatePDF() {
-    
-    const doc = new jsPDF();
-
-    doc.text("Hello world!", 10, 10);
-    doc.save("a4.pdf");
+function generatePDF(elem) {
+    console.log(elem)
+    html2pdf().from(elem).save("valami");
 }
 export default JelentkezoView;
