@@ -4,7 +4,7 @@ class JelentkezokView{
     constructor(tomb, szuloElem){
         szuloElem.html(`
         <div id="myModal" class="modalSajat">
-            <div class="modal-contentSajat">
+            <div id="pdf" class="modal-contentSajat">
                 <spam class="closeSajat">&times;</spam>    
             </div>
         </div>

@@ -1,4 +1,4 @@
-import jsPDF from "../../../../jspdf/dist/jspdf.es";
+
 
 
 
@@ -127,7 +127,9 @@ class JelentkezoView {
 }
 
 function generatePDF() {
-    var doc = new jsPDF();
+    
+    const doc = new jsPDF();
+
     doc.text("Hello world!", 10, 10);
     doc.save("a4.pdf");
 }
