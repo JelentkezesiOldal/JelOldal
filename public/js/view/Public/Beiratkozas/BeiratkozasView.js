@@ -5,6 +5,7 @@ class BeiratkozasView {
         console.log("beiratkozásView");
         console.log("elem", elem);
         szuloElem.append(`
+        <h1>Beiratkozáshoz szükséges adatok</h1>
         <form id="beiratkozas">
 <div class="first">
         <div class="mb-3">
@@ -32,12 +33,6 @@ class BeiratkozasView {
         <label for="allando_lakcim" class="form-label">Állandó lakcím</label>
         <input class="form-control" type="text" id="allando_lakcim" name="allando_lakcim" ></input><br><br>
         
-        <label for="szakmai_bizonyitvany" class="form-label">Szakmai bizonyítvány</label>
-        <input class="form-control" type="file" id="szakmai_bizonyitvany" name="szakmai_bizonyitvany" ></input><br><br>
-                    
-        <label for="orvosi_alkalmassági" class="form-label">Orvosi Alkalmassági: </label>
-        <input class="form-control" type="file" id="orvosi_alkalmassági" name="orvosi_alkalmassági" ></input><br><br>
-                
         <label for="ertesitescheckbox"  class="form-label">Az értesítési cím megegyezik az állandó lakcímmel</label>
         <input class="form-check-input mt-0" type="checkbox" id="ertesitescheckbox" name="ertesitescheckbox" ></input><br><br>
         
@@ -73,9 +68,19 @@ class BeiratkozasView {
           <label for="erettsegi_bizonyitvany_szama" class="form-label">Érettségi bizonyítvány száma</label>
           <input class="form-control" type="text" id="erettsegi_bizonyitvany_szama" name="erettsegi_bizonyitvany_szama" ></input><br><br>
           
+          <p>Figyelem! A szakmia bizonyítvány nem előfeltétel, ha nincs még szakmai bizonyítványa akkor a következő mezőt nem kötelező kitölteni</p><br><br>
+          <label for="szakmai_bizonyitvany" class="form-label">Szakmai bizonyítvány száma: </label>
+          <input class="form-control" type="text" id="szakmai_bizonyitvany" name="szakmai_bizonyitvany" ></input><br><br>
+                      
+          <p>Figyelem! Ha nincsen még orvosi alkalmassági papírja akkor azt később is leadhatja az iskola titkárságán ha a szak amelyre jelentkezett ezt igényli</p><br><br>
+          <label for="orvosi_alkalmassági" class="form-label">Orvosi Alkalmassági száma: </label>
+          <input class="form-control" type="text" id="orvosi_alkalmassági" name="orvosi_alkalmassági" ></input><br><br>
+          
           
           <label for="bankszamlaszam" class="form-label">Bankszámlaszám</label>
           <input class="form-control" type="text" id="bankszamlaszam" name="bankszamlaszam" ></input><br><br>
+         
+         
           <input id="button" type="button" value="Tovább" >
         </div>
 </div> 
@@ -126,7 +131,7 @@ class BeiratkozasView {
         this.elkuldElem.on("click", () => {
             //console.log("Elküld a View-ban")
             this.adatGyujtes();
-            this.kattintastrigger("kuldes")
+            this.KattintasTrigger("mentes")
         });
     }
     SetDisabled() {

@@ -75,10 +75,9 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-
-
-
-Route::get('/beiratkozas/{token}',[JelentkezoController::class, 'Beiratkozashivas']);
+Route::get('/beiratkozas/{token}',function($token){
+    return view('beiratkozas', ['tokenke'=>$token]);
+});
 
 //ADMIN DOLGOK KIVÜL HOGY MENJEN
 //admin lekérések

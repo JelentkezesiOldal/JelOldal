@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         "/ujJelentkezo",
         "/beiratkozo/*",
         "/show/*",
+        "/beiratkozas/*",
         "/file_upload",
         "/admin/jelentkezok/torol/*",
         "/admin/mutat/*/*",

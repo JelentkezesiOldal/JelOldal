@@ -3,6 +3,7 @@ class BeiratkozasFileUploadView {
     constructor(elem, szuloElem) {
         this.#elem = elem
         szuloElem.append(`
+        <h1>Beiratkozáshoz szükséges képek</h1>
         <form id="beiratkozasFileUpload">
             <div class="first">
                 <div class="mb-3">
@@ -16,6 +17,10 @@ class BeiratkozasFileUploadView {
                     <input class="form-control" type="file" id="szemelyi_igazolvany" name="szemelyi_igazolvany" ></input><br><br>
                 </div>
 
+                
+            </div>
+
+            <div class="second">
                 <div class="mb-3">
                     <label for="taj_kartya" class="form-label">Taj kártya képe</label>
                     <input class="form-control" type="file" id="taj_kartya" name="taj_kartya" ></input><br><br>
@@ -26,10 +31,12 @@ class BeiratkozasFileUploadView {
                     <label for="erettsegi_bizonyitvany" class="form-label">Érettségi Bizonyítvány: </label>
                     <input class="form-control" type="file" id="erettsegi_bizonyitvany" name="erettsegi_bizonyitvany" ></input><br><br>
                     
+                    <p>Figyelem! A szakmia bizonyítvány nem előfeltétel, ha nincs még szakmai bizonyítványa akkor a következő mezőt nem kötelező kitölteni</p><br><br>
                     <label for="szakmai_bizonyitvany" class="form-label">Szakmai bizonyítvány</label>
                     <input class="form-control" type="file" id="szakmai_bizonyitvany" name="szakmai_bizonyitvany" ></input><br><br>
                     
-                    <label for="orvosi_alkalmassági" class="form-label">Orvosi Alkalmassági: </label>
+                    <p>Figyelem! Ha nincsen még orvosi alkalmassági papírja akkor azt később is leadhatja az iskola titkárságán ha a szak amelyre jelentkezett ezt igényli</p><br><br>
+                    <label for="orvosi_alkalmassagi" class="form-label">Orvosi Alkalmassági: </label>
                     <input class="form-control" type="file" id="orvosi_alkalmassági" name="orvosi_alkalmassági" ></input><br><br>
                     
                     <input id="button" type="button" value="Mentés" >
@@ -44,7 +51,7 @@ class BeiratkozasFileUploadView {
         this.elkuldElem.on("click", () => {
             //console.log("Elküld a View-ban")
             this.adatGyujtes();
-            this.kattintastrigger("kuldes")
+            this.FileTrigger("kuldes")
         });
     }
     UralapAdatok() {
@@ -62,8 +69,13 @@ class BeiratkozasFileUploadView {
 
         this.#elem.szakmai_bizonyitvany = $("#szakmai_bizonyitvany").val();
        
-        this.#elem.orvosi_alkalmassági = $("#orvosi_alkalmassági").val();
+        this.#elem.orvosi_alkalmassági = $("#orvosi_alkalmassagi").val();
 
+    }
+    FileTrigger(esemenyhivo){
+        const esemeny = new CustomEvent(esemenyhivo, { detail: this.#elem });
+        console.log("KattintasTrigger");
+        window.dispatchEvent(esemeny);
     }
 
 }
