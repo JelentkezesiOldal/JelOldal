@@ -117,11 +117,11 @@ article {
     cursor: grab;
 }
 
-#done, #undo{
-    display: none;
+.done, .undo{
+    visibility: hidden;
 }
 
-#done, #undo, .edit{
+.done, .undo, .edit{
     cursor: pointer;
 }
 
