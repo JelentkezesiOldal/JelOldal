@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
 use App\Http\Controllers\EmailController;
+use Faker\Core\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -102,10 +103,10 @@ class JelentkezoController extends Controller
         $jelentkezo->statusz = "beiratkozás alatt";
         $token =Str::random();
         $jelentkezo->token= $token;
-        $url = url('localhost:8000/beiratkozas/'. $token); 
+        $url = url('beiratkozas/'. $token); 
 
         $jelentkezo->save();
-        
+        $this->beiratkozasemail($token);
         /*echo*/
         $utolsoId = $jelentkezo->jelentkezo_id;
         $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id);
@@ -125,10 +126,20 @@ class JelentkezoController extends Controller
         $szakIndit->inditott_id = $request->inditott_id;
     }
 
-
+    
     public function beiratkozo(Request $request, $id)
     {
-
+/* 
+        $validator = Validator::make($request->all(), [
+            'tanulo_neve' => array('required', 'string', 'min:5', 'max:50'),
+            'email' => array('required', 'email', 'max:50', 'unique:jelentkezos'),
+            'telefonszam' => array('required', 'digits_between:7,15', 'numeric')
+        ]); */
+        
+       /*  $filecontroller = new FileController;
+        $filecontroller->store($request); */
+        
+        
         $jelentkezo = Jelentkezo::find($id);
         $data = [
             'tanulo_neve' => $request->tanulo_neve,
@@ -149,14 +160,23 @@ class JelentkezoController extends Controller
             'szakmai_bizonyitvany_szama' => $request->szakmai_bizonyitvany_szama,
             'bankszamlaszam' => $request->bankszamlaszam,
             'statusz' => "Beiratkozasa alatt",
+           /*  'lakcimkartya' => $request->file('lakcimkartya')->store('lakcimkartya'),
+            'diakigazolvany' => $request->file('diakigazolvany')->store('diakigazolvany'),
+            'szemelyi_igazolvany' => $request->file('szemelyi_igazolvany')->store('szemelyi_igazolvany'),
+            'taj_karty' => $request->file('taj_karty')->store('taj_karty'),
+            'adoigazolvany' => $request->file('adoigazolvany')->store('adoigazolvany'),
+            'erettsegi_bizonyitvany' => $request->file('erettsegi_bizonyitvany')->store('erettsegi_bizonyitvany'),
+            'szakmai_bizonyitvany' => $request->file('szakmai_bizonyitvany')->store('szakmai_bizonyitvany'),
+            'orvosi_alkalmassági' => $request->file('orvosi_alkalmassági')->store('orvosi_alkalmassági'), */
         ];
-
+        
         foreach ($data as $key => $value) {
             if (!empty($value)) {
                 $jelentkezo->$key = $value;
             }
         }
 
+        
         $jelentkezo->save();
         //return view('beiratkozasSiker');
         //return view('/BeiratkozasSikerult');
@@ -187,8 +207,6 @@ class JelentkezoController extends Controller
         return $keres;
     }
     public function beiratkozasemail($token){
-        $jelentkezo = Jelentkezo::where('token', $token)->firstOrFail();
-
-        return view('jelentkezes', ['jelentkezo'=>$jelentkezo]);
+        return $token;
     }
 }

@@ -7,7 +7,7 @@ class BeiratkozasController{
         const token = $('meta[name="csrf-token"]').attr("content");
         const beiratkozasmodel = new PublicAdatModel(token);
         this.vegpont = "/show/1";
-        beiratkozasmodel.adatBe(this.vegpont, this.BeiratkozasAdatok);
+        beiratkozasmodel.BeiratkozasAdat(this.vegpont, this.BeiratkozasAdatok);
         
         $(window).on("kuldes", (event)=>{
             console.log("Elküld a controllerben");
