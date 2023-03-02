@@ -107,12 +107,12 @@ class JelentkezoController extends Controller
         $url = url('/beiratkozas'."/". $token); 
 
         $jelentkezo->save();
-        $this->beiratkozasemail($token);
+       
         /*echo*/
         $utolsoId = $jelentkezo->jelentkezo_id;
         $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id);
         DB::table('jelentkezes')->insert($data);
-        $this->beiratkozasemail($token);
+      
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
         //return view('JelentkezesSikerult.php');
