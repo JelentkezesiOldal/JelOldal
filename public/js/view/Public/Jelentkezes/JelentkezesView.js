@@ -62,6 +62,8 @@ class JelentkezesView {
                     tanulo_neve: {
                         required: true,
                         minlength: 5,
+                        maxlength:50,
+                        pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
                     },
                     telefonszam: {
                         required: true,
@@ -78,10 +80,12 @@ class JelentkezesView {
                         required: "Kötelező kitölteni",
                         minlength:
                             "A névnek minimum 5 karekteresnek kell lennie",
+                        maxlength: "A név maximum 30 karakteres lehet",
+                        pattern:"A név nem tartalmazhat speciális karaktereket és számokat"
                     },
                     telefonszam: {
                         required: "Kötelező kitölteni",
-                        number: "Csak szám lehet",
+                        number: "A telefonszám csak számokat tartalmazhat",
                         minlength:
                             "A telefonszámnak minimum 7 karekteresnek kell lennie",
                         maxlength:
