@@ -75,11 +75,8 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-
-
-
 Route::get('/beiratkozas/{token}',function($token){
-    return view('beiratkozas', $token);
+    return view('beiratkozas', ['tokenke'=>$token]);
 });
 
 //ADMIN DOLGOK KIVÜL HOGY MENJEN

@@ -5,7 +5,9 @@ class BeiratkozasController{
     constructor(){
         console.log("BeiratkozasController");
         const token = $('meta[name="csrf-token"]').attr("content");
-        const urltoken = ""
+
+        const urltoken = $('#token').val();
+        
         console.log('UrlToken: ', urltoken);
         const beiratkozasmodel = new PublicAdatModel(token);
         this.vegpont = "/show";
