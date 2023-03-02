@@ -1,4 +1,6 @@
-// import jsPDF from '/jspdf';
+import jsPDF from "../../../../jspdf/dist/jspdf.es";
+
+
 
 class JelentkezoView {
     #elem;
@@ -126,8 +128,7 @@ class JelentkezoView {
 
 function generatePDF() {
     var doc = new jsPDF();
-    const adat = $('.modal-content div ');
-    doc.text(JSON.stringify(adat), 10, 10);
-    doc = new jsPDF()
+    doc.text("Hello world!", 10, 10);
+    doc.save("a4.pdf");
 }
 export default JelentkezoView;
