@@ -19,10 +19,11 @@ class JelentkezoController extends Controller
         return $jelentkezos;
     }
 
-    public function show($id)
+    public function show($token)
     {
         //$jelentkezo = Jelentkezo::all($id);
-        $jelentkezo = response()->json(Jelentkezo::all()->find($id));
+       //$jelentkezo = response()->json(Jelentkezo::all()->find($token));
+        $jelentkezo = response()->json(Jelentkezo::where('token', $token)->first());
         return $jelentkezo;
     }
 
@@ -76,7 +77,7 @@ class JelentkezoController extends Controller
         $jelentkezo->erettsegi_bizonyitvany_szama = $request->erettsegi_bizonyitvany_szama;
         $jelentkezo->szakmai_bizonyitvany_szama = $request->szakmai_bizonyitvany_szama;
         $jelentkezo->bankszamlaszam = $request->bankszamlaszam;
-        $jelentkezo->statusz = $request->statusz;
+        //$jelentkezo->statusz = $request->statusz;
         $jelentkezo->save();
     }
 
@@ -93,7 +94,7 @@ class JelentkezoController extends Controller
             
         }
 
-    //'regex:[^*;?!°(){}%#@$+,[=]'
+        //'regex:[^*;?!°(){}%#@$+,[=]'
 
 
         $jelentkezo = new Jelentkezo();
@@ -102,8 +103,8 @@ class JelentkezoController extends Controller
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->statusz = "beiratkozás alatt";
         $token =Str::random();
-        $jelentkezo->token= $token;
-        $url = url('beiratkozas/'. $token); 
+        $jelentkezo->token = $token;
+        $url = url(`/beiratkozas/`. $token); 
 
         $jelentkezo->save();
         $this->beiratkozasemail($token);
@@ -111,6 +112,7 @@ class JelentkezoController extends Controller
         $utolsoId = $jelentkezo->jelentkezo_id;
         $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id);
         DB::table('jelentkezes')->insert($data);
+        $this->Beiratkozashivas($token);
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
         //return view('JelentkezesSikerult.php');
@@ -160,14 +162,6 @@ class JelentkezoController extends Controller
             'szakmai_bizonyitvany_szama' => $request->szakmai_bizonyitvany_szama,
             'bankszamlaszam' => $request->bankszamlaszam,
             'statusz' => "Beiratkozasa alatt",
-           /*  'lakcimkartya' => $request->file('lakcimkartya')->store('lakcimkartya'),
-            'diakigazolvany' => $request->file('diakigazolvany')->store('diakigazolvany'),
-            'szemelyi_igazolvany' => $request->file('szemelyi_igazolvany')->store('szemelyi_igazolvany'),
-            'taj_karty' => $request->file('taj_karty')->store('taj_karty'),
-            'adoigazolvany' => $request->file('adoigazolvany')->store('adoigazolvany'),
-            'erettsegi_bizonyitvany' => $request->file('erettsegi_bizonyitvany')->store('erettsegi_bizonyitvany'),
-            'szakmai_bizonyitvany' => $request->file('szakmai_bizonyitvany')->store('szakmai_bizonyitvany'),
-            'orvosi_alkalmassági' => $request->file('orvosi_alkalmassági')->store('orvosi_alkalmassági'), */
         ];
         
         foreach ($data as $key => $value) {
@@ -206,7 +200,13 @@ class JelentkezoController extends Controller
             ->get();
         return $keres;
     }
+
+    public function Beiratkozashivas($tokenke){
+        return view('beiratkozas',['tokenke' => $tokenke]);
+
+    }
     public function beiratkozasemail($token){
+        
         return $token;
     }
 }

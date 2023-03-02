@@ -1,7 +1,8 @@
-.modal {
+.modalSajat {
     display: none;
     position: fixed;
     z-index: 1;
+    padding-top: 100px;
     left: 0;
     top: 0;
     width: 100%;
@@ -11,23 +12,24 @@
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+.modal-contentSajat {
+    text-align: center;
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
 }
 
-.close {
+.closeSajat {
     color: #aaa;
     text-align: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.closeSajat:hover,
+.closeSajat:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -114,6 +116,15 @@ article {
     background-color: #111;
     cursor: grab;
 }
+
+#done, #undo{
+    display: none;
+}
+
+#done, #undo, .edit{
+    cursor: pointer;
+}
+
 
 @media screen and (max-width: 600px) {
     table {

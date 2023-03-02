@@ -3,9 +3,9 @@ import JelentkezoView from "./JelentkezoView.js";
 class JelentkezokView{
     constructor(tomb, szuloElem){
         szuloElem.html(`
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <spam class="close">&times;</spam>
+        <div id="myModal" class="modalSajat">
+            <div class="modal-contentSajat">
+                <spam class="closeSajat">&times;</spam>    
             </div>
         </div>
         `)
@@ -25,6 +25,7 @@ class JelentkezokView{
         <table id="jelTab" class="table table-hover">
             <thead>
                 <tr>
+                    <th>Dátum</th>
                     <th>OM azonosító</th>
                     <th>Név</th>
                     <th>E-mail</th>

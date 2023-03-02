@@ -6,7 +6,6 @@ class SzakView{
             <tr>
                 <td data-label="#">${elem.szak_id}</td>
                 <td data-label="Megnevezés">${elem.megnevezes}</td>
-                <td data-label="Előfeltétel">${elem.elofeltetel}</td>
                 <td data-label="Félévek száma">${elem.hany_felev}</td>
                 <td data-label=""><button id="indit${elem.szak_id}">Indítás</button></td>
             </tr>

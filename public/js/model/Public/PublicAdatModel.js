@@ -22,8 +22,9 @@ class PublicAdatModel {
                 console.error('Error:', error);
             });
     }
-    BeiratkozasAdat(vegpont, myCallBack) {
-        //vegpont += "/" + adat.jelentkezo_id;
+    BeiratkozasAdat(vegpont, myCallBack, urltoken) {
+        vegpont += "/" + urltoken;
+        console.log("Vegpont: ", vegpont)
         fetch(vegpont, {
             method: 'GET',
             headers: {
@@ -63,7 +64,7 @@ class PublicAdatModel {
 
     adatModosit(vegpont, adat) {
         console.log("ADATModosit ::",adat);
-        vegpont += "/" + adat.jelentkezo_id;
+        vegpont += "/" + adat.token;
         console.log("Modosit + id ::",vegpont);
         fetch(vegpont, {
             method: 'PATCH',
