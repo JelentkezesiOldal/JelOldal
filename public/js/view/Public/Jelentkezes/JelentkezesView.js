@@ -19,6 +19,8 @@ class JelentkezesView {
         <label for="szak" class="form-label">Szak kiválasztása:</label>
         <select name="inditott_id" id="szak" class="form-select" >
         </select>
+        <input type="checkbox" id="adatkez" name="adatkez" >
+        <label for="adatkez">Elfogadom az adatkezelési szabályzatot</label><br>
         <input type="button" id="elkuld" value="Elküld" class="btn btn-outline-secondary" >
         </form>
         `);

@@ -104,7 +104,7 @@ class JelentkezoController extends Controller
         $jelentkezo->statusz = "beiratkozás alatt";
         $token =Str::random();
         $jelentkezo->token = $token;
-        $url = url(`/beiratkozas/`. $token); 
+        $url = url("/beiratkozas/". $token); 
 
         $jelentkezo->save();
         $this->beiratkozasemail($token);
