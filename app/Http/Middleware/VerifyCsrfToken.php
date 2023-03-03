@@ -28,6 +28,7 @@ class VerifyCsrfToken extends Middleware
         "/admin/keresesj/*",
         "/admin/ujFelhasznalo",
         "/admin/ujArchivum",
-        "/admin/modosit/*"
+        "/admin/modosit/*",
+        "/admin/elfVar"
     ];
 }

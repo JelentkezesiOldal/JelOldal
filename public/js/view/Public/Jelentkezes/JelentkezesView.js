@@ -3,7 +3,6 @@ class JelentkezesView {
     #elem = [];
     #jelentkezoAdat = {};
     constructor(elem, szuloElem) {
-        
         this.validalas();
         this.#elem = elem;
         console.log("elem", elem);
@@ -20,8 +19,8 @@ class JelentkezesView {
         <select name="inditott_id" id="szak" class="form-select" >
         </select>
         <input type="checkbox" id="adatkez" name="adatkez" >
-        <label for="adatkez">Elfogadom az adatkezelési szabályzatot</label><br>
-        <input type="button" id="elkuld" value="Elküld" class="btn btn-outline-secondary" >
+        <label for="adatkez">Elfogadom az <a href="https://www.w3schools.com/" target="_blank">adatkezelési szabályzatot</a></label><br>
+        <input type="button" id="elkuld" value="Elküld" class="btn btn-outline-secondary" disabled>
         </form>
         `);
         this.formElem = szuloElem.children("form:last-child");
@@ -39,6 +38,10 @@ class JelentkezesView {
 
             //console.log("opcioelem",this.opcioElem)
         });
+
+        $('#adatkez').on('click', ()=>{
+            ellenorzes()
+        })
     }
 
     adatGyujtes() {
@@ -101,6 +104,19 @@ class JelentkezesView {
             });
         });
     }
+}
+
+function ellenorzes(){
+    if ($('#jelentkezes').valid()) {
+        if ($('#adatkez').prop("checked")) {
+            $('#elkuld').prop('disabled', false)
+        }else{
+            $('#elkuld').prop('disabled', true)
+        } 
+    }else{
+        $('#elkuld').prop('disabled', true)
+    }
+    
 }
 
 export default JelentkezesView;

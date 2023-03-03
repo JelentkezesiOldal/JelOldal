@@ -1,6 +1,7 @@
 import AdminAdatModel from "../../model/Admin/AdminAdatModel.js";
 import ArchivaltakView from "../../view/Admin/Archivum/ArchivaltakView.js";
 import FelhasznalokView from "../../view/Admin/Felhasznalok/FelhasznalokView.js";
+import JelentkezokElfogadView from "../../view/Admin/Jelentkezok/JelentkezokElfogadView.js";
 import JelentkezokView from "../../view/Admin/Jelentkezok/JelentkezokView.js";
 import SzakokView from "../../view/Admin/Szakok/SzakokView.js";
 
@@ -13,12 +14,19 @@ class AdminController {
         $("#stat").on("click", () => {
             adminadatmodel.adatBe();
         });
+
         $("#felh").on("click", () => {
             adminadatmodel.adatBe("/admin/felPlusSzak", this.felhasznalokMutat);
         });
+
         $("#jele").on("click", () => {
             adminadatmodel.adatBe("/admin/osszes", this.jelentkezokMutat);
         });
+
+        $("#elf").on("click", () => {
+            adminadatmodel.adatBe("/admin/elfVar", this.jelentkezokElfogadMutat);
+        });
+
         $("#szak").on("click", () => {
             adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
         });
@@ -26,6 +34,7 @@ class AdminController {
         $("#arch").on("click", () => {
             adminadatmodel.adatBe("/admin/archivOsszes", this.archivaltMutat);
         });
+
         $(window).on("mod", (event) => {
             adminadatmodel.adatModosit("/admin/modosit", event.detail)
             location.reload()
@@ -34,7 +43,7 @@ class AdminController {
         $(window).on("archiv", (event) => {
             adminadatmodel.adatUj("/admin/ujArchivum", event.detail);
             adminadatmodel.adatTorol("/admin/torol/", event.detail);
-            location.reload();
+            // location.reload();
         });
 
         $(window).on("torol", (event) => {
@@ -89,6 +98,10 @@ class AdminController {
     jelentkezokMutat(tomb) {
         const szuloElem = $("article");
         new JelentkezokView(tomb, szuloElem);
+    }
+    jelentkezokElfogadMutat(tomb){
+        const szuloElem = $("article");
+        new JelentkezokElfogadView(tomb, szuloElem)
     }
     szakokMutat(tomb) {
         const szuloElem = $("article");

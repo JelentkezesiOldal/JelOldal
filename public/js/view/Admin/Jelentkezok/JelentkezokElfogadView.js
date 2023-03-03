@@ -1,16 +1,16 @@
-import ArchivaltView from "./ArchivaltView.js";
+import JelentkezoElfogadView from "./JelentkezoElfogadView.js"
 
-class ArchivaltakView {
-    constructor(tomb, szuloElem) {
+class JelentkezokElfogadView{
+    constructor(tomb, szuloElem){
         szuloElem.html(`
         <div id="myModal" class="modalSajat">
-            <div class="modal-contentSajat">
-                <spam class="closeSajat">&times;</spam>
+            <div id="pdf" class="modal-contentSajat">
+                <spam class="closeSajat">&times;</spam>    
             </div>
-        </div>`);
-
-        this.modalElem = szuloElem.children("div:last-child");
-        this.tenylegmodalElem = this.modalElem.children("div:last-child");
+        </div>
+        `)
+        this.modalElem = szuloElem.children("div:last-child")
+        this.tenylegmodalElem = this.modalElem.children("div:last-child")
         szuloElem.append(`
         <div class="row float-end">
             <div class="col input-group">
@@ -22,36 +22,30 @@ class ArchivaltakView {
         </div>
         `)
         szuloElem.append(`
-        <h2 class="cim">Archivált jelentkezések</h2>
-        <table class="table table-hover">
-            <thead class="thead-light">
+        <table id="jelTab" class="table table-hover">
+            <thead>
                 <tr>
-                    <th>#</th>
                     <th>Dátum</th>
                     <th>OM azonosító</th>
                     <th>Név</th>
-                    <th>Szak</th>
+                    <th>E-mail</th>
+                    <th>Telefonszám</th>
                 </tr>    
             </thead>
             <tbody>
+            
             </tbody>
-        </table>`);
-        this.tableElem = szuloElem.children("table:last-child");
-        this.tbodyElem = this.tableElem.children("tbody");
-
+        </table>`)
         this.keresGomb = $('#kereses')
         this.keresGomb.on('click', ()=>{
             this.input = $('#keres1').val()
             console.log(this.input + " lécci új")
             this.kattintasTrigger("keresJ")
         })
-
-        tomb.forEach((adat) => {
-            const adatom = new ArchivaltView(
-                adat,
-                this.tbodyElem,
-                this.tenylegmodalElem
-            );
+        this.tableElem = szuloElem.children('table:last-child');
+        this.tbodyElem = this.tableElem.children('tbody');
+        tomb.forEach(adat => {
+            const adatom = new JelentkezoElfogadView(adat, this.tbodyElem, this.tenylegmodalElem)
         });
     }
     kattintasTrigger(esemenyNeve){
@@ -60,4 +54,4 @@ class ArchivaltakView {
     }
 }
 
-export default ArchivaltakView;
+export default JelentkezokElfogadView
