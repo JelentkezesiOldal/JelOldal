@@ -128,7 +128,7 @@ class JelentkezoController extends Controller
     }
 
     
-    public function beiratkozo(Request $request, $id)
+    public function beiratkozo(Request $request, $token)
     {
 /* 
         $validator = Validator::make($request->all(), [
@@ -141,7 +141,7 @@ class JelentkezoController extends Controller
         $filecontroller->store($request); */
         
         
-        $jelentkezo = Jelentkezo::find($id);
+        $jelentkezo = Jelentkezo::where('token', $token)->first();
         $data = [
             'tanulo_neve' => $request->tanulo_neve,
             'szuleteskori_neve' => $request->szuleteskori_neve,
