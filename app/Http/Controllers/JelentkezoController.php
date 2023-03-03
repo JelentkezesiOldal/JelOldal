@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
 use App\Http\Controllers\EmailController;
+use Carbon\Carbon;
+use DateTime;
 use Faker\Core\File;
+use Faker\Provider\DateTime as ProviderDateTime;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -107,12 +110,11 @@ class JelentkezoController extends Controller
         $url = url('/beiratkozas'."/". $token); 
 
         $jelentkezo->save();
-        $this->beiratkozasemail($token);
         /*echo*/
         $utolsoId = $jelentkezo->jelentkezo_id;
-        $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id);
+        $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id, 'datum'=>Carbon::now());
         DB::table('jelentkezes')->insert($data);
-        $this->beiratkozasemail($token);
+
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
         //return view('JelentkezesSikerult.php');
