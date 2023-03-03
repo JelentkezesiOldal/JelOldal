@@ -41,15 +41,15 @@ Route::middleware(['auth'])->group(function () {
     //admin újadatok
     Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
     //admin modosít
-    
+    Route::put('/admin/modosit/{id}', [JelentkezoController::class, 'update']);
 
     //archívum
     Route::post('/admin/ujArchivum', [JelentkezesController::class, 'ujArchivalt']);
     Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
    
 });
+Route::get('/admin/elfVar', [JelentkezesController::class, 'elfogadasraVar']);
 
-Route::put('/admin/modosit/{id}', [JelentkezoController::class, 'update']);
 /*******************************Public**************************************/
 Route::middleware(['PublicPages'])->group(function (){
 

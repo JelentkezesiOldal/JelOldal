@@ -20,6 +20,7 @@
                         <li id="stat">Statisztika</li>
                         <li id="felh">Felhasználó</li>
                         <li id="jele">Jelentkezők</li>
+                        <li id="elf">Elfogadás</li>
                         <li id="szak">Szakok</li>
                         <li id="arch">Archívum</li>
                         <!-- <li id="login"><a href="/login">Bejelntkezés</a></li> -->

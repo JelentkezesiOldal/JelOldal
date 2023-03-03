@@ -54,13 +54,12 @@ class JelentkezesController extends Controller
         return $jelent;
     }
 
-    //muszáj
-
-    // public function ujArchivalt(Request $request){
-    //     $archival = new Archivalt();
-    //     echo $utolsoId = $archival->jelentkezo_id;
-    //     $data=array('jelentkezo_id'=>$utolsoId, 'inditott_id'=>$request->inditott_id);
-    //     DB::table('archivalts')->insert($data);
-    // }
-
+    public function elfogadasraVar(){
+        $jelent = DB::select(DB::raw("select * from jelentkezos jos, jelentkezes jes, inditott_szaks insz, szaks sz
+        where jos.jelentkezo_id = jes.jelentkezo_id 
+        and jes.inditott_id = insz.inditott_id
+        and sz.szak_id = insz.szak_id
+        and jos.statusz like 'Beiratkozásra vár'"));
+        return $jelent;
+    }
 }

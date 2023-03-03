@@ -1,7 +1,4 @@
 
-
-
-
 class JelentkezoView {
     #elem;
     constructor(elem, szuloElem, modal) {   
