@@ -110,12 +110,11 @@ class JelentkezoController extends Controller
         $url = url('/beiratkozas'."/". $token); 
 
         $jelentkezo->save();
-       
         /*echo*/
         $utolsoId = $jelentkezo->jelentkezo_id;
         $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id, 'datum'=>Carbon::now());
         DB::table('jelentkezes')->insert($data);
-      
+
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
         //return view('JelentkezesSikerult.php');
