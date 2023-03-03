@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Archivalt;
 use App\Models\Jelentkezes;
 use App\Models\Jelentkezo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class JelentkezesController extends Controller
@@ -15,17 +17,16 @@ class JelentkezesController extends Controller
         return $jelentkezes;
     }
 
-    public function show($jelentkezo_id, $inditott_id, $datum)
+    public function show($jelentkezo_id, $inditott_id)
     {
         $jelentkez = Jelentkezes::where('jelentkezo_id', $jelentkezo_id)
                                 ->where('inditott_id', $inditott_id)
-                                ->where('datum', $datum)
                                 ->get();
         return $jelentkez[0];   
     }
-    public function destroy($jelentkezo_id, $inditott_id, $datum)
+    public function destroy($jelentkezo_id, $inditott_id)
     {
-        JelentkezesController::show($jelentkezo_id, $inditott_id, $datum)->delete();
+        JelentkezesController::show($jelentkezo_id, $inditott_id)->delete();
     }
 
     public function store(Request $request)

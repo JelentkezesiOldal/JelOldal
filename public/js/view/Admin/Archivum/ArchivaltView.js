@@ -5,6 +5,7 @@ class ArchivaltView {
         szuloElem.append(
             `<tr id="J${elem.jelentkezo_id}">
             <td data-label="#">${elem.jelentkezo_id}</td>
+            <td data-label="Dátum ">${elem.datum}</td>
             <td data-label="OM azonosító">${elem.diak_azonosito}</td>
             <td data-label="Tanuló neve">${elem.tanulo_neve}</td>
             <td data-label="Megnevezés">${elem.megnevezes}</td>

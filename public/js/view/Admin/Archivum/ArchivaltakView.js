@@ -27,6 +27,7 @@ class ArchivaltakView {
             <thead class="thead-light">
                 <tr>
                     <th>#</th>
+                    <th>Dátum</th>
                     <th>OM azonosító</th>
                     <th>Név</th>
                     <th>Szak</th>

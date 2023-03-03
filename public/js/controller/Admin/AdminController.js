@@ -34,7 +34,7 @@ class AdminController {
         $(window).on("archiv", (event) => {
             adminadatmodel.adatUj("/admin/ujArchivum", event.detail);
             adminadatmodel.adatTorol("/admin/torol/", event.detail);
-            location.reload();
+            // location.reload();
         });
 
         $(window).on("torol", (event) => {

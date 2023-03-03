@@ -22,11 +22,11 @@ return new class extends Migration
             $table->timestamps();
         });
         
-        // InditottSzak::create(['szak_id'=>1,'allamihely'=> 25,'onkolthely'=>25]);
-        // InditottSzak::create(['szak_id'=>2,'allamihely'=> 25,'onkolthely'=>15]);
-        // InditottSzak::create(['szak_id'=>7,'allamihely'=> 15,'onkolthely'=>15]);
-        // InditottSzak::create(['szak_id'=>3,'allamihely'=> 25,'onkolthely'=>45]);
-        // InditottSzak::create(['szak_id'=>8,'allamihely'=> 10,'onkolthely'=>35]);
+        InditottSzak::create(['szak_id'=>1,'allamihely'=> 25,'onkolthely'=>25]);
+        InditottSzak::create(['szak_id'=>2,'allamihely'=> 25,'onkolthely'=>15]);
+        InditottSzak::create(['szak_id'=>7,'allamihely'=> 15,'onkolthely'=>15]);
+        InditottSzak::create(['szak_id'=>3,'allamihely'=> 25,'onkolthely'=>45]);
+        InditottSzak::create(['szak_id'=>8,'allamihely'=> 10,'onkolthely'=>35]);
     }
 
     /**
