@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "build": "^0.1.4",
-        "jspdf": "^2.5.1"
+        "jspdf": "^2.5.1",
+        "pdfmake": "^0.2.7"
     }
 }

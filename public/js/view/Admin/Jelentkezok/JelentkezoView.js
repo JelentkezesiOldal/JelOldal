@@ -1,8 +1,9 @@
 
+
 class JelentkezoView {
     #elem;
     constructor(elem, szuloElem, modal) {   
-        console.log("jelentkezoView");
+        console.log(elem);
         var saveElem
         var adat
         var inputElem   
@@ -106,6 +107,7 @@ class JelentkezoView {
 
            
             this.mentElem.on("click", () => {
+                this.adatokBe()
                 generatePDF(this.#elem);
             });
         });
@@ -149,8 +151,75 @@ class JelentkezoView {
     }
 }
 
-function generatePDF(elem) {
-    console.log(elem)
-    html2pdf().from(elem).save("valami");
+function generatePDF(tomb) {
+    const doksi ={
+        header: {
+            text: tomb.tanulo_neve,
+            alignment: 'center',
+            fontSize: 20,
+            bold: true,
+            margin: [10,10,10,20]
+        },
+        content: [
+            {
+            table: {
+                
+                headerRows:1,
+                body:[
+                    ['Választott szak:', tomb.megnevezes],
+                    ['Születéskori neve:', tomb.szuleteskori_neve],
+                    ['Anyja neve:', tomb.anyja_neve],
+                    ['Születési dátum:', tomb.szuletesi_datum],
+                    ['Születési hely:', tomb.szuletesi_hely],
+                    ['Email címe:', tomb.email],
+                    ['Telefonszám:', tomb.telefonszam],
+                    ['Értesítési cím:', tomb.ertesitesi_cim],
+                    ['Lakcím:', tomb.allando_lakcim],
+                    ['Neme:', tomb.neme],
+                    ['OM azonosító:', tomb.diak_azonosito],
+                    ['Személyi igazolvány szám:', tomb.szemelyi_igazolvany_szam],
+                    ['Taj szám:', tomb.taj_szam],
+                    ['Adószám:', tomb.adoszam],
+                    ['Érettségi bizonyítvány száma:', tomb.erettsegi_bizonyitvany_szama],
+                    ['Szakmai bizonyítvány száma:', tomb.szakmai_bizonyitvany_szama],
+                    ['Bankszámlaszám:', tomb.bankszamlaszam]
+                    
+                ]
+            },
+            "layout": "noBorders",
+            layout: {
+                defaultBorder: false,
+                paddingTop: function(i, node) { return 5; },
+                paddingBottom: function(i, node) { return 5; }
+              }
+            }
+        ],
+        styles:{
+            header: {
+                alignment : 'center',
+                fontSize: 40,
+            },
+            tableExample: {
+                margin: [0, 5, 0, 15]
+              }
+        }
+    }
+    pdfMake.createPdf(doksi).download();
+    // console.log('pdf-re kattintottal')
+    // var doc = new jsPDF();
+    // tomb.forEach(function(elem, i) {
+    //     doc.text(50, 10 + (i * 10),
+    //     "Tanuló neve: " + elem.tanulo_neve)
+    // });
+    // doc.save('test.pdf')
+    // html2pdf().from(elem).save("valami");
+    // columns:[
+    //     {
+    //         text: "Név\n"+"email"
+    //     },
+    //     {
+    //         text: tomb.tanulo_neve+"\n"+tomb.email
+    //     }
+    //    ]
 }
 export default JelentkezoView;

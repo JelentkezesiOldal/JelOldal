@@ -44,12 +44,11 @@ class JelentkezokView {
         </table>`);
         /** */
         var headers = {
-            // jelentkezo_id: "jelentkezo_id".replace(/,/g, ""), // remove commas to avoid errors
             datum: "Dátum",
-            diak_azonosito: "OM azonosito",
-            tanulo_neve: "Nev",
+            diak_azonosito: "OM azonosító",
+            tanulo_neve: "Név",
             email: "E-mail",
-            telefonszam: "Telefonszam",
+            telefonszam: "Telefonszám",
             adoszam: "Adószám",
             allando_lakcim: "Állandó lakcim",
             ertesitesi_cim: "Értesítési cím",
@@ -71,7 +70,6 @@ class JelentkezokView {
         var itemsFormatted = [];
         tomb.forEach((item) => {
             itemsFormatted.push({
-                // jelentkezo_id: item.jelentkezo_id.replace(/,/g, ""), // remove commas to avoid errors,
                 datum: item.datum,
                 diak_azonosito: item.diak_azonosito,
                 tanulo_neve: item.tanulo_neve,
@@ -152,8 +150,10 @@ function exportCSVFile(headers, items, fileTitle) {
     var csv = ConvertToCSV(jsonObject);
 
     var exportedFilenmae = fileTitle + ".csv" || "export.csv";
-
-    var blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    var byteOrderMark = "\ufeff";
+    var blob = new Blob([byteOrderMark, csv], 
+        { type: "text/csv;charset=UTF-8;" }
+        );
     if (navigator.msSaveBlob) {
         // IE 10+
         navigator.msSaveBlob(blob, exportedFilenmae);
