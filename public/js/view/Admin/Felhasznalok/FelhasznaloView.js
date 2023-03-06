@@ -6,12 +6,12 @@ class FelhasznaloView{
         szuloElem.append(`<tr>
             <td data-label="Név">${elem.name}</td>
             <td data-label="E-mail">${elem.email}</td>
-            <td data-label="Szak">${elem.megnevezes}</td>
             <td data-label="Jogosultság">${this.getMaster(elem.master)}</td>
         </tr>`)
 
         
     }
+    
     getMaster(adat){
         if(adat == 1){
             return "Master"

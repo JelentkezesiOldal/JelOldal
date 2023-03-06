@@ -1,16 +1,12 @@
+import AdminAdatModel from "../../../model/Admin/AdminAdatModel.js";
 
 
 class JelentkezoView {
     #elem;
     constructor(elem, szuloElem, modal) {   
-        console.log(elem);
-        var saveElem
-        var adat
-        var inputElem   
-        var editElem
-        var doneElem
-        var undoElem
+        console.log("jelentkezoView");
         this.#elem = elem;
+        const adminadatmodel = new AdminAdatModel();
         szuloElem.append(`<tr id="J${elem.jelentkezo_id}">
             <td data-label="datum">${elem.datum}</td>
             <td data-label="OM azonosító">${elem.diak_azonosito}</td>
@@ -77,31 +73,31 @@ class JelentkezoView {
             });
             
             $(".edit").click(function (){
-                adat = $(this).attr("name")
-                saveElem = $(".modalSajat div p:nth-child(" + adat + ") input").val()
-                editElem = $(".modalSajat div p:nth-child(" + adat + ") .edit")
-                doneElem = $(".modalSajat div p:nth-child(" + adat + ") .done")
-                undoElem = $(".modalSajat div p:nth-child(" + adat + ") .undo")
-                inputElem = $(".modalSajat div p:nth-child(" + adat + ") input")
-                inputElem.prop('disabled', false)
-                editElem.css('display', 'none')
-                doneElem.css('visibility', 'visible')
-                undoElem.css('visibility', 'visible')
+                adminadatmodel.setAdat($(this).attr("name")) 
+                adminadatmodel.setSaveElem($(".modalSajat div p:nth-child(" + adminadatmodel.getAdat() + ") input").val())
+                adminadatmodel.setEditElem($(".modalSajat div p:nth-child(" + adminadatmodel.getAdat() + ") .edit"))
+                adminadatmodel.setDoneElem($(".modalSajat div p:nth-child(" + adminadatmodel.getAdat() + ") .done"))
+                adminadatmodel.setUndoElem($(".modalSajat div p:nth-child(" + adminadatmodel.getAdat() + ") .undo"))
+                adminadatmodel.setInputElem($(".modalSajat div p:nth-child(" + adminadatmodel.getAdat() + ") input"))
+                adminadatmodel.getInputElem().prop('disabled', false)
+                adminadatmodel.getEditElem().css('display', 'none')
+                adminadatmodel.getDoneElem().css('visibility', 'visible')
+                adminadatmodel.getUndoElem().css('visibility', 'visible')
             })
 
             $(".undo").click(function (){
-                $(".modalSajat div p:nth-child(" + adat + ") input").val(saveElem)
-                inputElem.prop('disabled', true)
-                editElem.css('display', 'unset')
-                doneElem.css('visibility', 'hidden')
-                undoElem.css('visibility', 'hidden')
+                $(".modalSajat div p:nth-child(" + adminadatmodel.getAdat() + ") input").val(adminadatmodel.getSaveElem())
+                adminadatmodel.getInputElem().prop('disabled', true)
+                adminadatmodel.getEditElem().css('display', 'unset')
+                adminadatmodel.getDoneElem().css('visibility', 'hidden')
+                adminadatmodel.getUndoElem().css('visibility', 'hidden')
             })
 
             $('.done').click(function (){
-                inputElem.prop('disabled', true)
-                editElem.css('display', 'unset')
-                doneElem.css('visibility', 'hidden')
-                undoElem.css('visibility', 'hidden')
+                adminadatmodel.getInputElem().prop('disabled', true)
+                adminadatmodel.getEditElem().css('display', 'unset')
+                adminadatmodel.getDoneElem().css('visibility', 'hidden')
+                adminadatmodel.getUndoElem().css('visibility', 'hidden')
             })
 
 

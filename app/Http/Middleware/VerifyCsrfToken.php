@@ -16,7 +16,7 @@ class VerifyCsrfToken extends Middleware
         "/beiratkozo/*",
         "/show/*",
         "/beiratkozas/*",
-        "/file_upload",
+        "/file_upload/*",
         "/admin/jelentkezok/torol/*",
         "/admin/mutat/*/*",
         "/admin/torol/*/*",
@@ -29,6 +29,7 @@ class VerifyCsrfToken extends Middleware
         "/admin/ujFelhasznalo",
         "/admin/ujArchivum",
         "/admin/modosit/*",
-        "/admin/elfVar"
+        "/admin/elfVar",
+        "/admin/beirAlatt"
     ];
 }
