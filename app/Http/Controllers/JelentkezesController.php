@@ -51,7 +51,8 @@ class JelentkezesController extends Controller
         $jelent = DB::select(DB::raw("select * from jelentkezos jos, jelentkezes jes, inditott_szaks insz, szaks sz
         where jos.jelentkezo_id = jes.jelentkezo_id 
         and jes.inditott_id = insz.inditott_id
-        and sz.szak_id = insz.szak_id"));
+        and sz.szak_id = insz.szak_id
+        and jos.statusz like 'Beiratkozva'"));
         return $jelent;
     }
 
@@ -60,7 +61,16 @@ class JelentkezesController extends Controller
         where jos.jelentkezo_id = jes.jelentkezo_id 
         and jes.inditott_id = insz.inditott_id
         and sz.szak_id = insz.szak_id
-        and jos.statusz like 'Beiratkozásra vár'"));
+        and jos.statusz like 'Elfogadásra vár'"));
+        return $jelent;
+    }
+    
+    public function beiratAlatt(){
+        $jelent = DB::select(DB::raw("select * from jelentkezos jos, jelentkezes jes, inditott_szaks insz, szaks sz
+        where jos.jelentkezo_id = jes.jelentkezo_id 
+        and jes.inditott_id = insz.inditott_id
+        and sz.szak_id = insz.szak_id
+        and jos.statusz like 'Beiratkozás alatt'"));
         return $jelent;
     }
 }

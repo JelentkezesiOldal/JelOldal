@@ -1,5 +1,5 @@
-class JelentkezoElfogadView{
-    #elem;
+class JelentkezoBeirAlattView{
+    #elem
     constructor(elem, szuloElem, modal) {   
         this.#elem = elem;
         szuloElem.append(`<tr id="J${elem.jelentkezo_id}">
@@ -40,7 +40,7 @@ class JelentkezoElfogadView{
                 $(".modal-contentSajat div").remove()
             })
         }
-    )}   
+    )}
 }
 
-export default JelentkezoElfogadView
+export default JelentkezoBeirAlattView
