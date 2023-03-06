@@ -50,7 +50,7 @@ class BeiratkozasFileUploadView {
         this.elkuldElem = $(`#button`);
         this.elkuldElem.on("click", () => {
             //console.log("Elküld a View-ban")
-            this.adatGyujtes();
+            this.UralapAdatok();
             this.FileTrigger("kuldes")
         });
     }

@@ -41,9 +41,9 @@ class BeiratkozasView {
         
         <label for="neme" class="form-label">Neme:</label>
         <select class="form-select" id="neme" name="neme">
-        <option value="no">Nő</option>
-        <option value="ferfi">Férfi</option>
-        <option value="nemad">Nem adom meg</option>
+        <option value="N">Nő</option>
+        <option value="F">Férfi</option>
+        <option value="X">Nem adom meg</option>
         </select><br><br>
         </div>
 </div>
@@ -130,7 +130,7 @@ class BeiratkozasView {
         this.elkuldElem = $(`#button`);
         this.elkuldElem.on("click", () => {
             //console.log("Elküld a View-ban")
-            this.adatGyujtes();
+            this.UralapAdatok();
             this.KattintasTrigger("mentes")
         });
     }
