@@ -32,7 +32,6 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->master = $request->master;  
-        $user->szak_id = $request->szak_id;   
         $user->save();
         return $user;
     }
@@ -45,7 +44,6 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->master = $request->master;  
-        $user->szak_id = $request->szak_id; 
         $user->save();
     }
 
@@ -63,7 +61,6 @@ class UserController extends Controller
             ->orwhere('name', 'like', '%'.$ertek.'%')
             ->orwhere('email', 'like', '%'.$ertek.'%')
             ->orwhere('master', 'like', '%'.$ertek.'%')
-            ->orwhere('megnevezes', 'like', '%'.$ertek.'%')
             ->get();
         return $keres;
     }

@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
    
 });
 Route::get('/admin/elfVar', [JelentkezesController::class, 'elfogadasraVar']);
+Route::get('/admin/beirAlatt', [JelentkezesController::class, 'beiratAlatt']);
 
 /*******************************Public**************************************/
 Route::middleware(['PublicPages'])->group(function (){

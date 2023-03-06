@@ -22,7 +22,6 @@ class FelhasznalokView{
                     <th scope="col">E-mail</th>
                     <th scope="col">Ideiglenes jelszó</th>
                     <th scope="col">Jogosultság</th>
-                    <th scope="col">Szak</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -32,7 +31,6 @@ class FelhasznalokView{
                     <td data-label="E-mail"><input type="text" id="email"></td>
                     <td data-label="Ideiglenes jelszó"><input type="text" id="password"></td>
                     <td data-label="Jogosultság"><input type="number" id="master"></td>
-                    <td data-label="Szak"><input type="number" id="szak_id"></td>
                     <td data-label=""><input type="button" value="Felvesz" id="felvesz"></td>
                 </tr>
             </tbody>
@@ -44,7 +42,6 @@ class FelhasznalokView{
                 <tr>
                     <th>Név</th>
                     <th>E-mail</th>
-                    <th>Szak</th>
                     <th>Jogosultság</th>
                 </tr>    
             </thead>
@@ -80,7 +77,6 @@ class FelhasznalokView{
         this.#adatok.email = $('#email').val()
         this.#adatok.password = $('#password').val()
         this.#adatok.master = $('#master').val()
-        this.#adatok.szak_id = $('#szak_id').val()
     }
 
     kattintasTrigger(esemenyNeve){

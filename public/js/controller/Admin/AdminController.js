@@ -1,6 +1,7 @@
 import AdminAdatModel from "../../model/Admin/AdminAdatModel.js";
 import ArchivaltakView from "../../view/Admin/Archivum/ArchivaltakView.js";
 import FelhasznalokView from "../../view/Admin/Felhasznalok/FelhasznalokView.js";
+import JelentkezokBeirAlattView from "../../view/Admin/Jelentkezok/JelentkezokBeirAlattView.js";
 import JelentkezokElfogadView from "../../view/Admin/Jelentkezok/JelentkezokElfogadView.js";
 import JelentkezokView from "../../view/Admin/Jelentkezok/JelentkezokView.js";
 import SzakokView from "../../view/Admin/Szakok/SzakokView.js";
@@ -25,6 +26,10 @@ class AdminController {
 
         $("#elf").on("click", () => {
             adminadatmodel.adatBe("/admin/elfVar", this.jelentkezokElfogadMutat);
+        });
+
+        $("#beirA").on("click", () => {
+            adminadatmodel.adatBe("/admin/beirAlatt", this.jelentkezokBeirAlattMutat);
         });
 
         $("#szak").on("click", () => {
@@ -102,6 +107,10 @@ class AdminController {
     jelentkezokElfogadMutat(tomb){
         const szuloElem = $("article");
         new JelentkezokElfogadView(tomb, szuloElem)
+    }
+    jelentkezokBeirAlattMutat(tomb){
+        const szuloElem = $("article");
+        new JelentkezokBeirAlattView(tomb, szuloElem)
     }
     szakokMutat(tomb) {
         const szuloElem = $("article");

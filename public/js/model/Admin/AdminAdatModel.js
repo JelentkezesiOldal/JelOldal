@@ -1,6 +1,12 @@
 class AdminAdatModel{
     #adatok
     #token
+    #saveElem
+    #adat
+    #inputElem   
+    #editElem
+    #doneElem
+    #undoElem
     constructor(token){
         this.#token = token;
         console.log("AdminAdatModel")
@@ -87,7 +93,42 @@ class AdminAdatModel{
                 console.error('Error:', error);
             });
     }
-    
+    getSaveElem(){
+        return this.#saveElem;
+    }
+    setSaveElem(saveElem){
+        this.#saveElem = saveElem
+    }
+    getAdat(){
+        return this.#adat;
+    }
+    setAdat(adat){
+        this.#adat = adat
+    }
+    getInputElem(){
+        return this.#inputElem
+    }
+    setInputElem(inputElem){
+        this.#inputElem = inputElem
+    }
+    getEditElem(){
+        return this.#editElem
+    }
+    setEditElem(editElem){
+        this.#editElem = editElem
+    }
+    getDoneElem(){
+        return this.#doneElem
+    }
+    setDoneElem(doneElem){
+       this.#doneElem = doneElem
+    }
+    getUndoElem(){
+        return this.#undoElem
+    }
+    setUndoElem(undoElem){
+        this.#undoElem = undoElem
+    }
 }
 
 export default AdminAdatModel
