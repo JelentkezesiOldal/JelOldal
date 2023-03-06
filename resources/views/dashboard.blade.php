@@ -17,16 +17,34 @@
     <body id="bootstrap-overrides">
         <main>
             <header>
-                <nav>
-                    <ul class="menu">
-                        <li id="stat">Statisztika</li>
-                        <li id="felh">Felhasználó</li>
-                        <li id="jele">Jelentkezők</li>
-                        <li id="elf">Elfogadás</li>
-                        <li id="szak">Szakok</li>
-                        <li id="arch">Archívum</li>
-                        <!-- <li id="login"><a href="/login">Bejelntkezés</a></li> -->
-                    </ul>
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark menu">
+                    <div id="navbarSupportedContent">
+                        <ul class=" navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" id="stat">Statisztika</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="felh">Felhasználó</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Jelentkezők
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" id="beirA">Beiratkozás alatt</a>
+                                    <a class="dropdown-item" id="elf">Elfogadásra vár</a>
+                                    <a class="dropdown-item" id="jele">Beiratkozva</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="szak">Szakok</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="arch">Archívum</a>
+                            </li>
+                            <!-- <li id="login"><a href="/login">Bejelntkezés</a></li> -->
+                        </ul>
+                    </div>
                 </nav>
             </header>
 
@@ -34,6 +52,7 @@
 
             </article>
         </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </body>
 
     </html>
