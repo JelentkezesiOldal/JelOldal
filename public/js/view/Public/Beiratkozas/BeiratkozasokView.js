@@ -9,8 +9,7 @@ class BeiratkozasokView{
 
 
         new BeiratkozasView(tomb, this.articleElem);
-        new BeiratkozasFileUploadView(tomb, this.articleElem);
-
+        new BeiratkozasFileUploadView(this.articleElem);
         /* Object.keys(tomb).forEach(elem => {                  
         });   */
     }

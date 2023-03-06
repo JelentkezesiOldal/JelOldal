@@ -1,10 +1,9 @@
 class BeiratkozasFileUploadView {
-    #elem;
-    constructor(elem, szuloElem) {
-        this.#elem = elem
+    #elem={};
+    constructor(szuloElem) {
         szuloElem.append(`
         <h1>Beiratkozáshoz szükséges képek</h1>
-        <form id="beiratkozasFileUpload">
+        <form id="beiratkozasFileUpload" enctype="multipart/form-data">
             <div class="first">
                 <div class="mb-3">
                     <label for="lakcimkartya" class="form-label">Lakcímkártya: </label>
@@ -39,7 +38,7 @@ class BeiratkozasFileUploadView {
                     <label for="orvosi_alkalmassagi" class="form-label">Orvosi Alkalmassági: </label>
                     <input class="form-control" type="file" id="orvosi_alkalmassági" name="orvosi_alkalmassági" ></input><br><br>
                     
-                    <input id="button" type="button" value="Mentés" >
+                    <input id="btn" type="button" value="Mentés" >
                 </div>
             </div>
         </form>
@@ -47,9 +46,9 @@ class BeiratkozasFileUploadView {
         `)
         
         
-        this.elkuldElem = $(`#button`);
+        this.elkuldElem = $(`#btn`);
         this.elkuldElem.on("click", () => {
-            //console.log("Elküld a View-ban")
+            console.log("Elküld a View-ban")
             this.UralapAdatok();
             this.FileTrigger("kuldes")
         });

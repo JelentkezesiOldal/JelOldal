@@ -25,7 +25,7 @@ class BeiratkozasController{
             console.log("Elküld a controllerben");
             this.vegpont = "/file_upload"
             console.log("adatmod elott fileupload:  ",event.detail)
-            beiratkozasmodel.adatModosit(this.vegpont, event.detail);
+            beiratkozasmodel.adatModosit(this.vegpont, event.detail, urltoken);
             console.log(event.detail);
         });
     } 

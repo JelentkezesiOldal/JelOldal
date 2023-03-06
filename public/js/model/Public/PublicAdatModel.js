@@ -62,12 +62,12 @@ class PublicAdatModel {
             });
     }
 
-    adatModosit(vegpont, adat) {
+    adatModosit(vegpont, adat, urltoken ) {
         console.log("ADATModosit ::",adat);
-        vegpont += "/" + adat.token;
+        vegpont += "/" + urltoken;
         console.log("Modosit + id ::",vegpont);
         fetch(vegpont, {
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': this.#token
@@ -82,7 +82,6 @@ class PublicAdatModel {
                 console.error('Error:', error);
             });
     }
-
     adatTorol(vegpont, adat) {
         console.log(adat);
         console.log("Töröl: " + adat);

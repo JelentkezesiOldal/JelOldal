@@ -29,6 +29,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware( ['admin'])->group(function () {
     Route::apiResource('/users', UserController::class);
+    
 });
 
 
@@ -47,17 +48,17 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
     //admin modosít
     Route::put('/admin/modosit/{id}', [JelentkezoController::class, 'update']);
-
+    
     //archívum
     Route::post('/admin/ujArchivum', [JelentkezesController::class, 'ujArchivalt']);
     Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
-   
+    
 });
 Route::get('/admin/elfVar', [JelentkezesController::class, 'elfogadasraVar']);
 
 /*******************************Public**************************************/
 Route::middleware(['PublicPages'])->group(function (){
-
+    
 });
 Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
 //Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
@@ -67,7 +68,7 @@ Route::get('/email_kuldes', [EmailController::class, 'index']);
 
 Route::get('/show/{token}', [JelentkezoController::class, 'show']);
 Route::patch('/beiratkozo/{token}', [JelentkezoController::class, 'beiratkozo']);
-Route::patch('/file_upload',[FileController::class, 'store'])->name('beiratkozas');
+
 
 /******************************Oldalak**************************************/
 
@@ -101,6 +102,6 @@ Route::post('/admin/ujSzak', [SzakController::class, 'store']);
 Route::post('/admin/ujArchivum', [ArchivaltController::class, 'store']);
 Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
 
-
+Route::patch('/file_upload/{token}',[FileController::class, 'store']);
 
 require __DIR__.'/auth.php';
