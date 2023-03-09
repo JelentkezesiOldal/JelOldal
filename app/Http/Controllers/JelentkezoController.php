@@ -117,8 +117,10 @@ class JelentkezoController extends Controller
 
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
-        // return redirect()->to('JelentkezesSikerult');
+        // return redirect()->route('/JelentkezesSikerult');
         // redirect('JelentkezesSikerult');
+        // return view('/JelentkezesSikerult');
+        // return redirect('JelentkezesSikerult');
     }
 
 

@@ -63,7 +63,7 @@ Route::get('/admin/beirAlatt', [JelentkezesController::class, 'beiratAlatt']);
 Route::middleware(['PublicPages'])->group(function (){
     
 });
-Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
+Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo'])->name('JelentkezesSikerult');
 //Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
 Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
 Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
