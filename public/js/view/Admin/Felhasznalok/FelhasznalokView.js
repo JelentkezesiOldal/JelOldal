@@ -43,6 +43,7 @@ class FelhasznalokView{
                     <th>Név</th>
                     <th>E-mail</th>
                     <th>Jogosultság</th>
+                    <th></th>
                 </tr>    
             </thead>
             <tbody>

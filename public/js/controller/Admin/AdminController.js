@@ -56,6 +56,16 @@ class AdminController {
             location.reload();
         });
 
+        $(window).on("torolSzak", (event) => {
+            adminadatmodel.adatTorolSzak("/admin/torolSzak/", event.detail);
+            location.reload();
+        });
+
+        $(window).on("torolFelh", (event) => {
+            adminadatmodel.adatTorolFelh("/admin/torolFelh/", event.detail);
+            location.reload();
+        });
+
         $(window).on("indit", (event) => {
             console.log(event.detail);
             adminadatmodel.adatUj("/admin/ujInditottSzak", event.detail);
