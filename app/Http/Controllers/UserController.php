@@ -48,8 +48,7 @@ class UserController extends Controller
     }
 
     public function userAndSzak(){
-        $userszak = DB::select(DB::raw("select * from users u, szaks sz
-        where u.szak_id = sz.szak_id"));
+        $userszak = DB::select(DB::raw("select * from users"));
         return $userszak;
     }
 

@@ -104,7 +104,7 @@ class JelentkezoController extends Controller
         $jelentkezo->tanulo_neve = $request->tanulo_neve;
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
-        $jelentkezo->statusz = "beiratkozás alatt";
+        $jelentkezo->statusz = "Beiratkozás alatt";
         $token =Str::random();
         $jelentkezo->token = $token;
         $url = url('/beiratkozas'."/". $token); 
@@ -163,7 +163,7 @@ class JelentkezoController extends Controller
             'erettsegi_bizonyitvany_szama' => $request->erettsegi_bizonyitvany_szama,
             'szakmai_bizonyitvany_szama' => $request->szakmai_bizonyitvany_szama,
             'bankszamlaszam' => $request->bankszamlaszam,
-            'statusz' => "Beiratkozasa alatt",
+            'statusz' => "Elfogadásra vár",
         ];
         
         foreach ($data as $key => $value) {
