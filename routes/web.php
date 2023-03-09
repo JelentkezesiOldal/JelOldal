@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     //admin törlések
     Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
     Route::delete('/admin/torolSzak/{szak_id}', [SzakController::class, 'destroy']);
+    Route::delete('/admin/torolFelh/{ugyintezo_id}', [UserController::class, 'destroy']);
     //admin újadatok
     Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
     //admin modosít
