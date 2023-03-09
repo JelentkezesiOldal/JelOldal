@@ -79,6 +79,9 @@ Route::patch('/beiratkozo/{token}', [JelentkezoController::class, 'beiratkozo'])
 Route::get('/', function () {   
     return view('index');
 });
+// Route::get('/JelentkezesSikerult', function () {   
+//     return view('JelentkezesSikerult');
+// });
 
 Route::get('/admin', function () {
     return view('admin');
