@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/kereses/{ertek}', [UserController::class, 'kereses']);
     //admin törlések
     Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
+    Route::delete('/admin/torolSzak/{szak_id}', [SzakController::class, 'destroy']);
     //admin újadatok
     Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
     //admin modosít
