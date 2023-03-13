@@ -55,4 +55,5 @@ class SzakController extends Controller
         $szakok = DB::select(DB::raw("select * from szaks sz, inditott_szaks isz where sz.szak_id = isz.szak_id "));
         return $szakok;
     }
+    
 }

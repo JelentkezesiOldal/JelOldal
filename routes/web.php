@@ -9,6 +9,7 @@ use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\JelentkezesController;
 use App\Http\Controllers\SzakController;
 use App\Http\Controllers\ProfileController;
+use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
     Route::delete('/admin/torolSzak/{szak_id}', [SzakController::class, 'destroy']);
     Route::delete('/admin/torolFelh/{ugyintezo_id}', [UserController::class, 'destroy']);
+    Route::delete('/admin/torolIndSzak/{inditott_id}', [InditottSzak::class, 'destroy']);
     //admin újadatok
     Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
     //admin modosít
