@@ -119,6 +119,12 @@ class AdminController {
             adminadatmodel.adatTorolIndSzak("/admin/torolIndSzak/", event.detail);
             adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
             adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
+        }); 
+        $(window).on("modUser", (event) => {
+            console.log(event.detail);
+            adminadatmodel.adatModosit("/admin/elfogad", event.detail);
+            adminadatmodel.adatBe("/admin/elfVar", this.jelentkezokElfogadMutat);
+            //location.reload();
         });
 
         // $(window).on("ment", () => {

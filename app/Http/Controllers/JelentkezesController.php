@@ -73,4 +73,11 @@ class JelentkezesController extends Controller
         and jos.statusz like 'Beiratkozás alatt'"));
         return $jelent;
     }
+
+    public function elfogadas($id){
+        $jelent = Jelentkezo::find($id);
+        $jelent->statusz = "Beiratkozva";
+        $jelent->save();
+        return $jelent;
+    }
 }

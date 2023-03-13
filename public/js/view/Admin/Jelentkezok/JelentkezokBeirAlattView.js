@@ -1,3 +1,5 @@
+import JelentkezoBeirAlattView from "./JelentkezoBeirAlattView.js"
+
 class JelentkezokBeirAlattView{
     constructor(tomb, szuloElem){
         szuloElem.html(`
@@ -43,7 +45,8 @@ class JelentkezokBeirAlattView{
         this.tableElem = szuloElem.children('table:last-child');
         this.tbodyElem = this.tableElem.children('tbody');
         tomb.forEach(adat => {
-            const adatom = new JelentkezoElfogadView(adat, this.tbodyElem, this.tenylegmodalElem)
+            console.log("pls")
+            const adatom = new JelentkezoBeirAlattView(adat, this.tbodyElem, this.tenylegmodalElem)
         });
     }
     kattintasTrigger(esemenyNeve){
