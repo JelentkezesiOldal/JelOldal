@@ -101,6 +101,13 @@ class AdminController {
             //location.reload();
         });
 
+        $(window).on("modUser", (event) => {
+            console.log(event.detail);
+            adminadatmodel.adatModosit("/admin/elfogad", event.detail);
+            adminadatmodel.adatBe("/admin/elfVar", this.jelentkezokElfogadMutat);
+            //location.reload();
+        });
+
         // $(window).on("ment", () => {
         //     generatePDF();
         // });

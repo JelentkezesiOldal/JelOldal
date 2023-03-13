@@ -30,6 +30,7 @@ class JelentkezokElfogadView{
                     <th>Név</th>
                     <th>E-mail</th>
                     <th>Telefonszám</th>
+                    <th></th>
                 </tr>    
             </thead>
             <tbody>
