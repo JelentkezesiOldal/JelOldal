@@ -3,7 +3,7 @@ class JelentkezesView {
     #elem = [];
     #jelentkezoAdat = {};
     constructor(elem, szuloElem) {
-        this.validalas();
+        
         this.#elem = elem;
         console.log("elem", elem);
         szuloElem.append(`
@@ -35,13 +35,18 @@ class JelentkezesView {
             //console.log("Elküld a View-ban")
             this.adatGyujtes();
             this.kattintastrigger("elkuld");
-
-            //console.log("opcioelem",this.opcioElem)
         });
 
-        $('#adatkez').on('click', ()=>{
-            ellenorzes()
+        $('input').change(function(){
+            validalas();
+                if ($('#adatkez').prop("checked") && $('#jelentkezes').valid()) {
+                    $('#elkuld').prop('disabled', false)
+                }else{
+                    $('#elkuld').prop('disabled', true)
+                } 
+            
         })
+
     }
 
     adatGyujtes() {
@@ -60,63 +65,54 @@ class JelentkezesView {
         window.dispatchEvent(esemeny);
     }
 
-    validalas() {
-        $(document).ready(function () {
-            $("#jelentkezes").validate({
-                rules: {
-                    tanulo_neve: {
-                        required: true,
-                        minlength: 5,
-                        maxlength:50,
-                        pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
-                    },
-                    telefonszam: {
-                        required: true,
-                        number: true,
-                        minlength: 7,
-                    },
-                    email: {
-                        required: true,
-                        email: true,
-                    },
-                },
-                messages: {
-                    tanulo_neve: {
-                        required: "Kötelező kitölteni",
-                        minlength:
-                            "A névnek minimum 5 karekteresnek kell lennie",
-                        maxlength: "A név maximum 30 karakteres lehet",
-                        pattern:"A név nem tartalmazhat speciális karaktereket és számokat"
-                    },
-                    telefonszam: {
-                        required: "Kötelező kitölteni",
-                        number: "A telefonszám csak számokat tartalmazhat",
-                        minlength:
-                            "A telefonszámnak minimum 7 karekteresnek kell lennie",
-                        maxlength:
-                            "A telefonszámnak maximum 15 karekteresnek kell lennie",
-                    },
-                    email: {
-                        required: "Kötelező kitölteni",
-                        email: "Az emailnek ilyen formátumnak kell lennie: abc@domain.tld",
-                    },
-                },
-            });
-        });
-    }
-}
-
-function ellenorzes(){
-    if ($('#jelentkezes').valid()) {
-        if ($('#adatkez').prop("checked")) {
-            $('#elkuld').prop('disabled', false)
-        }else{
-            $('#elkuld').prop('disabled', true)
-        } 
-    }else{
-        $('#elkuld').prop('disabled', true)
-    }
     
 }
+
+function validalas() {
+    // $(document).ready(function () {
+        $("#jelentkezes").validate({
+            rules: {
+                tanulo_neve: {
+                    required: true,
+                    minlength: 5,
+                    maxlength:50,
+                    pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
+                },
+                telefonszam: {
+                    required: true,
+                    number: true,
+                    minlength: 7,
+                },
+                email: {
+                    required: true,
+                    email: true,
+                },
+            },
+            messages: {
+                tanulo_neve: {
+                    required: "Kötelező kitölteni",
+                    minlength:
+                        "A névnek minimum 5 karekteresnek kell lennie",
+                    maxlength: "A név maximum 30 karakteres lehet",
+                    pattern:"A név nem tartalmazhat speciális karaktereket és számokat"
+                },
+                telefonszam: {
+                    required: "Kötelező kitölteni",
+                    number: "A telefonszám csak számokat tartalmazhat",
+                    minlength:
+                        "A telefonszámnak minimum 7 karekteresnek kell lennie",
+                    maxlength:
+                        "A telefonszámnak maximum 15 karekteresnek kell lennie",
+                },
+                email: {
+                    required: "Kötelező kitölteni",
+                    email: "Az emailnek ilyen formátumnak kell lennie: abc@domain.tld",
+                },
+            },
+        });
+   
+}
+
+
 
 export default JelentkezesView;
