@@ -131,7 +131,7 @@ function generatePDF(tomb) {
               }
         }
     }
-    pdfMake.createPdf(doksi).download();
+    pdfMake.createPdf(doksi).download('jelentkezo');
 }
 
 export default JelentkezoBeirAlattView
