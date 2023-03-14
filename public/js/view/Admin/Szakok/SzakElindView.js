@@ -20,7 +20,7 @@ class SzakElindView{
         this.torlesElem = $(`#torol${elem.szak_id}`)
         this.torlesElem.on("click", () => {
             console.log("Törlés gomb")
-            this.kattintasTrigger("torolSzak")
+            this.kattintasTrigger("torolIndSzak")
         })
 
     }

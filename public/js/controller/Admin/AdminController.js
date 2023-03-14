@@ -35,6 +35,7 @@ class AdminController {
 
         $("#szak").on("click", () => {
             adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
+            adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
         });
 
         $("#arch").on("click", () => {
@@ -57,6 +58,7 @@ class AdminController {
         $(window).on("torolSzak", (event) => {
             adminadatmodel.adatTorolSzak("/admin/torolSzak/", event.detail);
             adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
+            adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
         });
 
         $(window).on("torolFelh", (event) => {
@@ -68,6 +70,7 @@ class AdminController {
             console.log(event.detail);
             adminadatmodel.adatUj("/admin/ujInditottSzak", event.detail);
             adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
+            adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
         });
 
         $(window).on("keres", (event) => {
@@ -88,6 +91,7 @@ class AdminController {
         $(window).on("ujszak", (event) => {
             adminadatmodel.adatUj("/admin/ujSzak", event.detail);
             adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
+            adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
         });
 
         $(window).on("allArchiv", () => {
@@ -95,6 +99,19 @@ class AdminController {
             adminadatmodel.adatTorolAll("/admin/torolArchiv");
         });
 
+        $(window).on("vissz", (event) => {
+            console.log(event.detail);
+            adminadatmodel.adatTorolIndSzak("/admin/torolIndSzak/", event.detail);
+            adminadatmodel.adatUj("/admin/ujSzak", event.detail);
+            adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
+            adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
+        });
+
+        $(window).on("torolIndSzak", (event) => {
+            adminadatmodel.adatTorolIndSzak("/admin/torolIndSzak/", event.detail);
+            adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
+            adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
+        }); 
         $(window).on("modUser", (event) => {
             console.log(event.detail);
             adminadatmodel.adatModosit("/admin/elfogad", event.detail);
@@ -126,6 +143,9 @@ class AdminController {
     szakokMutat(tomb) {
         const szuloElem = $("article");
         new SzakokView(tomb, szuloElem);
+    }
+    szakokElindMutat(tomb){
+        const szuloElem = $("article");
         new SzakokElindVIew(tomb, szuloElem);
     }
     archivaltMutat(tomb) {

@@ -137,6 +137,27 @@ class AdminAdatModel{
                 console.error('Error:', error);
             });
     }
+    adatTorolIndSzak(vegpont, adat) {
+        console.log(adat);
+        console.log("Töröl: " + adat.inditott_id);
+        vegpont +=  adat.inditott_id
+        console.log(vegpont)
+        fetch(vegpont, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                'X-CSRF-TOKEN': this.#token
+            },
+            body: JSON.stringify(adat),
+        })
+            .then()
+            .then(() => {
+                console.log("sikeres Törlés");
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
 
     adatTorolAll(vegpont){
         console.log(vegpont)
