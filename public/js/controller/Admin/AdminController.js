@@ -44,18 +44,15 @@ class AdminController {
 
         $(window).on("mod", (event) => {
             adminadatmodel.adatModosit("/admin/modosit", event.detail)
-            //location.reload()
         })
 
         $(window).on("archiv", (event) => {
             adminadatmodel.adatUj("/admin/ujArchivum", event.detail);
             adminadatmodel.adatTorol("/admin/torol/", event.detail);
-            // location.reload();
         });
 
         $(window).on("torol", (event) => {
             adminadatmodel.adatTorol("/admin/torol/", event.detail);
-            //location.reload();
         });
 
         $(window).on("torolSzak", (event) => {
@@ -77,34 +74,29 @@ class AdminController {
         });
 
         $(window).on("keres", (event) => {
-            this.vegpont = "/admin/kereses";
-            this.vegpont += "/" + event.detail;
+            this.vegpont = "/admin/kereses/" + event.detail;
             adminadatmodel.adatBe(this.vegpont, this.felhasznalokMutat);
         });
 
         $(window).on("keresJ", (event) => {
-            this.vegpont = "/admin/keresesj";
-            this.vegpont += "/" + event.detail;
+            this.vegpont = "/admin/keresesj/" + event.detail;
             adminadatmodel.adatBe(this.vegpont, this.jelentkezokMutat);
         });
 
         $(window).on("felvesz", (event) => {
-            console.log(event.detail);
             adminadatmodel.adatUj("/admin/ujFelhasznalo", event.detail);
             adminadatmodel.adatBe("/admin/felPlusSzak", this.felhasznalokMutat);
         });
 
         $(window).on("ujszak", (event) => {
-            console.log(event.detail);
             adminadatmodel.adatUj("/admin/ujSzak", event.detail);
             adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
             adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
         });
 
-        $(window).on("mod", (event) => {
-            console.log(event.detail);
-            adminadatmodel.adatModosit("/admin/modosit", event.detail);
-            //location.reload();
+        $(window).on("allArchiv", () => {
+            adminadatmodel.adatUjAll();
+            adminadatmodel.adatTorolAll("/admin/torolArchiv");
         });
 
         $(window).on("vissz", (event) => {

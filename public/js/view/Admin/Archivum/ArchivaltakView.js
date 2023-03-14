@@ -13,6 +13,9 @@ class ArchivaltakView {
         this.tenylegmodalElem = this.modalElem.children("div:last-child");
         szuloElem.append(`
         <div class="row float-end">
+            <div class="col">
+                <button id="all">Összes archivál</button>
+            </div>
             <div class="col input-group">
                 <input type="text" id="keres1" placeholder="Search">
             </div>
@@ -40,10 +43,16 @@ class ArchivaltakView {
         this.tbodyElem = this.tableElem.children("tbody");
 
         this.keresGomb = $('#kereses')
+        this.allArchiv = $('#all')
+
         this.keresGomb.on('click', ()=>{
             this.input = $('#keres1').val()
             console.log(this.input + " lécci új")
             this.kattintasTrigger("keresJ")
+        })
+
+        this.allArchiv.on('click', ()=>{
+            this.kattintasTrigger2("allArchiv");
         })
 
         tomb.forEach((adat) => {
@@ -56,6 +65,11 @@ class ArchivaltakView {
     }
     kattintasTrigger(esemenyNeve){
         const esemeny = new CustomEvent(esemenyNeve, {detail:this.input})
+        window.dispatchEvent(esemeny);
+    }
+
+    kattintasTrigger2(esemenyNeve){
+        const esemeny = new CustomEvent(esemenyNeve)
         window.dispatchEvent(esemeny);
     }
 }
