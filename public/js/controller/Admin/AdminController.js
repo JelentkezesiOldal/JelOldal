@@ -95,8 +95,8 @@ class AdminController {
         });
 
         $(window).on("allArchiv", () => {
-            adminadatmodel.adatUjAll();
-            adminadatmodel.adatTorolAll("/admin/torolArchiv");
+            adminadatmodel.adatUjAll("/admin/archivOsszesJel");
+            adminadatmodel.adatTorolAll("/admin/torolOsszesJel");
         });
 
         $(window).on("vissz", (event) => {
@@ -118,10 +118,6 @@ class AdminController {
             adminadatmodel.adatBe("/admin/elfVar", this.jelentkezokElfogadMutat);
             //location.reload();
         });
-
-        // $(window).on("ment", () => {
-        //     generatePDF();
-        // });
     }
 
     felhasznalokMutat(tomb){

@@ -52,6 +52,7 @@ class ArchivaltakView {
         })
 
         this.allArchiv.on('click', ()=>{
+            console.log("kattintasTrigger archiv")
             this.kattintasTrigger2("allArchiv");
         })
 

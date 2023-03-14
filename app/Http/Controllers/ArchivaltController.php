@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Archivalt;
+use App\Models\Jelentkezes;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -48,5 +49,20 @@ class ArchivaltController extends Controller
         and ar.inditott_id = insz.inditott_id
         and sz.szak_id = insz.szak_id"));
         return $archiv;
+    }
+
+    public function osszesJelentkezesTorles(){
+        foreach (Jelentkezes::all() as $data) {
+            $data->delete();
+        }
+    }
+
+    public function osszesJelentkezesArchivalas(){
+        $archive = new Archivalt();
+        foreach (Jelentkezes::all() as $data) {
+            $archive->jelentkezo_id = $data->jelentkezo_id;
+            $archive->inditott_id = $data->inditott_id;
+            $archive->save();
+        }     
     }
 }
