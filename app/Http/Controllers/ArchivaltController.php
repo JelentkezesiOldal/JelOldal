@@ -47,7 +47,8 @@ class ArchivaltController extends Controller
                 "select * from archivalts ar, jelentkezos jos, inditott_szaks insz, szaks sz
         where ar.jelentkezo_id = jos.jelentkezo_id 
         and ar.inditott_id = insz.inditott_id
-        and sz.szak_id = insz.szak_id"));
+        and sz.szak_id = insz.szak_id
+        order by ar.jelentkezo_id ASC"));
         return $archiv;
     }
 
@@ -58,11 +59,12 @@ class ArchivaltController extends Controller
     }
 
     public function osszesJelentkezesArchivalas(){
-        $archive = new Archivalt();
         foreach (Jelentkezes::all() as $data) {
+            $archive = new Archivalt();
             $archive->jelentkezo_id = $data->jelentkezo_id;
             $archive->inditott_id = $data->inditott_id;
             $archive->save();
-        }     
+        }
+        return $archive;
     }
 }
