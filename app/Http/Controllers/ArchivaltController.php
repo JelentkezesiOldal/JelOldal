@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Archivalt;
 use App\Models\Jelentkezes;
+use App\Models\InditottSzak;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -66,5 +67,11 @@ class ArchivaltController extends Controller
             $archive->save();
         }
         return $archive;
+    }
+
+    public function inditottSzakTorles(){
+        foreach(InditottSzak::all() as $data){
+            $data->delete();
+        }
     }
 }

@@ -97,6 +97,7 @@ class AdminController {
         $(window).on("allArchiv", () => {
             adminadatmodel.adatUjAll("/admin/archivOsszesJel");
             adminadatmodel.adatTorolAll("/admin/torolOsszesJel");
+            adminadatmodel.adatTorolAll("/admin/torolInditottSzak");
             adminadatmodel.adatBe("/admin/archivOsszes", this.archivaltMutat);
         });
 
@@ -117,7 +118,6 @@ class AdminController {
             console.log(event.detail);
             adminadatmodel.adatModosit("/admin/elfogad", event.detail);
             adminadatmodel.adatBe("/admin/elfVar", this.jelentkezokElfogadMutat);
-            //location.reload();
         });
     }
 

@@ -65,6 +65,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::post('/admin/archivOsszesJel', [ArchivaltController::class, 'osszesJelentkezesArchivalas']);
 Route::delete('/admin/torolOsszesJel', [ArchivaltController::class, 'osszesJelentkezesTorles']);
+Route::delete('/admin/torolInditottSzak', [ArchivaltController::class, 'inditottSzakTorles']);
 
 
 /*******************************Public**************************************/
