@@ -135,7 +135,6 @@ class BeiratkozasView {
         });
     }
     SetDisabled() {
-        $(document).ready(function () {
             $("#ertesitescheckbox").click(function () {
                 if ($(this).is(":checked")) {
                     $("#ertesitesi_cim").attr("disabled", true);
@@ -143,7 +142,6 @@ class BeiratkozasView {
                     $("#ertesitesi_cim").attr("disabled", false);
                 }
             });
-        });
     }
 
     UralapAdatok() {
@@ -178,7 +176,6 @@ class BeiratkozasView {
         this.#elem.bankszamlaszam = $("#bankszamlaszam").val();
     }
     InputValidate() {
-        $(document).ready(function () {
             $("#jelentkezes").validate({
                 rules: {
                     tanulo_neve: {
@@ -296,7 +293,6 @@ class BeiratkozasView {
                     },
                 },
             });
-        });
     }
 
     KattintasTrigger(esemenyhivo) {
