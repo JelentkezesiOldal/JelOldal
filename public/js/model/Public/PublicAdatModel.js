@@ -54,20 +54,35 @@ class PublicAdatModel {
             body: JSON.stringify(adat),
         })
             .then((response) => response.json())
-            .then((data) => {
-                console.log(vegpont);
-            })
             .catch((error) => {
                 console.error('Error: nem jo', error);
             });
     }
+    
+    FileUpload(vegpont, adat) {
+        /* console.log(adat.get('lakcimkartya'))*/
+        console.log("Fetch elott") 
+        fetch(vegpont, {
+          method: 'POST',
+          headers: {
+            'X-CSRF-TOKEN': this.#token
+          },
+          body: adat
+        })
+        .then(() => {
+          console.log(vegpont);
+        })
+        .catch((error) => {
+          console.error('Error: nem jo', error);
+        });
+      }
 
     adatModosit(vegpont, adat, urltoken ) {
         console.log("ADATModosit ::",adat);
         vegpont += "/" + urltoken;
         console.log("Modosit + id ::",vegpont);
         fetch(vegpont, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': this.#token

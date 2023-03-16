@@ -80,6 +80,7 @@ Route::get('/email_kuldes', [EmailController::class, 'index']);
 
 Route::get('/show/{token}', [JelentkezoController::class, 'show']);
 Route::patch('/beiratkozo/{token}', [JelentkezoController::class, 'beiratkozo']);
+Route::post('/file_upload',[FileController::class, 'store']);
 
 
 /******************************Oldalak**************************************/
@@ -111,6 +112,5 @@ Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, '
 Route::post('/admin/ujArchivum', [ArchivaltController::class, 'store']);
 Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
 
-Route::patch('/file_upload/{token}',[FileController::class, 'store']);
 
 require __DIR__.'/auth.php';
