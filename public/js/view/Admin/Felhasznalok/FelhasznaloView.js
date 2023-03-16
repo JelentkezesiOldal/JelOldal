@@ -1,7 +1,6 @@
 class FelhasznaloView{
     #elem
     constructor(elem, szuloElem){
-        console.log("felhasznaloView")
         this.#elem = elem
         szuloElem.append(`<tr>
             <td data-label="Név">${elem.name}</td>

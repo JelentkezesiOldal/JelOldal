@@ -12,6 +12,7 @@ use Faker\Provider\DateTime as ProviderDateTime;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
 class JelentkezoController extends Controller
@@ -96,10 +97,6 @@ class JelentkezoController extends Controller
             return response()->json(["message" => $validator->errors()]);
             
         }
-
-        //'regex:[^*;?!°(){}%#@$+,[=]'
-
-
         $jelentkezo = new Jelentkezo();
         $jelentkezo->tanulo_neve = $request->tanulo_neve;
         $jelentkezo->email = $request->email;
@@ -117,10 +114,15 @@ class JelentkezoController extends Controller
 
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
-        // return redirect()->route('/JelentkezesSikerult');
-        // redirect('JelentkezesSikerult');
-        // return view('/JelentkezesSikerult');
-        // return redirect('JelentkezesSikerult');
+        return $jelentkezo;
+        //return redirect()->route('JelentkezesSikerult') /*-> get method not allowed*/;
+        //redirect('JelentkezesSikerult') ->semmit nem csinál;
+        //return view('JelentkezesSikerult') /*-> semmi*/;
+        //return Redirect::route('JelentkezesSikerult');
+        //return Redirect::to('views/JelentkezesSikerult');
+        //return redirect('JelentkezesSikerult');
+        
+        
     }
 
 

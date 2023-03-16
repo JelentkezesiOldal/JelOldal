@@ -15,8 +15,13 @@ class SzakokView{
             </thead>
             <tbody>
                 <tr>
-                    <td data-label="Megnevezés"><input type="text" id="megnevezes" name="megnevezes"></td>
-                    <td data-label="Félévek száma"><input type="number" id="hany_felev" name="hany_felev" min="1" max="6"></td>
+                    <td data-label="Megnevezés">
+                    <input type="text" id="megnevezes" name="megnevezes">
+                    </td>
+                    <td data-label="Félévek száma">
+                    <input type="number" id="hany_felev" name="hany_felev" min="1" max="6" message="Csak 1-től 6 féléves képzést adhat meg">
+                    <span id="errorMsg" style="display:none;">Csak 1-től 6 féléves képzést adhat meg</span>
+                    </td>
                     <td data-label=""><input type="button" value="Felvesz" id="ujszak" name="ujszak"></td>
                 </tr>
             </tbody>
@@ -55,9 +60,19 @@ class SzakokView{
             this.adatBeker();
             this.kattintasTrigger("ujszak")
         })
+
+        $("#hany_felev" ).change(function() {
+            if($('#hany_felev').val()<1 || $('#hany_felev').val()>6){
+                $('#errorMsg').show();
+            }
+            else{
+              $('#errorMsg').hide();
+            }
+          });
+
     }
 
-    adatBeker(){
+    adatBeker(){ 
         this.#adatok.megnevezes = $('#megnevezes').val()
         this.#adatok.hany_felev = $('#hany_felev').val()
     }
@@ -66,6 +81,10 @@ class SzakokView{
         const esemeny = new CustomEvent(esemenyNeve, {detail:this.#adatok})
         window.dispatchEvent(esemeny);
     }
+
+    
+    
 }
+
 
 export default SzakokView

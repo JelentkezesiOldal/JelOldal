@@ -32,6 +32,7 @@ class SzakController extends Controller
         $szak->elofeltetel = $request->elofeltetel;
         $szak->hany_felev = $request->hany_felev;
         $szak->save();
+        return $szak;
     }
 
     public function update(Request $request, $id)
