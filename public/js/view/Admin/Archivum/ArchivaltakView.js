@@ -52,17 +52,21 @@ class ArchivaltakView {
         })
 
         this.allArchiv.on('click', ()=>{
-            this.kattintasTrigger2("allArchiv");
+            let szoveg = "Igen nyomra kattintva az összes jelentkezőt akinek a státusza az hogy beiratkozva archiválni fogod\n"
+            +"valamint az összes elinditott szak leállításra kerül.\n"
+            +"Biztosan szeretnéd?"
+            console.log("kattintasTrigger archiv")
+            if(confirm(szoveg) == true){
+                this.kattintasTrigger2("allArchiv");
+            }
+            
         })
 
         tomb.forEach((adat) => {
-            const adatom = new ArchivaltView(
-                adat,
-                this.tbodyElem,
-                this.tenylegmodalElem
-            );
+            const adatom = new ArchivaltView(adat, this.tbodyElem, this.tenylegmodalElem);
         });
     }
+
     kattintasTrigger(esemenyNeve){
         const esemeny = new CustomEvent(esemenyNeve, {detail:this.input})
         window.dispatchEvent(esemeny);

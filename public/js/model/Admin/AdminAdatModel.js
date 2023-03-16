@@ -167,7 +167,7 @@ class AdminAdatModel{
                 "Content-Type": "application/json",
                 'X-CSRF-TOKEN': this.#token
             },
-            body: JSON.stringify(adat),
+            // body: JSON.stringify(adat),
         })
             .then()
             .then(() => {
@@ -186,12 +186,12 @@ class AdminAdatModel{
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': this.#token,
             },
-            body: JSON.stringify(adat),
+            // body: JSON.stringify(adat),
         })
             .then((response) => response.json())
-            .then((data) => {
-                console.log(vegpont)
-            })
+            // .then((data) => {
+            //     console.log(vegpont)
+            // })
             .catch((error) => {
                 console.error('Error:', error);
             });
