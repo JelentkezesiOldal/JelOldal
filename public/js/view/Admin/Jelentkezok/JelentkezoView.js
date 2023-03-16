@@ -200,22 +200,6 @@ function generatePDF(tomb) {
               }
         }
     }
-    pdfMake.createPdf(doksi).download();
-    // console.log('pdf-re kattintottal')
-    // var doc = new jsPDF();
-    // tomb.forEach(function(elem, i) {
-    //     doc.text(50, 10 + (i * 10),
-    //     "Tanuló neve: " + elem.tanulo_neve)
-    // });
-    // doc.save('test.pdf')
-    // html2pdf().from(elem).save("valami");
-    // columns:[
-    //     {
-    //         text: "Név\n"+"email"
-    //     },
-    //     {
-    //         text: tomb.tanulo_neve+"\n"+tomb.email
-    //     }
-    //    ]
+    pdfMake.createPdf(doksi).download('jelentkezo');
 }
 export default JelentkezoView;

@@ -30,7 +30,14 @@ class FelhasznalokView{
                     <td data-label="Felhasználónév"><input type="text" id="name" name="name"></td>
                     <td data-label="E-mail"><input type="text" id="email"></td>
                     <td data-label="Ideiglenes jelszó"><input type="text" id="password"></td>
-                    <td data-label="Jogosultság"><input type="number" id="master"></td>
+                    <td data-label="Jogosultság">
+                    <select name="master" id="master">
+                    <option id="opcio" value=0>Ügyintéző</option>
+                    <option id="opcio" value=1>Master</option>
+                    </select>
+
+                    </td>
+                    
                     <td data-label=""><input type="button" value="Felvesz" id="felvesz"></td>
                 </tr>
             </tbody>
@@ -43,6 +50,7 @@ class FelhasznalokView{
                     <th>Név</th>
                     <th>E-mail</th>
                     <th>Jogosultság</th>
+                    <th></th>
                 </tr>    
             </thead>
             <tbody>

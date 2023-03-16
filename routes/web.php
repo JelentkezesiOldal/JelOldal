@@ -9,6 +9,7 @@ use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\JelentkezesController;
 use App\Http\Controllers\SzakController;
 use App\Http\Controllers\ProfileController;
+use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
 use Illuminate\Support\Facades\Route;
 
@@ -42,26 +43,36 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
     Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
     Route::get('/admin/kereses/{ertek}', [UserController::class, 'kereses']);
+    Route::get('/admin/keresesj/{ertek}', [JelentkezoController::class, 'keresesj']);
+    Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
+    Route::get('/admin/elfVar', [JelentkezesController::class, 'elfogadasraVar']);
+    Route::get('/admin/beirAlatt', [JelentkezesController::class, 'beiratAlatt']);
     //admin törlések
     Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
+    Route::delete('/admin/torolSzak/{szak_id}', [SzakController::class, 'destroy']);
+    Route::delete('/admin/torolFelh/{ugyintezo_id}', [UserController::class, 'destroy']);
+    Route::delete('/admin/torolIndSzak/{inditott_id}', [InditottSzak::class, 'destroy']);
     //admin újadatok
     Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
+    Route::post('/admin/ujFelhasznalo', [UserController::class, 'store']);
+    Route::post('/admin/ujSzak', [SzakController::class, 'store']);
+    Route::post('/admin/ujArchivum', [JelentkezesController::class, 'ujArchivalt']);
     //admin modosít
     Route::put('/admin/modosit/{id}', [JelentkezoController::class, 'update']);
-    
-    //archívum
-    Route::post('/admin/ujArchivum', [JelentkezesController::class, 'ujArchivalt']);
-    Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
-    
+    Route::put('/admin/elfogad/{id}', [JelentkezesController::class, 'elfogadas']);
+
 });
-Route::get('/admin/elfVar', [JelentkezesController::class, 'elfogadasraVar']);
-Route::get('/admin/beirAlatt', [JelentkezesController::class, 'beiratAlatt']);
+
+Route::post('/admin/archivOsszesJel', [ArchivaltController::class, 'osszesJelentkezesArchivalas']);
+Route::delete('/admin/torolOsszesJel', [ArchivaltController::class, 'osszesJelentkezesTorles']);
+Route::delete('/admin/torolInditottSzak', [ArchivaltController::class, 'inditottSzakTorles']);
+
 
 /*******************************Public**************************************/
 Route::middleware(['PublicPages'])->group(function (){
     
 });
-Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
+Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo'])->name('JelentkezesSikerult');
 //Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
 Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
 Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
@@ -78,6 +89,9 @@ Route::post('/file_upload',[FileController::class, 'store']);
 Route::get('/', function () {   
     return view('index');
 });
+Route::get('/JelentkezesSikerult', function () {   
+    return view('JelentkezesSikerult');
+});
 
 Route::get('/admin', function () {
     return view('admin');
@@ -89,17 +103,11 @@ Route::get('/beiratkozas/{token}',function($token){
 
 //ADMIN DOLGOK KIVÜL HOGY MENJEN
 //admin lekérések
-Route::get('/admin/osszes', [JelentkezesController::class, 'osszes']);
-Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
-Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
-Route::get('/admin/kereses/{ertek}', [UserController::class, 'kereses']);
-Route::get('/admin/keresesj/{ertek}', [JelentkezoController::class, 'keresesj']);
+
 //admin törlések
 Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
 //admin újadatok
-Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
-Route::post('/admin/ujFelhasznalo', [UserController::class, 'store']);
-Route::post('/admin/ujSzak', [SzakController::class, 'store']);
+
 //archívum
 Route::post('/admin/ujArchivum', [ArchivaltController::class, 'store']);
 Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);

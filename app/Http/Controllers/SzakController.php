@@ -32,6 +32,7 @@ class SzakController extends Controller
         $szak->elofeltetel = $request->elofeltetel;
         $szak->hany_felev = $request->hany_felev;
         $szak->save();
+        return $szak;
     }
 
     public function update(Request $request, $id)
@@ -55,4 +56,5 @@ class SzakController extends Controller
         $szakok = DB::select(DB::raw("select * from szaks sz, inditott_szaks isz where sz.szak_id = isz.szak_id "));
         return $szakok;
     }
+    
 }
