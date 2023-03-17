@@ -79,6 +79,7 @@ class JelentkezoBeirAlattView{
 }
 
 function generatePDF(tomb) {
+    
     const doksi ={
         header: {
             text: tomb.tanulo_neve,

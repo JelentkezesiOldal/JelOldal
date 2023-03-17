@@ -104,6 +104,8 @@ class JelentkezoView {
            
             this.mentElem.on("click", () => {
                 this.adatokBe()
+                
+                
                 generatePDF(this.#elem);
             });
         });
