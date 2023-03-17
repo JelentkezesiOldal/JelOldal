@@ -13,7 +13,7 @@ class EmailController extends Controller
     public static function index($email,$nev,$url){
         
         $emailAdat = [
-            'cim' => 'Beiratkozás',
+            'cim' => '',
              'torzs' => view('emails/beiratkozas')->with([
                 'neve'=> $nev,
                 'urlje'=> $url

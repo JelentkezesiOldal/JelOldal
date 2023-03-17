@@ -23,7 +23,7 @@ class SzakView{
         this.modElem = $(`#mod${elem.szak_id}`)
         this.modElem.on("click", () => {
             console.log("Módosít gomb")
-            this.kattintasTrigger("mod")
+            //this.kattintasTrigger("mod")
         })
         this.torlesElem = $(`#torol${elem.szak_id}`)
         this.torlesElem.on("click", () => {
