@@ -24,11 +24,6 @@ class Email extends Mailable
         $this->emailAdat = $emailAdat;
     }
 
-    
-    // public function build(){
-    //     return $this->view('emails.test')->subject('Viccike');
-    // }
-
     /**
      * Get the message envelope.
      *
@@ -63,9 +58,6 @@ class Email extends Mailable
     public function attachments()
     {
         return [
-            //Attachment::fromPath('/path/to/file'),
-            //->as('name.pdf')
-            // ->withMime('application/pdf'),
         ];
     }
 }

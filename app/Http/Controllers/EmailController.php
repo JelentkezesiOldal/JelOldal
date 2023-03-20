@@ -33,4 +33,14 @@ class EmailController extends Controller
         // dd("BeiratkozasSikerult.php");
         return redirect('/ujJelentkezo');
     }
+
+    public static function elfogad($email){
+        $emailAdat = [
+            'cim' => '',
+             'torzs' => view('emails/elfogadas')->with([
+             ])
+             ];
+             Mail::to($email)
+             ->send(new Email($emailAdat));
+    }
 }

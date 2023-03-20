@@ -77,6 +77,7 @@ Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo'])->nam
 Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
 Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
 Route::get('/email_kuldes', [EmailController::class, 'index']);
+Route::get('/email_kuldes_elfogad', [EmailController::class, 'elfogad']);
 
 Route::get('/show/{token}', [JelentkezoController::class, 'show']);
 Route::patch('/beiratkozo/{token}', [JelentkezoController::class, 'beiratkozo']);
