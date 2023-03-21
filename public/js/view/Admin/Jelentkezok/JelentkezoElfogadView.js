@@ -3,12 +3,12 @@ class JelentkezoElfogadView{
     constructor(elem, szuloElem, modal) {   
         console.log("müködj pls")
         this.#elem = elem;
-        szuloElem.append(`<tr id="JJ${elem.jelentkezo_id}">
-            <td class="J${elem.jelentkezo_id} data-label="datum">${elem.datum}</td>
-            <td class="J${elem.jelentkezo_id} data-label="OM azonosító">${elem.diak_azonosito}</td>
-            <td class="J${elem.jelentkezo_id} data-label="Név">${elem.tanulo_neve}</td>
-            <td class="J${elem.jelentkezo_id} data-label="E-mail">${elem.email}</td>
-            <td class="J${elem.jelentkezo_id} data-label="Telefonszám">${elem.telefonszam}</td>
+        szuloElem.append(`<tr id="J${elem.jelentkezo_id}">
+            <td data-label="datum">${elem.datum}</td>
+            <td data-label="OM azonosító">${elem.diak_azonosito}</td>
+            <td data-label="Név">${elem.tanulo_neve}</td>
+            <td data-label="E-mail">${elem.email}</td>
+            <td data-label="Telefonszám">${elem.telefonszam}</td>
             <td data-label=""><button id="elfogad${elem.jelentkezo_id}">Elfogadás</button></td>
         </tr>`)
         
@@ -20,7 +20,7 @@ class JelentkezoElfogadView{
             this.kattintastrigger("modUser");
         })
 
-        $(".J"+elem.jelentkezo_id).on("click", () => {
+        $("#J"+elem.jelentkezo_id).on("click", () => {
 
             console.log("J"+ elem.jelentkezo_id + " katt")
             $(".modalSajat").show()

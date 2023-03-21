@@ -15,7 +15,7 @@ class FelhasznalokView{
         </div>
         `)
         szuloElem.append(`
-        <table class="table">
+        <table class="table" id="ujFelh">
             <thead>
                 <tr>
                     <th scope="col">Felhasználónév</th>
