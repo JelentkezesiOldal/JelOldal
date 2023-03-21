@@ -7,7 +7,7 @@ class SzakElindView{
             <td data-label="#">${elem.szak_id}</td>
             <td data-label="Megnevezés">${elem.megnevezes}</td>
             <td data-label="Félévek száma">${elem.hany_felev}</td>
-            <td data-label=""><button id="vissz${elem.szak_id}">Visszaállítás</button></td>
+            <td data-label=""><input type="button" id="vissz${elem.szak_id}" value="Visszaállítás"></input></td>
         </tr>
     `)
         

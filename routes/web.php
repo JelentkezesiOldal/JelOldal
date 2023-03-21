@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
     Route::delete('/admin/torolSzak/{szak_id}', [SzakController::class, 'destroy']);
     Route::delete('/admin/torolFelh/{ugyintezo_id}', [UserController::class, 'destroy']);
+    Route::delete('/admin/torolIndSzak/{id}', [InditottSzakController::class, 'destroy']);
     //admin újadatok
     Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
     Route::post('/admin/ujFelhasznalo', [UserController::class, 'store']);
@@ -59,7 +60,7 @@ Route::middleware(['auth'])->group(function () {
     //admin modosít
     Route::put('/admin/modosit/{id}', [JelentkezoController::class, 'update']);
     Route::put('/admin/elfogad/{id}', [JelentkezesController::class, 'elfogadas']);
-
+    Route::put('/admin/modositSzak/{id}', [SzakController::class, 'update']);
 });
 
 Route::post('/admin/archivOsszesJel', [ArchivaltController::class, 'osszesJelentkezesArchivalas']);
