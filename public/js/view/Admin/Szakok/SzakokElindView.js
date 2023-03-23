@@ -14,7 +14,6 @@ class SzakokElindVIew{
                         <th>Megnevezés</th>
                         <th>Félévek száma</th>
                         <th></th>
-                        <th></th>
                     </tr>    
                 </thead>
                 <tbody >

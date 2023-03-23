@@ -1,3 +1,7 @@
+#stat, #felh, #navbarDropdown, #szak, #arch{
+    color: white;
+}
+
 .modalSajat {
     display: none;
     position: fixed;
@@ -19,6 +23,16 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    
+}
+#modalDivContent spam{
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #888;
+    border-radius: 5px;
+}
+#modalDivContent spam:hover{
+    background-color: #888;
 }
 
 .closeSajat {
@@ -67,6 +81,10 @@ article {
     cursor: pointer;
 }
 
+#keres{
+    margin: 10px;
+}
+
 
 @media screen and (max-width: 600px) {
     table {
@@ -109,6 +127,50 @@ article {
     }
 
     table td:last-child {
+        border-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    #ujFelh{
+        border: 0;
+    }
+    #ujFelh caption {
+        font-size: 1.3em;
+    }
+
+    #ujFelh thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    #ujFelh tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: 0.625em;
+    }
+
+    #ujFelh td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: 0.8em;
+        text-align: right;
+    }
+
+    #ujFelh td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    #ujFelh td:last-child {
         border-bottom: 0;
     }
 }

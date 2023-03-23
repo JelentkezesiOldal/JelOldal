@@ -57,8 +57,10 @@ class SzakokView{
 
         this.ujSzakElem = $(`#ujszak`)
         this.ujSzakElem.on("click", () => {
+            this.ujSzakElem.prop("disabled", true)
             this.adatBeker();
             this.kattintasTrigger("ujszak")
+            
         })
 
         $("#hany_felev" ).change(function() {

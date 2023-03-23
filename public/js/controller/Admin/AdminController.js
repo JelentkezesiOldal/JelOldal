@@ -104,20 +104,20 @@ class AdminController {
         $(window).on("vissz", (event) => {
             console.log(event.detail);
             adminadatmodel.adatTorolIndSzak("/admin/torolIndSzak/", event.detail);
-            adminadatmodel.adatUj("/admin/ujSzak", event.detail);
             adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
             adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
         });
-
-        $(window).on("torolIndSzak", (event) => {
-            adminadatmodel.adatTorolIndSzak("/admin/torolIndSzak/", event.detail);
-            adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
-            adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
-        }); 
+ 
         $(window).on("modUser", (event) => {
             console.log(event.detail);
             adminadatmodel.adatModosit("/admin/elfogad", event.detail);
             adminadatmodel.adatBe("/admin/elfVar", this.jelentkezokElfogadMutat);
+        });
+
+        $(window).on("modSzak", (event) => {
+            adminadatmodel.adatModosit("/admin/modositSzak", event.detail)
+            adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
+            adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
         });
     }
 

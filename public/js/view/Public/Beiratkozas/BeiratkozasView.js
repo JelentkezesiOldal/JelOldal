@@ -44,6 +44,7 @@ class BeiratkozasView {
         <option value="Nő">Nő</option>
         <option value="Férfi">Férfi</option>
         <option value="Nem adom meg">Nem adom meg</option>
+
         </select><br><br>
         </div>
 </div>

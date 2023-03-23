@@ -54,7 +54,15 @@ class AdminAdatModel{
     adatModosit(vegpont, adat) {
         console.log(adat);
         console.log("Módosít: " + adat);
-        vegpont += "/" + adat.jelentkezo_id
+        
+        if(adat.jelentkezo_id){
+            vegpont += "/" + adat.jelentkezo_id
+            console.log("NEEEEEEEEEEEEEEEEEEEEEEEEee")
+        }else{
+            vegpont += "/" + adat.szak_id
+            console.log("BELEPETT:::::::::::.") 
+        }
+        
         fetch(vegpont, {
             method: 'PUT',
             headers: {
@@ -138,7 +146,6 @@ class AdminAdatModel{
             });
     }
     adatTorolIndSzak(vegpont, adat) {
-        console.log(adat);
         console.log("Töröl: " + adat.inditott_id);
         vegpont +=  adat.inditott_id
         console.log(vegpont)
