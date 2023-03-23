@@ -2,7 +2,6 @@ import JelentkezoView from "./JelentkezoView.js";
 
 class JelentkezokView {
     #tomb;
-
     constructor(tomb, szuloElem) {
         this.#tomb = tomb;
         szuloElem.html(`
@@ -42,7 +41,7 @@ class JelentkezokView {
             
             </tbody>
         </table>`);
-        /** */
+        
         var headers = {
             datum: "Dátum",
             diak_azonosito: "OM azonosító",
@@ -92,7 +91,6 @@ class JelentkezokView {
                 hany_felev: item.hany_felev,
             });
         });
-        /** */
         this.csvGomb = $("#csv");
         this.csvGomb.on("click", () => {
             // this.kattintasTrigger("keres");
@@ -155,13 +153,10 @@ function exportCSVFile(headers, items, fileTitle) {
         { type: "text/csv;charset=UTF-8;" }
         );
     if (navigator.msSaveBlob) {
-        // IE 10+
         navigator.msSaveBlob(blob, exportedFilenmae);
     } else {
         var link = document.createElement("a");
         if (link.download !== undefined) {
-            // feature detection
-            // Browsers that support HTML5 download attribute
             var url = URL.createObjectURL(blob);
             link.setAttribute("href", url);
             link.setAttribute("download", exportedFilenmae);
