@@ -5,8 +5,8 @@ class SzakView{
         szuloElem.append(`
             <tr>
                 <td data-label="#">${elem.szak_id}</td>
-                <td data-label="Megnevezés"><input id="megnev" value="${elem.megnevezes}" disabled></td>
-                <td data-label="Félévek száma"><input id="hany_fel" value="${elem.hany_felev}" disabled></td>
+                <td data-label="Megnevezés"><input id="meg${elem.szak_id}" value="${elem.megnevezes}" disabled></td>
+                <td data-label="Félévek száma"><input id="hany${elem.szak_id}" value="${elem.hany_felev}" disabled></td>
                 <td data-label="" id="indit"><input type="button" id="indit${elem.szak_id}" value='Indítás'></td>
                 <td data-label=""><input type="button" id="mod${elem.szak_id}" value='Módosítás'></button></td>
                 <td data-label=""><input type="button" id="torol${elem.szak_id}" value='Törlés'></button></td>
@@ -37,7 +37,9 @@ class SzakView{
             this.visszaElem = $ ("#vissza")
 
             this.mentesElem.on("click", ()=>{
-                this.adatBe();
+                var megnev = $(`#meg${elem.szak_id}`).val()
+                var hany_felev = $(`#hany${elem.szak_id}`).val()
+                this.adatBe(megnev, hany_felev);
                 this.kattintasTrigger("modSzak")
             })
 
@@ -64,9 +66,9 @@ class SzakView{
 
     }
 
-    adatBe(){
-        this.#elem.megnevezes = $("#megnev").val()
-        this.#elem.hany_felev = $("#hany_fel").val()
+    adatBe(megnevezes, hany_felev){
+        this.#elem.megnevezes = megnevezes
+        this.#elem.hany_felev = hany_felev
     }
 
     kattintasTrigger(esemenyNeve){
