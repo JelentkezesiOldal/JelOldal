@@ -9,7 +9,7 @@
 
 <body>
 
-    <p><strong>Kedves {{$neve}}!</strong></p><br>
+    <h3><strong>Kedves {{$neve}}!</strong></h3><br>
     <p>Köszönjük, hogy minket választott.</p><br>
     <h3>A beiratkozás menete</h3>
     <p>1. Az első lépés meg is történt, amikor weboldalunkon jelentkezett a választott képzésre.</p>
