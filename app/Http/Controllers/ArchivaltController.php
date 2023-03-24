@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Archivalt;
 use App\Models\Jelentkezes;
+use App\Models\Jelentkezo;
 use App\Models\InditottSzak;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -67,6 +68,12 @@ class ArchivaltController extends Controller
             $archive->save();
         }
         return $archive;
+    }
+
+    public function statuszUpdate(){
+        $archiv = DB::select(DB::raw("update jelentkezos set statusz = 'Archiválva' where statusz = 'Beiratkozva'"));
+        $archiv = DB::select(DB::raw("update jelentkezos set statusz = 'Visszavonva' where statusz = 'Beiratkozás alatt'"));
+        return $archiv;
     }
 
     public function inditottSzakTorles(){

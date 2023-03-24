@@ -17,14 +17,18 @@
 }
 
 .modal-contentSajat {
-    text-align: center;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 40%;
     
 }
+
+.modal-contentSajat div{
+    padding-top: 40px;
+}
+
 #modalDivContent spam{
     margin: 5px;
     padding: 5px;
@@ -37,7 +41,7 @@
 
 .closeSajat {
     color: #aaa;
-    text-align: right;
+    float: right;
     font-size: 28px;
     font-weight: bold;
 }

@@ -28,8 +28,8 @@ class FileController extends Controller
 
         foreach ($mezoNevek as $mezo) {
             if ($request->has($mezo)) {
-            $mezoErtek = $request->file($mezo)->store('public/files');
-            $jelentkezo_fajl->$mezo = $mezoErtek;
+                $mezoErtek = $request->file($mezo)->store('public/files');
+                $jelentkezo_fajl->$mezo = $mezoErtek;
             }
         }
 

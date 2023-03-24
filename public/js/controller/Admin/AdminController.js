@@ -97,8 +97,10 @@ class AdminController {
         $(window).on("allArchiv", () => {
             adminadatmodel.adatUjAll("/admin/archivOsszesJel");
             adminadatmodel.adatTorolAll("/admin/torolOsszesJel");
-            adminadatmodel.adatTorolAll("/admin/torolInditottSzak");
+            //adminadatmodel.adatTorolAll("/admin/torolInditottSzak");
+            adminadatmodel.adatModUres("/admin/statuszModosit");
             adminadatmodel.adatBe("/admin/archivOsszes", this.archivaltMutat);
+            
         });
 
         $(window).on("vissz", (event) => {

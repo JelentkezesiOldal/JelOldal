@@ -61,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/admin/modosit/{id}', [JelentkezoController::class, 'update']);
     Route::put('/admin/elfogad/{id}', [JelentkezesController::class, 'elfogadas']);
     Route::put('/admin/modositSzak/{id}', [SzakController::class, 'update']);
+    Route::put('/admin/statuszModosit', [ArchivaltController::class, 'statuszUpdate']);
 });
 
 Route::post('/admin/archivOsszesJel', [ArchivaltController::class, 'osszesJelentkezesArchivalas']);
