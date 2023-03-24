@@ -1,26 +1,24 @@
 import CSVAdatModel from "../../model/Admin/CSVAdatModel.js";
-import JelentkezokView from "../../view/Admin/Jelentkezok/JelentkezokView.js";
 
 class CSVController{
-    #csvadatmodel;
+    csvadatmodel;
     constructor(){
-        const csvadatmodel= new CSVAdatModel(tomb);
-        
+        this.csvadatmodel= new CSVAdatModel();
         $(window).on("csv", (event) => {
             console.log(event.detail)
-            //new JelentkezokView(tomb, szuloElem);
-            exportCSVFile(csvadatmodel.headers, csvadatmodel.itemsFormatted, csvadatmodel.fileTitle);
+            this.exportCSVFile(this.csvadatmodel.getHeadersElem(), this.csvadatmodel.getfileTitle(), this.csvadatmodel.ConvertToCSV(event.detail), this.csvadatmodel.sorok(event.detail));
+            location.reload();
         });
     }
-    exportCSVFile(headers,fileTitle, ConvertToCSV) {
-          
+    exportCSVFile(headers,fileTitle, ConvertToCSV, items) {
+        console.log(items)
         if (headers) {
             items.unshift(headers);
         }
     
         // Convert Object to JSON
         var jsonObject = JSON.stringify(items);
-        var csv = ConvertToCSV(jsonObject);
+        var csv = this.csvadatmodel.ConvertToCSV(jsonObject);
     
         var exportedFilenmae = fileTitle + ".csv" || "export.csv";
         var byteOrderMark = "\ufeff";
@@ -41,7 +39,8 @@ class CSVController{
                 document.body.removeChild(link);
             }
         }
-    } 
+    }
+    
 }
 
 export default CSVController;
