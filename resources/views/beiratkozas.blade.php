@@ -39,7 +39,7 @@
 
     </main>
     <footer>
-        Copyright &copy szalézi ágazati képzőközpont
+        Copyright &copy; szalézi ágazati képzőközpont
     </footer>
 
 
