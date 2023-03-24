@@ -57,10 +57,8 @@ class AdminAdatModel{
         
         if(adat.jelentkezo_id){
             vegpont += "/" + adat.jelentkezo_id
-            console.log("NEEEEEEEEEEEEEEEEEEEEEEEEee")
         }else{
             vegpont += "/" + adat.szak_id
-            console.log("BELEPETT:::::::::::.") 
         }
         
         fetch(vegpont, {
@@ -199,6 +197,25 @@ class AdminAdatModel{
             // .then((data) => {
             //     console.log(vegpont)
             // })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    adatModUres(vegpont){
+        console.log("Státusz archivált");
+        
+        fetch(vegpont, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': this.#token
+            },
+        })
+            .then((response) => response.json())
+            .then(() => {
+                console.log("Módosítottam: ");
+            })
             .catch((error) => {
                 console.error('Error:', error);
             });
