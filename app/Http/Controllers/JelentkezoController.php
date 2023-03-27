@@ -96,13 +96,14 @@ class JelentkezoController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json(["message" => $validator->errors()]);
-            
         }
+        
         $jelentkezo = new Jelentkezo();
         $jelentkezo->tanulo_neve = $request->tanulo_neve;
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->statusz = "Beiratkozás alatt";
+
         $token =Str::random();
         $jelentkezo->token = $token;
        /*  $url = url('/beiratkozas'."/". $token);  */
@@ -113,22 +114,14 @@ class JelentkezoController extends Controller
         });
 
         $jelentkezo->save();
-        /*echo*/
         $utolsoId = $jelentkezo->jelentkezo_id;
         $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id, 'datum'=>Carbon::now());
         DB::table('jelentkezes')->insert($data);
 
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
+
         return $jelentkezo;
-        //return redirect()->route('JelentkezesSikerult') /*-> get method not allowed*/;
-        //redirect('JelentkezesSikerult') ->semmit nem csinál;
-        //return view('JelentkezesSikerult') /*-> semmi*/;
-        //return Redirect::route('JelentkezesSikerult');
-        //return Redirect::to('views/JelentkezesSikerult');
-        //return redirect('JelentkezesSikerult');
-        
-        
     }
 
 
