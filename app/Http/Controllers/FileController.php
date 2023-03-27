@@ -13,6 +13,7 @@ class FileController extends Controller
         $jelentkezo_fajl = new JelentkezoFajl();
         $jelentkezo_id = $request->jelentkezo_id;
         $jelentkezo_fajl->jelentkezo_id = $jelentkezo_id; 
+        $token = $request->token;
 
         $mezoNevek = [
             'lakcimkartya',
@@ -28,8 +29,9 @@ class FileController extends Controller
 
         foreach ($mezoNevek as $mezo) {
             if ($request->has($mezo)) {
-                $mezoErtek = $request->file($mezo)->store('public/files');
-                $jelentkezo_fajl->$mezo = $mezoErtek;
+            $mezoErtek = $request->file($mezo)->store('public/files/'.$token);
+            $jelentkezo_fajl->$mezo = $mezoErtek;
+
             }
         }
 

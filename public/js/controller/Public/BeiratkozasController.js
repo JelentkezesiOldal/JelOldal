@@ -20,13 +20,7 @@ class BeiratkozasController{
             beiratkozasmodel.adatModosit(this.vegpont, event.detail, urltoken);
             console.log(event.detail);
         });
-        
-        $(window).on("kuldes", (event)=>{
-            console.log("Elküld a controllerben");
-            this.vegpont = "/file_upload"
-            console.log("adatmod elott fileupload:  ",event.detail)
-            beiratkozasmodel.FileUpload(this.vegpont, event.detail);
-        });
+    
     } 
     
     BeiratkozasAdatok(tomb){
