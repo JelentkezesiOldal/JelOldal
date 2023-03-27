@@ -9,7 +9,7 @@ class AdminAdatModel{
     #undoElem
     constructor(token){
         this.#token = token;
-        console.log("AdminAdatModel")
+        //console.log("AdminAdatModel")
     }
 
     adatBe(vegpont, myCallback){
@@ -54,7 +54,13 @@ class AdminAdatModel{
     adatModosit(vegpont, adat) {
         console.log(adat);
         console.log("Módosít: " + adat);
-        vegpont += "/" + adat.jelentkezo_id
+        
+        if(adat.jelentkezo_id){
+            vegpont += "/" + adat.jelentkezo_id
+        }else{
+            vegpont += "/" + adat.szak_id
+        }
+        
         fetch(vegpont, {
             method: 'PUT',
             headers: {
@@ -138,7 +144,6 @@ class AdminAdatModel{
             });
     }
     adatTorolIndSzak(vegpont, adat) {
-        console.log(adat);
         console.log("Töröl: " + adat.inditott_id);
         vegpont +=  adat.inditott_id
         console.log(vegpont)
@@ -192,6 +197,25 @@ class AdminAdatModel{
             // .then((data) => {
             //     console.log(vegpont)
             // })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    adatModUres(vegpont){
+        console.log("Státusz archivált");
+        
+        fetch(vegpont, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': this.#token
+            },
+        })
+            .then((response) => response.json())
+            .then(() => {
+                console.log("Módosítottam: ");
+            })
             .catch((error) => {
                 console.error('Error:', error);
             });

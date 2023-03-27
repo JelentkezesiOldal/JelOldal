@@ -10,7 +10,9 @@ class PublicController{
         $(window).on("elkuld", (event)=>{
             adatmodel.adatUj("/ujJelentkezo", event.detail);
             console.log("he",event.detail)
-            //adatmodel.adatBe("/email_kuldes",  event.detail);
+            if(!event.detail.tanulo_neve == "" && !event.detail.email == "" && !event.detail.telefonszam == "" ){
+                location.replace("/JelentkezesSikerult");
+            }
         });
         
     }

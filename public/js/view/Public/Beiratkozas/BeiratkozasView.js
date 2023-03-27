@@ -43,7 +43,8 @@ class BeiratkozasView {
         <select class="form-select" id="neme" name="neme">
         <option value="Nő">Nő</option>
         <option value="Férfi">Férfi</option>
-        <option value="X">Nem adom meg</option>
+        <option value="Nem adom meg">Nem adom meg</option>
+
         </select><br><br>
         </div>
 </div>

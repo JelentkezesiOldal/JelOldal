@@ -11,6 +11,7 @@ use Faker\Provider\DateTime as ProviderDateTime;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
@@ -103,7 +104,12 @@ class JelentkezoController extends Controller
         $jelentkezo->statusz = "Beiratkozás alatt";
         $token = Str::random();
         $jelentkezo->token = $token;
-        $url = url('/beiratkozas' . "/" . $token);
+
+       $expiration_time_in_minutes = 10800;
+        $url = Cache::remember('Beiratkozo_url', $expiration_time_in_minutes, function () use ($token) {
+            return url('/beiratkozas'."/". $token); 
+        });
+
 
         $jelentkezo->save();
         /*Mappa létrehozás*/
@@ -118,12 +124,7 @@ class JelentkezoController extends Controller
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
         return $jelentkezo;
-        //return redirect()->route('JelentkezesSikerult') /*-> get method not allowed*/;
-        //redirect('JelentkezesSikerult') ->semmit nem csinál;
-        //return view('JelentkezesSikerult') /*-> semmi*/;
-        //return Redirect::route('JelentkezesSikerult');
-        //return Redirect::to('views/JelentkezesSikerult');
-        //return redirect('JelentkezesSikerult');
+        
 
 
     }

@@ -31,6 +31,7 @@ class FileController extends Controller
             if ($request->has($mezo)) {
             $mezoErtek = $request->file($mezo)->store('public/files/'.$token);
             $jelentkezo_fajl->$mezo = $mezoErtek;
+
             }
         }
 

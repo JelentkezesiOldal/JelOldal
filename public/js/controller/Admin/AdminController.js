@@ -9,7 +9,7 @@ import SzakokView from "../../view/Admin/Szakok/SzakokView.js";
 
 class AdminController {
     constructor() {
-        console.log("AdminController");
+        // console.log("AdminController");
         const token = $(`meta[name="csrf-token"]`).attr("content");
         const adminadatmodel = new AdminAdatModel(token);
         this.vegpont = "";
@@ -97,14 +97,15 @@ class AdminController {
         $(window).on("allArchiv", () => {
             adminadatmodel.adatUjAll("/admin/archivOsszesJel");
             adminadatmodel.adatTorolAll("/admin/torolOsszesJel");
-            adminadatmodel.adatTorolAll("/admin/torolInditottSzak");
+            //adminadatmodel.adatTorolAll("/admin/torolInditottSzak");
+            adminadatmodel.adatModUres("/admin/statuszModosit");
             adminadatmodel.adatBe("/admin/archivOsszes", this.archivaltMutat);
+            
         });
 
         $(window).on("vissz", (event) => {
             console.log(event.detail);
             adminadatmodel.adatTorolIndSzak("/admin/torolIndSzak/", event.detail);
-            adminadatmodel.adatUj("/admin/ujSzak", event.detail);
             adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
             adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
         });
@@ -114,6 +115,13 @@ class AdminController {
             adminadatmodel.adatModosit("/admin/elfogad", event.detail);
             adminadatmodel.adatBe("/admin/elfVar", this.jelentkezokElfogadMutat);
         });
+
+        $(window).on("modSzak", (event) => {
+            adminadatmodel.adatModosit("/admin/modositSzak", event.detail)
+            adminadatmodel.adatBe("/admin/inditSzak", this.szakokMutat);
+            adminadatmodel.adatBe("/szak_indittotSzak", this.szakokElindMutat);
+        });
+
     }
 
     felhasznalokMutat(tomb){

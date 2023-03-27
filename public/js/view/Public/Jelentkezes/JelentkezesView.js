@@ -35,6 +35,7 @@ class JelentkezesView {
             //console.log("Elküld a View-ban")
             this.adatGyujtes();
             this.kattintastrigger("elkuld");
+            
         });
 
         $('input').change(function(){
@@ -69,7 +70,6 @@ class JelentkezesView {
 }
 
 function validalas() {
-    // $(document).ready(function () {
         $("#jelentkezes").validate({
             rules: {
                 tanulo_neve: {

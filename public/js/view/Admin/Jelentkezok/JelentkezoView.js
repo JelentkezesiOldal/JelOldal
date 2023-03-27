@@ -19,7 +19,7 @@ class JelentkezoView {
             console.log("J"+ elem.jelentkezo_id + " katt")
             $(".modalSajat").show()
             modal.append(`
-            <div>
+            <div id="modalDivContent">
                 <p>Tanuló neve: <input id="tanulo_neve" value="${elem.tanulo_neve}" disabled></input><spam class="edit" name="1">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>    
                 <p>Születéskori neve: <input id="szuleteskori_neve" value="${elem.szuleteskori_neve}" disabled></input><spam class="edit" name="2">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
                 <p>Anyja neve: <input id="anyja_neve" value="${elem.anyja_neve}" disabled></input><spam class="edit" name="3">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>

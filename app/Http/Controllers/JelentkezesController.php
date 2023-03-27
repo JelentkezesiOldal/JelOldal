@@ -74,10 +74,13 @@ class JelentkezesController extends Controller
         return $jelent;
     }
 
-    public function elfogadas($id){
+    public function elfogadas($id, Request $request){
         $jelent = Jelentkezo::find($id);
         $jelent->statusz = "Beiratkozva";
         $jelent->save();
+        $emailhez = new EmailController();
+        //nem adja át az emailt
+        $emailhez::elfogad($request->email);
         return $jelent;
     }
 }

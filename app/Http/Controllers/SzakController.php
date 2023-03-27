@@ -38,10 +38,7 @@ class SzakController extends Controller
     public function update(Request $request, $id)
     {
         $szak = Szak::find($id);
-        $szak->szak_id = $request->szak_id;
         $szak->megnevezes = $request->megnevezes;
-        //$szak->iskola_id = $request->iskola_id;
-        $szak->elofeltetel = $request->elofeltetel;
         $szak->hany_felev = $request->hany_felev;
         $szak->save();
     }
