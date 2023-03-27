@@ -68,7 +68,7 @@ Route::delete('/admin/torolInditottSzak', [ArchivaltController::class, 'inditott
 
 
 /*******************************Public**************************************/
-Route::middleware(['PublicPages'])->group(function (){
+Route::middleware(['publicpages'])->group(function (){
     
 });
 Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo'])->name('JelentkezesSikerult');
@@ -77,9 +77,15 @@ Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
 Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
 Route::get('/email_kuldes', [EmailController::class, 'index']);
 
-Route::get('/show/{token}', [JelentkezoController::class, 'show']);
+
 Route::patch('/beiratkozo/{token}', [JelentkezoController::class, 'beiratkozo']);
+Route::get('/show/{token}', [JelentkezoController::class, 'show']);
+Route::middleware(['fileupload'])->group(function (){
+    
+});
 Route::post('/file_upload',[FileController::class, 'store']);
+
+
 
 
 /******************************Oldalak**************************************/
@@ -99,6 +105,10 @@ Route::get('/admin', function () {
 Route::get('/beiratkozas/{token}',function($token){
     return view('beiratkozas', ['tokenke'=>$token]);
 });
+Route::get('/beiratkozasfajl/{token}',function($token){
+    return view('beiratkozasfajl', ['tokenke'=>$token]);
+})->name('beiratkozasfajl');
+
 
 //ADMIN DOLGOK KIVÜL HOGY MENJEN
 //admin lekérések
