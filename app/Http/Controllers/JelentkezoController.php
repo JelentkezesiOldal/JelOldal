@@ -97,12 +97,14 @@ class JelentkezoController extends Controller
         if ($validator->fails()) {
             return response()->json(["message" => $validator->errors()]);
         }
+        
         $jelentkezo = new Jelentkezo();
         $jelentkezo->tanulo_neve = $request->tanulo_neve;
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->statusz = "Beiratkozás alatt";
-        $token = Str::random();
+
+        $token =Str::random();
         $jelentkezo->token = $token;
 
        $expiration_time_in_minutes = 10800;
@@ -112,21 +114,14 @@ class JelentkezoController extends Controller
 
 
         $jelentkezo->save();
-        /*Mappa létrehozás*/
-        $path = storage_path('app/public/files/'.$token);
-        File::makeDirectory($path, $mode = 0777, true, true);
-
-        /*echo*/
         $utolsoId = $jelentkezo->jelentkezo_id;
         $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id, 'datum' => Carbon::now());
         DB::table('jelentkezes')->insert($data);
 
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
+
         return $jelentkezo;
-        
-
-
     }
 
 
