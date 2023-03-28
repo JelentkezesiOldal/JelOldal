@@ -32,8 +32,6 @@ Route::middleware( ['admin'])->group(function () {
     Route::apiResource('/users', UserController::class);
     
 });
-
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -73,19 +71,21 @@ Route::delete('/admin/torolInditottSzak', [ArchivaltController::class, 'inditott
 Route::middleware(['publicpages'])->group(function (){
     
 });
-Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo'])->name('JelentkezesSikerult');
+Route::middleware(['fileupload'])->group(function (){
+    
+});
+
+//Jelentkezés
+Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
 //Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
 Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
 Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
 Route::get('/email_kuldes', [EmailController::class, 'index']);
 Route::get('/email_kuldes_elfogad', [EmailController::class, 'elfogad']);
 
-
+//Beiratkozás
 Route::patch('/beiratkozo/{token}', [JelentkezoController::class, 'beiratkozo']);
 Route::get('/show/{token}', [JelentkezoController::class, 'show']);
-Route::middleware(['fileupload'])->group(function (){
-    
-});
 Route::post('/file_upload',[FileController::class, 'store']);
 
 
