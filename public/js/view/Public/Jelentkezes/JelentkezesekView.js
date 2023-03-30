@@ -2,7 +2,6 @@ import JelentkezesView from "./JelentkezesView.js";
 
 class JelentkezesekView{
     constructor(tomb, szuloElem){
-        console.log("tömb", tomb)
         szuloElem.append(`
         <article>
         </article>

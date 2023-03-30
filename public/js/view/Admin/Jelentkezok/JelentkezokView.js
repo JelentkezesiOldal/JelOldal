@@ -34,10 +34,9 @@ class JelentkezokView {
             
             </tbody>
         </table>`);
-
         this.csvGomb = $("#csv");
         $("#csv").on("click", () => {
-            console.log("csv jelentkezok")
+            // console.log("csv jelentkezok")
             this.kattintasTrigger2("csv");
         });
 

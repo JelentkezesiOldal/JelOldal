@@ -2,7 +2,7 @@ class CSVAdatModel {
     #headers;
     #fileTitle;
     #itemsFormatted =[];
-    constructor(tomb) {
+    constructor() {
         this.#headers = {
             datum: "Dátum",
             diak_azonosito: "OM azonosító",
@@ -26,7 +26,8 @@ class CSVAdatModel {
             hany_felev: "Hány félév",
         };
         this.#fileTitle = "jelentkezok";
-
+    }
+    sorok(tomb){
         tomb.forEach((item) => {
             this.#itemsFormatted.push({
                 datum: item.datum,
@@ -51,27 +52,34 @@ class CSVAdatModel {
                 hany_felev: item.hany_felev,
             });
         });
-
-        
+        return this.#itemsFormatted;
     }
+
+    getHeadersElem(){
+        return this.#headers;
+    }
+    getfileTitle(){
+        return this.#fileTitle
+    }
+    ConvertToCSV(objArray) {
+        var array = typeof objArray != "object" ? JSON.parse(objArray) : objArray;
+        var str = "";
     
-}
-function ConvertToCSV(objArray) {
-    var array = typeof objArray != "object" ? JSON.parse(objArray) : objArray;
-    var str = "";
-
-    for (var i = 0; i < array.length; i++) {
-        var line = "";
-        for (var index in array[i]) {
-            if (line != "") line += ";";
-
-            line += array[i][index];
+        for (var i = 0; i < array.length; i++) {
+            var line = "";
+            for (var index in array[i]) {
+                if (line != "") line += ";";
+    
+                line += array[i][index];
+            }
+    
+            str += line + "\r\n";
         }
-
-        str += line + "\r\n";
+    
+        return str;
     }
-
-    return str;
 }
+
+
 
 export default CSVAdatModel;

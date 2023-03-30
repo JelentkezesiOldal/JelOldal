@@ -3,9 +3,7 @@ class JelentkezesView {
     #elem = [];
     #jelentkezoAdat = {};
     constructor(elem, szuloElem) {
-        
         this.#elem = elem;
-        console.log("elem", elem);
         szuloElem.append(`
         <h1 class="cim">Jelentkezési oldal</h1>
         <form id="jelentkezes" name="jelentkezes" >
@@ -23,16 +21,15 @@ class JelentkezesView {
         <input type="button" id="elkuld" value="Elküld" class="btn btn-outline-secondary" disabled>
         </form>
         `);
+
         this.formElem = szuloElem.children("form:last-child");
         this.selectElem = this.formElem.children("select");
         elem.forEach((opcio) => {
             const opciom = new OpcioView(opcio, this.selectElem);
-            //console.log("opciom", opcio)
         });
 
         this.elkuldElem = $(`#elkuld`);
         this.elkuldElem.on("click", () => {
-            //console.log("Elküld a View-ban")
             this.adatGyujtes();
             this.kattintastrigger("elkuld");
             

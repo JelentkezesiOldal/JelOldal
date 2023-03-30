@@ -7,9 +7,9 @@ use App\Models\Jelentkezo;
 use App\Http\Controllers\EmailController;
 use Carbon\Carbon;
 use DateTime;
-use Faker\Core\File;
 use Faker\Provider\DateTime as ProviderDateTime;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +27,7 @@ class JelentkezoController extends Controller
     public function show($token)
     {
         //$jelentkezo = Jelentkezo::all($id);
-       //$jelentkezo = response()->json(Jelentkezo::all()->find($token));
+        //$jelentkezo = response()->json(Jelentkezo::all()->find($token));
         $jelentkezo = response()->json(Jelentkezo::where('token', $token)->first());
         return $jelentkezo;
     }
@@ -96,39 +96,32 @@ class JelentkezoController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json(["message" => $validator->errors()]);
-            
         }
+        
         $jelentkezo = new Jelentkezo();
         $jelentkezo->tanulo_neve = $request->tanulo_neve;
         $jelentkezo->email = $request->email;
         $jelentkezo->telefonszam = $request->telefonszam;
         $jelentkezo->statusz = "Beiratkozás alatt";
+
         $token =Str::random();
         $jelentkezo->token = $token;
-       /*  $url = url('/beiratkozas'."/". $token);  */
-        
-       $expiration_time_in_minutes = 1;
+
+       $expiration_time_in_minutes = 10800;
         $url = Cache::remember('Beiratkozo_url', $expiration_time_in_minutes, function () use ($token) {
             return url('/beiratkozas'."/". $token); 
         });
 
+
         $jelentkezo->save();
-        /*echo*/
         $utolsoId = $jelentkezo->jelentkezo_id;
-        $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id, 'datum'=>Carbon::now());
+        $data = array('jelentkezo_id' => $utolsoId, 'inditott_id' => $request->inditott_id, 'datum' => Carbon::now());
         DB::table('jelentkezes')->insert($data);
 
         $valami = new EmailController();
         $valami::index($request->email, $request->tanulo_neve, $url);
+
         return $jelentkezo;
-        //return redirect()->route('JelentkezesSikerult') /*-> get method not allowed*/;
-        //redirect('JelentkezesSikerult') ->semmit nem csinál;
-        //return view('JelentkezesSikerult') /*-> semmi*/;
-        //return Redirect::route('JelentkezesSikerult');
-        //return Redirect::to('views/JelentkezesSikerult');
-        //return redirect('JelentkezesSikerult');
-        
-        
     }
 
 
@@ -141,20 +134,20 @@ class JelentkezoController extends Controller
         $szakIndit->inditott_id = $request->inditott_id;
     }
 
-    
+
     public function beiratkozo(Request $request, $token)
     {
-/* 
+        /* 
         $validator = Validator::make($request->all(), [
             'tanulo_neve' => array('required', 'string', 'min:5', 'max:50'),
             'email' => array('required', 'email', 'max:50', 'unique:jelentkezos'),
             'telefonszam' => array('required', 'digits_between:7,15', 'numeric')
         ]); */
-        
-       /*  $filecontroller = new FileController;
+
+        /*  $filecontroller = new FileController;
         $filecontroller->store($request); */
-        
-        
+
+
         $jelentkezo = Jelentkezo::where('token', $token)->first();
         $data = [
             'tanulo_neve' => $request->tanulo_neve,
@@ -176,45 +169,47 @@ class JelentkezoController extends Controller
             'bankszamlaszam' => $request->bankszamlaszam,
             'statusz' => "Elfogadásra vár",
         ];
-        
+
         foreach ($data as $key => $value) {
             if (!empty($value)) {
                 $jelentkezo->$key = $value;
             }
         }
 
-        
+
         $jelentkezo->save();
+       return view('beiratkozasfajl');
         //return view('beiratkozasSiker');
         //return view('/BeiratkozasSikerult');
     }
-    public function keresesj($ertek){
+    public function keresesj($ertek)
+    {
         $keres = DB::table('jelentkezos')
             ->select('jelentkezos.*')
-            ->where('tanulo_neve', 'like', '%'.$ertek.'%')
-            ->orwhere('szuleteskori_neve', 'like', '%'.$ertek.'%')
-            ->orwhere('anyja_neve', 'like', '%'.$ertek.'%')
-            ->orwhere('szuletesi_datum', 'like', '%'.$ertek.'%')
-            ->orwhere('szuletesi_hely', 'like', '%'.$ertek.'%')
-            ->orwhere('email', 'like', '%'.$ertek.'%')
-            ->orwhere('telefonszam', 'like', '%'.$ertek.'%')
-            ->orwhere('allando_lakcim', 'like', '%'.$ertek.'%')
-            ->orwhere('lakcimkartya', 'like', '%'.$ertek.'%')
-            ->orwhere('ertesitesi_cim', 'like', '%'.$ertek.'%')
-            ->orwhere('neme', 'like', '%'.$ertek.'%')
-            ->orwhere('diak_azonosito', 'like', '%'.$ertek.'%')
-            ->orwhere('szemelyi_igazolvany_szam', 'like', '%'.$ertek.'%')
-            ->orwhere('taj_szam', 'like', '%'.$ertek.'%')
-            ->orwhere('adoszam', 'like', '%'.$ertek.'%')
-            ->orwhere('erettsegi_bizonyitvany_szama', 'like', '%'.$ertek.'%')
-            ->orwhere('szakmai_bizonyitvany_szama', 'like', '%'.$ertek.'%')
-            ->orwhere('bankszamlaszam', 'like', '%'.$ertek.'%')
-            ->orwhere('statusz', 'like', '%'.$ertek.'%')
+            ->where('tanulo_neve', 'like', '%' . $ertek . '%')
+            ->orwhere('szuleteskori_neve', 'like', '%' . $ertek . '%')
+            ->orwhere('anyja_neve', 'like', '%' . $ertek . '%')
+            ->orwhere('szuletesi_datum', 'like', '%' . $ertek . '%')
+            ->orwhere('szuletesi_hely', 'like', '%' . $ertek . '%')
+            ->orwhere('email', 'like', '%' . $ertek . '%')
+            ->orwhere('telefonszam', 'like', '%' . $ertek . '%')
+            ->orwhere('allando_lakcim', 'like', '%' . $ertek . '%')
+            ->orwhere('lakcimkartya', 'like', '%' . $ertek . '%')
+            ->orwhere('ertesitesi_cim', 'like', '%' . $ertek . '%')
+            ->orwhere('neme', 'like', '%' . $ertek . '%')
+            ->orwhere('diak_azonosito', 'like', '%' . $ertek . '%')
+            ->orwhere('szemelyi_igazolvany_szam', 'like', '%' . $ertek . '%')
+            ->orwhere('taj_szam', 'like', '%' . $ertek . '%')
+            ->orwhere('adoszam', 'like', '%' . $ertek . '%')
+            ->orwhere('erettsegi_bizonyitvany_szama', 'like', '%' . $ertek . '%')
+            ->orwhere('szakmai_bizonyitvany_szama', 'like', '%' . $ertek . '%')
+            ->orwhere('bankszamlaszam', 'like', '%' . $ertek . '%')
+            ->orwhere('statusz', 'like', '%' . $ertek . '%')
             ->get();
         return $keres;
     }
 
-/*     public function beiratkozasemail($token){
+    /*     public function beiratkozasemail($token){
         
         return view('beiratkozas', ['token'=>$token]);
     } */

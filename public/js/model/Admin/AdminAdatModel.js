@@ -9,7 +9,7 @@ class AdminAdatModel{
     #undoElem
     constructor(token){
         this.#token = token;
-        console.log("AdminAdatModel")
+        //console.log("AdminAdatModel")
     }
 
     adatBe(vegpont, myCallback){
