@@ -29,16 +29,7 @@ class BeiratkozasView {
         
         <label for="szuletesi_hely" class="form-label">Születési hely</label>
         <input class="form-control" type="text" id="szuletesi_hely" name="szuletesi_hely"value="${elem.szuletesi_hely}" ></input><br><br>
-        
-        <label for="allando_lakcim" class="form-label">Állandó lakcím</label>
-        <input class="form-control" type="text" id="allando_lakcim" name="allando_lakcim" placeholder="1234 Pécs Első utca 11" value="${elem.allando_lakcim}"></input><br><br>
-        
-        <label for="ertesitescheckbox"  class="form-label">Az értesítési cím megegyezik az állandó lakcímmel</label>
-        <input class="form-check-input mt-0" type="checkbox" id="ertesitescheckbox" name="ertesitescheckbox"></input><br><br>
-        
-        <label for="ertesitesi_cim" class="form-label">Értesítési cím</label>
-        <input class="form-control" type="ertesitesi_cim" id="ertesitesi_cim" name="ertesitesi_cim" value="${elem.ertesitesi_cim}"></input><br><br>
-        
+
         <label for="neme" class="form-label">Neme:</label>
         <select class="form-select" id="neme" name="neme">
         <option value="Nő">Nő</option>
@@ -50,7 +41,16 @@ class BeiratkozasView {
         </div>
         
         <div class="second">
-        <div id="secondmb3" class="mb-3">
+        <div class="mb-3">
+
+        <label for="allando_lakcim" class="form-label">Állandó lakcím</label>
+        <input class="form-control" type="text" id="allando_lakcim" name="allando_lakcim" placeholder="1234 Pécs Első utca 11" value="${elem.allando_lakcim}"></input><br><br>
+        
+        <label for="ertesitescheckbox"  class="form-label">Az értesítési cím megegyezik az állandó lakcímmel</label>
+        <input class="form-check-input mt-0" type="checkbox" id="ertesitescheckbox" name="ertesitescheckbox"></input><br><br>
+        
+        <label for="ertesitesi_cim" class="form-label">Értesítési cím</label>
+        <input class="form-control" type="ertesitesi_cim" id="ertesitesi_cim" name="ertesitesi_cim" value="${elem.ertesitesi_cim}"></input><br><br>
         
           <label for="diak_azonosito" class="form-label">Diákigazolvány szám</label>
           <input class="form-control" type="text" id="diak_azonosito" name="diak_azonosito" value="${elem.diak_azonosito}"></input><br><br>
@@ -66,12 +66,8 @@ class BeiratkozasView {
           <input class="form-control" type="text" id="adoszam" name="adoszam" value="${elem.adoszam}"></input><br><br>
           
           <label for="erettsegi_bizonyitvany_szama" class="form-label">Érettségi bizonyítvány száma</label>
-          <input class="form-control" type="text" id="erettsegi_bizonyitvany_szama" name="erettsegi_bizonyitvany_szama" placeholder="P11K 101687" value="${elem.erettsegi_bizonyitvany_szama}"></input><br><br>
-          <p>Az érettségi balfelső sarkéban található számsor</p>
-          
-          <p>Figyelem! A szakmia bizonyítvány nem előfeltétel, ha nincs még szakmai bizonyítványa akkor a következő mezőt nem kötelező kitölteni</p><br><br>
-          <label for="szakmai_bizonyitvany" class="form-label">Szakmai bizonyítvány száma: </label>
-          <input class="form-control" type="text" id="szakmai_bizonyitvany" name="szakmai_bizonyitvany" value="${elem.szakmai_bizonyitvany}"></input><br><br>
+          <input class="form-control" type="text" id="erettsegi_bizonyitvany_szama" name="erettsegi_bizonyitvany_szama" placeholder="Az érettségi balfelső sarkában található számsor. Például: P11K 101687" value="${elem.erettsegi_bizonyitvany_szama}"></input><br><br>
+          <p></p>
           
           <label for="bankszamlaszam" class="form-label">Bankszámlaszám</label>
           <input class="form-control" type="text" id="bankszamlaszam" name="bankszamlaszam" value="${elem.bankszamlaszam}"></input><br><br>
@@ -84,14 +80,14 @@ class BeiratkozasView {
           
           </form>
           `);
-          
-          this.NotNull();
-          this.SetDisabled();
-          this.formElem = szuloElem.children("form:last-child");
-          this.elkuldElem = $(`#button`);
-          this.elkuldElem.on("click", () => {
-              //console.log("Elküld a View-ban")
-              this.UralapAdatok();
+
+        this.NotNull();
+        this.SetDisabled();
+        this.formElem = szuloElem.children("form:last-child");
+        this.elkuldElem = $(`#button`);
+        this.elkuldElem.on("click", () => {
+            //console.log("Elküld a View-ban")
+            this.UralapAdatok();
             this.KattintasTrigger("mentes")
         });
     }
@@ -118,9 +114,9 @@ class BeiratkozasView {
         mezok.forEach(mezo => {
             console.log($(mezo));
             console.log($(mezo).val());
-            if ($(mezo).val() === "null" || $(mezo).val() == "") {
-                $(mezo).val("igen nem");
-                
+            if ($(mezo).val() === "null") {
+                $(mezo).val("");
+
 
             }
         });

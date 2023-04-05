@@ -92,9 +92,17 @@ article {
 }
 #beiratkozas{
 display: flex;
-flex-direction: row;
-justify-content: space-around;
-padding: 20px;
+justify-content: center;
+}
+#beiratkozasfajl{
+    display: flex;
+    justify-content: center;
+    }
+.first, .second{
+    align-items: center;
+    width: 100%;
+    padding: 140px;
+
 }
 #button{
 width: 150px;

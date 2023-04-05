@@ -86,7 +86,7 @@ Route::get('/email_kuldes_elfogad', [EmailController::class, 'elfogad']);
 //Beiratkozás
 Route::patch('/beiratkozo/{token}', [JelentkezoController::class, 'beiratkozo']);
 Route::get('/show/{token}', [JelentkezoController::class, 'show']);
-Route::post('/file_upload',[FileController::class, 'store']);
+Route::post('/file_upload',[FajlController::class, 'store']);
 
 
 
