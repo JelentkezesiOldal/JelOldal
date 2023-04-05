@@ -19,6 +19,9 @@ constructor(){
         console.log("adatmod elott fileupload:  ",event.detail)
         beiratkozasmodel.FileUpload(this.vegpont, event.detail);
     });
+    $(window).on("vissza", ()=>{
+        location.replace("/beiratkozas/" + urltoken);
+    });
 
 }
 BeiratkozasAdatok(tomb){

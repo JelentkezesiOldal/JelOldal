@@ -52,6 +52,7 @@ class BeiratkozasFileUploadView {
                     <label for="orvosi_alkalmassagi" class="form-label">Orvosi Alkalmassági: </label>
                     <input class="form-control" type="file" id="orvosi_alkalmassagi" name="orvosi_alkalmassagi" ></input><br><br>
                     
+                    <input id="btnvissza" type="button" value="Vissza" >
                     <input id="btn" type="button" value="Mentés" >
                 </div>
             </div>
@@ -60,6 +61,10 @@ class BeiratkozasFileUploadView {
         `);
 
         this.elkuldElem = $(`#btn`);
+        this.visszaelem = $(`#btnvissza`)
+        this.visszaelem.on("click", ()=>{
+            this.FileTrigger("vissza");
+        });
         this.elkuldElem.on("click", () => {
             console.log("Elküld a View-ban");
             this.UralapAdatok();
