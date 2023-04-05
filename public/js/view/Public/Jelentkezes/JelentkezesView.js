@@ -73,8 +73,10 @@ function validalas() {
                     required: true,
                     minlength: 5,
                     maxlength:50,
-                    pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
+                    pattern: "[^+*:?;=!%$&@#<>(){}0-9]+"
                 },
+                //[A-Z][^+*:?;=!%$&@#<>()[\]{}0-9]+|[ÁÉŐÖÜÓŰÚÍ][^+*:?;=!%$&@#<>(){}0-9]+
+                // \b[A-Z][^+*:?;=!%$&@#<>()[\]{}0-9]+\b
                 telefonszam: {
                     required: true,
                     number: true,
@@ -89,17 +91,17 @@ function validalas() {
                 tanulo_neve: {
                     required: "Kötelező kitölteni",
                     minlength:
-                        "A névnek minimum 5 karekteresnek kell lennie",
+                        "A névnek minimum 5 karakteresnek kell lennie",
                     maxlength: "A név maximum 30 karakteres lehet",
-                    pattern:"A név nem tartalmazhat speciális karaktereket és számokat"
+                    pattern:"A név nem tartalmazhat speciális karaktereket, számokat és nagybetűnek kell lennie"
                 },
                 telefonszam: {
                     required: "Kötelező kitölteni",
                     number: "A telefonszám csak számokat tartalmazhat",
                     minlength:
-                        "A telefonszámnak minimum 7 karekteresnek kell lennie",
+                        "A telefonszámnak minimum 7 karakteresnek kell lennie",
                     maxlength:
-                        "A telefonszámnak maximum 15 karekteresnek kell lennie",
+                        "A telefonszám maximum 15 karakteres lehet",
                 },
                 email: {
                     required: "Kötelező kitölteni",

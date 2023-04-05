@@ -15,10 +15,14 @@
     <title>Fájl Feltöltés</title>
 </head>
 <input type="hidden" id="token" value="{{ $tokenke }}">
+
 <body>
     <main>
 
     </main>
+    <footer>
+        Copyright &copy; Szalézi Ágazati Képzőközpont
+    </footer>
 </body>
 
 </html>
