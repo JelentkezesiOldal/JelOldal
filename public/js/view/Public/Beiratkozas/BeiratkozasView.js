@@ -21,7 +21,7 @@ class BeiratkozasView {
         <label for="szuleteskori_neve" class="form-label">Születési név</label>
         <input class="form-control" type="text" id="szuleteskori_neve" name="szuleteskori_neve" value="${elem.szuleteskori_neve}"></input><br><br>
         
-        <label for="anyja_neve" class="form-label">Anyja neve</label>
+        <label for="anyja_neve" class="form-label">Anyja születéskori neve</label>
         <input class="form-control" type="text" id="anyja_neve" name="anyja_neve" value="${elem.anyja_neve}"></input><br><br>
         
         <label for="szuletesi_datum" class="form-label">Születési dátum</label>
@@ -66,8 +66,8 @@ class BeiratkozasView {
           <input class="form-control" type="text" id="adoszam" name="adoszam" value="${elem.adoszam}"></input><br><br>
           
           <label for="erettsegi_bizonyitvany_szama" class="form-label">Érettségi bizonyítvány száma</label>
-          <input class="form-control" type="text" id="erettsegi_bizonyitvany_szama" name="erettsegi_bizonyitvany_szama" placeholder="Az érettségi balfelső sarkában található számsor. Például: P11K 101687" value="${elem.erettsegi_bizonyitvany_szama}"></input><br><br>
-          <p></p>
+          <input class="form-control" type="text" id="erettsegi_bizonyitvany_szama" name="erettsegi_bizonyitvany_szama" placeholder="P11K 101687" value="${elem.erettsegi_bizonyitvany_szama}"></input>
+          <label for="erettsegi_bizonyitvany_szama" class="infok">*Az érettségi balfelső sarkában található számsor</label><br><br>
           
           <label for="bankszamlaszam" class="form-label">Bankszámlaszám</label>
           <input class="form-control" type="text" id="bankszamlaszam" name="bankszamlaszam" value="${elem.bankszamlaszam}"></input><br><br>

@@ -110,6 +110,10 @@ article {
 #button {
     width: 150px;
 }
+.infok{
+    font-size: small;
+    color: red;
+}
 /*Footer*/
 footer {
     background-color: #377ef9;
