@@ -105,10 +105,7 @@ article {
 .second {
     align-items: center;
     width: 100%;
-    padding: 140px;
-}
-#button {
-    width: 150px;
+    padding: 50px;
 }
 .infok{
     font-size: small;

@@ -14,7 +14,7 @@ class JelentkezokView {
         this.modalElem = szuloElem.children("div:last-child");
         this.tenylegmodalElem = this.modalElem.children("div:last-child");
         szuloElem.append(`
-            <button class="row float-left" id="csv">CSV-be ment</button>
+            <button class="row float-left" id="csv">CSV-be mentés</button>
            
         
         `);

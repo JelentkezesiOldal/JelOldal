@@ -37,10 +37,10 @@ class JelentkezoView {
                 <p>Szakmai bizonyítvány száma: <input id="szakmai_bizonyitvany_szama" value="${elem.szakmai_bizonyitvany_szama}" disabled></input><spam class="edit" name="15">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
                 <p>Bankszámlaszám: <input id="bankszamlaszam" value="${elem.bankszamlaszam}" disabled></input><spam class="edit" name="16">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
                 <p>Státusz: <input id="statusz" value="${elem.statusz}" disabled></input><spam class="edit" name="17">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
-                <spam id="mod${elem.jelentkezo_id}">Módosítás</spam>
-                <spam id="archiv${elem.jelentkezo_id}">Archíválás</spam>
-                <spam id="torol${elem.jelentkezo_id}">Törlés</spam>
-                <spam id="ment${elem.jelentkezo_id}">Mentés PDF-be</spam>
+                <button id="mod${elem.jelentkezo_id}">Módosítás</button>
+                <button id="archiv${elem.jelentkezo_id}">Archiválás</button>
+                <button id="torol${elem.jelentkezo_id}">Törlés</button>
+                <button id="ment${elem.jelentkezo_id}">Mentés PDF-be</button>
             </div>
             `);
             this.modElem = $(`#mod${elem.jelentkezo_id}`);

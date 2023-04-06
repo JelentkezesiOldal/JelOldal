@@ -27,7 +27,7 @@
                             </li>
                             @if(Auth::check() && Auth::user()->master == 1)
                             <li class="nav-item">
-                                <a class="nav-link" id="felh">Felhasználó</a>
+                                <a class="nav-link" id="felh">Felhasználók</a>
                             </li>
                             @endif
                             <li class="nav-item dropdown">
