@@ -100,6 +100,9 @@ Route::get('/', function () {
 Route::get('/JelentkezesSikerult', function () {   
     return view('JelentkezesSikerult');
 });
+Route::get('/adatrogzites', function () {   
+    return view('BeiratkozasSikerult');
+});
 
 Route::get('/admin', function () {
     return view('admin');
