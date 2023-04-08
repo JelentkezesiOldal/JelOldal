@@ -11,13 +11,18 @@ class StatisztikaController{
             //adminadatmodel.adatBe("/admin/OsszesJelentkezo", this.statisztikakMutat);
             adminadatmodel.adatBe("/admin/statOsszesJelentkezo", this.statisztikakMutat);
         });
-        $(window).on("tab1", (event)=>{
-            //const statisztikakview = new StatisztikakView();
+        $("#tab1").on("click", () => {
+            //adminadatmodel.adatBe("/admin/OsszesJelentkezo", this.statisztikakMutat);
+            adminadatmodel.adatBe("/admin/statOsszesJelentkezo", this.statisztikakMutat);
             
-            //console.log(event.detail)
-            //adminadatmodel.adatBe("/admin/osszesJelentkezo", event.detail);
-            //new StatisztikaView(statisztikakview.divElem)
         });
+        // $(window).on("tab1", (event)=>{
+        //     //const statisztikakview = new StatisztikakView();
+            
+        //     //console.log(event.detail)
+        //     //adminadatmodel.adatBe("/admin/osszesJelentkezo", event.detail);
+        //     //new StatisztikaView(statisztikakview.divElem)
+        // });
     }
     statisztikakMutat(tomb){
         const szuloElem = $("article");
