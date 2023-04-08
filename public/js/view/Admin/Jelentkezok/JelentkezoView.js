@@ -6,6 +6,7 @@ class JelentkezoView {
     constructor(elem, szuloElem, modal) {   
         console.log("jelentkezoView");
         this.#elem = elem;
+        console.log(elem)
         const adminadatmodel = new AdminAdatModel();
         szuloElem.append(`<tr id="J${elem.jelentkezo_id}">
             <td data-label="datum">${elem.datum}</td>

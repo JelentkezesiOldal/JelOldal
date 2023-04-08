@@ -4,6 +4,7 @@ import FelhasznalokView from "../../view/Admin/Felhasznalok/FelhasznalokView.js"
 import JelentkezokBeirAlattView from "../../view/Admin/Jelentkezok/JelentkezokBeirAlattView.js";
 import JelentkezokElfogadView from "../../view/Admin/Jelentkezok/JelentkezokElfogadView.js";
 import JelentkezokView from "../../view/Admin/Jelentkezok/JelentkezokView.js";
+import StatisztikakView from "../../view/Admin/Statisztika/StatisztikakView.js";
 import SzakokElindVIew from "../../view/Admin/Szakok/SzakokElindView.js";
 import SzakokView from "../../view/Admin/Szakok/SzakokView.js";
 
@@ -13,9 +14,9 @@ class AdminController {
         const token = $(`meta[name="csrf-token"]`).attr("content");
         const adminadatmodel = new AdminAdatModel(token);
         this.vegpont = "";
-        $("#stat").on("click", () => {
-            adminadatmodel.adatBe();
-        });
+        // $("#stat").on("click", () => {
+        //     adminadatmodel.adatBe("/admin/minden", this.statisztikakMutat);
+        // });
 
         $("#felh").on("click", () => {
             adminadatmodel.adatBe("/admin/felPlusSzak", this.felhasznalokMutat);
@@ -152,6 +153,7 @@ class AdminController {
         const szuloElem = $("article");
         new ArchivaltakView(tomb, szuloElem);
     }
+    
 }
 
 
