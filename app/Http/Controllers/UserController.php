@@ -54,8 +54,7 @@ class UserController extends Controller
 
     public function kereses($ertek){
         $keres = DB::table('users')
-            ->join('szaks', 'szaks.szak_id', '=', 'users.szak_id')
-            ->select('users.*', 'szaks.megnevezes')
+            ->select('users.*')
             ->where('ugyintezo_id', 'like', '%'.$ertek.'%')
             ->orwhere('name', 'like', '%'.$ertek.'%')
             ->orwhere('email', 'like', '%'.$ertek.'%')
