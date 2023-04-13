@@ -95,6 +95,14 @@ article {
 }
 #beiratkozas {
     display: flex;
+<<<<<<< HEAD
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+}
+#button {
+    width: 150px;
+=======
     justify-content: center;
 }
 #beiratkozasfajl {
@@ -110,6 +118,7 @@ article {
 .infok{
     font-size: small;
     color: red;
+>>>>>>> d18ffc40546692e5cd213637aed171331f201245
 }
 /*Footer*/
 footer {
@@ -140,4 +149,28 @@ footer {
     article {
         font-size: small;
     }
+}
+
+label.error {
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
+
+input.error,
+textarea.error {
+    border: 1px solid red;
+    font-weight: 300;
+    color: red;
+}
+
+label {
+    width: 300px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+label span {
+    font-size: 1rem;
 }

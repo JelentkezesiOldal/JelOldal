@@ -28,7 +28,7 @@ class JelentkezoView {
                 <p>Születési hely: <input id="szuletesi_hely" value="${elem.szuletesi_hely}" disabled></input><spam class="edit" name="5">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
                 <p>E-mail címe: <input id="email" value="${elem.email}" disabled></input><spam class="edit" name="6">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
                 <p>Telefonszáma: <input id="telefonszam" value="${elem.telefonszam}" disabled></input><spam class="edit" name="7">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
-                <p>Értesítési cím: <input id="ertesitesi_cim" value="${elem.ertesitesi_cim}" disabled></input><spam class="edit" name="8">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
+                <p>Értesítési cím: <input id="ertesitesi_cim" value="${elem.ertesitesi_cim}" disabled></input>
                 <p>Neme: <input id="neme" value="${elem.neme}" disabled></input><spam class="edit" name="9">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
                 <p>OM azonosító: <input id="diak_azonosito" value="${elem.diak_azonosito}" disabled></input><spam class="edit" name="10">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
                 <p>Személyi igazolvány száma: <input id="szemelyi_igazolvany_szam" value="${elem.szemelyi_igazolvany_szam}" disabled></input><spam class="edit" name="11">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
@@ -37,7 +37,7 @@ class JelentkezoView {
                 <p>Érettségi bizonyítvány száma: <input id="erettsegi_bizonyitvany_szama" value="${elem.erettsegi_bizonyitvany_szama}" disabled></input><spam class="edit" name="14">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
                 <p>Szakmai bizonyítvány száma: <input id="szakmai_bizonyitvany_szama" value="${elem.szakmai_bizonyitvany_szama}" disabled></input><spam class="edit" name="15">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
                 <p>Bankszámlaszám: <input id="bankszamlaszam" value="${elem.bankszamlaszam}" disabled></input><spam class="edit" name="16">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
-                <p>Státusz: <input id="statusz" value="${elem.statusz}" disabled></input><spam class="edit" name="17">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
+                <p>Státusz: <input id="statusz" value="${elem.statusz}" disabled></input>
                 <button id="mod${elem.jelentkezo_id}">Módosítás</button>
                 <button id="archiv${elem.jelentkezo_id}">Archiválás</button>
                 <button id="torol${elem.jelentkezo_id}">Törlés</button>
