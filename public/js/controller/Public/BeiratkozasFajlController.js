@@ -18,6 +18,10 @@ constructor(){
         this.vegpont = "/file_upload"
         console.log("adatmod elott fileupload:  ",event.detail)
         beiratkozasmodel.FileUpload(this.vegpont, event.detail);
+        location.replace("/adatrogzites");
+    });
+    $(window).on("vissza", ()=>{
+        location.replace("/beiratkozas/" + urltoken);
     });
 
 }

@@ -21,7 +21,7 @@ class BeiratkozasView {
         <label for="szuleteskori_neve" class="form-label">Születési név</label>
         <input class="form-control" type="text" id="szuleteskori_neve" name="szuleteskori_neve" value="${elem.szuleteskori_neve}"></input><br><br>
         
-        <label for="anyja_neve" class="form-label">Anyja neve</label>
+        <label for="anyja_neve" class="form-label">Anyja születéskori neve</label>
         <input class="form-control" type="text" id="anyja_neve" name="anyja_neve" value="${elem.anyja_neve}"></input><br><br>
         
         <label for="szuletesi_datum" class="form-label">Születési dátum</label>
@@ -29,16 +29,7 @@ class BeiratkozasView {
         
         <label for="szuletesi_hely" class="form-label">Születési hely</label>
         <input class="form-control" type="text" id="szuletesi_hely" name="szuletesi_hely"value="${elem.szuletesi_hely}" ></input><br><br>
-        
-        <label for="allando_lakcim" class="form-label">Állandó lakcím</label>
-        <input class="form-control" type="text" id="allando_lakcim" name="allando_lakcim" placeholder="1234 Pécs Első utca 11" value="${elem.allando_lakcim}"></input><br><br>
-        
-        <label for="ertesitescheckbox"  class="form-label">Az értesítési cím megegyezik az állandó lakcímmel</label>
-        <input class="form-check-input mt-0" type="checkbox" id="ertesitescheckbox" name="ertesitescheckbox"></input><br><br>
-        
-        <label for="ertesitesi_cim" class="form-label">Értesítési cím</label>
-        <input class="form-control" type="ertesitesi_cim" id="ertesitesi_cim" name="ertesitesi_cim" value="${elem.ertesitesi_cim}"></input><br><br>
-        
+
         <label for="neme" class="form-label">Neme:</label>
         <select class="form-select" id="neme" name="neme">
         <option value="Nő">Nő</option>
@@ -50,7 +41,16 @@ class BeiratkozasView {
         </div>
         
         <div class="second">
-        <div id="secondmb3" class="mb-3">
+        <div class="mb-3">
+
+        <label for="allando_lakcim" class="form-label">Állandó lakcím</label>
+        <input class="form-control" type="text" id="allando_lakcim" name="allando_lakcim" placeholder="1234 Pécs Első utca 11" value="${elem.allando_lakcim}"></input><br><br>
+        
+        <label for="ertesitescheckbox"  class="form-label">Az értesítési cím megegyezik az állandó lakcímmel</label>
+        <input class="form-check-input mt-0" type="checkbox" id="ertesitescheckbox" name="ertesitescheckbox"></input><br><br>
+        
+        <label for="ertesitesi_cim" class="form-label">Értesítési cím</label>
+        <input class="form-control" type="ertesitesi_cim" id="ertesitesi_cim" name="ertesitesi_cim" value="${elem.ertesitesi_cim}"></input><br><br>
         
           <label for="diak_azonosito" class="form-label">Diákigazolvány szám</label>
           <input class="form-control" type="text" id="diak_azonosito" name="diak_azonosito" value="${elem.diak_azonosito}"></input><br><br>
@@ -66,12 +66,17 @@ class BeiratkozasView {
           <input class="form-control" type="text" id="adoszam" name="adoszam" value="${elem.adoszam}"></input><br><br>
           
           <label for="erettsegi_bizonyitvany_szama" class="form-label">Érettségi bizonyítvány száma</label>
+<<<<<<< HEAD
           <input class="form-control" type="text" id="erettsegi_bizonyitvany_szama" name="erettsegi_bizonyitvany_szama" placeholder="P11K 101687" value="${elem.erettsegi_bizonyitvany_szama}"></input><br><br>
           <p>Az érettségi balfelső sarkéban található számsor</p>
           
           <p>Figyelem! A szakmia bizonyítvány nem előfeltétel,<br><br> ha nincs még szakmai bizonyítványa akkor a következő mezőt nem kötelező kitölteni</p><br><br>
           <label for="szakmai_bizonyitvany" class="form-label">Szakmai bizonyítvány száma: </label>
           <input class="form-control" type="text" id="szakmai_bizonyitvany" name="szakmai_bizonyitvany" value="${elem.szakmai_bizonyitvany}"></input><br><br>
+=======
+          <input class="form-control" type="text" id="erettsegi_bizonyitvany_szama" name="erettsegi_bizonyitvany_szama" placeholder="P11K 101687" value="${elem.erettsegi_bizonyitvany_szama}"></input>
+          <label for="erettsegi_bizonyitvany_szama" class="infok">*Az érettségi balfelső sarkában található számsor</label><br><br>
+>>>>>>> d18ffc40546692e5cd213637aed171331f201245
           
           <label for="bankszamlaszam" class="form-label">Bankszámlaszám</label>
           <input class="form-control" type="text" id="bankszamlaszam" name="bankszamlaszam" value="${elem.bankszamlaszam}"></input><br><br>
@@ -85,7 +90,6 @@ class BeiratkozasView {
           </form>
           `);
 
-
         $('input').change(function(){
             InputValidate();
         });
@@ -98,6 +102,7 @@ class BeiratkozasView {
           this.elkuldElem.on("click", () => {
               //console.log("Elküld a View-ban")
               this.UralapAdatok();
+
             this.KattintasTrigger("mentes")
         });
     }
@@ -127,7 +132,11 @@ class BeiratkozasView {
             console.log($(mezo).val());
             if ($(mezo).val() === "null") {
                 $(mezo).val("");
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> d18ffc40546692e5cd213637aed171331f201245
 
             }
         });

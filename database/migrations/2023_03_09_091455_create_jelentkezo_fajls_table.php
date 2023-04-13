@@ -16,9 +16,12 @@ return new class extends Migration
     {
         Schema::create('jelentkezo_fajls', function (Blueprint $table) {
             $table->id('jelentkezo_id');
-            $table->string('lakcimkartya')->nullable();
-            $table->string('diakigazolvany')->nullable();
-            $table->string('szemelyi_igazolvany')->nullable();
+            $table->string('lakcimkartyaeleje')->nullable();
+            $table->string('lakcimkartyahatulja')->nullable();
+            $table->string('diakigazolvanyeleje')->nullable();
+            $table->string('diakigazolvanyhatulja')->nullable();
+            $table->string('szemelyi_igazolvany_eleje')->nullable();
+            $table->string('szemelyi_igazolvany_hatulja')->nullable();
             $table->string('taj_kartya')->nullable();
             $table->string('adoigazolvany')->nullable();
             $table->string('erettsegi_bizonyitvany')->nullable();

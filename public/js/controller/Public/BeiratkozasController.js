@@ -35,20 +35,21 @@ class BeiratkozasController {
                 'taj_szam',
                 'adoszam',
                 'erettsegi_bizonyitvany_szama',
-                'szakmai_bizonyitvany_szama',
                 'bankszamlaszam'
-            ]; */
-                if (!event.detail.tanulo_neve == "") {
+            ];
+            mezok.forEach(mezo => {
+                
+                if (!event.detail[mezo] == "") {
                     location.replace("/beiratkozasfajl/" + urltoken);
                 }
-        });
+        });*/
 
     }
-
+    }
     BeiratkozasAdatok(tomb) {
         const szuloElem = $('main')
         console.log("Beiratkozas ADATOK:   ", tomb);
         new BeiratkozasokView(tomb, szuloElem);
     }
-}
+} 
 export default BeiratkozasController;

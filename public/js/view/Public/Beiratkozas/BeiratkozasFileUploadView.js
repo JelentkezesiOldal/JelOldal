@@ -8,17 +8,26 @@ class BeiratkozasFileUploadView {
         this.#token = token;
         szuloElem.append(`
         <h1>Beiratkozáshoz szükséges képek</h1>
-        <form id="beiratkozasFileUpload" enctype="multipart/form-data">
+        <form id="beiratkozasfajl" enctype="multipart/form-data">
             <div class="first">
                 <div class="mb-3">
-                    <label for="lakcimkartya" class="form-label">Lakcímkártya: </label>
-                    <input class="form-control" type="file" id="lakcimkartya" name="lakcimkartya" ></input><br><br>
+                    <label for="lakcimkartyaeleje" class="form-label">Lakcímkártya eleje: </label>
+                    <input class="form-control" type="file" id="lakcimkartyaeleje" name="lakcimkartyaeleje" ></input><br><br>
+                    
+                    <label for="lakcimkartyahatulja" class="form-label">Lakcímkártya hátulja: </label>
+                    <input class="form-control" type="file" id="lakcimkartyahatulja" name="lakcimkartyahatulja" ></input><br><br>
                 
-                    <label for="diakigazolvany" class="form-label">Diákigazolvény: </label>
-                    <input class="form-control" type="file" id="diakigazolvany" name="diakigazolvany" ></input><br><br>
+                    <label for="diakigazolvanyeleje" class="form-label">Diákigazolvány eleje: </label>
+                    <input class="form-control" type="file" id="diakigazolvanyeleje" name="diakigazolvanyeleje" ></input><br><br>
+                    
+                    <label for="diakigazolvanyhatulja" class="form-label">Diákigazolvány hátulja: </label>
+                    <input class="form-control" type="file" id="diakigazolvanyhatulja" name="diakigazolvanyhatulja" ></input><br><br>
          
-                    <label for="szemelyi_igazolvany" class="form-label">Személyi igazolvány: </label>
-                    <input class="form-control" type="file" id="szemelyi_igazolvany" name="szemelyi_igazolvany" ></input><br><br>
+                    <label for="szemelyi_igazolvany_eleje" class="form-label">Személyi igazolvány eleje: </label>
+                    <input class="form-control" type="file" id="szemelyi_igazolvany_eleje" name="szemelyi_igazolvany_eleje" ></input><br><br>
+                    
+                    <label for="szemelyi_igazolvany_hatulja" class="form-label">Személyi igazolvány hátulja: </label>
+                    <input class="form-control" type="file" id="szemelyi_igazolvany_hatulja" name="szemelyi_igazolvany_hatulja" ></input><br><br>
                 </div>
 
                 
@@ -43,6 +52,7 @@ class BeiratkozasFileUploadView {
                     <label for="orvosi_alkalmassagi" class="form-label">Orvosi Alkalmassági: </label>
                     <input class="form-control" type="file" id="orvosi_alkalmassagi" name="orvosi_alkalmassagi" ></input><br><br>
                     
+                    <input id="btnvissza" type="button" value="Vissza" >
                     <input id="btn" type="button" value="Mentés" >
                 </div>
             </div>
@@ -51,6 +61,10 @@ class BeiratkozasFileUploadView {
         `);
 
         this.elkuldElem = $(`#btn`);
+        this.visszaelem = $(`#btnvissza`)
+        this.visszaelem.on("click", ()=>{
+            this.FileTrigger("vissza");
+        });
         this.elkuldElem.on("click", () => {
             console.log("Elküld a View-ban");
             this.UralapAdatok();
@@ -59,28 +73,32 @@ class BeiratkozasFileUploadView {
     }
     UralapAdatok() {
         const mezok = [
-            '#lakcimkartya',
-            '#diakigazolvany',
-            '#szemelyi_igazolvany',
+            '#lakcimkartyaeleje',
+            '#lakcimkartyahatulja',
+            '#diakigazolvanyeleje',
+            '#diakigazolvanyhatulja',
+            '#szemelyi_igazolvany_eleje',
+            '#szemelyi_igazolvany_hatulja',
             '#taj_kartya',
             '#adoigazolvany',
             '#erettsegi_bizonyitvany',
             '#szakmai_bizonyitvany',
             '#orvosi_alkalmassagi',
+
         ];
         this.#formData.append("token", this.#token);
         this.#formData.append("jelentkezo_id", this.#jelid);
         mezok.forEach(mezo => {
             console.log($(mezo).val());
-            if ($(mezo).val() != "") {
+            if ($(mezo).val() != "" ) {
                 this.#formData.append(
                     $(mezo).attr("name"),
                     $(mezo).prop("files")[0]
                 );
             }
-            console.log("formdata elem:   ",this.#formData.get(mezo));
         });
-
+        
+        /* console.log("formdata elem:   ",this.#formData.get(mezo)); */
 
 
 

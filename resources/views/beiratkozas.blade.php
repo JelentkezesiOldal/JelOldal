@@ -18,30 +18,11 @@
 
 <body>
     <input type="hidden" id="token" value="{{ $tokenke }}">
-    
+
     <main>
-        <nav>
-            <h1><a href="#">Szalézi Ágazati Képzőközpont</a></h1>
-            <ul>
-                <li><a href="https://szaleziakk.hu/rolunk/">Rólunk</a></li>
-                <li><a class="dropbtn" href="#">Jelentkezés</a></li>
-                <li>
-                    <div class="dropdown">
-                        <a href="#">Képzéseink</a>
-                        <div class="dropdown-content">
-                            <a href="https://szaleziakk.hu/dualis-nappali-kepzesek/">Duális nappali képzések</a>
-                            <a href="https://szaleziakk.hu/felnottkepzesek/">Felnőttképzések</a>
-                        </div>
-                    </div>
-
-                </li>
-                <li><a href="https://szaleziakk.hu/hirek/">Hírek</a></li>
-            </ul>
-        </nav>
-
     </main>
     <footer>
-        Copyright &copy; szalézi ágazati képzőközpont
+        Copyright &copy; Szalézi Ágazati Képzőközpont
     </footer>
 
 

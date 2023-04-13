@@ -9,13 +9,9 @@ import SzakokView from "../../view/Admin/Szakok/SzakokView.js";
 
 class AdminController {
     constructor() {
-        // console.log("AdminController");
         const token = $(`meta[name="csrf-token"]`).attr("content");
         const adminadatmodel = new AdminAdatModel(token);
         this.vegpont = "";
-        $("#stat").on("click", () => {
-            adminadatmodel.adatBe();
-        });
 
         $("#felh").on("click", () => {
             adminadatmodel.adatBe("/admin/felPlusSzak", this.felhasznalokMutat);
@@ -96,8 +92,7 @@ class AdminController {
 
         $(window).on("allArchiv", () => {
             adminadatmodel.adatUjAll("/admin/archivOsszesJel");
-            adminadatmodel.adatTorolAll("/admin/torolOsszesJel");
-            //adminadatmodel.adatTorolAll("/admin/torolInditottSzak");
+            //adminadatmodel.adatTorolAll("/admin/torolOsszesJel");
             adminadatmodel.adatModUres("/admin/statuszModosit");
             adminadatmodel.adatBe("/admin/archivOsszes", this.archivaltMutat);
             
@@ -152,6 +147,7 @@ class AdminController {
         const szuloElem = $("article");
         new ArchivaltakView(tomb, szuloElem);
     }
+    
 }
 
 

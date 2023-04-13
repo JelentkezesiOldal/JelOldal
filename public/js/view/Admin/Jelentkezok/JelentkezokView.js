@@ -14,18 +14,11 @@ class JelentkezokView {
         this.modalElem = szuloElem.children("div:last-child");
         this.tenylegmodalElem = this.modalElem.children("div:last-child");
         szuloElem.append(`
-        <button class="row float-left" id="csv">CSV-be ment</button>
-        
-            <div id="keres" class="row float-end">
-                <div  class="col input-group">
-                    <input type="text" id="keres1" placeholder="Search">
-                </div>
-                <div class="col">
-                    <button id="kereses">Keres</button>
-                </div>
-            </div>
+            <button class="row float-left" id="csv">CSV-be mentés</button>
+           
         
         `);
+        //$("#keres").hide();
         szuloElem.append(`
         <table id="jelTab" class="table table-hover">
             <thead>

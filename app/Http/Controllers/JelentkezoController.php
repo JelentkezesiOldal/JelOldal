@@ -165,7 +165,6 @@ class JelentkezoController extends Controller
             'taj_szam' => $request->taj_szam,
             'adoszam' => $request->adoszam,
             'erettsegi_bizonyitvany_szama' => $request->erettsegi_bizonyitvany_szama,
-            'szakmai_bizonyitvany_szama' => $request->szakmai_bizonyitvany_szama,
             'bankszamlaszam' => $request->bankszamlaszam,
             'statusz' => "Elfogadásra vár",
         ];

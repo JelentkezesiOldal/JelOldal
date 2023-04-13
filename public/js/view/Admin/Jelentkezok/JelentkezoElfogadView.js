@@ -43,7 +43,7 @@ class JelentkezoElfogadView{
                 <p>Szakmai bizonyítvány száma: <input id="szakmai_bizonyitvany_szama" value="${elem.szakmai_bizonyitvany_szama}" disabled></input></p>
                 <p>Bankszámlaszám: <input id="bankszamlaszam" value="${elem.bankszamlaszam}" disabled></input></p>
                 <p>Státusz: <input id="statusz" value="${elem.statusz}" disabled></input></p>
-                <spam id="ment${elem.jelentkezo_id}">Mentés PDF-be</spam>
+                <button id="ment${elem.jelentkezo_id}">Mentés PDF-be</button>
             </div>
             `);
 

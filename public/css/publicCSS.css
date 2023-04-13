@@ -100,7 +100,7 @@ nav h1 a {
 
 label.error {
     color: red;
-    font-size: 1rem;
+    font-size: small;
     display: block;
     margin-top: 5px;
 }
@@ -108,12 +108,12 @@ label.error {
 input.error,
 textarea.error {
     border: 1px solid red;
-    font-weight: 300;
+    font-weight: 150px;
     color: red;
 }
 
 label {
-    width: 300px;
+    max-width: 500px;
     display: inline-block;
     margin-top: 20px;
 }

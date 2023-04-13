@@ -60,6 +60,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/admin/elfogad/{id}', [JelentkezesController::class, 'elfogadas']);
     Route::put('/admin/modositSzak/{id}', [SzakController::class, 'update']);
     Route::put('/admin/statuszModosit', [ArchivaltController::class, 'statuszUpdate']);
+    //Statisztikához
+    Route::get('/admin/OsszesJelentkezo', [JelentkezoController::class, 'index']);
+    Route::get('/admin/statOsszesJelentkezo', [JelentkezesController::class, 'statOsszJelo']);
 });
 
 Route::post('/admin/archivOsszesJel', [ArchivaltController::class, 'osszesJelentkezesArchivalas']);
@@ -86,7 +89,7 @@ Route::get('/email_kuldes_elfogad', [EmailController::class, 'elfogad']);
 //Beiratkozás
 Route::patch('/beiratkozo/{token}', [JelentkezoController::class, 'beiratkozo']);
 Route::get('/show/{token}', [JelentkezoController::class, 'show']);
-Route::post('/file_upload',[FileController::class, 'store']);
+Route::post('/file_upload',[FajlController::class, 'store']);
 
 
 
@@ -99,6 +102,9 @@ Route::get('/', function () {
 });
 Route::get('/JelentkezesSikerult', function () {   
     return view('JelentkezesSikerult');
+});
+Route::get('/adatrogzites', function () {   
+    return view('BeiratkozasSikerult');
 });
 
 Route::get('/admin', function () {

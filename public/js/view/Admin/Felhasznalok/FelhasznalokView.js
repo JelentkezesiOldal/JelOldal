@@ -3,7 +3,6 @@ import FelhasznaloView from "./FelhasznaloView.js";
 class FelhasznalokView{
     #adatok = {}
     constructor(tomb, szuloElem){
-        console.log("FelhasznalokView")
         szuloElem.html(`
         <div class="row float-end">
             <div class="col input-group">
@@ -14,6 +13,7 @@ class FelhasznalokView{
             </div>
         </div>
         `)
+
         szuloElem.append(`
         <table class="table" id="ujFelh">
             <thead>
@@ -38,7 +38,7 @@ class FelhasznalokView{
 
                     </td>
                     
-                    <td data-label=""><input type="button" value="Felvesz" id="felvesz"></td>
+                    <td data-label=""><input type="button" value="Felvesz" id="felvesz" disabled></td>
                 </tr>
             </tbody>
         </table>
@@ -67,7 +67,7 @@ class FelhasznalokView{
 
             this.keresGomb.on('click', ()=>{
                 this.input = $('#keres1').val()
-                console.log(this.input + " lécci")
+                //console.log(this.input + " lécci")
                 this.kattintasTrigger("keres")
             })
 
@@ -79,7 +79,16 @@ class FelhasznalokView{
         tomb.forEach(adat => {
             const adatom = new FelhasznaloView(adat, this.tbodyElem)
         });
-    }
+    
+    $('input').change(function(){
+            if (!$('#name').val()=="" && !$('#email').val()== "" && !$('#password').val()== "") {
+                $('#felvesz').prop('disabled', false)
+            }else{
+                $('#felvesz').prop('disabled', true)
+            } 
+        
+    })
+}
     adatBeker(){
         this.#adatok.name = $('#name').val()
         this.#adatok.email = $('#email').val()

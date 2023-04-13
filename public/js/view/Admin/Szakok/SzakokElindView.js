@@ -1,6 +1,5 @@
 import SzakElindView from "./SzakElindView.js";
 
-
 class SzakokElindVIew{
     #adatok = {};
     constructor(tomb, szuloElem){

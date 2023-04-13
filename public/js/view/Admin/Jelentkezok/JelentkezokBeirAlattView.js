@@ -15,7 +15,7 @@ class JelentkezokBeirAlattView{
         this.tenylegmodalElem = this.modalElem.children("div:last-child")
         szuloElem.append(`
         <div>
-            <button class="row float-left" id="csv">CSV-be ment</button>
+            <button class="row float-left" id="csv">CSV-be mentés</button>
         <div class="row float-end">
             <div class="col input-group">
                 <input type="text" id="keres1" placeholder="Search">

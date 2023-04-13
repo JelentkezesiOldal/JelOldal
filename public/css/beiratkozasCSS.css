@@ -6,7 +6,7 @@
 /*header*/
 /*----------------------------------------------------*/
 /*nav*/
-nav {
+/* nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +34,8 @@ nav li a {
 
 nav h1 {
     list-style-type: none;
-    margin: 0;
+    margin: 10px;
+    margin-bottom: 30px;
     padding: 0;
     width: 300px;
     height: 100px;
@@ -44,11 +45,13 @@ nav h1 a {
     color: #000;
     padding: 8px 16px;
     text-decoration: none;
+} */
+article h1 {
+    margin: 10px;
 }
-
 /*----------------------------------------------------*/
 
-.dropbtn {
+/* .dropbtn {
     color: black;
     padding: 16px;
     font-size: 16px;
@@ -81,7 +84,7 @@ nav h1 a {
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
+} */
 
 /*----------------------------------------------------*/
 /*Content/body*/
@@ -92,18 +95,60 @@ article {
 }
 #beiratkozas {
     display: flex;
+<<<<<<< HEAD
     flex-direction: row;
     justify-content: space-around;
     padding: 20px;
 }
 #button {
     width: 150px;
+=======
+    justify-content: center;
+}
+#beiratkozasfajl {
+    display: flex;
+    justify-content: center;
+}
+.first,
+.second {
+    align-items: center;
+    width: 100%;
+    padding: 50px;
+}
+.infok{
+    font-size: small;
+    color: red;
+>>>>>>> d18ffc40546692e5cd213637aed171331f201245
 }
 /*Footer*/
 footer {
     background-color: #377ef9;
     font-family: Montserrat, sans-serif;
-    font-size: 16px;
+    font-size: 15px;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+    #beiratkozas {
+        display: block;
+    }
+    #beiratkozasfajl {
+        display: block;
+    }
+    .first,
+    .second {
+        padding: 50px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    article {
+        font-size: small;
+    }
 }
 
 label.error {
