@@ -19,7 +19,7 @@ class BeiratkozasController {
             console.log("adatmod elott", event.detail)
             beiratkozasmodel.adatModosit(this.vegpont, event.detail, urltoken);
             console.log(event.detail);
-            const mezok = [
+           /*  const mezok = [
                 'tanulo_neve',
                 'szuleteskori_neve',
                 'anyja_neve',
@@ -37,12 +37,10 @@ class BeiratkozasController {
                 'erettsegi_bizonyitvany_szama',
                 'szakmai_bizonyitvany_szama',
                 'bankszamlaszam'
-            ];
-            mezok.forEach(mezo => {
-                if (!event.detail+mezo == "") {
-                    location.replace("/beiratkozasfajl");
+            ]; */
+                if (!event.detail.tanulo_neve == "") {
+                    location.replace("/beiratkozasfajl/" + urltoken);
                 }
-            });
         });
 
     }

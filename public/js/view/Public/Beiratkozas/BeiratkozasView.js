@@ -6,7 +6,7 @@ class BeiratkozasView {
         console.log("elem", elem);
         szuloElem.append(`
         <h1>Beiratkozáshoz szükséges adatok</h1>
-        <form id="beiratkozas">
+        <form id="beiratkozas" name="beiratkozas">
         <div class="first">
         <div class="mb-3">
         <label for="tanulo_neve" class="form-label">Tanuló Neve</label>
@@ -69,7 +69,7 @@ class BeiratkozasView {
           <input class="form-control" type="text" id="erettsegi_bizonyitvany_szama" name="erettsegi_bizonyitvany_szama" placeholder="P11K 101687" value="${elem.erettsegi_bizonyitvany_szama}"></input><br><br>
           <p>Az érettségi balfelső sarkéban található számsor</p>
           
-          <p>Figyelem! A szakmia bizonyítvány nem előfeltétel, ha nincs még szakmai bizonyítványa akkor a következő mezőt nem kötelező kitölteni</p><br><br>
+          <p>Figyelem! A szakmia bizonyítvány nem előfeltétel,<br><br> ha nincs még szakmai bizonyítványa akkor a következő mezőt nem kötelező kitölteni</p><br><br>
           <label for="szakmai_bizonyitvany" class="form-label">Szakmai bizonyítvány száma: </label>
           <input class="form-control" type="text" id="szakmai_bizonyitvany" name="szakmai_bizonyitvany" value="${elem.szakmai_bizonyitvany}"></input><br><br>
           
@@ -84,7 +84,13 @@ class BeiratkozasView {
           
           </form>
           `);
-          
+
+
+        $('input').change(function(){
+            InputValidate();
+        });
+
+
           this.NotNull();
           this.SetDisabled();
           this.formElem = szuloElem.children("form:last-child");
@@ -100,7 +106,8 @@ class BeiratkozasView {
             '#tanulo_neve',
             '#szuleteskori_neve',
             '#anyja_neve',
-            /* '#szuletesi_datum', */
+            /* '#szuletesi_datum'
+            , */
             '#szuletesi_hely',
             '#email',
             '#telefonszam',
@@ -118,8 +125,8 @@ class BeiratkozasView {
         mezok.forEach(mezo => {
             console.log($(mezo));
             console.log($(mezo).val());
-            if ($(mezo).val() === "null" || $(mezo).val() == "") {
-                $(mezo).val("igen nem");
+            if ($(mezo).val() === "null") {
+                $(mezo).val("");
                 
 
             }
@@ -167,156 +174,155 @@ class BeiratkozasView {
         ).val();
         this.#elem.bankszamlaszam = $("#bankszamlaszam").val();
     }
-    InputValidate() {
-        $("#jelentkezes").validate({
-            rules: {
-                tanulo_neve: {
-                    required: true,
-                    minlength: 5,
-                    maxlength: 50,
-                    pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
-                },
-                telefonszam: {
-                    required: true,
-                    number: true,
-                    minlength: 7,
-                },
-                email: {
-                    required: true,
-                    email: true,
-                },
-                szuleteskori_neve: {
-                    required: true,
-                    minlength: 5,
-                    maxlength: 50,
-                    pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
-
-                },
-                anyja_neve: {
-                    required: true,
-                    minlength: 5,
-                    maxlength: 50,
-                    pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
-
-                },
-                szuletesi_datum: {
-                    required: true,
-                    date: true,
-
-                },
-                szuletesi_hely: {
-                    required: true,
-                    minlength: 5,
-                    pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
-
-
-                },
-                allando_lakcim: {
-                    required: true,
-                    minlength: 5,
-
-
-                },
-                ertesitesi_cim: {
-                    required: true,
-                    minlength: 5,
-
-                },
-                diak_azonosito: {
-                    required: false,
-                    number: true,
-                    maxlength: 11,
-                },
-
-                szemelyi_igazolvany_szam: {
-                    required: true,
-                    maxlength: 8,
-                },
-
-                taj_szam: {
-                    required: true,
-                    number: true,
-                    minlength: 9,
-
-                },
-
-                adoszam: {
-                    required: true,
-                    number: true,
-                    maxlength: 10,
-
-                },
-
-                erettsegi_bizonyitvany_szama: {
-                    required: true,
-                    minlength: 10,
-                },
-
-                szakmai_bizonyitvany_szama: {
-                    required: false,
-
-                },
-
-            },
-            messages: {
-                tanulo_neve: {
-                    required: "Kötelező kitölteni",
-                    minlength: "A név minimum 5 karekteresnek kell lennie",
-                },
-                telefonszam: {
-                    required: "Kötelező kitölteni",
-                    number: "Csak szám lehet",
-                    minlength:
-                        "A telefonszámnak minimum 7 karekteresnek kell lennie",
-                    maxlength:
-                        "A telefonszámnak maximum 15 karekteresnek kell lennie",
-                },
-                email: {
-                    required: "Kötelező kitölteni",
-                    email: "Az emailnek ilyen formátumnak kell lennie: abc@domain.tld",
-                },
-                anyja_neve: {
-                    required: "Kötelező kitölteni",
-                },
-                szuletesi_datum: {
-                    required: "Kötelező kitölteni",
-                },
-                szuletesi_hely: {
-                    required: "Kötelező kitölteni",
-                },
-                allando_lakcim: {
-                    required: "Kötelező kitölteni",
-                },
-                ertesitesi_cim: {
-                    required: "Kötelező kitölteni",
-                },
-                diak_azonosito: {
-                    required: "Kötelező kitölteni",
-                },
-                szemelyi_igazolvany_szam: {
-                    required: "Kötelező kitölteni",
-                },
-                taj_szam: {
-                    required: "Kötelező kitölteni",
-                },
-                adoszam: {
-                    required: "Kötelező kitölteni",
-                },
-                erettsegi_bizonyitvany_szama: {
-                    required: "Kötelező kitölteni",
-                },
-
-                szakmai_bizonyitvany_szama: {
-                    required: "Kötelező kitölteni",
-                },
-            },
-        });
-    }
-
     KattintasTrigger(esemenyhivo) {
         const esemeny = new CustomEvent(esemenyhivo, { detail: this.#elem });
         console.log("KattintasTrigger");
         window.dispatchEvent(esemeny);
     }
+}
+function InputValidate() {
+    $("#beiratkozas").validate({
+        rules: {
+            tanulo_neve: {
+                required: true,
+                minlength: 5,
+                maxlength: 50,
+                pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
+            },
+            telefonszam: {
+                required: true,
+                number: true,
+                minlength: 7,
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            szuleteskori_neve: {
+                required: true,
+                minlength: 5,
+                maxlength: 50,
+                pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
+
+            },
+            anyja_neve: {
+                required: true,
+                minlength: 5,
+                maxlength: 50,
+                pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
+
+            },
+            szuletesi_datum: {
+                required: true,
+                date: true,
+
+            },
+            szuletesi_hely: {
+                required: true,
+                minlength: 5,
+                pattern: "[^+*:?;=!%$&@#<>()[\\]{}0-9]+"
+
+
+            },
+            allando_lakcim: {
+                required: true,
+                minlength: 5,
+
+
+            },
+            ertesitesi_cim: {
+                required: true,
+                minlength: 5,
+
+            },
+            diak_azonosito: {
+                required: false,
+                number: true,
+                maxlength: 11,
+            },
+
+            szemelyi_igazolvany_szam: {
+                required: true,
+                maxlength: 8,
+            },
+
+            taj_szam: {
+                required: true,
+                number: true,
+                minlength: 9,
+
+            },
+
+            adoszam: {
+                required: true,
+                number: true,
+                maxlength: 10,
+
+            },
+
+            erettsegi_bizonyitvany_szama: {
+                required: true,
+                minlength: 10,
+            },
+
+            szakmai_bizonyitvany_szama: {
+                required: false,
+
+            },
+
+        },
+        messages: {
+            tanulo_neve: {
+                required: "Kötelező kitölteni",
+                minlength: "A név minimum 5 karekteresnek kell lennie",
+            },
+            telefonszam: {
+                required: "Kötelező kitölteni",
+                number: "Csak szám lehet",
+                minlength:
+                    "A telefonszámnak minimum 7 karekteresnek kell lennie",
+                maxlength:
+                    "A telefonszámnak maximum 15 karekteresnek kell lennie",
+            },
+            email: {
+                required: "Kötelező kitölteni",
+                email: "Az emailnek ilyen formátumnak kell lennie: abc@domain.tld",
+            },
+            anyja_neve: {
+                required: "Kötelező kitölteni",
+            },
+            szuletesi_datum: {
+                required: "Kötelező kitölteni",
+            },
+            szuletesi_hely: {
+                required: "Kötelező kitölteni",
+            },
+            allando_lakcim: {
+                required: "Kötelező kitölteni",
+            },
+            ertesitesi_cim: {
+                required: "Kötelező kitölteni",
+            },
+            diak_azonosito: {
+                required: "Kötelező kitölteni",
+            },
+            szemelyi_igazolvany_szam: {
+                required: "Kötelező kitölteni",
+            },
+            taj_szam: {
+                required: "Kötelező kitölteni",
+            },
+            adoszam: {
+                required: "Kötelező kitölteni",
+            },
+            erettsegi_bizonyitvany_szama: {
+                required: "Kötelező kitölteni",
+            },
+
+            szakmai_bizonyitvany_szama: {
+                required: "Kötelező kitölteni",
+            },
+        },
+    });
 }
 export default BeiratkozasView;

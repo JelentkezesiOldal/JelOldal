@@ -90,18 +90,42 @@ article {
     margin: auto;
     width: 100%;
 }
-#beiratkozas{
-display: flex;
-flex-direction: row;
-justify-content: space-around;
-padding: 20px;
+#beiratkozas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
 }
-#button{
-width: 150px;
+#button {
+    width: 150px;
 }
 /*Footer*/
 footer {
     background-color: #377ef9;
     font-family: Montserrat, sans-serif;
     font-size: 16px;
+}
+
+label.error {
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
+
+input.error,
+textarea.error {
+    border: 1px solid red;
+    font-weight: 300;
+    color: red;
+}
+
+label {
+    width: 300px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+label span {
+    font-size: 1rem;
 }
