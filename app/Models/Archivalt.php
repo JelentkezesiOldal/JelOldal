@@ -12,7 +12,7 @@ class Archivalt extends Model
 
     protected $fillable = [
         'jelentkezo_id', 
-        'inditott_id',
+        'szak_id',
         'datum'
     ];
   

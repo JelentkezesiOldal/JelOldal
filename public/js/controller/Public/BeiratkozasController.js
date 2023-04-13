@@ -19,7 +19,7 @@ class BeiratkozasController {
             console.log("adatmod elott", event.detail)
             beiratkozasmodel.adatModosit(this.vegpont, event.detail, urltoken);
             console.log(event.detail);
-            const mezok = [
+           /*  const mezok = [
                 'tanulo_neve',
                 'szuleteskori_neve',
                 'anyja_neve',
@@ -42,15 +42,14 @@ class BeiratkozasController {
                 if (!event.detail[mezo] == "") {
                     location.replace("/beiratkozasfajl/" + urltoken);
                 }
-            });
-        });
+        });*/
 
     }
-
+    }
     BeiratkozasAdatok(tomb) {
         const szuloElem = $('main')
         console.log("Beiratkozas ADATOK:   ", tomb);
         new BeiratkozasokView(tomb, szuloElem);
     }
-}
+} 
 export default BeiratkozasController;

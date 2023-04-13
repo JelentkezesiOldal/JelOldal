@@ -4,14 +4,12 @@ import FelhasznalokView from "../../view/Admin/Felhasznalok/FelhasznalokView.js"
 import JelentkezokBeirAlattView from "../../view/Admin/Jelentkezok/JelentkezokBeirAlattView.js";
 import JelentkezokElfogadView from "../../view/Admin/Jelentkezok/JelentkezokElfogadView.js";
 import JelentkezokView from "../../view/Admin/Jelentkezok/JelentkezokView.js";
-import StatisztikakView from "../../view/Admin/Statisztika/StatisztikakView.js";
 import SzakokElindVIew from "../../view/Admin/Szakok/SzakokElindView.js";
 import SzakokView from "../../view/Admin/Szakok/SzakokView.js";
 import StatisztikaController from "./StatisztikaController.js";
 
 class AdminController {
     constructor() {
-        // console.log("AdminController");
         const token = $(`meta[name="csrf-token"]`).attr("content");
         const adminadatmodel = new AdminAdatModel(token);
         this.vegpont = "";
@@ -98,8 +96,7 @@ class AdminController {
 
         $(window).on("allArchiv", () => {
             adminadatmodel.adatUjAll("/admin/archivOsszesJel");
-            adminadatmodel.adatTorolAll("/admin/torolOsszesJel");
-            //adminadatmodel.adatTorolAll("/admin/torolInditottSzak");
+            //adminadatmodel.adatTorolAll("/admin/torolOsszesJel");
             adminadatmodel.adatModUres("/admin/statuszModosit");
             adminadatmodel.adatBe("/admin/archivOsszes", this.archivaltMutat);
             

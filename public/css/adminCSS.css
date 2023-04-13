@@ -67,7 +67,6 @@
 }
 article {
     padding: 20px;
-    /* display: flex; */
 }
 
 .row {
@@ -91,18 +90,19 @@ article {
 }
 aside{
     display: flex;
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
 }
 #stat-nav{
-    width: fit-content;
+    /* width: fit-content; */
     
 }
 #statTarolo{
-    width: 100%;
-    height: 500px;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 100%; */
+    /* margin: 0;
+    padding: 0; */
 }
 
 

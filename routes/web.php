@@ -64,6 +64,9 @@ Route::middleware(['auth'])->group(function () {
     //Statisztikához
     Route::get('/admin/OsszesJelentkezo', [JelentkezoController::class, 'index']);
     Route::get('/admin/statOsszesJelentkezo', [JelentkezesController::class, 'statOsszJelo']);
+    Route::get('/admin/statOsszJeloBeirA', [JelentkezesController::class, 'statOsszJeloBeirA']);
+    Route::get('/admin/statOsszJeloElfVar', [JelentkezesController::class, 'statOsszJeloElfVar']);
+    Route::get('/admin/statOsszJeloBeir', [JelentkezesController::class, 'statOsszJeloBeir']);
     Route::get('/admin/statOsszesArchivalt', [ArchivaltController::class, 'statOsszesArchivalt']);
 });
 
