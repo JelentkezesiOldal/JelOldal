@@ -6,12 +6,13 @@ class KordiagramView {
     diagramKeszit(tomb, cim) {
         var chart = anychart.pie();
 
-        chart.maxWidth("100%");
+        var nincsAdat = chart.noData();
+
+        nincsAdat.label({text: 'Nincs adat'});
 
         chart.title(cim);
 
         chart.data(tomb);
-        chart.radius("25%")
         chart.container("statTarolo");
         chart.draw();
         

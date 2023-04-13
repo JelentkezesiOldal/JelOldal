@@ -90,19 +90,16 @@ article {
 }
 aside{
     display: flex;
-    /* width: 100%;
-    height: 100%; */
 }
 #stat-nav{
     /* width: fit-content; */
     
 }
 #statTarolo{
-    display: flex;
-    flex-wrap: wrap;
-    /* width: 100%; */
-    /* margin: 0;
-    padding: 0; */
+    width: 100%;
+    height: 500px;
+    margin: auto;
+    padding: 0;
 }
 
 
