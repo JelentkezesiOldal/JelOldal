@@ -9,6 +9,7 @@ use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\JelentkezesController;
 use App\Http\Controllers\SzakController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Archivalt;
 use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,7 @@ Route::middleware(['auth'])->group(function () {
     //Statisztikához
     Route::get('/admin/OsszesJelentkezo', [JelentkezoController::class, 'index']);
     Route::get('/admin/statOsszesJelentkezo', [JelentkezesController::class, 'statOsszJelo']);
+    Route::get('/admin/statOsszesArchivalt', [ArchivaltController::class, 'statOsszesArchivalt']);
 });
 
 Route::post('/admin/archivOsszesJel', [ArchivaltController::class, 'osszesJelentkezesArchivalas']);

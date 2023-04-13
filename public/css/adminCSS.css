@@ -67,7 +67,7 @@
 }
 article {
     padding: 20px;
-    display: flex;
+    /* display: flex; */
 }
 
 .row {

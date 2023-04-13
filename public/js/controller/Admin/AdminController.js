@@ -7,6 +7,7 @@ import JelentkezokView from "../../view/Admin/Jelentkezok/JelentkezokView.js";
 import StatisztikakView from "../../view/Admin/Statisztika/StatisztikakView.js";
 import SzakokElindVIew from "../../view/Admin/Szakok/SzakokElindView.js";
 import SzakokView from "../../view/Admin/Szakok/SzakokView.js";
+import StatisztikaController from "./StatisztikaController.js";
 
 class AdminController {
     constructor() {
@@ -15,7 +16,7 @@ class AdminController {
         const adminadatmodel = new AdminAdatModel(token);
         this.vegpont = "";
         // $("#stat").on("click", () => {
-        //     adminadatmodel.adatBe("/admin/minden", this.statisztikakMutat);
+        //    adminadatmodel.adatBe("/admin/OsszesJelentkezo", this.statisztikakMutat);
         // });
 
         $("#felh").on("click", () => {
@@ -153,7 +154,10 @@ class AdminController {
         const szuloElem = $("article");
         new ArchivaltakView(tomb, szuloElem);
     }
-    
+    // statisztikakMutat(tomb){
+    //     const szuloElem = $("article");
+    //     new StatisztikaController();
+    // }
 }
 
 

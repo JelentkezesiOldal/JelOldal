@@ -81,4 +81,15 @@ class ArchivaltController extends Controller
             $data->delete();
         }
     }
+
+    public function statOsszesArchivalt(){
+        $archiv = DB::select(
+            DB::raw(
+                "select year(datum) as x, count(ar.jelentkezo_id) as value
+                from archivalts ar, jelentkezos jos
+        where ar.jelentkezo_id = jos.jelentkezo_id 
+        group by year(datum)
+        "));
+        return $archiv;
+    }
 }
