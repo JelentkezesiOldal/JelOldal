@@ -42,6 +42,8 @@ class JelentkezoView {
                 <button id="archiv${elem.jelentkezo_id}">Archiválás</button>
                 <button id="torol${elem.jelentkezo_id}">Törlés</button>
                 <button id="ment${elem.jelentkezo_id}">Mentés PDF-be</button>
+                <img id="asd" src="/storage/token/auto.jpg">
+                
             </div>
             `);
             this.modElem = $(`#mod${elem.jelentkezo_id}`);
