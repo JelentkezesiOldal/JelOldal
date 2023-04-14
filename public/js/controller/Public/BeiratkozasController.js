@@ -14,10 +14,11 @@ class BeiratkozasController {
         beiratkozasmodel.BeiratkozasAdat(this.vegpont, this.BeiratkozasAdatok, urltoken);
 
         $(window).on("mentes", (event) => {
-            console.log("Elküld a controllerben");
-            this.vegpont = "/beiratkozo"
-            console.log("adatmod elott", event.detail)
-            beiratkozasmodel.adatModosit(this.vegpont, event.detail, urltoken);
+            /* console.log("Elküld a controllerben");
+            console.log("adatmod elott", event.detail) */
+
+           
+            beiratkozasmodel.adatModosit("/beiratkozo", event.detail, urltoken);
             console.log(event.detail);
             const mezok = [
                 'tanulo_neve',
@@ -52,5 +53,6 @@ class BeiratkozasController {
         console.log("Beiratkozas ADATOK:   ", tomb);
         new BeiratkozasokView(tomb, szuloElem);
     }
+
 }
 export default BeiratkozasController;

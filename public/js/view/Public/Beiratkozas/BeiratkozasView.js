@@ -73,7 +73,7 @@ class BeiratkozasView {
           <input class="form-control" type="text" id="bankszamlaszam" name="bankszamlaszam" value="${elem.bankszamlaszam}"></input><br><br>
           
           
-          <input id="button" type="button" value="Tovább" >
+          <input id="button" class="btn btn-primary" type="button" value="Tovább" >
           </div>
           </div> 
           

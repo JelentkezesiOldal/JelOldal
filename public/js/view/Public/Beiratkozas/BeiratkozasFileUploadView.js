@@ -52,8 +52,8 @@ class BeiratkozasFileUploadView {
                     <label for="orvosi_alkalmassagi" class="form-label">Orvosi Alkalmassági: </label>
                     <input class="form-control" type="file" id="orvosi_alkalmassagi" name="orvosi_alkalmassagi" ></input><br><br>
                     
-                    <input id="btnvissza" type="button" value="Vissza" >
-                    <input id="btn" type="button" value="Mentés" >
+                    <input id="btnvissza" class="btn btn-primary"  type="button" value="Vissza" >
+                    <input id="btn" class="btn btn-primary" type="button" value="Mentés" >
                 </div>
             </div>
         </form>
@@ -66,10 +66,20 @@ class BeiratkozasFileUploadView {
             this.FileTrigger("vissza");
         });
         this.elkuldElem.on("click", () => {
-            console.log("Elküld a View-ban");
-            this.UralapAdatok();
+            let szoveg ="Ha nem töltötted fel az összes fájlt akkor a hiányok pótlására a jelentkezési idő végéig van lehetóséged.\n"
+            +"\n"
+            +"Ebben az esetben minden fájlt újra fel kell majd töltened.\n" 
+            +"\n"
+            +"Biztosan szeretnéd?"
+            if(confirm(szoveg) == true){
+               this.UralapAdatok();
             this.FileTrigger("kuldes");
+            }
+            
         });
+    
+            
+
     }
     UralapAdatok() {
         const mezok = [

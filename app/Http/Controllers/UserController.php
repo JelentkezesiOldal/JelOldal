@@ -47,10 +47,10 @@ class UserController extends Controller
         $user->save();
     }
 
-    public function userAndSzak(){
+  /*   public function userAndSzak(){
         $userszak = DB::select(DB::raw("select * from users"));
         return $userszak;
-    }
+    } */
 
     public function kereses($ertek){
         $keres = DB::table('users')

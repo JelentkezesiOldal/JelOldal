@@ -49,6 +49,7 @@ nav h1 a {
 article h1 {
     margin: 10px;
 }
+
 /*----------------------------------------------------*/
 
 /* .dropbtn {
@@ -93,27 +94,48 @@ article {
     margin: auto;
     width: 100%;
 }
+
 #beiratkozas {
     display: flex;
     justify-content: center;
 }
+
 #beiratkozasfajl {
     display: flex;
     justify-content: center;
 }
+
 .first,
 .second {
     align-items: center;
     width: 100%;
     padding: 140px;
 }
+
 #button {
     width: 150px;
 }
-.infok{
+
+.infok {
     font-size: small;
     color: red;
 }
+
+.btn-primary {
+    margin: 20px;
+    background-color: darkgrey;
+    color: black;
+    border: darkgrey;
+}
+
+.btn-primary:hover {
+    background-color: white;
+    
+    color: black;
+
+
+}
+
 /*Footer*/
 footer {
     background-color: #377ef9;
@@ -130,9 +152,11 @@ footer {
     #beiratkozas {
         display: block;
     }
+
     #beiratkozasfajl {
         display: block;
     }
+
     .first,
     .second {
         padding: 50px;
