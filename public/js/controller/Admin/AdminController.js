@@ -6,16 +6,16 @@ import JelentkezokElfogadView from "../../view/Admin/Jelentkezok/JelentkezokElfo
 import JelentkezokView from "../../view/Admin/Jelentkezok/JelentkezokView.js";
 import SzakokElindVIew from "../../view/Admin/Szakok/SzakokElindView.js";
 import SzakokView from "../../view/Admin/Szakok/SzakokView.js";
+import StatisztikaController from "./StatisztikaController.js";
 
 class AdminController {
     constructor() {
-        // console.log("AdminController");
         const token = $(`meta[name="csrf-token"]`).attr("content");
         const adminadatmodel = new AdminAdatModel(token);
         this.vegpont = "";
-        $("#stat").on("click", () => {
-            adminadatmodel.adatBe();
-        });
+        // $("#stat").on("click", () => {
+        //    adminadatmodel.adatBe("/admin/OsszesJelentkezo", this.statisztikakMutat);
+        // });
 
         $("#felh").on("click", () => {
             adminadatmodel.adatBe("/admin/felPlusSzak", this.felhasznalokMutat);
@@ -96,8 +96,7 @@ class AdminController {
 
         $(window).on("allArchiv", () => {
             adminadatmodel.adatUjAll("/admin/archivOsszesJel");
-            adminadatmodel.adatTorolAll("/admin/torolOsszesJel");
-            //adminadatmodel.adatTorolAll("/admin/torolInditottSzak");
+            //adminadatmodel.adatTorolAll("/admin/torolOsszesJel");
             adminadatmodel.adatModUres("/admin/statuszModosit");
             adminadatmodel.adatBe("/admin/archivOsszes", this.archivaltMutat);
             
@@ -152,6 +151,10 @@ class AdminController {
         const szuloElem = $("article");
         new ArchivaltakView(tomb, szuloElem);
     }
+    // statisztikakMutat(tomb){
+    //     const szuloElem = $("article");
+    //     new StatisztikaController();
+    // }
 }
 
 

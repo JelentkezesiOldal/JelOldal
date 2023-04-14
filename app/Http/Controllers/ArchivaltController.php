@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Archivalt;
 use App\Models\Jelentkezes;
-use App\Models\Jelentkezo;
 use App\Models\InditottSzak;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -31,7 +29,7 @@ class ArchivaltController extends Controller
     {
         $archive = new Archivalt();
         $archive->jelentkezo_id = $request->jelentkezo_id;
-        $archive->inditott_id = $request->inditott_id;
+        $archive->szak_id = $request->szak_id;
         $archive->save();
     }
 
@@ -39,7 +37,7 @@ class ArchivaltController extends Controller
     {
         $archive = Archivalt::find($id);
         $archive->jelentkezo_id = $request->jelentkezo_id;
-        $archive->inditott_id = $request->inditott_id;
+        $archive->szak_id = $request->szak_id;
         $archive->save();
     }
 
@@ -48,7 +46,7 @@ class ArchivaltController extends Controller
             DB::raw(
                 "select * from archivalts ar, jelentkezos jos, inditott_szaks insz, szaks sz
         where ar.jelentkezo_id = jos.jelentkezo_id 
-        and ar.inditott_id = insz.inditott_id
+        and ar.szak_id = sz.szak_id
         and sz.szak_id = insz.szak_id
         order by ar.jelentkezo_id ASC"));
         return $archiv;
@@ -61,12 +59,17 @@ class ArchivaltController extends Controller
     }
 
     public function osszesJelentkezesArchivalas(){
-        foreach (Jelentkezes::all() as $data) {
-            $archive = new Archivalt();
-            $archive->jelentkezo_id = $data->jelentkezo_id;
-            $archive->inditott_id = $data->inditott_id;
-            $archive->save();
+        foreach(InditottSzak::all() as $szak){
+            foreach(Jelentkezes::all() as $felhasz){
+                if($szak->inditott_id == $felhasz->inditott_id){
+                    $archive = new Archivalt();
+                    $archive->jelentkezo_id = $felhasz->jelentkezo_id;
+                    $archive->szak_id = $szak->szak_id;
+                    $archive->save();
+                }
+            }
         }
+
         return $archive;
     }
 
@@ -80,5 +83,16 @@ class ArchivaltController extends Controller
         foreach(InditottSzak::all() as $data){
             $data->delete();
         }
+    }
+
+    public function statOsszesArchivalt(){
+        $archiv = DB::select(
+            DB::raw(
+                "select year(datum) as x, count(ar.jelentkezo_id) as value
+                from archivalts ar, jelentkezos jos
+        where ar.jelentkezo_id = jos.jelentkezo_id 
+        group by year(datum)
+        "));
+        return $archiv;
     }
 }

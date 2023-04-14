@@ -97,6 +97,14 @@ article {
 
 #beiratkozas {
     display: flex;
+
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+}
+#button {
+    width: 150px;
+
     justify-content: center;
 }
 
@@ -109,16 +117,13 @@ article {
 .second {
     align-items: center;
     width: 100%;
-    padding: 140px;
-}
-
-#button {
-    width: 150px;
+    padding: 50px;
 }
 
 .infok {
     font-size: small;
     color: red;
+
 }
 
 .btn-primary {
@@ -167,4 +172,28 @@ footer {
     article {
         font-size: small;
     }
+}
+
+label.error {
+    color: red;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+}
+
+input.error,
+textarea.error {
+    border: 1px solid red;
+    font-weight: 300;
+    color: red;
+}
+
+label {
+    width: 300px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+label span {
+    font-size: 1rem;
 }
