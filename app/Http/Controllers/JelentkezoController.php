@@ -193,7 +193,6 @@ class JelentkezoController extends Controller
             ->orwhere('email', 'like', '%' . $ertek . '%')
             ->orwhere('telefonszam', 'like', '%' . $ertek . '%')
             ->orwhere('allando_lakcim', 'like', '%' . $ertek . '%')
-            ->orwhere('lakcimkartya', 'like', '%' . $ertek . '%')
             ->orwhere('ertesitesi_cim', 'like', '%' . $ertek . '%')
             ->orwhere('neme', 'like', '%' . $ertek . '%')
             ->orwhere('diak_azonosito', 'like', '%' . $ertek . '%')
@@ -201,7 +200,6 @@ class JelentkezoController extends Controller
             ->orwhere('taj_szam', 'like', '%' . $ertek . '%')
             ->orwhere('adoszam', 'like', '%' . $ertek . '%')
             ->orwhere('erettsegi_bizonyitvany_szama', 'like', '%' . $ertek . '%')
-            ->orwhere('szakmai_bizonyitvany_szama', 'like', '%' . $ertek . '%')
             ->orwhere('bankszamlaszam', 'like', '%' . $ertek . '%')
             ->orwhere('statusz', 'like', '%' . $ertek . '%')
             ->get();
