@@ -108,62 +108,6 @@ class BeiratkozasFileUploadView {
             }
         });
         
-        /* console.log("formdata elem:   ",this.#formData.get(mezo)); */
-
-
-
-
-/*         if ($("#lakcimkartya").val() != "") {
-            this.#formData.append(
-                $("#lakcimkartya").attr("name"),
-                $("#lakcimkartya").prop("files")[0]
-            );
-        }
-        if ($("#diakigazolvany").val() != "") {
-            this.#formData.append(
-                $("#diakigazolvany").attr("name"),
-                $("#diakigazolvany").prop("files")[0]
-            );
-        }
-        if ($("#szemelyi_igazolvany").val() != "") {
-            this.#formData.append(
-                $("#szemelyi_igazolvany").attr("name"),
-                $("#szemelyi_igazolvany").prop("files")[0]
-            );
-        }
-        if ($("#taj_kartya").val() != "") {
-            this.#formData.append(
-                $("#taj_kartya").attr("name"),
-                $("#taj_kartya").prop("files")[0]
-            );
-        }
-        if ($("#adoigazolvany").val() != "") {
-            this.#formData.append(
-                $("#adoigazolvany").attr("name"),
-                $("#adoigazolvany").prop("files")[0]
-            );
-        }
-        if ($("#erettsegi_bizonyitvany").val() != "") {
-            this.#formData.append(
-                $("#erettsegi_bizonyitvany").attr("name"),
-                $("#erettsegi_bizonyitvany").prop("files")[0]
-            );
-        }
-
-        if ($("#szakmai_bizonyitvany").val() != "") {
-            this.#formData.append(
-                $("#szakmai_bizonyitvany").attr("name"),
-                $("#szakmai_bizonyitvany").prop("files")[0]
-            );
-        }
-        if ($("#orvosi_alkalmassagi").val() != "") {
-            this.#formData.append(
-                $("#orvosi_alkalmassagi").attr("name"),
-                $("#orvosi_alkalmassagi").prop("files")[0]
-            );
-        } */
-
-
     }
     FileTrigger(esemenyhivo) {
         const esemeny = new CustomEvent(esemenyhivo, { detail: this.#formData });

@@ -107,8 +107,8 @@ class JelentkezoController extends Controller
         $token =Str::random();
         $jelentkezo->token = $token;
 
-       $expiration_time_in_minutes = 10800;
-        $url = Cache::remember('Beiratkozo_url', $expiration_time_in_minutes, function () use ($token) {
+       $expiration_time_in_minutes = 4320;
+        $url = Cache::remember('Beiratkozo_url' + $token, $expiration_time_in_minutes, function () use ($token) {
             return url('/beiratkozas'."/". $token); 
         });
 

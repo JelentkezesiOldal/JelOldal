@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JelentkezoFajl;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class FajlController extends Controller
@@ -12,16 +11,14 @@ class FajlController extends Controller
 
     public function destroy($id, $token)
     {
-        /* $path = ; */
+        /* $path = 'public/files/' . $token; */ 
+        
         $jelentkezoFajl = JelentkezoFajl::find($id);
         if ($jelentkezoFajl !== null ) {
             $jelentkezoFajl->delete();
-            Storage::deleteDirectory(public_path('public/files/'.$token));
+            Storage::deleteDirectory('public/files/' . $token);
         }
-/*         if (File::exists($path)) {
-        }
-         */
-        
+
     }
 
     public function store(Request $request)
