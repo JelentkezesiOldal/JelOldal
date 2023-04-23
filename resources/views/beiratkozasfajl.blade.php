@@ -11,13 +11,18 @@
     <link rel="stylesheet" href="../css/beiratkozasCSS.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../js/beiratkozasfajlMain.js" type="module"></script>
+
     <title>Fájl Feltöltés</title>
 </head>
 <input type="hidden" id="token" value="{{ $tokenke }}">
+
 <body>
     <main>
 
     </main>
+    <footer>
+        Copyright &copy; Szalézi Ágazati Képzőközpont
+    </footer>
 </body>
 
 </html>

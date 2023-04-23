@@ -14,10 +14,26 @@ constructor(){
         
 
     $(window).on("kuldes", (event)=>{
-        console.log("Elküld a controllerben");
-        this.vegpont = "/file_upload"
-        console.log("adatmod elott fileupload:  ",event.detail)
-        beiratkozasmodel.FileUpload(this.vegpont, event.detail);
+        beiratkozasmodel.FileTorol("/fajlmappatorles",event.detail, urltoken);
+        beiratkozasmodel.FileUpload("/file_upload", event.detail)
+/*             $.ajax({
+                url: "/file_upload",
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': token
+                },
+                success: function() {
+                    // az AJAX kérés sikeres volt
+                    location.replace("/adatrogzites");
+                },
+                error: function() {
+                    // az AJAX kérés sikertelen volt
+                    console.log("Hiba történt az AJAX kérés során!");
+                }
+            }) */
+    });
+    $(window).on("vissza", ()=>{
+        location.replace("/beiratkozas/" + urltoken);
     });
 
 }

@@ -2,13 +2,14 @@
 
 use App\Http\Controllers\ArchivaltController;
 use App\Http\Controllers\EmailController;
-use App\Http\Controllers\FileController;
+use App\Http\Controllers\FajlController;
 use App\Http\Controllers\InditottSzakController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JelentkezoController;
 use App\Http\Controllers\JelentkezesController;
 use App\Http\Controllers\SzakController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Archivalt;
 use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
 use Illuminate\Support\Facades\Route;
@@ -32,15 +33,14 @@ Route::middleware( ['admin'])->group(function () {
     Route::apiResource('/users', UserController::class);
     
 });
-
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     //admin lekérések
     Route::get('/admin/osszes', [JelentkezesController::class, 'osszes']);
-    Route::get('/admin/felPlusSzak', [UserController::class, 'userAndSzak']);
+    /*átírni*/
+    Route::get('/admin/felPlusSzak', [UserController::class, 'index']);
     Route::get('/admin/inditSzak', [SzakController::class, 'inditSzak']);
     Route::get('/admin/kereses/{ertek}', [UserController::class, 'kereses']);
     Route::get('/admin/keresesj/{ertek}', [JelentkezoController::class, 'keresesj']);
@@ -56,12 +56,19 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/ujInditottSzak', [InditottSzakController::class, 'store']);
     Route::post('/admin/ujFelhasznalo', [UserController::class, 'store']);
     Route::post('/admin/ujSzak', [SzakController::class, 'store']);
-    Route::post('/admin/ujArchivum', [JelentkezesController::class, 'ujArchivalt']);
+  /*   Route::post('/admin/ujArchivum', [JelentkezesController::class, 'ujArchivalt']); */
     //admin modosít
     Route::put('/admin/modosit/{id}', [JelentkezoController::class, 'update']);
     Route::put('/admin/elfogad/{id}', [JelentkezesController::class, 'elfogadas']);
     Route::put('/admin/modositSzak/{id}', [SzakController::class, 'update']);
     Route::put('/admin/statuszModosit', [ArchivaltController::class, 'statuszUpdate']);
+    //Statisztikához
+    Route::get('/admin/OsszesJelentkezo', [JelentkezoController::class, 'index']);
+    Route::get('/admin/statOsszesJelentkezo', [JelentkezesController::class, 'statOsszJelo']);
+    Route::get('/admin/statOsszJeloBeirA', [JelentkezesController::class, 'statOsszJeloBeirA']);
+    Route::get('/admin/statOsszJeloElfVar', [JelentkezesController::class, 'statOsszJeloElfVar']);
+    Route::get('/admin/statOsszJeloBeir', [JelentkezesController::class, 'statOsszJeloBeir']);
+    Route::get('/admin/statOsszesArchivalt', [ArchivaltController::class, 'statOsszesArchivalt']);
 });
 
 Route::post('/admin/archivOsszesJel', [ArchivaltController::class, 'osszesJelentkezesArchivalas']);
@@ -73,20 +80,26 @@ Route::delete('/admin/torolInditottSzak', [ArchivaltController::class, 'inditott
 Route::middleware(['publicpages'])->group(function (){
     
 });
-Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo'])->name('JelentkezesSikerult');
+Route::middleware(['fileupload'])->group(function (){
+    
+});
+
+//Jelentkezés
+Route::post('/ujJelentkezo', [JelentkezoController::class, 'ujJelentkezo']);
 //Route::post('/ujJelentkezes',[JelentkezesController::class, 'ujJelentkezes']);
 Route::get('/inditott_szakok', [InditottSzakController::class, 'index']);
 Route::get('/szak_indittotSzak', [SzakController::class,'szak_indittotSzak']);
 Route::get('/email_kuldes', [EmailController::class, 'index']);
 Route::get('/email_kuldes_elfogad', [EmailController::class, 'elfogad']);
 
-
-Route::patch('/beiratkozo/{token}', [JelentkezoController::class, 'beiratkozo']);
+//Beiratkozás
 Route::get('/show/{token}', [JelentkezoController::class, 'show']);
-Route::middleware(['fileupload'])->group(function (){
-    
-});
-Route::post('/file_upload',[FileController::class, 'store']);
+Route::patch('/beiratkozo/{token}', [JelentkezoController::class, 'beiratkozo']);
+
+
+Route::delete('/fajlmappatorles/{id}/{token}',[FajlController::class, 'destroy']);
+Route::post('/file_upload',[FajlController::class, 'store']);
+
 
 
 
@@ -99,6 +112,9 @@ Route::get('/', function () {
 });
 Route::get('/JelentkezesSikerult', function () {   
     return view('JelentkezesSikerult');
+});
+Route::get('/adatrogzites', function () {   
+    return view('BeiratkozasSikerult');
 });
 
 Route::get('/admin', function () {

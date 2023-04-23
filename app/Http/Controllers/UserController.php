@@ -47,15 +47,14 @@ class UserController extends Controller
         $user->save();
     }
 
-    public function userAndSzak(){
+  /*   public function userAndSzak(){
         $userszak = DB::select(DB::raw("select * from users"));
         return $userszak;
-    }
+    } */
 
     public function kereses($ertek){
         $keres = DB::table('users')
-            ->join('szaks', 'szaks.szak_id', '=', 'users.szak_id')
-            ->select('users.*', 'szaks.megnevezes')
+            ->select('users.*')
             ->where('ugyintezo_id', 'like', '%'.$ertek.'%')
             ->orwhere('name', 'like', '%'.$ertek.'%')
             ->orwhere('email', 'like', '%'.$ertek.'%')

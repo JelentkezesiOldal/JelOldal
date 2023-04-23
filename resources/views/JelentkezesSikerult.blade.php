@@ -35,7 +35,7 @@
         </article>
         </main>
     <footer>
-        Copyright &copy szalézi ágazati képzőközpont
+        Copyright &copy Szalézi Ágazati Képzőközpont
     </footer>
 </body>
 
