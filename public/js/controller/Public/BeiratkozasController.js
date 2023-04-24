@@ -14,42 +14,44 @@ class BeiratkozasController {
         beiratkozasmodel.BeiratkozasAdat(this.vegpont, this.BeiratkozasAdatok, urltoken);
 
         $(window).on("mentes", (event) => {
-            console.log("Elküld a controllerben");
-            this.vegpont = "/beiratkozo"
-            console.log("adatmod elott", event.detail)
-            beiratkozasmodel.adatModosit(this.vegpont, event.detail, urltoken);
-            console.log(event.detail);
-           /*  const mezok = [
-                'tanulo_neve',
-                'szuleteskori_neve',
-                'anyja_neve',
-                'szuletesi_datum',
-                'szuletesi_hely',
-                'email',
-                'telefonszam',
-                'allando_lakcim',
-                'ertesitesi_cim',
-                'neme',
-                'diak_azonosito',
-                'szemelyi_igazolvany_szam',
-                'taj_szam',
-                'adoszam',
-                'erettsegi_bizonyitvany_szama',
-                'bankszamlaszam'
-            ];
-            mezok.forEach(mezo => {
-                
-                if (!event.detail[mezo] == "") {
-                    location.replace("/beiratkozasfajl/" + urltoken);
-                }
-        });*/
+            /* console.log("Elküld a controllerben");
+            console.log("adatmod elott", event.detail) */
 
-    }
-    }
+
+            beiratkozasmodel.adatModosit("/beiratkozo", event.detail, urltoken);
+            console.log(event.detail);
+            if (!event.detail.bankszamlaszam == "") {
+                location.replace("/beiratkozasfajl/" + urltoken);
+            }
+        })
+            /*            const mezok = [
+                            'tanulo_neve',
+                            'szuleteskori_neve',
+                            'anyja_neve',
+                            'szuletesi_datum',
+                            'szuletesi_hely',
+                            'email',
+                            'telefonszam',
+                            'allando_lakcim',
+                            'ertesitesi_cim',
+                            'neme',
+                            'diak_azonosito',
+                            'szemelyi_igazolvany_szam',
+                            'taj_szam',
+                            'adoszam',
+                            'erettsegi_bizonyitvany_szama',
+                            'bankszamlaszam'
+                        ];
+                        mezok.forEach(mezo => {
+                            
+                    }); */
+
+        }
+    
     BeiratkozasAdatok(tomb) {
-        const szuloElem = $('main')
+            const szuloElem = $('main')
         console.log("Beiratkozas ADATOK:   ", tomb);
-        new BeiratkozasokView(tomb, szuloElem);
-    }
+            new BeiratkozasokView(tomb, szuloElem);
+        }
 } 
 export default BeiratkozasController;

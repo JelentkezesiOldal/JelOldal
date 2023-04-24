@@ -3,11 +3,11 @@ import AdminAdatModel from "../../../model/Admin/AdminAdatModel.js";
 
 class JelentkezoView {
     #elem;
+    #kep = {}
     constructor(elem, szuloElem, modal) {   
         console.log("jelentkezoView");
         this.#elem = elem;
         console.log(elem)
-        const adminadatmodel = new AdminAdatModel();
         szuloElem.append(`<tr id="J${elem.jelentkezo_id}">
             <td data-label="datum">${elem.datum}</td>
             <td data-label="OM azonosító">${elem.diak_azonosito}</td>
@@ -15,11 +15,29 @@ class JelentkezoView {
             <td data-label="E-mail">${elem.email}</td>
             <td data-label="Telefonszám">${elem.telefonszam}</td>
         </tr>`)
-    
+
         $("#J"+elem.jelentkezo_id).on("click", () => {
             console.log("J"+ elem.jelentkezo_id + " katt")
             $(".modalSajat").show()
-            modal.append(`
+            this.modalFeltoltes(elem, modal)
+    
+            this.mentElem.on("click", () => {
+                this.adatokBe()
+                
+                
+                generatePDF(this.#elem);
+            });
+        });
+
+        $(".closeSajat").on("click", () => {
+            $(".modalSajat").hide()
+            $(".modal-contentSajat div").remove()
+        })
+    }
+
+    modalFeltoltes(elem, modal){
+        const adminadatmodel = new AdminAdatModel();
+        modal.append(`
             <div id="modalDivContent">
                 <p>Tanuló neve: <input id="tanulo_neve" value="${elem.tanulo_neve}" disabled></input><spam class="edit" name="1">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>    
                 <p>Születéskori neve: <input id="szuleteskori_neve" value="${elem.szuleteskori_neve}" disabled></input><spam class="edit" name="2">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
@@ -38,17 +56,26 @@ class JelentkezoView {
                 <p>Szakmai bizonyítvány száma: <input id="szakmai_bizonyitvany_szama" value="${elem.szakmai_bizonyitvany_szama}" disabled></input><spam class="edit" name="15">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
                 <p>Bankszámlaszám: <input id="bankszamlaszam" value="${elem.bankszamlaszam}" disabled></input><spam class="edit" name="16">&#9998;</spam><spam class="done">✅</spam><spam class="undo">❌</spam></p>
                 <p>Státusz: <input id="statusz" value="${elem.statusz}" disabled></input>
-                <button id="mod${elem.jelentkezo_id}">Módosítás</button>
-                <button id="archiv${elem.jelentkezo_id}">Archiválás</button>
-                <button id="torol${elem.jelentkezo_id}">Törlés</button>
-                <button id="ment${elem.jelentkezo_id}">Mentés PDF-be</button>
+                <div class="gombok">
+                    <button id="mod${elem.jelentkezo_id}">Módosítás</button>
+                    <button id="archiv${elem.jelentkezo_id}">Archiválás</button>
+                    <button id="torol${elem.jelentkezo_id}">Törlés</button>
+                    <button id="ment${elem.jelentkezo_id}">Mentés PDF-be</button>
+                    <button id="kep${elem.jelentkezo_id}">Képek</button>
+                </div>
             </div>
-            `);
-            this.modElem = $(`#mod${elem.jelentkezo_id}`);
+        `);
+
+        this.modElem = $(`#mod${elem.jelentkezo_id}`);
             this.archivElem = $(`#archiv${elem.jelentkezo_id}`);
             this.torolElem = $(`#torol${elem.jelentkezo_id}`);
             this.mentElem = $(`#ment${elem.jelentkezo_id}`);
+            this.kepekElem = $(`#kep${elem.jelentkezo_id}`);
             
+            this.kepekElem.on("click", () => {
+                modal.empty();
+                this.kepekMegjelenites(elem, modal);
+            })
 
             this.modElem.on("click", () => {
                 console.log("Módosít Gomb");
@@ -72,7 +99,7 @@ class JelentkezoView {
                 $(".modalSajat").hide()
                 $(".modal-contentSajat div").remove()
             });
-            
+
             $(".edit").click(function (){
                 adminadatmodel.setAdat($(this).attr("name")) 
                 adminadatmodel.setSaveElem($(".modalSajat div p:nth-child(" + adminadatmodel.getAdat() + ") input").val())
@@ -100,21 +127,61 @@ class JelentkezoView {
                 adminadatmodel.getDoneElem().css('visibility', 'hidden')
                 adminadatmodel.getUndoElem().css('visibility', 'hidden')
             })
+    }
 
+    kepekMegjelenites(elem, modal){
+        modal.append(`
+            <h2>Lakcímkártya</h2>
+                <img src="/storage/files/${elem.lakcimkartyaeleje}" alt="Kép nincs feltöltve.">
+                <img src="/storage/files/${elem.lakcimkartyahatulja}" alt="Kép nincs feltöltve.">
+            <h2>Diákigazolvány</h2>    
+                <img src="/storage/files/${elem.diakigazolvanyeleje}" alt="Kép nincs feltöltve.">
+                <img src="/storage/files/${elem.diakigazolvanyhatulja}" alt="Kép nincs feltöltve.">
+            <h2>Személyi igazolvány</h2>
+                <img src="/storage/files/${elem.szemelyi_igazolvany_eleje}" alt="Kép nincs feltöltve.">
+                <img src="/storage/files/${elem.szemelyi_igazolvany_hatulja}" alt="Kép nincs feltöltve.">
+            <h2>Taj kártya</h2>    
+                <img src="/storage/files/${elem.taj_kartya}" alt="Kép nincs feltöltve.">
+            <h2>Adóigazolvány</h2>
+                <img src="/storage/files/${elem.adoigazolvany}" alt="Kép nincs feltöltve.">
+            <h2>Érettségi bizonyítvány</h2>
+                <img src="/storage/files/${elem.erettsegi_igazolvany}" alt="Kép nincs feltöltve.">
+            <h2>Szakmai bizonyítvány</h2>    
+                <img src="/storage/files/${elem.szakmai_bizonyitvany}" alt="Kép nincs feltöltve.">
+            <h2>Orvosi alkalmassági</h2>    
+                <img src="/storage/files/${elem.orvosi_alkalmassagi}" alt="Kép nincs feltöltve.">
+            <div class="gombok">
+                <button id="letoltes${elem.jelentkezo_id}">Összes letöltése</button>
+                <button id="kepVissza${elem.jelentkezo_id}">Vissza</button>
+            </div>
+        `)
 
-           
-            this.mentElem.on("click", () => {
-                this.adatokBe()
-                
-                
-                generatePDF(this.#elem);
-            });
-        });
+        this.letoltesElem = $(`#letoltes${elem.jelentkezo_id}`)
+        this.kepVisszaElem = $(`#kepVissza${elem.jelentkezo_id}`)
+        
 
-        $(".closeSajat").on("click", () => {
-            $(".modalSajat").hide()
-            $(".modal-contentSajat div").remove()
+        this.letoltesElem.on("click", () => {
+            console.log("letöltés")
+            this.#kep.lakcimkartyaeleje = elem.lakcimkartyaeleje;
+            this.#kep.lakcimkartyahatulja = elem.lakcimkartyahatulja;
+            this.#kep.diakigazolvanyeleje = elem.diakigazolvanyeleje;
+            this.#kep.diakigazolvanyhatulja = elem.diakigazolvanyhatulja;
+            this.#kep.szemelyi_igazolvany_eleje = elem.szemelyi_igazolvany_eleje;
+            this.#kep.szemelyi_igazolvany_hatulja = elem.szemelyi_igazolvany_hatulja;
+            this.#kep.taj_kartya = elem.taj_kartya;
+            this.#kep.adoigazolvany = elem.adoigazolvany;
+            this.#kep.erettsegi_igazolvany = elem.erettsegi_igazolvany;
+            this.#kep.szakmai_bizonyitvany = elem.szakmai_bizonyitvany;
+            this.#kep.orvosi_alkalmassagi = elem.orvosi_alkalmassagi;
+            //console.log(this.#kep.lakEleje)
+            this.kattintasTrigger("letolt")
         })
+
+        this.kepVisszaElem.on("click", () => {
+            modal.empty();
+            this.modalFeltoltes(elem, modal)
+        })
+
     }
 
     adatokBe() {
@@ -146,6 +213,11 @@ class JelentkezoView {
 
     kattintastrigger(esemenyNeve) {
         const esemeny = new CustomEvent(esemenyNeve, { detail: this.#elem });
+        window.dispatchEvent(esemeny);
+    }
+
+    kattintasTrigger(esemenyNeve) {
+        const esemeny = new CustomEvent(esemenyNeve, { detail: this.#kep });
         window.dispatchEvent(esemeny);
     }
 }

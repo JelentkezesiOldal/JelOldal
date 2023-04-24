@@ -52,8 +52,8 @@ class BeiratkozasFileUploadView {
                     <label for="orvosi_alkalmassagi" class="form-label">Orvosi Alkalmassági: </label>
                     <input class="form-control" type="file" id="orvosi_alkalmassagi" name="orvosi_alkalmassagi" ></input><br><br>
                     
-                    <input id="btnvissza" type="button" value="Vissza" >
-                    <input id="btn" type="button" value="Mentés" >
+                    <input id="btnvissza" class="btn btn-primary"  type="button" value="Vissza" >
+                    <input id="btn" class="btn btn-primary" type="button" value="Mentés" >
                 </div>
             </div>
         </form>
@@ -66,10 +66,20 @@ class BeiratkozasFileUploadView {
             this.FileTrigger("vissza");
         });
         this.elkuldElem.on("click", () => {
-            console.log("Elküld a View-ban");
-            this.UralapAdatok();
+            let szoveg ="Ha nem töltötted fel az összes fájlt akkor a hiányok pótlására a jelentkezési idő végéig van lehetóséged.\n"
+            +"\n"
+            +"Ebben az esetben minden fájlt újra fel kell majd töltened.\n" 
+            +"\n"
+            +"Biztosan szeretnéd?"
+            if(confirm(szoveg) == true){
+               this.UralapAdatok();
             this.FileTrigger("kuldes");
+            }
+            
         });
+    
+            
+
     }
     UralapAdatok() {
         const mezok = [
@@ -98,62 +108,6 @@ class BeiratkozasFileUploadView {
             }
         });
         
-        /* console.log("formdata elem:   ",this.#formData.get(mezo)); */
-
-
-
-
-/*         if ($("#lakcimkartya").val() != "") {
-            this.#formData.append(
-                $("#lakcimkartya").attr("name"),
-                $("#lakcimkartya").prop("files")[0]
-            );
-        }
-        if ($("#diakigazolvany").val() != "") {
-            this.#formData.append(
-                $("#diakigazolvany").attr("name"),
-                $("#diakigazolvany").prop("files")[0]
-            );
-        }
-        if ($("#szemelyi_igazolvany").val() != "") {
-            this.#formData.append(
-                $("#szemelyi_igazolvany").attr("name"),
-                $("#szemelyi_igazolvany").prop("files")[0]
-            );
-        }
-        if ($("#taj_kartya").val() != "") {
-            this.#formData.append(
-                $("#taj_kartya").attr("name"),
-                $("#taj_kartya").prop("files")[0]
-            );
-        }
-        if ($("#adoigazolvany").val() != "") {
-            this.#formData.append(
-                $("#adoigazolvany").attr("name"),
-                $("#adoigazolvany").prop("files")[0]
-            );
-        }
-        if ($("#erettsegi_bizonyitvany").val() != "") {
-            this.#formData.append(
-                $("#erettsegi_bizonyitvany").attr("name"),
-                $("#erettsegi_bizonyitvany").prop("files")[0]
-            );
-        }
-
-        if ($("#szakmai_bizonyitvany").val() != "") {
-            this.#formData.append(
-                $("#szakmai_bizonyitvany").attr("name"),
-                $("#szakmai_bizonyitvany").prop("files")[0]
-            );
-        }
-        if ($("#orvosi_alkalmassagi").val() != "") {
-            this.#formData.append(
-                $("#orvosi_alkalmassagi").attr("name"),
-                $("#orvosi_alkalmassagi").prop("files")[0]
-            );
-        } */
-
-
     }
     FileTrigger(esemenyhivo) {
         const esemeny = new CustomEvent(esemenyhivo, { detail: this.#formData });

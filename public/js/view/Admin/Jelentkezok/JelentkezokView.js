@@ -5,6 +5,17 @@ class JelentkezokView {
     constructor(tomb, szuloElem) {
         this.#tomb = tomb;
         szuloElem.html(`
+        <div class="row float-end">
+            <div class="col input-group">
+                <input type="text" class="form-control" id="keres1" placeholder="Search">
+            </div>
+            <div class="col">
+                <button id="kereses">Keres</button>
+            </div>
+        </div>
+        `)
+        
+        szuloElem.append(`
         <div id="myModal" class="modalSajat">
             <div class="modal-contentSajat">
                 <spam class="closeSajat">&times;</spam>    

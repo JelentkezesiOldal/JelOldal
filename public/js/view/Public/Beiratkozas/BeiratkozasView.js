@@ -66,23 +66,18 @@ class BeiratkozasView {
           <input class="form-control" type="text" id="adoszam" name="adoszam" value="${elem.adoszam}"></input><br><br>
           
           <label for="erettsegi_bizonyitvany_szama" class="form-label">Érettségi bizonyítvány száma</label>
-<<<<<<< HEAD
           <input class="form-control" type="text" id="erettsegi_bizonyitvany_szama" name="erettsegi_bizonyitvany_szama" placeholder="P11K 101687" value="${elem.erettsegi_bizonyitvany_szama}"></input><br><br>
           <p>Az érettségi balfelső sarkéban található számsor</p>
           
           <p>Figyelem! A szakmia bizonyítvány nem előfeltétel,<br><br> ha nincs még szakmai bizonyítványa akkor a következő mezőt nem kötelező kitölteni</p><br><br>
           <label for="szakmai_bizonyitvany" class="form-label">Szakmai bizonyítvány száma: </label>
           <input class="form-control" type="text" id="szakmai_bizonyitvany" name="szakmai_bizonyitvany" value="${elem.szakmai_bizonyitvany}"></input><br><br>
-=======
-          <input class="form-control" type="text" id="erettsegi_bizonyitvany_szama" name="erettsegi_bizonyitvany_szama" placeholder="P11K 101687" value="${elem.erettsegi_bizonyitvany_szama}"></input>
-          <label for="erettsegi_bizonyitvany_szama" class="infok">*Az érettségi balfelső sarkában található számsor</label><br><br>
->>>>>>> d18ffc40546692e5cd213637aed171331f201245
           
           <label for="bankszamlaszam" class="form-label">Bankszámlaszám</label>
           <input class="form-control" type="text" id="bankszamlaszam" name="bankszamlaszam" value="${elem.bankszamlaszam}"></input><br><br>
           
           
-          <input id="button" type="button" value="Tovább" >
+          <input id="button" class="btn btn-primary" type="button" value="Tovább" >
           </div>
           </div> 
           
@@ -132,12 +127,6 @@ class BeiratkozasView {
             console.log($(mezo).val());
             if ($(mezo).val() === "null") {
                 $(mezo).val("");
-<<<<<<< HEAD
-                
-=======
-
->>>>>>> d18ffc40546692e5cd213637aed171331f201245
-
             }
         });
     }
