@@ -43,11 +43,14 @@ class FajlController extends Controller
             'orvosi_alkalmassagi',
         ];
 
-
         foreach ($mezoNevek as $mezo) {
             if ($request->has($mezo)) {
+                $feltoltottFajl = $request->file($mezo);
+                $fajlnev = $feltoltottFajl->hashName();
+
                 $mezoErtek = $request->file($mezo)->store('public/files/' . $token);
-                $jelentkezo_fajl->$mezo = $mezoErtek;
+                
+                $jelentkezo_fajl->$mezo = $token."/".$fajlnev;
             }
         }
         $jelentkezo_fajl->save();
