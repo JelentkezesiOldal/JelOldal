@@ -39,6 +39,7 @@ class VerifyCsrfToken extends Middleware
         "/admin/torolInditottSzak",
         "/admin/torolIndSzak/*",
         "/admin/modositSzak/*",
-        "/admin/statuszModosit"
+        "/admin/statuszModosit",
+        "/admin/letolt"
     ];
 }

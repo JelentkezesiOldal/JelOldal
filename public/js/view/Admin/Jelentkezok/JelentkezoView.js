@@ -3,6 +3,7 @@ import AdminAdatModel from "../../../model/Admin/AdminAdatModel.js";
 
 class JelentkezoView {
     #elem;
+    #kep = {}
     constructor(elem, szuloElem, modal) {   
         console.log("jelentkezoView");
         this.#elem = elem;
@@ -161,6 +162,19 @@ class JelentkezoView {
 
         this.letoltesElem.on("click", () => {
             console.log("letöltés")
+            this.#kep.lakcimkartyaeleje = elem.lakcimkartyaeleje;
+            this.#kep.lakcimkartyahatulja = elem.lakcimkartyahatulja;
+            this.#kep.diakigazolvanyeleje = elem.diakigazolvanyeleje;
+            this.#kep.diakigazolvanyhatulja = elem.diakigazolvanyhatulja;
+            this.#kep.szemelyi_igazolvany_eleje = elem.szemelyi_igazolvany_eleje;
+            this.#kep.szemelyi_igazolvany_hatulja = elem.szemelyi_igazolvany_hatulja;
+            this.#kep.taj_kartya = elem.taj_kartya;
+            this.#kep.adoigazolvany = elem.adoigazolvany;
+            this.#kep.erettsegi_igazolvany = elem.erettsegi_igazolvany;
+            this.#kep.szakmai_bizonyitvany = elem.szakmai_bizonyitvany;
+            this.#kep.orvosi_alkalmassagi = elem.orvosi_alkalmassagi;
+            //console.log(this.#kep.lakEleje)
+            this.kattintasTrigger("letolt")
         })
 
         this.kepVisszaElem.on("click", () => {
@@ -199,6 +213,11 @@ class JelentkezoView {
 
     kattintastrigger(esemenyNeve) {
         const esemeny = new CustomEvent(esemenyNeve, { detail: this.#elem });
+        window.dispatchEvent(esemeny);
+    }
+
+    kattintasTrigger(esemenyNeve) {
+        const esemeny = new CustomEvent(esemenyNeve, { detail: this.#kep });
         window.dispatchEvent(esemeny);
     }
 }

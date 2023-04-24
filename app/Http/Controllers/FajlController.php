@@ -55,4 +55,10 @@ class FajlController extends Controller
         }
         $jelentkezo_fajl->save();
     }
+
+    public function download($utvonal){
+        $fajl = storage_path("app/public/files/".$utvonal);
+
+        return response()->download($fajl);
+    }
 }

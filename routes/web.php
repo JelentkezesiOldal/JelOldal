@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
     Route::get('/admin/elfVar', [JelentkezesController::class, 'elfogadasraVar']);
     Route::get('/admin/beirAlatt', [JelentkezesController::class, 'beiratAlatt']);
+    Route::get('/admin/letolt', [FajlController::class, 'download']);
     //admin törlések
     Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
     Route::delete('/admin/torolSzak/{szak_id}', [SzakController::class, 'destroy']);
