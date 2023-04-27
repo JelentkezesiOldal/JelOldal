@@ -16,21 +16,10 @@ constructor(){
     $(window).on("kuldes", (event)=>{
         beiratkozasmodel.FileTorol("/fajlmappatorles",event.detail, urltoken);
         beiratkozasmodel.FileUpload("/file_upload", event.detail)
-/*             $.ajax({
-                url: "/file_upload",
-                method: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': token
-                },
-                success: function() {
-                    // az AJAX kérés sikeres volt
-                    location.replace("/adatrogzites");
-                },
-                error: function() {
-                    // az AJAX kérés sikertelen volt
-                    console.log("Hiba történt az AJAX kérés során!");
-                }
-            }) */
+            let szoveg ="Sikeresen mentettük az adatiadat.\n"
+            +"\n"
+            confirm(szoveg);
+
     });
     $(window).on("vissza", ()=>{
         location.replace("/beiratkozas/" + urltoken);
