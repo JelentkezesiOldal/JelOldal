@@ -23,11 +23,6 @@ return new class extends Migration
             
         });
 
-        Jelentkezes::create(['jelentkezo_id'=> 1,'inditott_id'=>3]);
-        Jelentkezes::create(['jelentkezo_id'=> 2,'inditott_id'=>1]);
-        Jelentkezes::create(['jelentkezo_id'=> 3,'inditott_id'=>4]);
-        Jelentkezes::create(['jelentkezo_id'=> 8,'inditott_id'=>5]);
-        Jelentkezes::create(['jelentkezo_id'=> 5,'inditott_id'=>5]);
     }
 
     /**

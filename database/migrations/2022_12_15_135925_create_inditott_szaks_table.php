@@ -22,11 +22,6 @@ return new class extends Migration
             $table->timestamps();
         });
         
-        InditottSzak::create(['szak_id'=>1]);
-        InditottSzak::create(['szak_id'=>2]);
-        InditottSzak::create(['szak_id'=>7]);
-        InditottSzak::create(['szak_id'=>3]);
-        InditottSzak::create(['szak_id'=>8]);
     }
 
     /**
