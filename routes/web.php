@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/archivOsszes', [ArchivaltController::class, 'osszesArchivalt']);
     Route::get('/admin/elfVar', [JelentkezesController::class, 'elfogadasraVar']);
     Route::get('/admin/beirAlatt', [JelentkezesController::class, 'beiratAlatt']);
+    Route::get('/admin/letolt', [FajlController::class, 'download']);
     //admin törlések
     Route::delete('/admin/torol/{jel_id}/{ind_id}', [JelentkezesController::class, 'destroy']);
     Route::delete('/admin/torolSzak/{szak_id}', [SzakController::class, 'destroy']);
@@ -62,13 +63,6 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/admin/elfogad/{id}', [JelentkezesController::class, 'elfogadas']);
     Route::put('/admin/modositSzak/{id}', [SzakController::class, 'update']);
     Route::put('/admin/statuszModosit', [ArchivaltController::class, 'statuszUpdate']);
-    //Statisztikához
-    Route::get('/admin/OsszesJelentkezo', [JelentkezoController::class, 'index']);
-    Route::get('/admin/statOsszesJelentkezo', [JelentkezesController::class, 'statOsszJelo']);
-    Route::get('/admin/statOsszJeloBeirA', [JelentkezesController::class, 'statOsszJeloBeirA']);
-    Route::get('/admin/statOsszJeloElfVar', [JelentkezesController::class, 'statOsszJeloElfVar']);
-    Route::get('/admin/statOsszJeloBeir', [JelentkezesController::class, 'statOsszJeloBeir']);
-    Route::get('/admin/statOsszesArchivalt', [ArchivaltController::class, 'statOsszesArchivalt']);
 });
 
 Route::post('/admin/archivOsszesJel', [ArchivaltController::class, 'osszesJelentkezesArchivalas']);

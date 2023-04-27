@@ -26,13 +26,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-        User::create(['name'=>'DeltazorZz','email'=>'vetka.adi@gmail.com','password'=>Hash::make('vetesivagyok'),'master'=>'1']);
-        User::create(['name'=>'SzundiKa','email'=>'szundika@gmail.com','password'=>Hash::make('szundika11'),'master'=>'1']);
-        User::create(['name'=>'ForGetAsd','email'=>'forgetasd@gmail.com','password'=>Hash::make('forgetasd123'),'master'=>'0']);
-       /*  User::create(['felhasznalonev'=>'','email'=>'','jelszo'=>'','master'=>'','szak_id'=>'']);
-        User::create(['felhasznalonev'=>'','email'=>'','jelszo'=>'','master'=>'','szak_id'=>'']);
-        User::create(['felhasznalonev'=>'','email'=>'','jelszo'=>'','master'=>'','szak_id'=>'']);
-     */
+        
     }
 
     /**

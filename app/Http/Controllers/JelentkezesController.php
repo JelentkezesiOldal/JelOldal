@@ -48,10 +48,11 @@ class JelentkezesController extends Controller
     }
 
     public function osszes(){
-        $jelent = DB::select(DB::raw("select * from jelentkezos jos, jelentkezes jes, inditott_szaks insz, szaks sz
+        $jelent = DB::select(DB::raw("select * from jelentkezos jos, jelentkezes jes, inditott_szaks insz, szaks sz, jelentkezo_fajls jf
         where jos.jelentkezo_id = jes.jelentkezo_id 
         and jes.inditott_id = insz.inditott_id
         and sz.szak_id = insz.szak_id
+        and jf.jelentkezo_id = jos.jelentkezo_id
         and jos.statusz like 'Beiratkozva'"));
         return $jelent;
     }
@@ -84,50 +85,4 @@ class JelentkezesController extends Controller
         return $jelent;
     }
 
-    public function statOsszJelo(){
-        $jelent = DB::select(DB::raw("select sz.megnevezes as x, count(sz.megnevezes) as value
-        from jelentkezos jos, jelentkezes jes, inditott_szaks insz, szaks sz
-        where jos.jelentkezo_id = jes.jelentkezo_id 
-        and jes.inditott_id = insz.inditott_id
-        and sz.szak_id = insz.szak_id
-        group by sz.megnevezes"));
-        return $jelent;
-    }
-
-    public function statOsszJeloBeirA(){
-        $jelent = DB::select(
-            DB::raw(
-                "select sz.megnevezes as x, count(sz.megnevezes) as value
-        from jelentkezos jos, jelentkezes jes, inditott_szaks insz, szaks sz
-        where jos.jelentkezo_id = jes.jelentkezo_id 
-        and jes.inditott_id = insz.inditott_id
-        and sz.szak_id = insz.szak_id
-        and jos.statusz like 'Beiratkozás alatt'
-        group by sz.megnevezes"));
-        return $jelent;
-    }
-    public function statOsszJeloElfVar(){
-        $jelent = DB::select(
-            DB::raw(
-                "select sz.megnevezes as x, count(sz.megnevezes) as value
-        from jelentkezos jos, jelentkezes jes, inditott_szaks insz, szaks sz
-        where jos.jelentkezo_id = jes.jelentkezo_id 
-        and jes.inditott_id = insz.inditott_id
-        and sz.szak_id = insz.szak_id
-        and jos.statusz like 'Elfogadásra vár'
-        group by sz.megnevezes"));
-        return $jelent;
-    }
-    public function statOsszJeloBeir(){
-        $jelent = DB::select(
-            DB::raw(
-                "select sz.megnevezes as x, count(sz.megnevezes) as value
-        from jelentkezos jos, jelentkezes jes, inditott_szaks insz, szaks sz
-        where jos.jelentkezo_id = jes.jelentkezo_id 
-        and jes.inditott_id = insz.inditott_id
-        and sz.szak_id = insz.szak_id
-        and jos.statusz like 'Beiratkozva'
-        group by sz.megnevezes"));
-        return $jelent;
-    }
 }

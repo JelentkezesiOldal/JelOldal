@@ -23,17 +23,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Szak::create(['megnevezes'=>'Szoftverfejlesztő' ,'elofeltetel'=>'Érettségi','hany_felev'=>'4']);
-        Szak::create(['megnevezes'=>'Szobrász' ,'elofeltetel'=>'Érettségi','hany_felev'=>'5']);
-        Szak::create(['megnevezes'=>'Nyelvész' ,'elofeltetel'=>'Érettségi','hany_felev'=>'4']);
-        Szak::create(['megnevezes'=>'Grafikus' ,'elofeltetel'=>'Érettségi','hany_felev'=>'5']);
-        
-
-        
-        Szak::create(['megnevezes'=>'Szoftverfejlesztő' ,'elofeltetel'=>'Érettségi','hany_felev'=>'2']);
-        Szak::create(['megnevezes'=>'Nyelvész' ,'elofeltetel'=>'Érettségi','hany_felev'=>'2']);
-        Szak::create(['megnevezes'=>'Grafikus' ,'elofeltetel'=>'Érettségi','hany_felev'=>'5']);
-        Szak::create(['megnevezes'=>'Jazz balett' ,'elofeltetel'=>'Érettségi','hany_felev'=>'3']);
     }
 
     /**

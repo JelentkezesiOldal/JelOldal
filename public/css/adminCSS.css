@@ -53,6 +53,13 @@
     cursor: pointer;
 }
 
+.gombok button{
+    border: 1px solid black;
+}
+
+.gombok{
+    text-align: center;
+}
 
 .cim {
     margin: 20px;
@@ -88,20 +95,6 @@ article {
 #keres{
     margin: 10px;
 }
-aside{
-    display: flex;
-}
-#stat-nav{
-    /* width: fit-content; */
-    
-}
-#statTarolo{
-    width: 100%;
-    height: 500px;
-    margin: auto;
-    padding: 0;
-}
-
 
 @media screen and (max-width: 600px) {
     table {

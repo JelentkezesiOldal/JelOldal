@@ -22,10 +22,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Archivalt::create(['jelentkezo_id'=> 1,'inditott_id'=>3, 'datum'=>'2022-05-01']);
-        // Archivalt::create(['jelentkezo_id'=> 11,'inditott_id'=>4, 'datum'=>'2023-02-21']);
-        // Archivalt::create(['jelentkezo_id'=> 7,'inditott_id'=>1, 'datum'=>'2023-05-21']);
-        // Archivalt::create(['jelentkezo_id'=> 5,'inditott_id'=>3, 'datum'=>'2023-09-11']);
     }
 
     /**
