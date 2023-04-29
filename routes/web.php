@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Archivalt;
 use App\Models\InditottSzak;
 use App\Models\Jelentkezo;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -115,12 +116,17 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
-Route::get('/beiratkozas/{token}',function($token){
-    return view('beiratkozas', ['tokenke'=>$token]);
-});
-Route::get('/beiratkozasfajl/{token}',function($token){
-    return view('beiratkozasfajl', ['tokenke'=>$token]);
-})->name('beiratkozasfajl');
+
+    Route::get('/beiratkozas/{token}',function($token)  {
+            return view('beiratkozas', ['tokenke'=>$token]);
+    });
+ 
+    Route::get('/beiratkozasfajl/{token}',function($token){
+            return view('beiratkozasfajl', ['tokenke'=>$token]);
+    });
+    
+
+
 
 
 //ADMIN DOLGOK KIVÜL HOGY MENJEN
