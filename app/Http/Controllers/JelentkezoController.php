@@ -107,11 +107,7 @@ class JelentkezoController extends Controller
         $token =Str::random();
         $jelentkezo->token = $token;
 
-       $expiration_time_in_minutes = 4320;
-        $url = Cache::remember('Beiratkozo_url'.$token, $expiration_time_in_minutes, function () use ($token) {
-            return url('/beiratkozas'."/". $token); 
-        });
-
+        $url= '/beiratkozas'."/". $token;
 
         $jelentkezo->save();
         $utolsoId = $jelentkezo->jelentkezo_id;
@@ -137,12 +133,12 @@ class JelentkezoController extends Controller
 
     public function beiratkozo(Request $request, $token)
     {
-        /* 
-        $validator = Validator::make($request->all(), [
+         
+/*         $validator = Validator::make($request->all(), [
             'tanulo_neve' => array('required', 'string', 'min:5', 'max:50'),
             'email' => array('required', 'email', 'max:50', 'unique:jelentkezos'),
             'telefonszam' => array('required', 'digits_between:7,15', 'numeric')
-        ]); */
+        ]);  */
 
         /*  $filecontroller = new FileController;
         $filecontroller->store($request); */
@@ -177,9 +173,6 @@ class JelentkezoController extends Controller
 
 
         $jelentkezo->save();
-       return view('beiratkozasfajl');
-        //return view('beiratkozasSiker');
-        //return view('/BeiratkozasSikerult');
     }
     public function keresesj($ertek)
     {

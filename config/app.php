@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
+    'default_expiration_time' => 1,
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
