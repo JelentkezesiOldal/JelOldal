@@ -14,7 +14,7 @@ h1 {
 footer {
     background-color: #377ef9;
     font-family: Montserrat, sans-serif;
-    font-size: 15px;
+    font-size: 0.75em;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -27,7 +27,6 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* width: 100%; */
     margin-bottom: 20px;
 }
 nav ul {
@@ -37,7 +36,6 @@ nav ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    /* max-width: 100%;  */
 }
 
 nav li {
