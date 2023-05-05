@@ -9,7 +9,6 @@ class PublicController{
 
         $(window).on("elkuld", (event)=>{
             adatmodel.adatUj("/ujJelentkezo", event.detail);
-            console.log("he",event.detail)
             if(!event.detail.tanulo_neve == "" && !event.detail.email == "" && !event.detail.telefonszam == "" ){
                 location.replace("/JelentkezesSikerult");
             }
@@ -20,7 +19,6 @@ class PublicController{
     adatok(tomb){
         const szuloElem =$('main');
         new JelentkezesekView(tomb, szuloElem)
-        //console.log("töömb", tomb)
        
     }
 }

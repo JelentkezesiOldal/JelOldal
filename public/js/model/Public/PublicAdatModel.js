@@ -24,8 +24,6 @@ class PublicAdatModel {
     }
 
     adatUj(vegpont, adat) {
-        //console.log("elküld a modelben")
-        console.log("ezt kéne megkapnia", adat)
         fetch(vegpont, {
             method: 'POST',
             headers: {
@@ -41,9 +39,7 @@ class PublicAdatModel {
     }
 
     adatModosit(vegpont, adat, urltoken) {
-        console.log("ADATModosit ::", adat);
         vegpont += "/" + urltoken;
-        console.log("Modosit + id ::", vegpont);
         fetch(vegpont, {
             method: 'PATCH',
             headers: {
@@ -52,7 +48,6 @@ class PublicAdatModel {
             },
             body: JSON.stringify(adat),
         })
-            /* .then((response) => response.json()) */
             .then(() => {
                 console.log("sikeres mod");
             })
@@ -62,8 +57,6 @@ class PublicAdatModel {
     }
 
     adatTorol(vegpont, adat) {
-        console.log(adat);
-        console.log("Töröl: " + adat);
         vegpont += "/" + adat.jelentkezo_id;
         fetch(vegpont, {
             method: 'DELETE',
@@ -84,7 +77,6 @@ class PublicAdatModel {
 
     BeiratkozasAdat(vegpont, myCallBack, urltoken) {
         vegpont += "/" + urltoken;
-        console.log("Vegpont: ", vegpont)
         fetch(vegpont, {
             method: 'GET',
             headers: {
@@ -122,8 +114,6 @@ class PublicAdatModel {
     }
 
     FileUpload(vegpont, adat) {
-        /* console.log(adat.get('lakcimkartya'))*/
-        console.log("Fetch elott")
         fetch(vegpont, {
             method: 'POST',
             headers: {
