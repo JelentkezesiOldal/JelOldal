@@ -1,9 +1,9 @@
 import OpcioView from "./OpcioView.js";
 class JelentkezesView {
-    #elem = [];
+    #tomb = [];
     #jelentkezoAdat = {};
-    constructor(elem, szuloElem) {
-        this.#elem = elem;
+    constructor(tomb, szuloElem) {
+        this.#tomb = tomb;
         szuloElem.append(`
         <h1 class="cim">Jelentkezési oldal</h1>
         <form id="jelentkezes" name="jelentkezes" >
@@ -17,14 +17,14 @@ class JelentkezesView {
         <select name="inditott_id" id="szak" class="form-select" >
         </select>
         <input type="checkbox" id="adatkez" name="adatkez" >
-        <label for="adatkez">Elfogadom az <a href="https://www.w3schools.com/" target="_blank">adatkezelési szabályzatot</a></label><br>
+        <label for="adatkez">Elfogadom az <a href="#" target="_blank">adatkezelési szabályzatot</a></label><br>
         <input type="button" id="elkuld" value="Elküld" class="btn btn-outline-secondary" disabled>
         </form>
         `);
 
         this.formElem = szuloElem.children("form:last-child");
         this.selectElem = this.formElem.children("select");
-        elem.forEach((opcio) => {
+        tomb.forEach((opcio) => {
             const opciom = new OpcioView(opcio, this.selectElem);
         });
 
@@ -53,7 +53,6 @@ class JelentkezesView {
         this.#jelentkezoAdat.tanulo_neve = $("#tanulo_neve").val();
         this.#jelentkezoAdat.email = $("#email").val();
         this.#jelentkezoAdat.telefonszam = $("#telefonszam").val();
-        console.log(this.#jelentkezoAdat);
     }
 
     kattintastrigger(esemenyNeve) {
