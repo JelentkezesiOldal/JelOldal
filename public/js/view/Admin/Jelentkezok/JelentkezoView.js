@@ -151,7 +151,6 @@ class JelentkezoView {
             <h2>Orvosi alkalmassági</h2>    
                 <img src="/storage/files/${elem.orvosi_alkalmassagi}" alt="Kép nincs feltöltve.">
             <div class="gombok">
-                <button id="letoltes${elem.jelentkezo_id}">Összes letöltése</button>
                 <button id="kepVissza${elem.jelentkezo_id}">Vissza</button>
             </div>
         `)
